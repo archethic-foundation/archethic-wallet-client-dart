@@ -23,3 +23,5 @@ dependencies:
 
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
+  json_rpc_2: ^3.0.2
+  web_socket_channel: ^2.2.0

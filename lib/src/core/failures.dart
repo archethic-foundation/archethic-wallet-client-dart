@@ -1,5 +1,6 @@
 import 'package:deeplink_rpc/deeplink_rpc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_rpc_2/json_rpc_2.dart';
 
 part 'failures.freezed.dart';
 
@@ -65,6 +66,31 @@ class Failure with _$Failure implements Exception {
         cause: cause,
         stack: stack,
       );
+
+  factory Failure.fromRpcException(RpcException exception) {
+    switch (exception.code) {
+      case 5001:
+        return Failure.timeout();
+      case 4901:
+        return Failure.connectivity();
+      case 5002:
+        return Failure.consensusNotReached();
+      case -32602:
+        return Failure.invalidParams();
+      case 5003:
+        return Failure.invalidParams();
+      case 5006:
+        return Failure.invalidConfirmation();
+      case 5004:
+        return Failure.insufficientFunds();
+      case 4001:
+        return Failure.userRejected();
+      case 5005:
+        return Failure.unknownAccount();
+      default:
+        return Failure.other();
+    }
+  }
 
   factory Failure.fromDeeplinkRpcFailure(DeeplinkRpcFailure failure) {
     switch (failure.code) {

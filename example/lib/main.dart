@@ -9,12 +9,12 @@ void main() {
   runApp(const MyApp());
 }
 
-final _newAewalletClient = ArchethicDAppClient.deeplink(
+final _newAewalletClient = ArchethicDAppClient.auto(
   origin: const RequestOrigin(
     name: 'FlutterDappExample',
   ),
   replyBaseUrl: 'flutterdappexample://dapp.example',
-);
+)..connect();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -63,7 +63,7 @@ class GetEndpointTab extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
         return Center(
-          child: snapshot.data!.map(
+          child: snapshot.data!.when(
             success: (success) => Text('Endpoint Url : ${success.endpointUrl}'),
             failure: (failure) => Text('Request failed : $failure'),
           ),
@@ -117,7 +117,7 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
               jsonDecode(payloadTextController.text),
             );
 
-            response.map(
+            response.when(
               failure: (failure) {
                 log(
                   'Transaction failed',

@@ -7,6 +7,8 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   final String replyBaseUrl;
   final String requestBaseUrl = 'aewallet://wallet.archethic.net';
 
+  static bool get isAvailable => Platform.isAndroid || Platform.isIOS;
+
   @override
   final RequestOrigin origin;
 
@@ -19,6 +21,11 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
 
   @override
   ArchethicDappConnectionState get state => _state;
+
+  @override
+  Future<void> connect() async {
+    return;
+  }
 
   Future<DeeplinkRpcResponse> _send({
     required String requestEndpoint,

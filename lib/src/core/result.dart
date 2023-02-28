@@ -26,75 +26,12 @@ extension FutureResult<ValueT, FailureT extends Exception>
   }
 }
 
-/// An operation's result with [void] success value.
-abstract class VoidResult<FailureT extends Exception>
-    extends Result<void, FailureT> {
-  const factory VoidResult.success() = _VoidSuccess;
-  const factory VoidResult.failure(FailureT failure) = _VoidFailure;
-}
-
-class _VoidSuccess<FailureT extends Exception> implements VoidResult<FailureT> {
-  const _VoidSuccess();
-
-  @override
-  FailureT? get failureOrNull => null;
-
-  @override
-  bool get isFailure => false;
-
-  @override
-  bool get isValue => true;
-
-  @override
-  T map<T>({
-    required T Function(void value) success,
-    required T Function(FailureT failure) failure,
-  }) =>
-      success(null);
-
-  @override
-  void get valueOrNull {}
-
-  @override
-  void get valueOrThrow {}
-}
-
-class _VoidFailure<FailureT extends Exception> implements VoidResult<FailureT> {
-  const _VoidFailure(this._failure);
-
-  final FailureT _failure;
-
-  @override
-  FailureT? get failureOrNull => _failure;
-
-  @override
-  bool get isFailure => true;
-
-  @override
-  bool get isValue => false;
-
-  @override
-  T map<T>({
-    required T Function(void value) success,
-    required T Function(FailureT failure) failure,
-  }) =>
-      failure(_failure);
-
-  @override
-  void get valueOrNull {}
-
-  @override
-  void get valueOrThrow {
-    throw _failure;
-  }
-}
-
 /// An operation's result.
 /// Can be a success or a failure.
 @immutable
 abstract class Result<ValueT, FailureT extends Exception> {
-  const factory Result.success(ValueT value) = _Success;
-  const factory Result.failure(FailureT failure) = _Failure;
+  const factory Result.success(ValueT value) = ResultSuccess;
+  const factory Result.failure(FailureT failure) = ResultFailure;
 
   ValueT? get valueOrNull;
   FailureT? get failureOrNull;
@@ -102,9 +39,14 @@ abstract class Result<ValueT, FailureT extends Exception> {
   bool get isValue;
   bool get isFailure;
 
-  T map<T>({
+  T when<T>({
     required T Function(ValueT value) success,
     required T Function(FailureT failure) failure,
+  });
+
+  T map<T>({
+    required T Function(ResultSuccess<ValueT, FailureT> result) success,
+    required T Function(ResultFailure<ValueT, FailureT> result) failure,
   });
 
   /// Returns the value if it is a success.
@@ -134,14 +76,14 @@ abstract class Result<ValueT, FailureT extends Exception> {
   }
 }
 
-class _Success<ValueT, FailureT extends Exception>
+class ResultSuccess<ValueT, FailureT extends Exception>
     implements Result<ValueT, FailureT> {
-  const _Success(this._value);
+  const ResultSuccess(this.value);
 
-  final ValueT _value;
+  final ValueT value;
 
   @override
-  ValueT? get valueOrNull => _value;
+  ValueT? get valueOrNull => value;
 
   @override
   FailureT? get failureOrNull => null;
@@ -153,27 +95,34 @@ class _Success<ValueT, FailureT extends Exception>
   bool get isValue => true;
 
   @override
-  ValueT get valueOrThrow => _value;
+  ValueT get valueOrThrow => value;
 
   @override
-  T map<T>({
+  T when<T>({
     required T Function(ValueT value) success,
     required T Function(FailureT failure) failure,
   }) =>
-      success(_value);
+      success(value);
+
+  @override
+  T map<T>({
+    required T Function(ResultSuccess<ValueT, FailureT> result) success,
+    required T Function(ResultFailure<ValueT, FailureT> result) failure,
+  }) =>
+      success(this);
 }
 
-class _Failure<ValueT, FailureT extends Exception>
+class ResultFailure<ValueT, FailureT extends Exception>
     implements Result<ValueT, FailureT> {
-  const _Failure(this._failure);
+  const ResultFailure(this.failure);
 
-  final FailureT _failure;
+  final FailureT failure;
 
   @override
   ValueT? get valueOrNull => null;
 
   @override
-  FailureT? get failureOrNull => _failure;
+  FailureT? get failureOrNull => failure;
 
   @override
   bool get isFailure => true;
@@ -182,12 +131,19 @@ class _Failure<ValueT, FailureT extends Exception>
   bool get isValue => false;
 
   @override
-  ValueT get valueOrThrow => throw _failure;
+  ValueT get valueOrThrow => throw failure;
 
   @override
-  T map<T>({
+  T when<T>({
     required T Function(ValueT value) success,
     required T Function(FailureT failure) failure,
   }) =>
-      failure(_failure);
+      failure(this.failure);
+
+  @override
+  T map<T>({
+    required T Function(ResultSuccess<ValueT, FailureT> result) success,
+    required T Function(ResultFailure<ValueT, FailureT> result) failure,
+  }) =>
+      failure(this);
 }
