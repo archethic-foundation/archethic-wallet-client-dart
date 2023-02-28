@@ -1,39 +1,87 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+A client library to interact with ArchethicWallet RPC API.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+# What is ArchethicWallet RPC
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Check [AEIP-4](https://github.com/archethic-foundation/aeip/blob/main/AEIP-4.md) to know more.
 
-## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+# Usage
 
-## Getting started
+## Add dependency
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
-
-```dart
-const like = 'sample';
+```sh
+$ flutter pub add libdart_dapp
 ```
 
-## Additional information
+## Setup Deeplink
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+If your application is intended to work on **Android** or **iOS**, you must setup a Deeplink endpoint on your application.
+
+This is required to get [DeeplinkRPC](https://github.com/archethic-foundation/lib-deeplink-rpc) to work.
+
+### Native setup
+
+[Official documentation](https://docs.flutter.dev/development/ui/navigation/deep-linking) explains it well.
+
+
+## Client setup
+
+### Instanciate a client
+```dart
+import 'package:libdart_dapp/libdart_dapp.dart';
+
+
+// 1. Instanciate a Client
+final _aewalletClient = ArchethicDAppClient.auto(
+  origin: const RequestOrigin(        // Sets Dapp identity informations. Might be displayed to the user.
+    name: 'FlutterDappExample',
+  ),
+  replyBaseUrl: 'flutterdappexample://dapp.example',    // Deeplink Dapp endpoint
+);
+```
+
+### [Deeplink only] Listen to deeplink responses
+
+```dart
+// 2. Listens to deeplink responses
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Dapp Demo',
+      home: MyHome(),
+      onGenerateRoute: (settings) {
+        if ((_aewalletClient as DeeplinkArchethicDappClient)
+            .handleRoute(settings.name)) return;
+
+        //... do everything else neede by your application
+        return null;
+      },
+    );
+  }
+}
+```
+
+### Emit requests
+```dart
+final response = await _newAewalletClient.sendTransaction(
+    transactionJsonData,
+);
+
+response.when(
+    failure: (failure) {
+        log(
+            'Transaction failed',
+            error: failure,
+        );
+    },
+    success: (result) {
+        log(
+            'Transaction succeed : ${json.encode(result)}',
+        );
+    },
+);
+```

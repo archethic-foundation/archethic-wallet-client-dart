@@ -28,6 +28,8 @@ class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
 }
 
 abstract class ArchethicDAppClient {
+  /// Creates a Deeplink or Websocket client according
+  /// to current Platform capabilities.
   factory ArchethicDAppClient.auto({
     required RequestOrigin origin,
     required String replyBaseUrl,
