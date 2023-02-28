@@ -20,13 +20,13 @@ class ResultSnackbar extends SnackBar {
         );
 
   factory ResultSnackbar.success(String message) => ResultSnackbar(
-        prefix: "Success :",
+        prefix: 'Success :',
         message: message,
         color: Colors.green,
       );
 
   factory ResultSnackbar.error(String message) => ResultSnackbar(
-        prefix: "Error :",
+        prefix: 'Error :',
         message: message,
         color: Colors.red,
       );

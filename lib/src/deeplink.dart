@@ -1,8 +1,12 @@
 part of 'libdart_dapp_base.dart';
 
 class DeeplinkArchethicDappClient implements ArchethicDAppClient {
+  DeeplinkArchethicDappClient({
+    required this.origin,
+    required this.replyBaseUrl,
+  });
   final _deeplinkRpcClient = DeeplinkRpcClient();
-  final _state = ArchethicDappConnectionState.connected();
+  final _state = const ArchethicDappConnectionState.connected();
 
   final String replyBaseUrl;
   final String requestBaseUrl = 'aewallet://wallet.archethic.net';
@@ -13,11 +17,6 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   final RequestOrigin origin;
 
   bool handleRoute(String? path) => _deeplinkRpcClient.handleRoute(path);
-
-  DeeplinkArchethicDappClient({
-    required this.origin,
-    required this.replyBaseUrl,
-  });
 
   @override
   ArchethicDappConnectionState get state => _state;

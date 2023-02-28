@@ -81,12 +81,13 @@ class TransactionSendTab extends StatefulWidget {
 }
 
 class _TransactionSendTabState extends State<TransactionSendTab> {
-  final payloadTextController = TextEditingController(text: """
+  final payloadTextController = TextEditingController(
+    text: r'''
  {
     "type": "token",
     "version": 1,
     "data": {
-      "content": "{ \\"name\\": \\"NFT 001\\", \\"supply\\": 100000000, \\"type\\": \\"non-fungible\\", \\"symbol\\": \\"NFT1\\", \\"aeip\\": [2], \\"properties\\": {}}",
+      "content": "{ \"name\": \"NFT 001\", \"supply\": 100000000, \"type\": \"non-fungible\", \"symbol\": \"NFT1\", \"aeip\": [2], \"properties\": {}}",
       "code": "",
       "ownerships":[],
       "ledger": {
@@ -100,7 +101,8 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
       "recipients": []
     }
   }
-""");
+''',
+  );
 
   @override
   void dispose() {
@@ -124,7 +126,7 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
                   error: failure,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(
-                  ResultSnackbar.error(failure.message ?? "An error occured"),
+                  ResultSnackbar.error(failure.message ?? 'An error occured'),
                 );
               },
               success: (result) {
@@ -140,20 +142,19 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
         ),
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SmallSpace(),
                 Text(
                   'Payload :',
-                  style: Theme.of(context).textTheme.headlineSmall!,
+                  style: Theme.of(context).textTheme.headlineSmall,
                 ),
                 const SmallSpace(),
                 Expanded(
                   child: TextFormField(
                     controller: payloadTextController,
-                    minLines: null,
                     maxLines: null,
                   ),
                 ),

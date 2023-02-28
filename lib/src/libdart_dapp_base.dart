@@ -18,8 +18,9 @@ part 'websocket.dart';
 
 @freezed
 class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
-  const ArchethicDappConnectionState._();
   const factory ArchethicDappConnectionState() = _ArchethicDappConnectionState;
+
+  const ArchethicDappConnectionState._();
 
   const factory ArchethicDappConnectionState.disconnected() = _Disconnected;
   const factory ArchethicDappConnectionState.connected() = _Connected;

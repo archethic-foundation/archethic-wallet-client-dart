@@ -6,8 +6,6 @@ part 'failures.freezed.dart';
 
 @freezed
 class Failure with _$Failure implements Exception {
-  const Failure._();
-
   const factory Failure({
     required int code,
     String? message,
@@ -15,6 +13,7 @@ class Failure with _$Failure implements Exception {
     Object? cause,
     StackTrace? stack,
   }) = _Failure;
+  const Failure._();
 
   factory Failure.unsupportedMethod() => const Failure(
         code: -32601,

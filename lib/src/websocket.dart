@@ -1,6 +1,10 @@
 part of 'libdart_dapp_base.dart';
 
 class WebsocketArchethicDappClient implements ArchethicDAppClient {
+  WebsocketArchethicDappClient({
+    required this.origin,
+  });
+
   @override
   final RequestOrigin origin;
 
@@ -11,15 +15,15 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   static bool get isAvailable =>
       Platform.isLinux || Platform.isMacOS || Platform.isWindows;
 
-  WebsocketArchethicDappClient({
-    required this.origin,
-  });
-
   @override
   ArchethicDappConnectionState get state {
-    if (_client == null) return ArchethicDappConnectionState.disconnected();
-    if (_client!.isClosed) return ArchethicDappConnectionState.disconnected();
-    return ArchethicDappConnectionState.connected();
+    if (_client == null) {
+      return const ArchethicDappConnectionState.disconnected();
+    }
+    if (_client!.isClosed) {
+      return const ArchethicDappConnectionState.disconnected();
+    }
+    return const ArchethicDappConnectionState.connected();
   }
 
   @override
@@ -107,7 +111,8 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
 
   @override
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
-          Map<String, dynamic> data) =>
+    Map<String, dynamic> data,
+  ) =>
       Result.guard(
         () => _send(
           method: 'sendTransaction',
