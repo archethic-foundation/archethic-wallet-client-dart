@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp_example/snackbar.dart';
-import 'package:libdart_dapp/libdart_dapp.dart';
 
 void main() {
   runApp(const MyApp());

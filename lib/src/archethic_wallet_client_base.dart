@@ -3,19 +3,19 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:archethic_wallet_client/src/core/failures.dart';
+import 'package:archethic_wallet_client/src/core/request.dart';
+import 'package:archethic_wallet_client/src/core/result.dart';
+import 'package:archethic_wallet_client/src/request/get_endpoint.dart';
+import 'package:archethic_wallet_client/src/request/send_transaction.dart';
 import 'package:deeplink_rpc/deeplink_rpc.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
-import 'package:libdart_dapp/src/core/failures.dart';
-import 'package:libdart_dapp/src/core/request.dart';
-import 'package:libdart_dapp/src/core/result.dart';
-import 'package:libdart_dapp/src/request/get_endpoint.dart';
-import 'package:libdart_dapp/src/request/send_transaction.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
+part 'archethic_wallet_client_base.freezed.dart';
 part 'deeplink.dart';
-part 'libdart_dapp_base.freezed.dart';
 part 'websocket.dart';
 
 @freezed

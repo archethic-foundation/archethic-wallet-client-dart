@@ -1,6 +1,6 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
+import 'package:archethic_wallet_client/src/core/failures.dart';
 import 'package:flutter/foundation.dart';
-import 'package:libdart_dapp/src/core/failures.dart';
 
 extension FutureResult<ValueT, FailureT extends Exception>
     on Future<Result<ValueT, FailureT>> {

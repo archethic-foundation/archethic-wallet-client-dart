@@ -1,5 +1,5 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
-part of 'libdart_dapp_base.dart';
+part of 'archethic_wallet_client_base.dart';
 
 class WebsocketArchethicDappClient implements ArchethicDAppClient {
   WebsocketArchethicDappClient({
