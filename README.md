@@ -31,7 +31,7 @@ A <queries> element must be added to your manifest as a child of the root elemen
             <action android:name="android.intent.action.VIEW" />
             <data
                 android:scheme="aewallet"
-                android:host="wallet.archethic.net" />
+                android:host="archethic.tech" />
         </intent>
     </queries>
 ```

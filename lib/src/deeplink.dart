@@ -9,7 +9,7 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   final _state = const ArchethicDappConnectionState.connected();
 
   final String replyBaseUrl;
-  final String requestBaseUrl = 'aewallet://wallet.archethic.net';
+  final String requestBaseUrl = 'aewallet://archethic.tech';
 
   static bool get isAvailable => Platform.isAndroid || Platform.isIOS;
 
