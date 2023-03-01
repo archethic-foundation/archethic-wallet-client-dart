@@ -58,7 +58,7 @@ Add a ``meta-data`` tag and ``intent filter`` to ``AndroidManifest.xml`` inside 
 
 ### iOS
 
-Add LSApplicationQueriesSchemes entries in your Info.plist file.
+Add ``LSApplicationQueriesSchemes`` entries in your Info.plist file.
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
