@@ -19,7 +19,9 @@ dev_dependencies:
 dependencies:
   archethic_lib_dart: ^3.0.0
   deeplink_rpc:  # TODO(Chralu): use pub.dev library
-    path: ../lib-deeplink-rpc
+    git: 
+      url: https://github.com/archethic-foundation/lib-deeplink-rpc.git
+      ref: main
 
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
