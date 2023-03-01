@@ -1,7 +1,7 @@
 name: archethic_wallet_client
 description: A client library to interact with Archethic Wallet RPC API.
 version: 1.0.0
-homepage: https://github.com/archethic-foundation/libdart-dapp
+homepage: https://github.com/archethic-foundation/archethic-wallet-client
 
 environment:
   sdk: '>=2.19.2 <3.0.0'

@@ -11,7 +11,7 @@ Check [AEIP-4](https://github.com/archethic-foundation/aeip/blob/main/AEIP-4.md)
 ## Add dependency
 
 ```sh
-$ flutter pub add libdart_dapp
+$ flutter pub add archethic-wallet-client
 ```
 
 ## Setup Deeplink
@@ -94,7 +94,7 @@ Add two new keys to ``Info.plist`` in the ``ios/Runner`` directory:
 
 ### Instanciate a client
 ```dart
-import 'package:libdart_dapp/libdart_dapp.dart';
+import 'package:archethic-wallet-client/archethic-wallet-client.dart';
 
 // 1. Instanciate a Client
 final _aewalletClient = ArchethicDAppClient.auto(
