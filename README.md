@@ -20,10 +20,7 @@ If your application is intended to work on **Android** or **iOS**, you must setu
 
 This is required to get [DeeplinkRPC](https://github.com/archethic-foundation/lib-deeplink-rpc) to work.
 
-### AEWallet deeplink support
-
-#### Android
-
+### Android
 
 A ``queries`` element must be added to your manifest as a child of the root element.
 
@@ -38,23 +35,6 @@ A ``queries`` element must be added to your manifest as a child of the root elem
         </intent>
     </queries>
 ```
-
-#### iOS
-
-
-Add LSApplicationQueriesSchemes entries in your Info.plist file.
-
-```xml
-<key>LSApplicationQueriesSchemes</key>
-<array>
-  <string>aewallet</string>
-</array>
-```
-
-### Client deeplink support
-
-#### Android
-
 
 Add a ``meta-data`` tag and ``intent filter`` to ``AndroidManifest.xml`` inside the ``activity`` tag with the ".MainActivity" name:
 
@@ -76,7 +56,16 @@ Add a ``meta-data`` tag and ``intent filter`` to ``AndroidManifest.xml`` inside 
 </intent-filter>
 ```
 
-#### iOS
+### iOS
+
+Add LSApplicationQueriesSchemes entries in your Info.plist file.
+
+```xml
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>aewallet</string>
+</array>
+```
 
 Add two new keys to ``Info.plist`` in the ios/Runner directory:
 
