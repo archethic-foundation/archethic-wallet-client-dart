@@ -107,6 +107,8 @@ final _aewalletClient = ArchethicDAppClient.auto(
 
 ### [Deeplink only] Listen to deeplink responses
 
+Handle incoming deeplinks in the `onGenerateRoute` method :
+
 ```dart
 // 2. Listens to deeplink responses
 class MyApp extends StatelessWidget {
