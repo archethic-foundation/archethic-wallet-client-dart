@@ -1,6 +1,4 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// SPDX-License-Identifier: AGPL-3.0-or-later
 library libdart_dapp;
 
 export 'src/core/failures.dart';

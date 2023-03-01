@@ -20,9 +20,12 @@ If your application is intended to work on **Android** or **iOS**, you must setu
 
 This is required to get [DeeplinkRPC](https://github.com/archethic-foundation/lib-deeplink-rpc) to work.
 
-### Android
+### AEWallet deeplink support
 
-A <queries> element must be added to your manifest as a child of the root element.
+#### Android
+
+
+A ``queries`` element must be added to your manifest as a child of the root element.
 
 ```xml
     <queries>
@@ -36,8 +39,24 @@ A <queries> element must be added to your manifest as a child of the root elemen
     </queries>
 ```
 
+#### iOS
 
-Add a metadata tag and intent filter to AndroidManifest.xml inside the <activity> tag with the ".MainActivity" name:
+
+Add LSApplicationQueriesSchemes entries in your Info.plist file.
+
+```xml
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>aewallet</string>
+</array>
+```
+
+### Client deeplink support
+
+#### Android
+
+
+Add a ``meta-data`` tag and ``intent filter`` to ``AndroidManifest.xml`` inside the ``activity`` tag with the ".MainActivity" name:
 
 ```xml
 <!-- AEWallet deeplink support -->
@@ -57,9 +76,9 @@ Add a metadata tag and intent filter to AndroidManifest.xml inside the <activity
 </intent-filter>
 ```
 
-### iOS
+#### iOS
 
-Add two new keys to Info.plist in the ios/Runner directory:
+Add two new keys to ``Info.plist`` in the ios/Runner directory:
 
 ```xml
 <key>FlutterDeepLinkingEnabled</key>
@@ -82,21 +101,11 @@ Add two new keys to Info.plist in the ios/Runner directory:
 </array>
 ```
 
-Add LSApplicationQueriesSchemes entries in your Info.plist file.
-
-```xml
-<key>LSApplicationQueriesSchemes</key>
-<array>
-  <string>aewallet</string>
-</array>
-```
-
 ## Client setup
 
 ### Instanciate a client
 ```dart
 import 'package:libdart_dapp/libdart_dapp.dart';
-
 
 // 1. Instanciate a Client
 final _aewalletClient = ArchethicDAppClient.auto(
@@ -123,7 +132,7 @@ class MyApp extends StatelessWidget {
         if ((_aewalletClient as DeeplinkArchethicDappClient)
             .handleRoute(settings.name)) return;
 
-        //... do everything else neede by your application
+        //... do everything else needed by your application
         return null;
       },
     );
@@ -133,7 +142,7 @@ class MyApp extends StatelessWidget {
 
 ### Emit requests
 ```dart
-final response = await _newAewalletClient.sendTransaction(
+final response = await _aewalletClient.sendTransaction(
     transactionJsonData,
 );
 
