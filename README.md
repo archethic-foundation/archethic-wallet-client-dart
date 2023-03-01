@@ -58,7 +58,7 @@ Add a ``meta-data`` tag and ``intent filter`` to ``AndroidManifest.xml`` inside 
 
 ### iOS
 
-Add ``LSApplicationQueriesSchemes`` entries in your Info.plist file.
+Add ``LSApplicationQueriesSchemes`` entries in your ``Info.plist`` file.
 
 ```xml
 <key>LSApplicationQueriesSchemes</key>
@@ -67,7 +67,7 @@ Add ``LSApplicationQueriesSchemes`` entries in your Info.plist file.
 </array>
 ```
 
-Add two new keys to ``Info.plist`` in the ios/Runner directory:
+Add two new keys to ``Info.plist`` in the ``ios/Runner`` directory:
 
 ```xml
 <key>FlutterDeepLinkingEnabled</key>
