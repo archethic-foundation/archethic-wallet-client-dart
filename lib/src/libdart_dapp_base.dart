@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:deeplink_rpc/deeplink_rpc.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:libdart_dapp/src/core/failures.dart';

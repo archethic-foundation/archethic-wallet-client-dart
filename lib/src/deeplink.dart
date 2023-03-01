@@ -49,10 +49,12 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
         replyEndpoint: 'get_endpoint_result',
       ).then(
         (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(GetEndpointResult.fromJson(success)),
+          failure: (failure) => Result.failure(
+            Failure.fromDeeplinkRpcFailure(failure),
+          ),
+          success: (success) => Result.success(
+            GetEndpointResult.fromJson(success),
+          ),
         ),
       );
 

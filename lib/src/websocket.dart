@@ -13,7 +13,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   static const logName = 'WebsocketArchethicDappClient';
 
   static bool get isAvailable =>
-      Platform.isLinux || Platform.isMacOS || Platform.isWindows;
+      kIsWeb || Platform.isLinux || Platform.isMacOS || Platform.isWindows;
 
   @override
   ArchethicDappConnectionState get state {
