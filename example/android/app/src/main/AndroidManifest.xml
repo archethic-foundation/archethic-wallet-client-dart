@@ -1,6 +1,16 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_dapp_example">
+    <!-- Provide required visibility configuration for API level 30 and above -->
+    <queries>
+        <!-- AEWallet deeplink support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="aewallet"
+                android:host="wallet.archethic.net" />
+        </intent>
+    </queries>
     <application
         android:label="flutter_dapp_example"
         android:name="${applicationName}"
@@ -25,7 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <!-- Deep linking -->
+            <!-- AEWallet deeplink support -->
             <meta-data
                 android:name="flutter_deeplinking_enabled"
                 android:value="true" />

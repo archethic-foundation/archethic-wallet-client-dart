@@ -20,10 +20,76 @@ If your application is intended to work on **Android** or **iOS**, you must setu
 
 This is required to get [DeeplinkRPC](https://github.com/archethic-foundation/lib-deeplink-rpc) to work.
 
-### Native setup
+### Android
 
-[Official documentation](https://docs.flutter.dev/development/ui/navigation/deep-linking) explains it well.
+A <queries> element must be added to your manifest as a child of the root element.
 
+```xml
+    <queries>
+        <!-- AEWallet deeplink support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data
+                android:scheme="aewallet"
+                android:host="wallet.archethic.net" />
+        </intent>
+    </queries>
+```
+
+
+Add a metadata tag and intent filter to AndroidManifest.xml inside the <activity> tag with the ".MainActivity" name:
+
+```xml
+<!-- AEWallet deeplink support -->
+<meta-data
+    android:name="flutter_deeplinking_enabled"
+    android:value="true" />
+<intent-filter android:autoVerify="true">
+    <action android:name="android.intent.action.VIEW" />
+    <category android:name="android.intent.category.DEFAULT" />
+    <category android:name="android.intent.category.BROWSABLE" />
+    <!-- Replace `flutterdappexample` by your custom deeplink scheme -->
+    <!-- Replace `dapp.example` by your custom deeplink host -->
+    <!-- These will be used to compose the replyUrl when sending RPCs -->
+    <data
+        android:scheme="flutterdappexample"  
+        android:host="dapp.example" />
+</intent-filter>
+```
+
+### iOS
+
+Add two new keys to Info.plist in the ios/Runner directory:
+
+```xml
+<key>FlutterDeepLinkingEnabled</key>
+<true/>
+<key>CFBundleURLTypes</key>
+<array>
+    <dict>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <!-- Replace `flutterdappexample` by your custom deeplink scheme -->
+    <!-- Replace `dapp.example` by your custom deeplink host -->
+    <!-- These will be used to compose the replyUrl when sending RPCs -->
+    <key>CFBundleURLName</key>
+    <string>dapp.example</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+    <string>flutterdappexample</string>
+    </array>
+    </dict>
+</array>
+```
+
+Add LSApplicationQueriesSchemes entries in your Info.plist file.
+
+```xml
+<key>LSApplicationQueriesSchemes</key>
+<array>
+  <string>aewallet</string>
+</array>
+```
 
 ## Client setup
 
