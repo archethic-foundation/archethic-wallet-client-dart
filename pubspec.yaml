@@ -1,5 +1,5 @@
 name: archethic_wallet_client
-description: A client library to interact with Archethic Wallet RPC API.
+description: A client dart library to interact with Archethic Wallet RPC API.
 version: 1.0.1
 homepage: https://github.com/archethic-foundation/archethic-wallet-client-dart
 
