@@ -40,7 +40,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
       'Opening connection',
       name: logName,
     );
-    final socket = WebSocketChannel.connect(Uri.parse('ws://localhost:12345'));
+    final socket = WebSocketChannel.connect(Uri.parse('ws://127.0.0.1:12345'));
     _client = Client(socket.cast<String>());
     unawaited(_client!.listen());
   }
