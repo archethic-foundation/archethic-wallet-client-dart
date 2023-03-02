@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.0.3
+- Add macOS configuration in README.md
+
 ## 1.0.2
 - Add compatibility with web platform
 
