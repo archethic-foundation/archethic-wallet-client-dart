@@ -90,6 +90,18 @@ Add two new keys to ``Info.plist`` in the ``ios/Runner`` directory:
 </array>
 ```
 
+## Other Native setups
+### MacOS
+
+Add:
+
+```xml
+<key>com.apple.security.network.client</key>
+<true/>
+```
+
+to `macos/Runner/DebugProfile.entitlements` and `macos/Runner/Release.entitlements`.
+
 ## Client setup
 
 ### Instanciate a client
