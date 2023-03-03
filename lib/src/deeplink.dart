@@ -75,4 +75,19 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
               Result.success(SendTransactionResult.fromJson(success)),
         ),
       );
+
+  @override
+  Future<Result<GetAccountsResult, Failure>> getAccounts() async => _send(
+        requestEndpoint: 'get_accounts',
+        replyEndpoint: 'get_accounts_result',
+      ).then(
+        (result) => result.map(
+          failure: (failure) => Result.failure(
+            Failure.fromDeeplinkRpcFailure(failure),
+          ),
+          success: (success) => Result.success(
+            GetAccountsResult.fromJson(success),
+          ),
+        ),
+      );
 }

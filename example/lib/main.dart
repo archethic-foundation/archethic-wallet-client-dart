@@ -22,15 +22,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Dapp Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'Archethic Wallet Client Demo',
       home: DefaultTabController(
-        length: 2,
+        length: 3,
         child: Scaffold(
           appBar: AppBar(
             bottom: const TabBar(
               tabs: [
                 Tab(text: 'GetEndpoint'),
                 Tab(text: 'SendTransaction'),
+                Tab(text: 'GetAccounts'),
               ],
             ),
           ),
@@ -38,6 +40,7 @@ class MyApp extends StatelessWidget {
             children: [
               GetEndpointTab(),
               TransactionSendTab(),
+              GetAccountsTab(),
             ],
           ),
         ),
@@ -164,6 +167,39 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
           ),
         ),
       );
+}
+
+class GetAccountsTab extends StatelessWidget {
+  const GetAccountsTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: _newAewalletClient.getAccounts(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        return Center(
+          child: snapshot.data!.when(
+            success: (success) {
+              return ListView.builder(
+                itemCount: success.accounts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    title: Text(
+                      '${success.accounts[index].name}: ${success.accounts[index].genesisAddress}',
+                    ),
+                  );
+                },
+              );
+            },
+            failure: (failure) => Text('Request failed : $failure'),
+          ),
+        );
+      },
+    );
+  }
 }
 
 class SmallSpace extends StatelessWidget {
