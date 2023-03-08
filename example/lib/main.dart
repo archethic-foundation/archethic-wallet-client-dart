@@ -1,6 +1,7 @@
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp_example/tab/account_subscription.dart';
+import 'package:flutter_dapp_example/tab/add_service.dart';
 import 'package:flutter_dapp_example/tab/get_accounts.dart';
 import 'package:flutter_dapp_example/tab/get_endpoint.dart';
 import 'package:flutter_dapp_example/tab/transaction_send.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
                 Tab(text: 'SendTransaction'),
                 Tab(text: 'GetAccounts'),
                 Tab(text: 'AccountSub'),
+                Tab(text: 'AddService'),
               ],
             ),
             actions: [
@@ -47,6 +49,7 @@ class MyApp extends StatelessWidget {
               TransactionSendTab(aewalletClient: _aewalletClient),
               GetAccountsTab(aewalletClient: _aewalletClient),
               AccountSubscriptionTab(aewalletClient: _aewalletClient),
+              AddServiceTab(aewalletClient: _aewalletClient),
             ],
           ),
         ),

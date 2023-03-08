@@ -13,8 +13,8 @@ class ResultSnackbar extends SnackBar {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(prefix),
-              Text(message),
+              SelectableText(prefix),
+              SelectableText(message),
             ],
           ),
         );
