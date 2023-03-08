@@ -6,6 +6,8 @@ import 'dart:io';
 import 'package:archethic_wallet_client/src/core/failures.dart';
 import 'package:archethic_wallet_client/src/core/request.dart';
 import 'package:archethic_wallet_client/src/core/result.dart';
+import 'package:archethic_wallet_client/src/core/subscription.dart';
+import 'package:archethic_wallet_client/src/request/account_sub.dart';
 import 'package:archethic_wallet_client/src/request/get_accounts.dart';
 import 'package:archethic_wallet_client/src/request/get_endpoint.dart';
 import 'package:archethic_wallet_client/src/request/send_transaction.dart';
@@ -72,9 +74,15 @@ abstract class ArchethicDAppClient {
 
   Future<Result<GetEndpointResult, Failure>> getEndpoint();
 
+  Future<Result<Subscription<Account>, Failure>> subscribeAccount(
+    String accountName,
+  );
+
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
     Map<String, dynamic> data,
   );
 
   Future<Result<GetAccountsResult, Failure>> getAccounts();
+
+  Future<void> unsubscribeAccount(String subscriptionId);
 }

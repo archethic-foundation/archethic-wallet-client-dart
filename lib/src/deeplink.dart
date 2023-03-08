@@ -101,4 +101,13 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
           ),
         ),
       );
+
+  @override
+  Future<Result<Subscription<Account>, Failure>> subscribeAccount(
+    String accountName,
+  ) async =>
+      Result.failure(Failure.unsupportedMethod());
+
+  @override
+  Future<void> unsubscribeAccount(String subscriptionId) async {}
 }

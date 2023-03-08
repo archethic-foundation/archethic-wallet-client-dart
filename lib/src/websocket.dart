@@ -9,7 +9,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   @override
   final RequestOrigin origin;
 
-  Client? _client;
+  Peer? _client;
   final _connectionStateController =
       StreamController<ArchethicDappConnectionState>.broadcast()
         ..add(const ArchethicDappConnectionState.disconnected());
@@ -18,6 +18,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
 
   static bool get isAvailable =>
       kIsWeb || Platform.isLinux || Platform.isMacOS || Platform.isWindows;
+
+  final _accountSubscriptionValues =
+      StreamController<RPCSubscriptionUpdateDTO>.broadcast();
 
   @override
   ArchethicDappConnectionState get state {
@@ -58,24 +61,55 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     _connectionStateController.add(
       const ArchethicDappConnectionState.connected(),
     );
-    _client = Client(socket.cast<String>());
-    unawaited(_client!.listen().then(
-      (value) {
-        log(
-          'Connection closed',
-          name: logName,
-        );
-        _connectionStateController.add(
-          const ArchethicDappConnectionState.disconnected(),
+    final client = Peer(socket.cast<String>());
+    client.registerMethod(
+      'subscribeAccountValue',
+      (params) {
+        log('Valeur recue !');
+        _accountSubscriptionValues.add(
+          RPCSubscriptionUpdateDTO.fromJson(params.value),
         );
       },
-    ));
+    );
+
+    _client = client;
+    unawaited(
+      client.listen().then(
+        (value) {
+          log(
+            'Connection closed',
+            name: logName,
+          );
+          _connectionStateController.add(
+            const ArchethicDappConnectionState.disconnected(),
+          );
+        },
+      ),
+    );
   }
 
   @override
   Future<void> close() async {
     await _client?.close();
     _client = null;
+  }
+
+  Future<Subscription<Map<String, dynamic>>> _subscribe({
+    required String method,
+    Map<String, dynamic> params = const {},
+  }) async {
+    final subscriptionData = await _send(
+      method: method,
+      params: params,
+    );
+
+    final subscriptionId = subscriptionData['subscriptionId'];
+    return Subscription(
+      id: subscriptionId,
+      updates: _accountSubscriptionValues.stream
+          .where((event) => event.subscriptionId == subscriptionId)
+          .map((event) => event.data),
+    );
   }
 
   Future<Map<String, dynamic>> _send({
@@ -157,4 +191,35 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
           (result) => GetAccountsResult.fromJson(result),
         ),
       );
+
+  @override
+  Future<Result<Subscription<Account>, Failure>> subscribeAccount(
+    String accountName,
+  ) async =>
+      Result.guard(
+        () async {
+          final subscriptionDTO = await _subscribe(
+            method: 'subscribeAccount',
+            params: {
+              'name': accountName,
+            },
+          );
+          return Subscription(
+            id: subscriptionDTO.id,
+            updates: subscriptionDTO.updates.map((accountData) {
+              return Account.fromJson(accountData);
+            }),
+          );
+        },
+      );
+
+  @override
+  Future<void> unsubscribeAccount(String subscriptionId) async {
+    await _send(
+      method: 'unsubscribeAccount',
+      params: {
+        'subscriptionId': subscriptionId,
+      },
+    );
+  }
 }
