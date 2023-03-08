@@ -110,4 +110,21 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
 
   @override
   Future<void> unsubscribeAccount(String subscriptionId) async {}
+
+  @override
+  Future<Result<SendTransactionResult, Failure>> addService(
+    Map<String, dynamic> data,
+  ) =>
+      _send(
+        requestEndpoint: 'add_service',
+        replyEndpoint: 'add_service_result',
+        params: data,
+      ).then(
+        (result) => result.map(
+          failure: (failure) =>
+              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
+          success: (success) =>
+              Result.success(SendTransactionResult.fromJson(success)),
+        ),
+      );
 }

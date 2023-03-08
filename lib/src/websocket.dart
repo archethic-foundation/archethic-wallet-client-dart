@@ -222,4 +222,17 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
       },
     );
   }
+
+  @override
+  Future<Result<SendTransactionResult, Failure>> addService(
+    Map<String, dynamic> data,
+  ) =>
+      Result.guard(
+        () => _send(
+          method: 'addService',
+          params: data,
+        ).then(
+          (result) => SendTransactionResult.fromJson(result),
+        ),
+      );
 }

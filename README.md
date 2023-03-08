@@ -237,3 +237,26 @@ Signs and sends a transaction.
   "maxConfirmations": Number,    // Max number of confirmations.
 }
 ```
+
+
+## add_service
+
+Add a service in the keychain
+
+### Request
+
+```typescript
+{
+  "name": String,                 // Name of the service
+}
+```
+
+### Success Response
+
+```typescript
+{
+  "transactionAddress": String,  // Transaction address.
+  "nbConfirmations": Number,     // Number of received confirmations.
+  "maxConfirmations": Number,    // Max number of confirmations.
+}
+```
