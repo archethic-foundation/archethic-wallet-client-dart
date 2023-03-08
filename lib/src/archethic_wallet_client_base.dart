@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:archethic_wallet_client/src/core/failures.dart';
 import 'package:archethic_wallet_client/src/core/request.dart';
 import 'package:archethic_wallet_client/src/core/result.dart';
+import 'package:archethic_wallet_client/src/request/get_accounts.dart';
 import 'package:archethic_wallet_client/src/request/get_endpoint.dart';
 import 'package:archethic_wallet_client/src/request/send_transaction.dart';
 import 'package:deeplink_rpc/deeplink_rpc.dart';
@@ -71,4 +72,6 @@ abstract class ArchethicDAppClient {
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
     Map<String, dynamic> data,
   );
+
+  Future<Result<GetAccountsResult, Failure>> getAccounts();
 }

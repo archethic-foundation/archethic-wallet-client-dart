@@ -163,3 +163,77 @@ response.when(
     },
 );
 ```
+
+# RPC Methods
+
+There are two kinds of methods :
+
+- one time call
+- subscriptions.
+
+Subscriptions won't be available on Deeplink channel because of technical limitations.
+
+## get_endpoint
+
+Gets the endpoint URL used on AEWallet.
+
+### Request
+
+```typescript
+// no payload in request
+```
+
+### Success Response
+
+```typescript
+{
+  "endpointUrl": String // Endpoint URL
+}
+```
+
+## get_accounts
+
+Gets the accounts avalaible on AEWallet.
+
+### Request
+
+```typescript
+// No payload
+```
+
+### Success Response
+
+```typescript
+{
+  "accounts": [
+    {
+      "name": String,           // Account name
+      "genesisAddress": String, // Genesis address
+    }
+  ]
+}
+```
+
+## send_transaction
+
+Signs and sends a transaction.
+
+### Request
+
+```typescript
+{
+  "type": String,                 // Type of transaction
+  "version": Number,              // Version of the transaction (used for backward compatiblity)
+  "data": Object,                 // Transaction data zone (identity, keychain, smart contract, etc.)
+}
+```
+
+### Success Response
+
+```typescript
+{
+  "transactionAddress": String,  // Sent transaction address.
+  "nbConfirmations": Number,     // Number of received confirmations.
+  "maxConfirmations": Number,    // Max number of confirmations.
+}
+```
