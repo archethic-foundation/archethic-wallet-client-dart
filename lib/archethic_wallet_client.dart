@@ -5,4 +5,5 @@ export 'src/archethic_wallet_client_base.dart';
 export 'src/core/failures.dart';
 export 'src/core/request.dart';
 export 'src/core/result.dart';
+export 'src/core/subscription.dart';
 export 'src/request/requests.dart';

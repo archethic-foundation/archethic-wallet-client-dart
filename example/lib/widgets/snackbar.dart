@@ -19,6 +19,12 @@ class ResultSnackbar extends SnackBar {
           ),
         );
 
+  factory ResultSnackbar.update(String message) => ResultSnackbar(
+        prefix: 'Update received : ',
+        message: message,
+        color: Colors.blue,
+      );
+
   factory ResultSnackbar.success(String message) => ResultSnackbar(
         prefix: 'Success :',
         message: message,
