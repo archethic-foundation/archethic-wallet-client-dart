@@ -85,4 +85,7 @@ abstract class ArchethicDAppClient {
   Future<Result<GetAccountsResult, Failure>> getAccounts();
 
   Future<void> unsubscribeAccount(String subscriptionId);
+  Future<Result<SendTransactionResult, Failure>> addService(
+    Map<String, dynamic> data,
+  );
 }
