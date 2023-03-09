@@ -17,24 +17,21 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ArchethicDappConnectionState {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
     required TResult Function() connected,
     required TResult Function() connecting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function()? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
     TResult? Function()? connected,
     TResult? Function()? connecting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
     TResult Function()? connected,
     TResult Function()? connecting,
@@ -42,24 +39,21 @@ mixin _$ArchethicDappConnectionState {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(_Disconnected value) disconnected,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Connecting value) connecting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ArchethicDappConnectionState value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Disconnected value)? disconnected,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Connecting value)? connecting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(_Disconnected value)? disconnected,
     TResult Function(_Connected value)? connected,
     TResult Function(_Connecting value)? connecting,
@@ -87,127 +81,6 @@ class _$ArchethicDappConnectionStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$_ArchethicDappConnectionStateCopyWith<$Res> {
-  factory _$$_ArchethicDappConnectionStateCopyWith(
-          _$_ArchethicDappConnectionState value,
-          $Res Function(_$_ArchethicDappConnectionState) then) =
-      __$$_ArchethicDappConnectionStateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_ArchethicDappConnectionStateCopyWithImpl<$Res>
-    extends _$ArchethicDappConnectionStateCopyWithImpl<$Res,
-        _$_ArchethicDappConnectionState>
-    implements _$$_ArchethicDappConnectionStateCopyWith<$Res> {
-  __$$_ArchethicDappConnectionStateCopyWithImpl(
-      _$_ArchethicDappConnectionState _value,
-      $Res Function(_$_ArchethicDappConnectionState) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$_ArchethicDappConnectionState extends _ArchethicDappConnectionState {
-  const _$_ArchethicDappConnectionState() : super._();
-
-  @override
-  String toString() {
-    return 'ArchethicDappConnectionState()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ArchethicDappConnectionState);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function() disconnected,
-    required TResult Function() connected,
-    required TResult Function() connecting,
-  }) {
-    return $default();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function()? $default, {
-    TResult? Function()? disconnected,
-    TResult? Function()? connected,
-    TResult? Function()? connecting,
-  }) {
-    return $default?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? disconnected,
-    TResult Function()? connected,
-    TResult Function()? connecting,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value) $default, {
-    required TResult Function(_Disconnected value) disconnected,
-    required TResult Function(_Connected value) connected,
-    required TResult Function(_Connecting value) connecting,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ArchethicDappConnectionState value)? $default, {
-    TResult? Function(_Disconnected value)? disconnected,
-    TResult? Function(_Connected value)? connected,
-    TResult? Function(_Connecting value)? connecting,
-  }) {
-    return $default?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value)? $default, {
-    TResult Function(_Disconnected value)? disconnected,
-    TResult Function(_Connected value)? connected,
-    TResult Function(_Connecting value)? connecting,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ArchethicDappConnectionState
-    extends ArchethicDappConnectionState {
-  const factory _ArchethicDappConnectionState() =
-      _$_ArchethicDappConnectionState;
-  const _ArchethicDappConnectionState._() : super._();
 }
 
 /// @nodoc
@@ -247,8 +120,7 @@ class _$_Disconnected extends _Disconnected {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
     required TResult Function() connected,
     required TResult Function() connecting,
@@ -258,8 +130,7 @@ class _$_Disconnected extends _Disconnected {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function()? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
     TResult? Function()? connected,
     TResult? Function()? connecting,
@@ -269,8 +140,7 @@ class _$_Disconnected extends _Disconnected {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
     TResult Function()? connected,
     TResult Function()? connecting,
@@ -284,8 +154,7 @@ class _$_Disconnected extends _Disconnected {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(_Disconnected value) disconnected,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Connecting value) connecting,
@@ -295,8 +164,7 @@ class _$_Disconnected extends _Disconnected {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ArchethicDappConnectionState value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Disconnected value)? disconnected,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Connecting value)? connecting,
@@ -306,8 +174,7 @@ class _$_Disconnected extends _Disconnected {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(_Disconnected value)? disconnected,
     TResult Function(_Connected value)? connected,
     TResult Function(_Connecting value)? connecting,
@@ -362,8 +229,7 @@ class _$_Connected extends _Connected {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
     required TResult Function() connected,
     required TResult Function() connecting,
@@ -373,8 +239,7 @@ class _$_Connected extends _Connected {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function()? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
     TResult? Function()? connected,
     TResult? Function()? connecting,
@@ -384,8 +249,7 @@ class _$_Connected extends _Connected {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
     TResult Function()? connected,
     TResult Function()? connecting,
@@ -399,8 +263,7 @@ class _$_Connected extends _Connected {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(_Disconnected value) disconnected,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Connecting value) connecting,
@@ -410,8 +273,7 @@ class _$_Connected extends _Connected {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ArchethicDappConnectionState value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Disconnected value)? disconnected,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Connecting value)? connecting,
@@ -421,8 +283,7 @@ class _$_Connected extends _Connected {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(_Disconnected value)? disconnected,
     TResult Function(_Connected value)? connected,
     TResult Function(_Connecting value)? connecting,
@@ -477,8 +338,7 @@ class _$_Connecting extends _Connecting {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
+  TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
     required TResult Function() connected,
     required TResult Function() connecting,
@@ -488,8 +348,7 @@ class _$_Connecting extends _Connecting {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function()? $default, {
+  TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
     TResult? Function()? connected,
     TResult? Function()? connecting,
@@ -499,8 +358,7 @@ class _$_Connecting extends _Connecting {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
+  TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
     TResult Function()? connected,
     TResult Function()? connecting,
@@ -514,8 +372,7 @@ class _$_Connecting extends _Connecting {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value) $default, {
+  TResult map<TResult extends Object?>({
     required TResult Function(_Disconnected value) disconnected,
     required TResult Function(_Connected value) connected,
     required TResult Function(_Connecting value) connecting,
@@ -525,8 +382,7 @@ class _$_Connecting extends _Connecting {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_ArchethicDappConnectionState value)? $default, {
+  TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Disconnected value)? disconnected,
     TResult? Function(_Connected value)? connected,
     TResult? Function(_Connecting value)? connecting,
@@ -536,8 +392,7 @@ class _$_Connecting extends _Connecting {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_ArchethicDappConnectionState value)? $default, {
+  TResult maybeMap<TResult extends Object?>({
     TResult Function(_Disconnected value)? disconnected,
     TResult Function(_Connected value)? connected,
     TResult Function(_Connecting value)? connecting,
