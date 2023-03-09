@@ -6,6 +6,7 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
     required this.origin,
     required this.replyBaseUrl,
   });
+
   final _deeplinkRpcClient = DeeplinkRpcClient();
   final _state = const ArchethicDappConnectionState.connected();
 
@@ -23,7 +24,17 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   ArchethicDappConnectionState get state => _state;
 
   @override
+  Stream<ArchethicDappConnectionState> get connectionStateStream async* {
+    yield const ArchethicDappConnectionState.connected();
+  }
+
+  @override
   Future<void> connect() async {
+    return;
+  }
+
+  @override
+  Future<void> close() async {
     return;
   }
 

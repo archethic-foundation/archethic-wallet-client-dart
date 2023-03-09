@@ -62,10 +62,13 @@ abstract class ArchethicDAppClient {
     required RequestOrigin origin,
   }) = WebsocketArchethicDappClient;
 
+  Stream<ArchethicDappConnectionState> get connectionStateStream;
   ArchethicDappConnectionState get state;
   RequestOrigin get origin;
 
   Future<void> connect();
+
+  Future<void> close();
 
   Future<Result<GetEndpointResult, Failure>> getEndpoint();
 

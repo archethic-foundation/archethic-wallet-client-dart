@@ -10,6 +10,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   final RequestOrigin origin;
 
   Client? _client;
+  final _connectionStateController =
+      StreamController<ArchethicDappConnectionState>.broadcast()
+        ..add(const ArchethicDappConnectionState.disconnected());
 
   static const logName = 'WebsocketArchethicDappClient';
 
@@ -28,6 +31,10 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   }
 
   @override
+  Stream<ArchethicDappConnectionState> get connectionStateStream =>
+      _connectionStateController.stream;
+
+  @override
   Future<void> connect() async {
     if (_client != null && !_client!.isClosed) {
       log(
@@ -40,11 +47,32 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
       'Opening connection',
       name: logName,
     );
+    _connectionStateController.add(
+      const ArchethicDappConnectionState.connecting(),
+    );
     final socket = WebSocketChannel.connect(Uri.parse('ws://127.0.0.1:12345'));
+    log(
+      'Connection opened',
+      name: logName,
+    );
+    _connectionStateController.add(
+      const ArchethicDappConnectionState.connected(),
+    );
     _client = Client(socket.cast<String>());
-    unawaited(_client!.listen());
+    unawaited(_client!.listen().then(
+      (value) {
+        log(
+          'Connection closed',
+          name: logName,
+        );
+        _connectionStateController.add(
+          const ArchethicDappConnectionState.disconnected(),
+        );
+      },
+    ));
   }
 
+  @override
   Future<void> close() async {
     await _client?.close();
     _client = null;
