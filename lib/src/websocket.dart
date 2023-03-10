@@ -235,4 +235,12 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
           (result) => SendTransactionResult.fromJson(result),
         ),
       );
+
+  @override
+  Future<Result<GetServicesFromKeychainResult, Failure>>
+      getServicesFromKeychain() => Result.guard(
+            () => _send(method: 'getServicesFromKeychain').then(
+              (result) => GetServicesFromKeychainResult.fromJson(result),
+            ),
+          );
 }
