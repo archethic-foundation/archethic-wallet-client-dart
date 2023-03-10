@@ -4,6 +4,7 @@ Changelog
 ## 1.0.4
 - Add getAccounts command
 - Add addService command
+- Add getServicesFromKeychain command
 
 ## 1.0.3
 - Add macOS configuration in README.md

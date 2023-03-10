@@ -260,3 +260,27 @@ Add a service in the keychain
   "maxConfirmations": Number,    // Max number of confirmations.
 }
 ```
+
+## get_services_from_keychain
+
+Gets keychain's services from the keychain connected to AEWallet.
+
+### Request
+
+```typescript
+// No payload
+```
+
+### Success Response
+
+```typescript
+{
+  "services": [
+    {
+      "derivationPath": String, // Derivation path
+      "curve": String, // Curve
+      "hashAlgo": String // Hash Algo
+    }
+  ]
+}
+```
