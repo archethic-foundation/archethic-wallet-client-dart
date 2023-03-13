@@ -5,6 +5,8 @@ Changelog
 - Add getAccounts command
 - Add addService command
 - Add getServicesFromKeychain command
+- Add keychainDeriveKeypair command
+- Add keychainDeriveAddress command
 
 ## 1.0.3
 - Add macOS configuration in README.md

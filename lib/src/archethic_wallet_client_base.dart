@@ -11,6 +11,8 @@ import 'package:archethic_wallet_client/src/request/account_sub.dart';
 import 'package:archethic_wallet_client/src/request/get_accounts.dart';
 import 'package:archethic_wallet_client/src/request/get_endpoint.dart';
 import 'package:archethic_wallet_client/src/request/get_services_from_keychain.dart';
+import 'package:archethic_wallet_client/src/request/keychain_derive_address.dart';
+import 'package:archethic_wallet_client/src/request/keychain_derive_keypair.dart';
 import 'package:archethic_wallet_client/src/request/send_transaction.dart';
 import 'package:deeplink_rpc/deeplink_rpc.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -90,4 +92,12 @@ abstract class ArchethicDAppClient {
 
   Future<Result<GetServicesFromKeychainResult, Failure>>
       getServicesFromKeychain();
+
+  Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
+    Map<String, dynamic> data,
+  );
+
+  Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
+    Map<String, dynamic> data,
+  );
 }

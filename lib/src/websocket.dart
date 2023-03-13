@@ -243,4 +243,30 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
               (result) => GetServicesFromKeychainResult.fromJson(result),
             ),
           );
+
+  @override
+  Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
+    Map<String, dynamic> data,
+  ) =>
+      Result.guard(
+        () => _send(
+          method: 'keychainDeriveKeypair',
+          params: data,
+        ).then(
+          (result) => KeychainDeriveKeypairResult.fromJson(result),
+        ),
+      );
+
+  @override
+  Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
+    Map<String, dynamic> data,
+  ) =>
+      Result.guard(
+        () => _send(
+          method: 'keychainDeriveAddress',
+          params: data,
+        ).then(
+          (result) => KeychainDeriveAddressResult.fromJson(result),
+        ),
+      );
 }

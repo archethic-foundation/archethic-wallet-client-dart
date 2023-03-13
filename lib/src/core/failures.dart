@@ -56,6 +56,10 @@ class Failure with _$Failure implements Exception {
         code: 5005,
         message: 'Unknown account.',
       );
+  factory Failure.serviceNotFound() => const Failure(
+        code: 5007,
+        message: 'Service not found.',
+      );
   factory Failure.other({
     Object? cause,
     StackTrace? stack,
@@ -78,11 +82,13 @@ class Failure with _$Failure implements Exception {
       case -32602:
         return Failure.invalidParams();
       case 5003:
-        return Failure.invalidParams();
+        return Failure.invalidTransaction();
       case 5006:
         return Failure.invalidConfirmation();
       case 5004:
         return Failure.insufficientFunds();
+      case 5007:
+        return Failure.serviceNotFound();
       case 4001:
         return Failure.userRejected();
       case 5005:
@@ -103,11 +109,13 @@ class Failure with _$Failure implements Exception {
       case -32602:
         return Failure.invalidParams();
       case 5003:
-        return Failure.invalidParams();
+        return Failure.invalidTransaction();
       case 5006:
         return Failure.invalidConfirmation();
       case 5004:
         return Failure.insufficientFunds();
+      case 5007:
+        return Failure.serviceNotFound();
       case 4001:
         return Failure.userRejected();
       case 5005:

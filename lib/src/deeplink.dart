@@ -143,4 +143,38 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
               ),
             ),
           );
+
+  @override
+  Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
+    Map<String, dynamic> data,
+  ) =>
+      _send(
+        requestEndpoint: 'keychain_derive_keypair',
+        replyEndpoint: 'keychain_derive_keypair_result',
+        params: data,
+      ).then(
+        (result) => result.map(
+          failure: (failure) =>
+              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
+          success: (success) =>
+              Result.success(KeychainDeriveKeypairResult.fromJson(success)),
+        ),
+      );
+
+  @override
+  Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
+    Map<String, dynamic> data,
+  ) =>
+      _send(
+        requestEndpoint: 'keychain_derive_address',
+        replyEndpoint: 'keychain_derive_address_result',
+        params: data,
+      ).then(
+        (result) => result.map(
+          failure: (failure) =>
+              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
+          success: (success) =>
+              Result.success(KeychainDeriveAddressResult.fromJson(success)),
+        ),
+      );
 }

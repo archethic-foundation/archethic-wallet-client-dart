@@ -284,3 +284,48 @@ Gets keychain's services from the keychain connected to AEWallet.
   ]
 }
 ```
+
+## keychain_derive_keypair
+
+Derive a keypair for the given service at the index given and get the public key
+
+### Request
+
+```typescript
+{
+  "serviceName": String,  // Service name to identify the derivation path to use
+  "index": Number,        // Chain index to derive (optional - default to 0)
+  "pathSuffix": String    // Additional information to add to a service derivation path (optional - default to empty)
+}
+```
+ 
+### Success Response
+
+```typescript
+{
+  "publicKey": String     // Public key of the service at the index given
+}
+```
+
+
+## keychain_derive_address
+
+Derive an address for the given service at the index given
+
+### Request
+
+```typescript
+{
+  "serviceName": String,  // Service name to identify the derivation path to use
+  "index": Number,        // Chain index to derive (optional - default to 0)
+  "pathSuffix": String    // Additional information to add to a service derivation path (optional - default to empty)
+}
+```
+ 
+### Success Response
+
+```typescript
+{
+  "address": String     // Address derived
+}
+```
