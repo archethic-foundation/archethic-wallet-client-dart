@@ -12,7 +12,7 @@ dependencies:
   archethic_lib_dart: ^3.0.0
 
   # A RPC-via-deeplink communication library coded in Dart. This is dedicated to Flutter mobile applications (iOS / Android).
-  deeplink_rpc: ^1.0.2
+  deeplink_rpc: ^1.0.3
 
   flutter:
     sdk: flutter
