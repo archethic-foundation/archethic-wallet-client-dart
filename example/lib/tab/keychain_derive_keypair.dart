@@ -44,7 +44,7 @@ class _KeychainDeriveKeypairTabState extends State<KeychainDeriveKeypairTab> {
             final response = await widget.aewalletClient.keychainDeriveKeyPair({
               'serviceName': payloadServiceNameController.text,
               'index': int.tryParse(payloadIndexController.text),
-              'suffix': payloadSuffixController.text
+              'pathSuffix': payloadSuffixController.text
             });
             response.when(
               failure: (failure) {
