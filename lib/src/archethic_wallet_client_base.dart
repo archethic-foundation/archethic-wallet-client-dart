@@ -80,6 +80,10 @@ abstract class ArchethicDAppClient {
     String accountName,
   );
 
+  Future<Result<Subscription<Account>, Failure>> subscribeCurrentAccount();
+
+  Future<void> unsubscribeCurrentAccount(String subscriptionId);
+
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
     Map<String, dynamic> data,
   );
@@ -89,6 +93,7 @@ abstract class ArchethicDAppClient {
   Future<Result<GetCurrentAccountResult, Failure>> getCurrentAccount();
 
   Future<void> unsubscribeAccount(String subscriptionId);
+
   Future<Result<SendTransactionResult, Failure>> addService(
     Map<String, dynamic> data,
   );

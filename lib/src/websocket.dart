@@ -65,7 +65,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     client.registerMethod(
       'subscribeAccountValue',
       (params) {
-        log('Valeur recue !');
+        log('Received value');
         _accountSubscriptionValues.add(
           RPCSubscriptionUpdateDTO.fromJson(params.value),
         );
@@ -225,6 +225,32 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   Future<void> unsubscribeAccount(String subscriptionId) async {
     await _send(
       method: 'unsubscribeAccount',
+      params: {
+        'subscriptionId': subscriptionId,
+      },
+    );
+  }
+
+  @override
+  Future<Result<Subscription<Account>, Failure>>
+      subscribeCurrentAccount() async => Result.guard(
+            () async {
+              final subscriptionDTO = await _subscribe(
+                method: 'subscribeCurrentAccount',
+              );
+              return Subscription(
+                id: subscriptionDTO.id,
+                updates: subscriptionDTO.updates.map((accountData) {
+                  return Account.fromJson(accountData);
+                }),
+              );
+            },
+          );
+
+  @override
+  Future<void> unsubscribeCurrentAccount(String subscriptionId) async {
+    await _send(
+      method: 'unsubscribeCurrentAccount',
       params: {
         'subscriptionId': subscriptionId,
       },
