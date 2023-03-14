@@ -193,6 +193,14 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
       );
 
   @override
+  Future<Result<GetCurrentAccountResult, Failure>> getCurrentAccount() =>
+      Result.guard(
+        () => _send(method: 'getCurrentAccount').then(
+          (result) => GetCurrentAccountResult.fromJson(result),
+        ),
+      );
+
+  @override
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
     String accountName,
   ) async =>

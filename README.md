@@ -329,3 +329,22 @@ Derive an address for the given service at the index given
   "address": String     // Address derived
 }
 ```
+
+## get_current_account
+
+Gets the current account selected on AEWallet.
+
+### Request
+
+```typescript
+// No payload
+```
+
+### Success Response
+
+```typescript
+{
+  "name": String,           // Account name
+  "genesisAddress": String, // Genesis address
+}
+```
