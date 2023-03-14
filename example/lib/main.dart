@@ -2,6 +2,7 @@ import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp_example/tab/account_subscription.dart';
 import 'package:flutter_dapp_example/tab/add_service.dart';
+import 'package:flutter_dapp_example/tab/current_account_subscription.dart';
 import 'package:flutter_dapp_example/tab/get_accounts.dart';
 import 'package:flutter_dapp_example/tab/get_current_account.dart';
 import 'package:flutter_dapp_example/tab/get_endpoint.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Archethic Wallet Client Demo',
       home: DefaultTabController(
-        length: 9,
+        length: 10,
         child: Scaffold(
           appBar: AppBar(
             bottom: const TabBar(
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
                 Tab(text: 'GetCurrentAccount'),
                 Tab(text: 'GetAccounts'),
                 Tab(text: 'AccountSub'),
+                Tab(text: 'CurrentAccountSub'),
                 Tab(text: 'AddService'),
                 Tab(text: 'GetServicesFromKeychain'),
                 Tab(text: 'KeychainDeriveKeypair'),
@@ -58,6 +60,7 @@ class MyApp extends StatelessWidget {
               GetCurrentAccountTab(aewalletClient: _aewalletClient),
               GetAccountsTab(aewalletClient: _aewalletClient),
               AccountSubscriptionTab(aewalletClient: _aewalletClient),
+              CurrentAccountSubscriptionTab(aewalletClient: _aewalletClient),
               AddServiceTab(aewalletClient: _aewalletClient),
               GetServicesFromKeychainTab(aewalletClient: _aewalletClient),
               KeychainDeriveKeypairTab(aewalletClient: _aewalletClient),
