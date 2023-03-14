@@ -9,6 +9,7 @@ import 'package:archethic_wallet_client/src/core/result.dart';
 import 'package:archethic_wallet_client/src/core/subscription.dart';
 import 'package:archethic_wallet_client/src/request/account_sub.dart';
 import 'package:archethic_wallet_client/src/request/get_accounts.dart';
+import 'package:archethic_wallet_client/src/request/get_current_account.dart';
 import 'package:archethic_wallet_client/src/request/get_endpoint.dart';
 import 'package:archethic_wallet_client/src/request/get_services_from_keychain.dart';
 import 'package:archethic_wallet_client/src/request/keychain_derive_address.dart';
@@ -84,6 +85,8 @@ abstract class ArchethicDAppClient {
   );
 
   Future<Result<GetAccountsResult, Failure>> getAccounts();
+
+  Future<Result<GetCurrentAccountResult, Failure>> getCurrentAccount();
 
   Future<void> unsubscribeAccount(String subscriptionId);
   Future<Result<SendTransactionResult, Failure>> addService(

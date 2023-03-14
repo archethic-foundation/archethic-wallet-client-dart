@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.0.5
+- Add getCurrentAccount command
+  
 ## 1.0.4
 - Add getAccounts command
 - Add addService command
