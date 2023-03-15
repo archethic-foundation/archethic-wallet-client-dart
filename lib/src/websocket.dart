@@ -19,7 +19,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   static bool get isAvailable =>
       kIsWeb || Platform.isLinux || Platform.isMacOS || Platform.isWindows;
 
-  final _accountSubscriptionValues =
+  final _subscriptionValues =
       StreamController<RPCSubscriptionUpdateDTO>.broadcast();
 
   @override
@@ -63,10 +63,10 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     );
     final client = Peer(socket.cast<String>());
     client.registerMethod(
-      'subscribeAccountValue',
+      'addSubscriptionNotification',
       (params) {
         log('Received value');
-        _accountSubscriptionValues.add(
+        _subscriptionValues.add(
           RPCSubscriptionUpdateDTO.fromJson(params.value),
         );
       },
@@ -106,7 +106,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     final subscriptionId = subscriptionData['subscriptionId'];
     return Subscription(
       id: subscriptionId,
-      updates: _accountSubscriptionValues.stream
+      updates: _subscriptionValues.stream
           .where((event) => event.subscriptionId == subscriptionId)
           .map((event) => event.data),
     );
