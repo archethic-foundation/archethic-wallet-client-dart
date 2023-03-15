@@ -24,7 +24,7 @@ class GetAccountsTab extends StatelessWidget {
                 itemCount: success.accounts.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    title: Text(
+                    title: SelectableText(
                       '${success.accounts[index].name}: ${success.accounts[index].genesisAddress}',
                     ),
                   );

@@ -111,12 +111,12 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
               ),
               const SmallSpace(),
               if (accountSub == null)
-                Text(
+                SelectableText(
                   'Not listening',
                   style: Theme.of(context).textTheme.headlineSmall,
                 )
               else
-                Text(
+                SelectableText(
                   'Listening subscription ${accountSub?.id}',
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),

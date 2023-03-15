@@ -24,14 +24,14 @@ class GetServicesFromKeychainTab extends StatelessWidget {
                 itemCount: success.services.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    title: Text(
+                    title: SelectableText(
                       '${success.services[index].derivationPath}: ${success.services[index].curve} / ${success.services[index].hashAlgo} ',
                     ),
                   );
                 },
               );
             },
-            failure: (failure) => Text('Request failed : $failure'),
+            failure: (failure) => SelectableText('Request failed : $failure'),
           ),
         );
       },

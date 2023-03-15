@@ -61,7 +61,7 @@ class _AddServiceTabState extends State<AddServiceTab> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SmallSpace(),
-                Text(
+                SelectableText(
                   "Service's name :",
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),

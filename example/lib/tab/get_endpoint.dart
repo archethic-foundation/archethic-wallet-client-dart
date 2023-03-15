@@ -19,8 +19,9 @@ class GetEndpointTab extends StatelessWidget {
         }
         return Center(
           child: snapshot.data!.when(
-            success: (success) => Text('Endpoint Url : ${success.endpointUrl}'),
-            failure: (failure) => Text('Request failed : $failure'),
+            success: (success) =>
+                SelectableText('Endpoint Url : ${success.endpointUrl}'),
+            failure: (failure) => SelectableText('Request failed : $failure'),
           ),
         );
       },

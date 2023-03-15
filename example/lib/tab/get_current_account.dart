@@ -20,11 +20,11 @@ class GetCurrentAccountTab extends StatelessWidget {
         return Center(
           child: snapshot.data!.when(
             success: (success) {
-              return Text(
+              return SelectableText(
                 '${success.name}: ${success.genesisAddress}',
               );
             },
-            failure: (failure) => Text('Request failed : $failure'),
+            failure: (failure) => SelectableText('Request failed : $failure'),
           ),
         );
       },
