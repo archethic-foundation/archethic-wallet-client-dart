@@ -47,7 +47,7 @@ class _CurrentAccountSubscriptionTabState
                       accountStreamSub = success.updates.listen((event) {
                         ScaffoldMessenger.of(context).showSnackBar(
                           ResultSnackbar.update(
-                            'balance: ${event.balance}, lastAddress: ${event.lastAddress}',
+                            'name: ${event.name}, balance: ${event.balance}, lastAddress: ${event.lastAddress}',
                           ),
                         );
                       });
