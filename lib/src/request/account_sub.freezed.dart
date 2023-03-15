@@ -182,8 +182,8 @@ Account _$AccountFromJson(Map<String, dynamic> json) {
 mixin _$Account {
   String get name => throw _privateConstructorUsedError;
   String get genesisAddress => throw _privateConstructorUsedError;
-  String get lastAddress => throw _privateConstructorUsedError;
-  AccountBalance get balance => throw _privateConstructorUsedError;
+  String? get lastAddress => throw _privateConstructorUsedError;
+  AccountBalance? get balance => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -198,10 +198,10 @@ abstract class $AccountCopyWith<$Res> {
   $Res call(
       {String name,
       String genesisAddress,
-      String lastAddress,
-      AccountBalance balance});
+      String? lastAddress,
+      AccountBalance? balance});
 
-  $AccountBalanceCopyWith<$Res> get balance;
+  $AccountBalanceCopyWith<$Res>? get balance;
 }
 
 /// @nodoc
@@ -219,8 +219,8 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   $Res call({
     Object? name = null,
     Object? genesisAddress = null,
-    Object? lastAddress = null,
-    Object? balance = null,
+    Object? lastAddress = freezed,
+    Object? balance = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -231,21 +231,25 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
           ? _value.genesisAddress
           : genesisAddress // ignore: cast_nullable_to_non_nullable
               as String,
-      lastAddress: null == lastAddress
+      lastAddress: freezed == lastAddress
           ? _value.lastAddress
           : lastAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      balance: null == balance
+              as String?,
+      balance: freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
-              as AccountBalance,
+              as AccountBalance?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $AccountBalanceCopyWith<$Res> get balance {
-    return $AccountBalanceCopyWith<$Res>(_value.balance, (value) {
+  $AccountBalanceCopyWith<$Res>? get balance {
+    if (_value.balance == null) {
+      return null;
+    }
+
+    return $AccountBalanceCopyWith<$Res>(_value.balance!, (value) {
       return _then(_value.copyWith(balance: value) as $Val);
     });
   }
@@ -261,11 +265,11 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
   $Res call(
       {String name,
       String genesisAddress,
-      String lastAddress,
-      AccountBalance balance});
+      String? lastAddress,
+      AccountBalance? balance});
 
   @override
-  $AccountBalanceCopyWith<$Res> get balance;
+  $AccountBalanceCopyWith<$Res>? get balance;
 }
 
 /// @nodoc
@@ -280,8 +284,8 @@ class __$$_AccountCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? genesisAddress = null,
-    Object? lastAddress = null,
-    Object? balance = null,
+    Object? lastAddress = freezed,
+    Object? balance = freezed,
   }) {
     return _then(_$_Account(
       name: null == name
@@ -292,14 +296,14 @@ class __$$_AccountCopyWithImpl<$Res>
           ? _value.genesisAddress
           : genesisAddress // ignore: cast_nullable_to_non_nullable
               as String,
-      lastAddress: null == lastAddress
+      lastAddress: freezed == lastAddress
           ? _value.lastAddress
           : lastAddress // ignore: cast_nullable_to_non_nullable
-              as String,
-      balance: null == balance
+              as String?,
+      balance: freezed == balance
           ? _value.balance
           : balance // ignore: cast_nullable_to_non_nullable
-              as AccountBalance,
+              as AccountBalance?,
     ));
   }
 }
@@ -310,8 +314,8 @@ class _$_Account extends _Account {
   const _$_Account(
       {required this.name,
       required this.genesisAddress,
-      required this.lastAddress,
-      required this.balance})
+      this.lastAddress,
+      this.balance})
       : super._();
 
   factory _$_Account.fromJson(Map<String, dynamic> json) =>
@@ -322,9 +326,9 @@ class _$_Account extends _Account {
   @override
   final String genesisAddress;
   @override
-  final String lastAddress;
+  final String? lastAddress;
   @override
-  final AccountBalance balance;
+  final AccountBalance? balance;
 
   @override
   String toString() {
@@ -367,8 +371,8 @@ abstract class _Account extends Account {
   const factory _Account(
       {required final String name,
       required final String genesisAddress,
-      required final String lastAddress,
-      required final AccountBalance balance}) = _$_Account;
+      final String? lastAddress,
+      final AccountBalance? balance}) = _$_Account;
   const _Account._() : super._();
 
   factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
@@ -378,9 +382,9 @@ abstract class _Account extends Account {
   @override
   String get genesisAddress;
   @override
-  String get lastAddress;
+  String? get lastAddress;
   @override
-  AccountBalance get balance;
+  AccountBalance? get balance;
   @override
   @JsonKey(ignore: true)
   _$$_AccountCopyWith<_$_Account> get copyWith =>

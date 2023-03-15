@@ -20,8 +20,8 @@ class Account with _$Account {
   const factory Account({
     required String name,
     required String genesisAddress,
-    required String lastAddress,
-    required AccountBalance balance,
+    String? lastAddress,
+    AccountBalance? balance,
   }) = _Account;
   const Account._();
 

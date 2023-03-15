@@ -21,8 +21,10 @@ Map<String, dynamic> _$$_AccountBalanceToJson(_$_AccountBalance instance) =>
 _$_Account _$$_AccountFromJson(Map<String, dynamic> json) => _$_Account(
       name: json['name'] as String,
       genesisAddress: json['genesisAddress'] as String,
-      lastAddress: json['lastAddress'] as String,
-      balance: AccountBalance.fromJson(json['balance'] as Map<String, dynamic>),
+      lastAddress: json['lastAddress'] as String?,
+      balance: json['balance'] == null
+          ? null
+          : AccountBalance.fromJson(json['balance'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_AccountToJson(_$_Account instance) =>
