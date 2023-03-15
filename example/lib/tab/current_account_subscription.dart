@@ -23,6 +23,14 @@ class _CurrentAccountSubscriptionTabState
   StreamSubscription<Account>? accountStreamSub;
 
   @override
+  void dispose() {
+    accountSub = null;
+    accountStreamSub?.cancel();
+    accountStreamSub = null;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: accountSub == null
