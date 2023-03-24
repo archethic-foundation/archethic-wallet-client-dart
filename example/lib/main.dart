@@ -9,6 +9,7 @@ import 'package:flutter_dapp_example/tab/get_endpoint.dart';
 import 'package:flutter_dapp_example/tab/get_services_from_keychain.dart';
 import 'package:flutter_dapp_example/tab/keychain_derive_address.dart';
 import 'package:flutter_dapp_example/tab/keychain_derive_keypair.dart';
+import 'package:flutter_dapp_example/tab/sign_transactions.dart';
 import 'package:flutter_dapp_example/tab/transaction_send.dart';
 import 'package:flutter_dapp_example/widgets/connection_button.dart';
 
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Archethic Wallet Client Demo',
       home: DefaultTabController(
-        length: 10,
+        length: 11,
         child: Scaffold(
           appBar: AppBar(
             bottom: const TabBar(
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
                 Tab(text: 'GetServicesFromKeychain'),
                 Tab(text: 'KeychainDeriveKeypair'),
                 Tab(text: 'KeychainDeriveAddress'),
+                Tab(text: 'SignTransactions'),
               ],
             ),
             actions: [
@@ -65,6 +67,7 @@ class MyApp extends StatelessWidget {
               GetServicesFromKeychainTab(aewalletClient: _aewalletClient),
               KeychainDeriveKeypairTab(aewalletClient: _aewalletClient),
               KeychainDeriveAddressTab(aewalletClient: _aewalletClient),
+              SignTransactionsTab(aewalletClient: _aewalletClient),
             ],
           ),
         ),
