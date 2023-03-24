@@ -3,6 +3,7 @@ Changelog
 
 ## 1.0.5
 - Add getCurrentAccount command
+- Add sign_transactions command
   
 ## 1.0.4
 - Add getAccounts command

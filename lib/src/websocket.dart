@@ -303,4 +303,17 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
           (result) => KeychainDeriveAddressResult.fromJson(result),
         ),
       );
+
+  @override
+  Future<Result<SignTransactionsResult, Failure>> signTransactions(
+    Map<String, dynamic> data,
+  ) =>
+      Result.guard(
+        () => _send(
+          method: 'signTransactions',
+          params: data,
+        ).then(
+          (result) => SignTransactionsResult.fromJson(result),
+        ),
+      );
 }

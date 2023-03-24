@@ -348,3 +348,38 @@ Gets the current account selected on AEWallet.
   "genesisAddress": String, // Genesis address
 }
 ```
+
+## sign_transactions
+
+Signs many transactions.
+
+### Request
+
+```typescript
+{
+  "serviceName": String,              // Service name to use to sign the tx
+  "pathSuffix": String,               // Additional information to add to a service derivation path (optional)
+  "transactions": [
+    {
+      "type": String,                 // Type of transaction
+      "version": Number,              // Version of the transaction (used for backward compatiblity)
+      "data": Object                  // Transaction data zone (identity, keychain, smart contract, etc.)
+    }
+  ]
+}
+```
+
+### Success Response
+
+```typescript
+{
+  "signedTxs": [
+    {
+      "address": String,              // Address: hash of the new generated public key for the given transaction
+      "previousPublicKey": String,    // Previous generated public key matching the previous signature
+      "previousSignature": String,    // Signature from the previous public key
+      "originSignature": String       // Signature from the device which originated the transaction (used in the Proof of work)
+    }
+  ]
+}
+```
