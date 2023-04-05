@@ -11,6 +11,10 @@ class GetEndpointTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context)
+        .textTheme
+        .apply(displayColor: Theme.of(context).colorScheme.onSurface);
+
     return FutureBuilder(
       future: aewalletClient.getEndpoint(),
       builder: (context, snapshot) {
@@ -19,9 +23,14 @@ class GetEndpointTab extends StatelessWidget {
         }
         return Center(
           child: snapshot.data!.when(
-            success: (success) =>
-                SelectableText('Endpoint Url : ${success.endpointUrl}'),
-            failure: (failure) => SelectableText('Request failed : $failure'),
+            success: (success) => SelectableText(
+              'Endpoint Url : ${success.endpointUrl}',
+              style: textTheme.labelLarge,
+            ),
+            failure: (failure) => SelectableText(
+              'Request failed : $failure',
+              style: textTheme.labelLarge,
+            ),
           ),
         );
       },

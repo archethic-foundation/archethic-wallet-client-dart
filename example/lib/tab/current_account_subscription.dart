@@ -32,9 +32,29 @@ class _CurrentAccountSubscriptionTabState
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: accountSub == null
-          ? FloatingActionButton(
+    final textTheme = Theme.of(context)
+        .textTheme
+        .apply(displayColor: Theme.of(context).colorScheme.onSurface);
+
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SmallSpace(),
+          if (accountSub == null)
+            SelectableText(
+              'Not listening',
+              style: textTheme.labelLarge,
+            )
+          else
+            SelectableText(
+              'Listening subscription ${accountSub?.id}',
+              style: textTheme.labelLarge,
+            ),
+          const SmallSpace(),
+          if (accountSub == null)
+            OutlinedButton(
               child: const Icon(Icons.play_arrow),
               onPressed: () async {
                 final subscription =
@@ -63,7 +83,8 @@ class _CurrentAccountSubscriptionTabState
                 );
               },
             )
-          : FloatingActionButton(
+          else
+            OutlinedButton(
               child: const Icon(Icons.stop),
               onPressed: () async {
                 await widget.aewalletClient
@@ -75,27 +96,7 @@ class _CurrentAccountSubscriptionTabState
                 });
               },
             ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SmallSpace(),
-              if (accountSub == null)
-                SelectableText(
-                  'Not listening',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                )
-              else
-                SelectableText(
-                  'Listening subscription ${accountSub?.id}',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-              const SmallSpace(),
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }

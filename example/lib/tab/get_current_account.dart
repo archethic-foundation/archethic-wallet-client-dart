@@ -11,6 +11,10 @@ class GetCurrentAccountTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context)
+        .textTheme
+        .apply(displayColor: Theme.of(context).colorScheme.onSurface);
+
     return FutureBuilder(
       future: aewalletClient.getCurrentAccount(),
       builder: (context, snapshot) {
@@ -22,9 +26,13 @@ class GetCurrentAccountTab extends StatelessWidget {
             success: (success) {
               return SelectableText(
                 '${success.name}: ${success.genesisAddress}',
+                style: textTheme.labelLarge,
               );
             },
-            failure: (failure) => SelectableText('Request failed : $failure'),
+            failure: (failure) => SelectableText(
+              'Request failed : $failure',
+              style: textTheme.labelLarge,
+            ),
           ),
         );
       },

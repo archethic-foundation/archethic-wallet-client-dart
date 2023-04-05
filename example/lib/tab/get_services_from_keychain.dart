@@ -11,6 +11,10 @@ class GetServicesFromKeychainTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context)
+        .textTheme
+        .apply(displayColor: Theme.of(context).colorScheme.onSurface);
+
     return FutureBuilder(
       future: aewalletClient.getServicesFromKeychain(),
       builder: (context, snapshot) {
@@ -26,12 +30,16 @@ class GetServicesFromKeychainTab extends StatelessWidget {
                   return ListTile(
                     title: SelectableText(
                       '${success.services[index].derivationPath}: ${success.services[index].curve} / ${success.services[index].hashAlgo} ',
+                      style: textTheme.labelLarge,
                     ),
                   );
                 },
               );
             },
-            failure: (failure) => SelectableText('Request failed : $failure'),
+            failure: (failure) => SelectableText(
+              'Request failed : $failure',
+              style: textTheme.labelLarge,
+            ),
           ),
         );
       },

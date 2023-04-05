@@ -11,6 +11,10 @@ class GetAccountsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context)
+        .textTheme
+        .apply(displayColor: Theme.of(context).colorScheme.onSurface);
+
     return FutureBuilder(
       future: aewalletClient.getAccounts(),
       builder: (context, snapshot) {
@@ -26,6 +30,7 @@ class GetAccountsTab extends StatelessWidget {
                   return ListTile(
                     title: SelectableText(
                       '${success.accounts[index].name}: ${success.accounts[index].genesisAddress}',
+                      style: textTheme.labelLarge,
                     ),
                   );
                 },

@@ -37,80 +37,74 @@ class _KeychainDeriveKeypairTabState extends State<KeychainDeriveKeypairTab> {
   }
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.send),
-          onPressed: () async {
-            final response = await widget.aewalletClient.keychainDeriveKeyPair({
-              'serviceName': payloadServiceNameController.text,
-              'index': int.tryParse(payloadIndexController.text),
-              'pathSuffix': payloadSuffixController.text
-            });
-            response.when(
-              failure: (failure) {
-                log(
-                  'Command failed',
-                  error: failure,
-                );
-                ScaffoldMessenger.of(context).showSnackBar(
-                  ResultSnackbar.error(failure.message ?? 'An error occured'),
-                );
-              },
-              success: (result) {
-                log(
-                  'Command succeed : ${json.encode(result)}',
-                );
-                ScaffoldMessenger.of(context).showSnackBar(
-                  ResultSnackbar.success(json.encode(result)),
-                );
-              },
-            );
-          },
-        ),
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SmallSpace(),
-                Text(
-                  "Service's name :",
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                const SmallSpace(),
-                Expanded(
-                  child: TextFormField(
-                    controller: payloadServiceNameController,
-                    maxLines: null,
-                  ),
-                ),
-                const SmallSpace(),
-                Text(
-                  'Index :',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                Expanded(
-                  child: TextFormField(
-                    controller: payloadIndexController,
-                    maxLines: null,
-                  ),
-                ),
-                const SmallSpace(),
-                Text(
-                  'Suffix :',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-                Expanded(
-                  child: TextFormField(
-                    controller: payloadSuffixController,
-                    maxLines: null,
-                  ),
-                ),
-                const SmallSpace(),
-              ],
-            ),
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Service's name :",
+            style: Theme.of(context).textTheme.labelLarge,
           ),
-        ),
-      );
+          TextFormField(
+            style: Theme.of(context).textTheme.labelLarge,
+            controller: payloadServiceNameController,
+            maxLines: null,
+          ),
+          const SmallSpace(),
+          Text(
+            'Index :',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
+          TextFormField(
+            style: Theme.of(context).textTheme.labelLarge,
+            controller: payloadIndexController,
+            maxLines: null,
+          ),
+          const SmallSpace(),
+          Text(
+            'Suffix :',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
+          TextFormField(
+            style: Theme.of(context).textTheme.labelLarge,
+            controller: payloadSuffixController,
+            maxLines: null,
+          ),
+          const SmallSpace(),
+          OutlinedButton(
+            child: const Icon(Icons.send),
+            onPressed: () async {
+              final response =
+                  await widget.aewalletClient.keychainDeriveKeyPair({
+                'serviceName': payloadServiceNameController.text,
+                'index': int.tryParse(payloadIndexController.text),
+                'pathSuffix': payloadSuffixController.text
+              });
+              response.when(
+                failure: (failure) {
+                  log(
+                    'Command failed',
+                    error: failure,
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    ResultSnackbar.error(failure.message ?? 'An error occured'),
+                  );
+                },
+                success: (result) {
+                  log(
+                    'Command succeed : ${json.encode(result)}',
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    ResultSnackbar.success(json.encode(result)),
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
 }
