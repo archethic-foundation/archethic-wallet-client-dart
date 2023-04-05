@@ -7,7 +7,7 @@ class ResultSnackbar extends SnackBar {
     required String message,
     required Color color,
   }) : super(
-          duration: const Duration(seconds: 15),
+          duration: const Duration(seconds: 5),
           backgroundColor: color,
           content: Column(
             mainAxisSize: MainAxisSize.min,

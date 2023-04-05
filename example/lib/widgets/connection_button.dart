@@ -42,46 +42,57 @@ class _ConnectionButtonState extends State<ConnectionButton> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return TextButtonTheme(
-      data: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          backgroundColor: theme.scaffoldBackgroundColor,
-          iconColor: theme.primaryColor,
-          shape: const CircleBorder(),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Builder(
-          builder: (context) {
-            if (connectionState == null ||
-                connectionState ==
-                    const ArchethicDappConnectionState.disconnected()) {
-              return TextButton(
-                onPressed: () {
-                  widget.aewalletClient.connect();
-                },
-                child: const Icon(Icons.play_arrow),
-              );
-            }
+    final textTheme = theme.textTheme
+        .apply(displayColor: Theme.of(context).colorScheme.onSurface);
+    return Builder(
+      builder: (context) {
+        if (connectionState == null ||
+            connectionState ==
+                const ArchethicDappConnectionState.disconnected()) {
+          return OutlinedButton(
+            onPressed: () {},
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.blur_circular,
+                  color: Colors.red,
+                  size: 13,
+                ),
+                const SizedBox(width: 4),
+                Text('Not connected', style: textTheme.labelMedium),
+              ],
+            ),
+          );
+        }
 
-            if (connectionState ==
-                const ArchethicDappConnectionState.connecting()) {
-              return const TextButton(
-                onPressed: null,
-                child: CircularProgressIndicator(),
-              );
-            }
+        if (connectionState ==
+            const ArchethicDappConnectionState.connecting()) {
+          return const TextButton(
+            onPressed: null,
+            child: CircularProgressIndicator(),
+          );
+        }
 
-            return TextButton(
-              onPressed: () {
-                widget.aewalletClient.close();
-              },
-              child: const Icon(Icons.stop),
-            );
+        return OutlinedButton(
+          onPressed: () {
+            widget.aewalletClient.close();
           },
-        ),
-      ),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.blur_circular,
+                color: Colors.green,
+                size: 13,
+              ),
+              const SizedBox(width: 4),
+              Text(
+                'Connected',
+                style: textTheme.labelMedium,
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

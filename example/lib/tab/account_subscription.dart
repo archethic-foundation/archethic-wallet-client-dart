@@ -31,9 +31,73 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: accountSub == null
-          ? FloatingActionButton(
+    final textTheme = Theme.of(context)
+        .textTheme
+        .apply(displayColor: Theme.of(context).colorScheme.onSurface);
+
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          FutureBuilder(
+            future: widget.aewalletClient.getAccounts(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(child: CircularProgressIndicator());
+              }
+              return snapshot.data!.when(
+                success: (success) {
+                  return SizedBox(
+                    width: 300,
+                    child: DropdownButtonHideUnderline(
+                      child: ButtonTheme(
+                        alignedDropdown: true,
+                        child: DropdownButton(
+                          isExpanded: true,
+                          value: dropdownValue,
+                          items: success.accounts.map<DropdownMenuItem<String>>(
+                              (AppAccount? value) {
+                            return DropdownMenuItem<String>(
+                              value: value!.name,
+                              child: Text(
+                                value.name,
+                                style: textTheme.labelLarge,
+                              ),
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              dropdownValue = newValue;
+                            });
+                          },
+                          style: Theme.of(context).textTheme.labelLarge,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                failure: (failure) => Text(
+                  'Request failed : $failure',
+                  style: textTheme.labelLarge,
+                ),
+              );
+            },
+          ),
+          const SmallSpace(),
+          if (accountSub == null)
+            SelectableText(
+              'Not listening',
+              style: textTheme.labelLarge,
+            )
+          else
+            SelectableText(
+              'Listening subscription ${accountSub?.id}',
+              style: textTheme.labelLarge,
+            ),
+          const SmallSpace(),
+          if (accountSub == null)
+            OutlinedButton(
               child: const Icon(Icons.play_arrow),
               onPressed: () async {
                 final subscription = await widget.aewalletClient
@@ -62,7 +126,8 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
                 );
               },
             )
-          : FloatingActionButton(
+          else
+            OutlinedButton(
               child: const Icon(Icons.stop),
               onPressed: () async {
                 await widget.aewalletClient.unsubscribeAccount(accountSub!.id);
@@ -73,57 +138,7 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
                 });
               },
             ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              FutureBuilder(
-                future: widget.aewalletClient.getAccounts(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  return Center(
-                    child: snapshot.data!.when(
-                      success: (success) {
-                        return DropdownButton<String>(
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropdownValue = newValue;
-                            });
-                          },
-                          value: dropdownValue,
-                          items: success.accounts.map<DropdownMenuItem<String>>(
-                              (AppAccount? value) {
-                            return DropdownMenuItem<String>(
-                              value: value!.name,
-                              child: Text(value.name),
-                            );
-                          }).toList(),
-                        );
-                      },
-                      failure: (failure) => Text('Request failed : $failure'),
-                    ),
-                  );
-                },
-              ),
-              const SmallSpace(),
-              if (accountSub == null)
-                SelectableText(
-                  'Not listening',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                )
-              else
-                SelectableText(
-                  'Listening subscription ${accountSub?.id}',
-                  style: Theme.of(context).textTheme.headlineSmall,
-                ),
-              const SmallSpace(),
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }
