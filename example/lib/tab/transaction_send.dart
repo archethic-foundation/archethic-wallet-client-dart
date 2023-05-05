@@ -70,29 +70,37 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
           OutlinedButton(
             child: const Icon(Icons.send),
             onPressed: () async {
-              final response = await widget.aewalletClient.sendTransaction(
-                jsonDecode(payloadTextController.text),
-              );
+              try {
+                final response = await widget.aewalletClient.sendTransaction(
+                  jsonDecode(payloadTextController.text),
+                );
 
-              response.when(
-                failure: (failure) {
-                  log(
-                    'Transaction failed',
-                    error: failure,
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    ResultSnackbar.error(failure.message ?? 'An error occured'),
-                  );
-                },
-                success: (result) {
-                  log(
-                    'Transaction succeed : ${json.encode(result)}',
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    ResultSnackbar.success(json.encode(result)),
-                  );
-                },
-              );
+                response.when(
+                  failure: (failure) {
+                    log(
+                      'Transaction failed',
+                      error: failure,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      ResultSnackbar.error(
+                        failure.message ?? 'An error occured',
+                      ),
+                    );
+                  },
+                  success: (result) {
+                    log(
+                      'Transaction succeed : ${json.encode(result)}',
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      ResultSnackbar.success(json.encode(result)),
+                    );
+                  },
+                );
+              } catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  ResultSnackbar.error(e.toString()),
+                );
+              }
             },
           ),
         ],
