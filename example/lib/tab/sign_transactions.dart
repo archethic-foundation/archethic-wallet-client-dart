@@ -92,28 +92,35 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
           OutlinedButton(
             child: const Icon(Icons.send),
             onPressed: () async {
-              final response = await widget.aewalletClient.signTransactions(
-                jsonDecode(payloadTextController.text),
-              );
-              response.when(
-                failure: (failure) {
-                  log(
-                    'Command failed',
-                    error: failure,
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    ResultSnackbar.error(failure.message ?? 'An error occured'),
-                  );
-                },
-                success: (result) {
-                  log(
-                    'Command succeed : ${json.encode(result)}',
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    ResultSnackbar.success(json.encode(result)),
-                  );
-                },
-              );
+              try {
+                final response = await widget.aewalletClient.signTransactions(
+                  jsonDecode(payloadTextController.text),
+                );
+                response.when(
+                  failure: (failure) {
+                    log(
+                      'Command failed',
+                      error: failure,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      ResultSnackbar.error(
+                          failure.message ?? 'An error occured'),
+                    );
+                  },
+                  success: (result) {
+                    log(
+                      'Command succeed : ${json.encode(result)}',
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      ResultSnackbar.success(json.encode(result)),
+                    );
+                  },
+                );
+              } catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  ResultSnackbar.error(e.toString()),
+                );
+              }
             },
           ),
         ],
