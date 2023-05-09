@@ -104,7 +104,8 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
                       ResultSnackbar.error(
-                          failure.message ?? 'An error occured'),
+                        failure.message ?? 'An error occured',
+                      ),
                     );
                   },
                   success: (result) {
