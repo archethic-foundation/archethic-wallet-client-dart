@@ -60,6 +60,10 @@ class Failure with _$Failure implements Exception {
         code: 5007,
         message: 'Service not found.',
       );
+  factory Failure.serviceAlreadyExists() => const Failure(
+        code: 5008,
+        message: 'Service already exists in the keychain.',
+      );
   factory Failure.other({
     Object? cause,
     StackTrace? stack,
@@ -73,26 +77,28 @@ class Failure with _$Failure implements Exception {
 
   factory Failure.fromRpcException(RpcException exception) {
     switch (exception.code) {
-      case 5001:
-        return Failure.timeout();
-      case 4901:
-        return Failure.connectivity();
-      case 5002:
-        return Failure.consensusNotReached();
       case -32602:
         return Failure.invalidParams();
+      case 4001:
+        return Failure.userRejected();
+      case 4901:
+        return Failure.connectivity();
+      case 5001:
+        return Failure.timeout();
+      case 5002:
+        return Failure.consensusNotReached();
       case 5003:
         return Failure.invalidTransaction();
       case 5006:
         return Failure.invalidConfirmation();
       case 5004:
         return Failure.insufficientFunds();
-      case 5007:
-        return Failure.serviceNotFound();
-      case 4001:
-        return Failure.userRejected();
       case 5005:
         return Failure.unknownAccount();
+      case 5007:
+        return Failure.serviceNotFound();
+      case 5008:
+        return Failure.serviceAlreadyExists();
       default:
         return Failure.other();
     }
@@ -100,26 +106,28 @@ class Failure with _$Failure implements Exception {
 
   factory Failure.fromDeeplinkRpcFailure(DeeplinkRpcFailure failure) {
     switch (failure.code) {
-      case 5001:
-        return Failure.timeout();
-      case 4901:
-        return Failure.connectivity();
-      case 5002:
-        return Failure.consensusNotReached();
       case -32602:
         return Failure.invalidParams();
-      case 5003:
-        return Failure.invalidTransaction();
-      case 5006:
-        return Failure.invalidConfirmation();
-      case 5004:
-        return Failure.insufficientFunds();
-      case 5007:
-        return Failure.serviceNotFound();
       case 4001:
         return Failure.userRejected();
+      case 4901:
+        return Failure.connectivity();
+      case 5001:
+        return Failure.timeout();
+      case 5002:
+        return Failure.consensusNotReached();
+      case 5003:
+        return Failure.invalidTransaction();
+      case 5004:
+        return Failure.insufficientFunds();
       case 5005:
         return Failure.unknownAccount();
+      case 5006:
+        return Failure.invalidConfirmation();
+      case 5007:
+        return Failure.serviceNotFound();
+      case 5008:
+        return Failure.serviceAlreadyExists();
       default:
         return Failure.other();
     }
