@@ -8,11 +8,7 @@ environment:
 
 dependencies:
   # Archethic dart library for Flutter
-  #archethic_lib_dart: ^3.0.0
-  archethic_lib_dart:
-    git:
-      url: https://github.com/archethic-foundation/libdart.git
-      ref: aeweb
+  archethic_lib_dart: ^3.1.0
 
   # A RPC-via-deeplink communication library coded in Dart. This is dedicated to Flutter mobile applications (iOS / Android).
   deeplink_rpc: ^1.0.3

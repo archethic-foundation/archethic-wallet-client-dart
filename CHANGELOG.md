@@ -4,6 +4,9 @@ Changelog
 ## 1.0.5
 - Add getCurrentAccount command
 - Add sign_transactions command
+- Update Archethic SDK version
+- Change AWC example app's UX/UI
+- Add new Failure : serviceAlreadyExists
   
 ## 1.0.4
 - Add getAccounts command
