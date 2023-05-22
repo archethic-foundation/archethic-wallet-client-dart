@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.0.6
+- Update Archethic Dart SDK version (fix getStorageNoncePublicKey method)
+  
 ## 1.0.5
 - Add getCurrentAccount command
 - Add sign_transactions command
