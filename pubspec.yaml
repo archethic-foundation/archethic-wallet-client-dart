@@ -8,7 +8,11 @@ environment:
 
 dependencies:
   # Archethic dart library for Flutter
-  archethic_lib_dart: ^3.1.1
+  #archethic_lib_dart: ^3.2.0
+  archethic_lib_dart:
+    git:
+      url: https://github.com/archethic-foundation/libdart.git
+      ref: 84-add-a-method-for-calling-smart-contract-functions
 
   # A RPC-via-deeplink communication library coded in Dart. This is dedicated to Flutter mobile applications (iOS / Android).
   deeplink_rpc: ^1.0.3
