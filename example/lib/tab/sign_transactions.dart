@@ -118,6 +118,7 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
                   },
                 );
               } catch (e) {
+                if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   ResultSnackbar.error(e.toString()),
                 );
