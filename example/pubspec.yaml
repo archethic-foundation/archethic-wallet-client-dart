@@ -45,8 +45,6 @@ dependencies:
   # deeplink_rpc:
   #   path: ../../../lib-deeplink-rpc
 
-  url_launcher: ^6.1.10
-
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

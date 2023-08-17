@@ -97,6 +97,7 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
                   },
                 );
               } catch (e) {
+                if (!context.mounted) return;
                 ScaffoldMessenger.of(context).showSnackBar(
                   ResultSnackbar.error(e.toString()),
                 );

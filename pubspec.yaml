@@ -4,7 +4,7 @@ version: 1.0.6
 homepage: https://github.com/archethic-foundation/archethic-wallet-client-dart
 
 environment:
-  sdk: ">=2.19.2 <3.0.0"
+  sdk: ">=3.0.5 <4.0.0"
 
 dependencies:
   # Archethic dart library for Flutter
@@ -15,35 +15,35 @@ dependencies:
       ref: 84-add-a-method-for-calling-smart-contract-functions
 
   # A RPC-via-deeplink communication library coded in Dart. This is dedicated to Flutter mobile applications (iOS / Android).
-  deeplink_rpc: ^1.0.3
+  deeplink_rpc: ^1.0.5
 
   flutter:
     sdk: flutter
 
   # Annotations for the freezed code-generator. This package does nothing without freezed too
-  freezed_annotation: ^2.2.0
+  freezed_annotation: ^2.4.1
 
   # Annotations for the JsonSerializable code-generator.
-  json_annotation: ^4.8.0
+  json_annotation: ^4.8.1
 
   # JSON-RPC (v2.0) utility classes. Invoke methods on another machine using JSON-formatted messages. Some assembly required.
   json_rpc_2: ^3.0.2
 
   # StreamChannel wrappers for WebSockets. Provides a cross-platform WebSocketChannel API, a cross-platform implementation of that API that communicates over an underlying StreamChannel.
-  web_socket_channel: ^2.2.0
+  web_socket_channel: ^2.4.0
 
 dev_dependencies:
   # A build system for Dart code generation and modular compilation
-  build_runner: ^2.3.3
+  build_runner: ^2.4.6
 
   # Code generation for immutable classes that has a simple syntax/API without compromising on the features.
-  freezed: ^2.3.2
+  freezed: ^2.4.2
 
   # Automatically generate code for converting to and from JSON by annotating Dart classes.
-  json_serializable: ^6.6.1
+  json_serializable: ^6.7.1
 
   # Official Dart lint rules. Defines the 'core' and 'recommended' set of lints suggested by the Dart team
-  lints: ^2.0.1
+  lints: ^2.0.2
 
   # A full featured library for writing and running Dart tests across platforms.
-  test: ^1.23.1
+  test: ^1.24.5
