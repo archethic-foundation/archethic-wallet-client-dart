@@ -80,7 +80,7 @@ class _KeychainDeriveAddressTabState extends State<KeychainDeriveAddressTab> {
                   await widget.aewalletClient.keychainDeriveAddress({
                 'serviceName': payloadServiceNameController.text,
                 'index': int.tryParse(payloadIndexController.text),
-                'pathSuffix': payloadSuffixController.text
+                'pathSuffix': payloadSuffixController.text,
               });
               response.when(
                 failure: (failure) {
