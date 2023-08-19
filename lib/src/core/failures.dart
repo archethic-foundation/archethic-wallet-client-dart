@@ -77,6 +77,8 @@ class Failure with _$Failure implements Exception {
 
   factory Failure.fromRpcException(RpcException exception) {
     switch (exception.code) {
+      case -32601:
+        return Failure.unsupportedMethod();
       case -32602:
         return Failure.invalidParams();
       case 4001:
