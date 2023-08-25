@@ -2,3 +2,4 @@
 pubspec.lock
 .flutter-plugins*
 .tool-versions
+build/ios/Pods.build/Release-iphonesimulator/
