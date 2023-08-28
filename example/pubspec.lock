@@ -13,8 +13,8 @@ packages:
     dependency: transitive
     description:
       path: "."
-      ref: dev
-      resolved-ref: "993724265ff89c3744d58812db5a9ad015f3122a"
+      ref: Remove-RPC-Feature-Flags
+      resolved-ref: d30daca0d1bee5823d5302a4c67ee82ecb02f108
       url: "https://github.com/archethic-foundation/libdart.git"
     source: git
     version: "3.3.0"
