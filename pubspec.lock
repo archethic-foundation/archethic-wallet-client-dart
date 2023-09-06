@@ -30,7 +30,7 @@ packages:
     description:
       path: "."
       ref: dev
-      resolved-ref: af12635e9e0a9eb507e4979b35f46d019a1f3fe5
+      resolved-ref: fe1ce8754451bc0ec1e8ba6e280dcaa6f0acc0cd
       url: "https://github.com/archethic-foundation/libdart.git"
     source: git
     version: "3.3.0"
