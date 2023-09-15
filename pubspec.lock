@@ -29,8 +29,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: dev
-      resolved-ref: e98b2d19703f014713e77ec0fa3945cb88556e27
+      ref: map-result-SCFunction
+      resolved-ref: "5130998cb02bd70bd7e381aa5fb5d6b31c686c1a"
       url: "https://github.com/archethic-foundation/libdart.git"
     source: git
     version: "3.3.0"
