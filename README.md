@@ -193,7 +193,7 @@ Gets the endpoint URL used on AEWallet.
 
 ## get_accounts
 
-Gets the accounts avalaible on AEWallet.
+Gets the accounts available on AEWallet.
 
 ### Request
 
