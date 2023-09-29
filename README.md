@@ -207,7 +207,8 @@ Gets the accounts available on AEWallet.
 {
   "accounts": [
     {
-      "name": String,           // Account name
+      "shortName": String,      // Account name
+      "serviceName": String     // Service name
       "genesisAddress": String, // Genesis address
     }
   ]
@@ -344,7 +345,8 @@ Gets the current account selected on AEWallet.
 
 ```typescript
 {
-  "name": String,           // Account name
+  "shortName": String,      // Account name
+  "serviceName": String     // Service name
   "genesisAddress": String, // Genesis address
 }
 ```

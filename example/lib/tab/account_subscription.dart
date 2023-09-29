@@ -59,9 +59,9 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
                           items: success.accounts.map<DropdownMenuItem<String>>(
                               (AppAccount? value) {
                             return DropdownMenuItem<String>(
-                              value: value!.name,
+                              value: value!.serviceName,
                               child: Text(
-                                value.name,
+                                '${Uri.decodeFull(value.serviceName)} (${value.shortName})',
                                 style: textTheme.labelLarge,
                               ),
                             );

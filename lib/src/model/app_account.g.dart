@@ -8,12 +8,14 @@ part of 'app_account.dart';
 
 _$AppAccountImpl _$$AppAccountImplFromJson(Map<String, dynamic> json) =>
     _$AppAccountImpl(
-      name: json['name'] as String,
+      shortName: json['shortName'] as String,
+      serviceName: json['serviceName'] as String,
       genesisAddress: json['genesisAddress'] as String,
     );
 
 Map<String, dynamic> _$$AppAccountImplToJson(_$AppAccountImpl instance) =>
     <String, dynamic>{
-      'name': instance.name,
+      'shortName': instance.shortName,
+      'serviceName': instance.serviceName,
       'genesisAddress': instance.genesisAddress,
     };

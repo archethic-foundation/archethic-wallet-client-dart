@@ -29,7 +29,7 @@ class GetAccountsTab extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
                     title: SelectableText(
-                      '${success.accounts[index].name}: ${success.accounts[index].genesisAddress}',
+                      '${Uri.decodeFull(success.accounts[index].serviceName)} (${success.accounts[index].shortName}): ${success.accounts[index].genesisAddress}',
                       style: textTheme.labelLarge,
                     ),
                   );

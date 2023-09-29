@@ -21,7 +21,8 @@ GetCurrentAccountResult _$GetCurrentAccountResultFromJson(
 
 /// @nodoc
 mixin _$GetCurrentAccountResult {
-  String get name => throw _privateConstructorUsedError;
+  String get shortName => throw _privateConstructorUsedError;
+  String get serviceName => throw _privateConstructorUsedError;
   String get genesisAddress => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ abstract class $GetCurrentAccountResultCopyWith<$Res> {
           $Res Function(GetCurrentAccountResult) then) =
       _$GetCurrentAccountResultCopyWithImpl<$Res, GetCurrentAccountResult>;
   @useResult
-  $Res call({String name, String genesisAddress});
+  $Res call({String shortName, String serviceName, String genesisAddress});
 }
 
 /// @nodoc
@@ -53,13 +54,18 @@ class _$GetCurrentAccountResultCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? shortName = null,
+    Object? serviceName = null,
     Object? genesisAddress = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      shortName: null == shortName
+          ? _value.shortName
+          : shortName // ignore: cast_nullable_to_non_nullable
+              as String,
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
               as String,
       genesisAddress: null == genesisAddress
           ? _value.genesisAddress
@@ -78,7 +84,7 @@ abstract class _$$GetCurrentAccountResultImplCopyWith<$Res>
       __$$GetCurrentAccountResultImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String genesisAddress});
+  $Res call({String shortName, String serviceName, String genesisAddress});
 }
 
 /// @nodoc
@@ -94,13 +100,18 @@ class __$$GetCurrentAccountResultImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? shortName = null,
+    Object? serviceName = null,
     Object? genesisAddress = null,
   }) {
     return _then(_$GetCurrentAccountResultImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      shortName: null == shortName
+          ? _value.shortName
+          : shortName // ignore: cast_nullable_to_non_nullable
+              as String,
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
               as String,
       genesisAddress: null == genesisAddress
           ? _value.genesisAddress
@@ -114,20 +125,24 @@ class __$$GetCurrentAccountResultImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GetCurrentAccountResultImpl extends _GetCurrentAccountResult {
   const _$GetCurrentAccountResultImpl(
-      {required this.name, required this.genesisAddress})
+      {required this.shortName,
+      required this.serviceName,
+      required this.genesisAddress})
       : super._();
 
   factory _$GetCurrentAccountResultImpl.fromJson(Map<String, dynamic> json) =>
       _$$GetCurrentAccountResultImplFromJson(json);
 
   @override
-  final String name;
+  final String shortName;
+  @override
+  final String serviceName;
   @override
   final String genesisAddress;
 
   @override
   String toString() {
-    return 'GetCurrentAccountResult(name: $name, genesisAddress: $genesisAddress)';
+    return 'GetCurrentAccountResult(shortName: $shortName, serviceName: $serviceName, genesisAddress: $genesisAddress)';
   }
 
   @override
@@ -135,14 +150,18 @@ class _$GetCurrentAccountResultImpl extends _GetCurrentAccountResult {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GetCurrentAccountResultImpl &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.shortName, shortName) ||
+                other.shortName == shortName) &&
+            (identical(other.serviceName, serviceName) ||
+                other.serviceName == serviceName) &&
             (identical(other.genesisAddress, genesisAddress) ||
                 other.genesisAddress == genesisAddress));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, genesisAddress);
+  int get hashCode =>
+      Object.hash(runtimeType, shortName, serviceName, genesisAddress);
 
   @JsonKey(ignore: true)
   @override
@@ -161,7 +180,8 @@ class _$GetCurrentAccountResultImpl extends _GetCurrentAccountResult {
 
 abstract class _GetCurrentAccountResult extends GetCurrentAccountResult {
   const factory _GetCurrentAccountResult(
-      {required final String name,
+      {required final String shortName,
+      required final String serviceName,
       required final String genesisAddress}) = _$GetCurrentAccountResultImpl;
   const _GetCurrentAccountResult._() : super._();
 
@@ -169,7 +189,9 @@ abstract class _GetCurrentAccountResult extends GetCurrentAccountResult {
       _$GetCurrentAccountResultImpl.fromJson;
 
   @override
-  String get name;
+  String get shortName;
+  @override
+  String get serviceName;
   @override
   String get genesisAddress;
   @override

@@ -25,7 +25,7 @@ class GetCurrentAccountTab extends StatelessWidget {
           child: snapshot.data!.when(
             success: (success) {
               return SelectableText(
-                '${success.name}: ${success.genesisAddress}',
+                '${Uri.decodeFull(success.serviceName)} (${success.shortName}): ${success.genesisAddress}',
                 style: textTheme.labelLarge,
               );
             },

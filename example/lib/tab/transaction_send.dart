@@ -22,7 +22,7 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
     text: r'''
  {
     "type": "token",
-    "version": 1,
+    "version": 2,
     "data": {
       "content": "{ \"name\": \"NFT 001\", \"supply\": 100000000, \"type\": \"non-fungible\", \"symbol\": \"NFT1\", \"aeip\": [2], \"properties\": {}}",
       "code": "",

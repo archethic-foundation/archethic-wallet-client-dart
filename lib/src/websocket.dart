@@ -202,14 +202,14 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
 
   @override
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
-    String accountName,
+    String serviceName,
   ) async =>
       Result.guard(
         () async {
           final subscriptionDTO = await _subscribe(
             method: 'subscribeAccount',
             params: {
-              'name': accountName,
+              'serviceName': serviceName,
             },
           );
           return Subscription(

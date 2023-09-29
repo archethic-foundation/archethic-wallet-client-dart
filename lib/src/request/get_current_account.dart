@@ -7,7 +7,8 @@ part 'get_current_account.g.dart';
 @freezed
 class GetCurrentAccountResult with _$GetCurrentAccountResult {
   const factory GetCurrentAccountResult({
-    required String name,
+    required String shortName,
+    required String serviceName,
     required String genesisAddress,
   }) = _GetCurrentAccountResult;
   const GetCurrentAccountResult._();
