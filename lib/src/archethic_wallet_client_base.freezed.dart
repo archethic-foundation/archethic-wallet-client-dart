@@ -84,25 +84,25 @@ class _$ArchethicDappConnectionStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_DisconnectedCopyWith<$Res> {
-  factory _$$_DisconnectedCopyWith(
-          _$_Disconnected value, $Res Function(_$_Disconnected) then) =
-      __$$_DisconnectedCopyWithImpl<$Res>;
+abstract class _$$DisconnectedImplCopyWith<$Res> {
+  factory _$$DisconnectedImplCopyWith(
+          _$DisconnectedImpl value, $Res Function(_$DisconnectedImpl) then) =
+      __$$DisconnectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_DisconnectedCopyWithImpl<$Res>
-    extends _$ArchethicDappConnectionStateCopyWithImpl<$Res, _$_Disconnected>
-    implements _$$_DisconnectedCopyWith<$Res> {
-  __$$_DisconnectedCopyWithImpl(
-      _$_Disconnected _value, $Res Function(_$_Disconnected) _then)
+class __$$DisconnectedImplCopyWithImpl<$Res>
+    extends _$ArchethicDappConnectionStateCopyWithImpl<$Res, _$DisconnectedImpl>
+    implements _$$DisconnectedImplCopyWith<$Res> {
+  __$$DisconnectedImplCopyWithImpl(
+      _$DisconnectedImpl _value, $Res Function(_$DisconnectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Disconnected extends _Disconnected {
-  const _$_Disconnected() : super._();
+class _$DisconnectedImpl extends _Disconnected {
+  const _$DisconnectedImpl() : super._();
 
   @override
   String toString() {
@@ -112,7 +112,7 @@ class _$_Disconnected extends _Disconnected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Disconnected);
+        (other.runtimeType == runtimeType && other is _$DisconnectedImpl);
   }
 
   @override
@@ -188,30 +188,30 @@ class _$_Disconnected extends _Disconnected {
 }
 
 abstract class _Disconnected extends ArchethicDappConnectionState {
-  const factory _Disconnected() = _$_Disconnected;
+  const factory _Disconnected() = _$DisconnectedImpl;
   const _Disconnected._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_ConnectedCopyWith<$Res> {
-  factory _$$_ConnectedCopyWith(
-          _$_Connected value, $Res Function(_$_Connected) then) =
-      __$$_ConnectedCopyWithImpl<$Res>;
+abstract class _$$ConnectedImplCopyWith<$Res> {
+  factory _$$ConnectedImplCopyWith(
+          _$ConnectedImpl value, $Res Function(_$ConnectedImpl) then) =
+      __$$ConnectedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ConnectedCopyWithImpl<$Res>
-    extends _$ArchethicDappConnectionStateCopyWithImpl<$Res, _$_Connected>
-    implements _$$_ConnectedCopyWith<$Res> {
-  __$$_ConnectedCopyWithImpl(
-      _$_Connected _value, $Res Function(_$_Connected) _then)
+class __$$ConnectedImplCopyWithImpl<$Res>
+    extends _$ArchethicDappConnectionStateCopyWithImpl<$Res, _$ConnectedImpl>
+    implements _$$ConnectedImplCopyWith<$Res> {
+  __$$ConnectedImplCopyWithImpl(
+      _$ConnectedImpl _value, $Res Function(_$ConnectedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Connected extends _Connected {
-  const _$_Connected() : super._();
+class _$ConnectedImpl extends _Connected {
+  const _$ConnectedImpl() : super._();
 
   @override
   String toString() {
@@ -221,7 +221,7 @@ class _$_Connected extends _Connected {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Connected);
+        (other.runtimeType == runtimeType && other is _$ConnectedImpl);
   }
 
   @override
@@ -297,30 +297,30 @@ class _$_Connected extends _Connected {
 }
 
 abstract class _Connected extends ArchethicDappConnectionState {
-  const factory _Connected() = _$_Connected;
+  const factory _Connected() = _$ConnectedImpl;
   const _Connected._() : super._();
 }
 
 /// @nodoc
-abstract class _$$_ConnectingCopyWith<$Res> {
-  factory _$$_ConnectingCopyWith(
-          _$_Connecting value, $Res Function(_$_Connecting) then) =
-      __$$_ConnectingCopyWithImpl<$Res>;
+abstract class _$$ConnectingImplCopyWith<$Res> {
+  factory _$$ConnectingImplCopyWith(
+          _$ConnectingImpl value, $Res Function(_$ConnectingImpl) then) =
+      __$$ConnectingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ConnectingCopyWithImpl<$Res>
-    extends _$ArchethicDappConnectionStateCopyWithImpl<$Res, _$_Connecting>
-    implements _$$_ConnectingCopyWith<$Res> {
-  __$$_ConnectingCopyWithImpl(
-      _$_Connecting _value, $Res Function(_$_Connecting) _then)
+class __$$ConnectingImplCopyWithImpl<$Res>
+    extends _$ArchethicDappConnectionStateCopyWithImpl<$Res, _$ConnectingImpl>
+    implements _$$ConnectingImplCopyWith<$Res> {
+  __$$ConnectingImplCopyWithImpl(
+      _$ConnectingImpl _value, $Res Function(_$ConnectingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Connecting extends _Connecting {
-  const _$_Connecting() : super._();
+class _$ConnectingImpl extends _Connecting {
+  const _$ConnectingImpl() : super._();
 
   @override
   String toString() {
@@ -330,7 +330,7 @@ class _$_Connecting extends _Connecting {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Connecting);
+        (other.runtimeType == runtimeType && other is _$ConnectingImpl);
   }
 
   @override
@@ -406,6 +406,6 @@ class _$_Connecting extends _Connecting {
 }
 
 abstract class _Connecting extends ArchethicDappConnectionState {
-  const factory _Connecting() = _$_Connecting;
+  const factory _Connecting() = _$ConnectingImpl;
   const _Connecting._() : super._();
 }

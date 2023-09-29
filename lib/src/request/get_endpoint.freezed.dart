@@ -62,22 +62,22 @@ class _$GetEndpointResultCopyWithImpl<$Res, $Val extends GetEndpointResult>
 }
 
 /// @nodoc
-abstract class _$$_GetEndpointResultCopyWith<$Res>
+abstract class _$$GetEndpointResultImplCopyWith<$Res>
     implements $GetEndpointResultCopyWith<$Res> {
-  factory _$$_GetEndpointResultCopyWith(_$_GetEndpointResult value,
-          $Res Function(_$_GetEndpointResult) then) =
-      __$$_GetEndpointResultCopyWithImpl<$Res>;
+  factory _$$GetEndpointResultImplCopyWith(_$GetEndpointResultImpl value,
+          $Res Function(_$GetEndpointResultImpl) then) =
+      __$$GetEndpointResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String endpointUrl});
 }
 
 /// @nodoc
-class __$$_GetEndpointResultCopyWithImpl<$Res>
-    extends _$GetEndpointResultCopyWithImpl<$Res, _$_GetEndpointResult>
-    implements _$$_GetEndpointResultCopyWith<$Res> {
-  __$$_GetEndpointResultCopyWithImpl(
-      _$_GetEndpointResult _value, $Res Function(_$_GetEndpointResult) _then)
+class __$$GetEndpointResultImplCopyWithImpl<$Res>
+    extends _$GetEndpointResultCopyWithImpl<$Res, _$GetEndpointResultImpl>
+    implements _$$GetEndpointResultImplCopyWith<$Res> {
+  __$$GetEndpointResultImplCopyWithImpl(_$GetEndpointResultImpl _value,
+      $Res Function(_$GetEndpointResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_GetEndpointResultCopyWithImpl<$Res>
   $Res call({
     Object? endpointUrl = null,
   }) {
-    return _then(_$_GetEndpointResult(
+    return _then(_$GetEndpointResultImpl(
       endpointUrl: null == endpointUrl
           ? _value.endpointUrl
           : endpointUrl // ignore: cast_nullable_to_non_nullable
@@ -96,11 +96,11 @@ class __$$_GetEndpointResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GetEndpointResult extends _GetEndpointResult {
-  const _$_GetEndpointResult({required this.endpointUrl}) : super._();
+class _$GetEndpointResultImpl extends _GetEndpointResult {
+  const _$GetEndpointResultImpl({required this.endpointUrl}) : super._();
 
-  factory _$_GetEndpointResult.fromJson(Map<String, dynamic> json) =>
-      _$$_GetEndpointResultFromJson(json);
+  factory _$GetEndpointResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetEndpointResultImplFromJson(json);
 
   @override
   final String endpointUrl;
@@ -114,7 +114,7 @@ class _$_GetEndpointResult extends _GetEndpointResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetEndpointResult &&
+            other is _$GetEndpointResultImpl &&
             (identical(other.endpointUrl, endpointUrl) ||
                 other.endpointUrl == endpointUrl));
   }
@@ -126,13 +126,13 @@ class _$_GetEndpointResult extends _GetEndpointResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetEndpointResultCopyWith<_$_GetEndpointResult> get copyWith =>
-      __$$_GetEndpointResultCopyWithImpl<_$_GetEndpointResult>(
+  _$$GetEndpointResultImplCopyWith<_$GetEndpointResultImpl> get copyWith =>
+      __$$GetEndpointResultImplCopyWithImpl<_$GetEndpointResultImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetEndpointResultToJson(
+    return _$$GetEndpointResultImplToJson(
       this,
     );
   }
@@ -140,16 +140,16 @@ class _$_GetEndpointResult extends _GetEndpointResult {
 
 abstract class _GetEndpointResult extends GetEndpointResult {
   const factory _GetEndpointResult({required final String endpointUrl}) =
-      _$_GetEndpointResult;
+      _$GetEndpointResultImpl;
   const _GetEndpointResult._() : super._();
 
   factory _GetEndpointResult.fromJson(Map<String, dynamic> json) =
-      _$_GetEndpointResult.fromJson;
+      _$GetEndpointResultImpl.fromJson;
 
   @override
   String get endpointUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_GetEndpointResultCopyWith<_$_GetEndpointResult> get copyWith =>
+  _$$GetEndpointResultImplCopyWith<_$GetEndpointResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

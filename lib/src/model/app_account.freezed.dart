@@ -68,22 +68,22 @@ class _$AppAccountCopyWithImpl<$Res, $Val extends AppAccount>
 }
 
 /// @nodoc
-abstract class _$$_AppAccountCopyWith<$Res>
+abstract class _$$AppAccountImplCopyWith<$Res>
     implements $AppAccountCopyWith<$Res> {
-  factory _$$_AppAccountCopyWith(
-          _$_AppAccount value, $Res Function(_$_AppAccount) then) =
-      __$$_AppAccountCopyWithImpl<$Res>;
+  factory _$$AppAccountImplCopyWith(
+          _$AppAccountImpl value, $Res Function(_$AppAccountImpl) then) =
+      __$$AppAccountImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String genesisAddress});
 }
 
 /// @nodoc
-class __$$_AppAccountCopyWithImpl<$Res>
-    extends _$AppAccountCopyWithImpl<$Res, _$_AppAccount>
-    implements _$$_AppAccountCopyWith<$Res> {
-  __$$_AppAccountCopyWithImpl(
-      _$_AppAccount _value, $Res Function(_$_AppAccount) _then)
+class __$$AppAccountImplCopyWithImpl<$Res>
+    extends _$AppAccountCopyWithImpl<$Res, _$AppAccountImpl>
+    implements _$$AppAccountImplCopyWith<$Res> {
+  __$$AppAccountImplCopyWithImpl(
+      _$AppAccountImpl _value, $Res Function(_$AppAccountImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_AppAccountCopyWithImpl<$Res>
     Object? name = null,
     Object? genesisAddress = null,
   }) {
-    return _then(_$_AppAccount(
+    return _then(_$AppAccountImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -107,12 +107,12 @@ class __$$_AppAccountCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppAccount extends _AppAccount {
-  const _$_AppAccount({required this.name, required this.genesisAddress})
+class _$AppAccountImpl extends _AppAccount {
+  const _$AppAccountImpl({required this.name, required this.genesisAddress})
       : super._();
 
-  factory _$_AppAccount.fromJson(Map<String, dynamic> json) =>
-      _$$_AppAccountFromJson(json);
+  factory _$AppAccountImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AppAccountImplFromJson(json);
 
   @override
   final String name;
@@ -128,7 +128,7 @@ class _$_AppAccount extends _AppAccount {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppAccount &&
+            other is _$AppAccountImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.genesisAddress, genesisAddress) ||
                 other.genesisAddress == genesisAddress));
@@ -141,12 +141,12 @@ class _$_AppAccount extends _AppAccount {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppAccountCopyWith<_$_AppAccount> get copyWith =>
-      __$$_AppAccountCopyWithImpl<_$_AppAccount>(this, _$identity);
+  _$$AppAccountImplCopyWith<_$AppAccountImpl> get copyWith =>
+      __$$AppAccountImplCopyWithImpl<_$AppAccountImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppAccountToJson(
+    return _$$AppAccountImplToJson(
       this,
     );
   }
@@ -155,11 +155,11 @@ class _$_AppAccount extends _AppAccount {
 abstract class _AppAccount extends AppAccount {
   const factory _AppAccount(
       {required final String name,
-      required final String genesisAddress}) = _$_AppAccount;
+      required final String genesisAddress}) = _$AppAccountImpl;
   const _AppAccount._() : super._();
 
   factory _AppAccount.fromJson(Map<String, dynamic> json) =
-      _$_AppAccount.fromJson;
+      _$AppAccountImpl.fromJson;
 
   @override
   String get name;
@@ -167,6 +167,6 @@ abstract class _AppAccount extends AppAccount {
   String get genesisAddress;
   @override
   @JsonKey(ignore: true)
-  _$$_AppAccountCopyWith<_$_AppAccount> get copyWith =>
+  _$$AppAccountImplCopyWith<_$AppAccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

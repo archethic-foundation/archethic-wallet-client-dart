@@ -6,15 +6,15 @@ part of 'get_current_account.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_GetCurrentAccountResult _$$_GetCurrentAccountResultFromJson(
+_$GetCurrentAccountResultImpl _$$GetCurrentAccountResultImplFromJson(
         Map<String, dynamic> json) =>
-    _$_GetCurrentAccountResult(
+    _$GetCurrentAccountResultImpl(
       name: json['name'] as String,
       genesisAddress: json['genesisAddress'] as String,
     );
 
-Map<String, dynamic> _$$_GetCurrentAccountResultToJson(
-        _$_GetCurrentAccountResult instance) =>
+Map<String, dynamic> _$$GetCurrentAccountResultImplToJson(
+        _$GetCurrentAccountResultImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'genesisAddress': instance.genesisAddress,

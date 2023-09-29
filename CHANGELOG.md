@@ -1,6 +1,8 @@
 Changelog
 =========
 
+## 1.0.7
+- Update Archethic Dart SDK version 3.3.0
 ## 1.0.6
 - Update Archethic Dart SDK version (fix getStorageNoncePublicKey method)
   

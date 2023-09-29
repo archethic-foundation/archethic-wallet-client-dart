@@ -62,22 +62,22 @@ class _$GetAccountsResultCopyWithImpl<$Res, $Val extends GetAccountsResult>
 }
 
 /// @nodoc
-abstract class _$$_GetAccountsResultCopyWith<$Res>
+abstract class _$$GetAccountsResultImplCopyWith<$Res>
     implements $GetAccountsResultCopyWith<$Res> {
-  factory _$$_GetAccountsResultCopyWith(_$_GetAccountsResult value,
-          $Res Function(_$_GetAccountsResult) then) =
-      __$$_GetAccountsResultCopyWithImpl<$Res>;
+  factory _$$GetAccountsResultImplCopyWith(_$GetAccountsResultImpl value,
+          $Res Function(_$GetAccountsResultImpl) then) =
+      __$$GetAccountsResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<AppAccount> accounts});
 }
 
 /// @nodoc
-class __$$_GetAccountsResultCopyWithImpl<$Res>
-    extends _$GetAccountsResultCopyWithImpl<$Res, _$_GetAccountsResult>
-    implements _$$_GetAccountsResultCopyWith<$Res> {
-  __$$_GetAccountsResultCopyWithImpl(
-      _$_GetAccountsResult _value, $Res Function(_$_GetAccountsResult) _then)
+class __$$GetAccountsResultImplCopyWithImpl<$Res>
+    extends _$GetAccountsResultCopyWithImpl<$Res, _$GetAccountsResultImpl>
+    implements _$$GetAccountsResultImplCopyWith<$Res> {
+  __$$GetAccountsResultImplCopyWithImpl(_$GetAccountsResultImpl _value,
+      $Res Function(_$GetAccountsResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$_GetAccountsResultCopyWithImpl<$Res>
   $Res call({
     Object? accounts = null,
   }) {
-    return _then(_$_GetAccountsResult(
+    return _then(_$GetAccountsResultImpl(
       accounts: null == accounts
           ? _value._accounts
           : accounts // ignore: cast_nullable_to_non_nullable
@@ -96,13 +96,13 @@ class __$$_GetAccountsResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GetAccountsResult extends _GetAccountsResult {
-  const _$_GetAccountsResult({required final List<AppAccount> accounts})
+class _$GetAccountsResultImpl extends _GetAccountsResult {
+  const _$GetAccountsResultImpl({required final List<AppAccount> accounts})
       : _accounts = accounts,
         super._();
 
-  factory _$_GetAccountsResult.fromJson(Map<String, dynamic> json) =>
-      _$$_GetAccountsResultFromJson(json);
+  factory _$GetAccountsResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetAccountsResultImplFromJson(json);
 
   final List<AppAccount> _accounts;
   @override
@@ -121,7 +121,7 @@ class _$_GetAccountsResult extends _GetAccountsResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetAccountsResult &&
+            other is _$GetAccountsResultImpl &&
             const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
@@ -133,13 +133,13 @@ class _$_GetAccountsResult extends _GetAccountsResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetAccountsResultCopyWith<_$_GetAccountsResult> get copyWith =>
-      __$$_GetAccountsResultCopyWithImpl<_$_GetAccountsResult>(
+  _$$GetAccountsResultImplCopyWith<_$GetAccountsResultImpl> get copyWith =>
+      __$$GetAccountsResultImplCopyWithImpl<_$GetAccountsResultImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetAccountsResultToJson(
+    return _$$GetAccountsResultImplToJson(
       this,
     );
   }
@@ -147,16 +147,16 @@ class _$_GetAccountsResult extends _GetAccountsResult {
 
 abstract class _GetAccountsResult extends GetAccountsResult {
   const factory _GetAccountsResult({required final List<AppAccount> accounts}) =
-      _$_GetAccountsResult;
+      _$GetAccountsResultImpl;
   const _GetAccountsResult._() : super._();
 
   factory _GetAccountsResult.fromJson(Map<String, dynamic> json) =
-      _$_GetAccountsResult.fromJson;
+      _$GetAccountsResultImpl.fromJson;
 
   @override
   List<AppAccount> get accounts;
   @override
   @JsonKey(ignore: true)
-  _$$_GetAccountsResultCopyWith<_$_GetAccountsResult> get copyWith =>
+  _$$GetAccountsResultImplCopyWith<_$GetAccountsResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

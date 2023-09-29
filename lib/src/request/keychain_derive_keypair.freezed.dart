@@ -66,25 +66,25 @@ class _$KeychainDeriveKeypairResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_KeychainDeriveKeypairResultCopyWith<$Res>
+abstract class _$$KeychainDeriveKeypairResultImplCopyWith<$Res>
     implements $KeychainDeriveKeypairResultCopyWith<$Res> {
-  factory _$$_KeychainDeriveKeypairResultCopyWith(
-          _$_KeychainDeriveKeypairResult value,
-          $Res Function(_$_KeychainDeriveKeypairResult) then) =
-      __$$_KeychainDeriveKeypairResultCopyWithImpl<$Res>;
+  factory _$$KeychainDeriveKeypairResultImplCopyWith(
+          _$KeychainDeriveKeypairResultImpl value,
+          $Res Function(_$KeychainDeriveKeypairResultImpl) then) =
+      __$$KeychainDeriveKeypairResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String publicKey});
 }
 
 /// @nodoc
-class __$$_KeychainDeriveKeypairResultCopyWithImpl<$Res>
+class __$$KeychainDeriveKeypairResultImplCopyWithImpl<$Res>
     extends _$KeychainDeriveKeypairResultCopyWithImpl<$Res,
-        _$_KeychainDeriveKeypairResult>
-    implements _$$_KeychainDeriveKeypairResultCopyWith<$Res> {
-  __$$_KeychainDeriveKeypairResultCopyWithImpl(
-      _$_KeychainDeriveKeypairResult _value,
-      $Res Function(_$_KeychainDeriveKeypairResult) _then)
+        _$KeychainDeriveKeypairResultImpl>
+    implements _$$KeychainDeriveKeypairResultImplCopyWith<$Res> {
+  __$$KeychainDeriveKeypairResultImplCopyWithImpl(
+      _$KeychainDeriveKeypairResultImpl _value,
+      $Res Function(_$KeychainDeriveKeypairResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_KeychainDeriveKeypairResultCopyWithImpl<$Res>
   $Res call({
     Object? publicKey = null,
   }) {
-    return _then(_$_KeychainDeriveKeypairResult(
+    return _then(_$KeychainDeriveKeypairResultImpl(
       publicKey: null == publicKey
           ? _value.publicKey
           : publicKey // ignore: cast_nullable_to_non_nullable
@@ -103,11 +103,13 @@ class __$$_KeychainDeriveKeypairResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KeychainDeriveKeypairResult extends _KeychainDeriveKeypairResult {
-  const _$_KeychainDeriveKeypairResult({required this.publicKey}) : super._();
+class _$KeychainDeriveKeypairResultImpl extends _KeychainDeriveKeypairResult {
+  const _$KeychainDeriveKeypairResultImpl({required this.publicKey})
+      : super._();
 
-  factory _$_KeychainDeriveKeypairResult.fromJson(Map<String, dynamic> json) =>
-      _$$_KeychainDeriveKeypairResultFromJson(json);
+  factory _$KeychainDeriveKeypairResultImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$KeychainDeriveKeypairResultImplFromJson(json);
 
   @override
   final String publicKey;
@@ -121,7 +123,7 @@ class _$_KeychainDeriveKeypairResult extends _KeychainDeriveKeypairResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KeychainDeriveKeypairResult &&
+            other is _$KeychainDeriveKeypairResultImpl &&
             (identical(other.publicKey, publicKey) ||
                 other.publicKey == publicKey));
   }
@@ -133,13 +135,13 @@ class _$_KeychainDeriveKeypairResult extends _KeychainDeriveKeypairResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KeychainDeriveKeypairResultCopyWith<_$_KeychainDeriveKeypairResult>
-      get copyWith => __$$_KeychainDeriveKeypairResultCopyWithImpl<
-          _$_KeychainDeriveKeypairResult>(this, _$identity);
+  _$$KeychainDeriveKeypairResultImplCopyWith<_$KeychainDeriveKeypairResultImpl>
+      get copyWith => __$$KeychainDeriveKeypairResultImplCopyWithImpl<
+          _$KeychainDeriveKeypairResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KeychainDeriveKeypairResultToJson(
+    return _$$KeychainDeriveKeypairResultImplToJson(
       this,
     );
   }
@@ -148,16 +150,16 @@ class _$_KeychainDeriveKeypairResult extends _KeychainDeriveKeypairResult {
 abstract class _KeychainDeriveKeypairResult
     extends KeychainDeriveKeypairResult {
   const factory _KeychainDeriveKeypairResult(
-      {required final String publicKey}) = _$_KeychainDeriveKeypairResult;
+      {required final String publicKey}) = _$KeychainDeriveKeypairResultImpl;
   const _KeychainDeriveKeypairResult._() : super._();
 
   factory _KeychainDeriveKeypairResult.fromJson(Map<String, dynamic> json) =
-      _$_KeychainDeriveKeypairResult.fromJson;
+      _$KeychainDeriveKeypairResultImpl.fromJson;
 
   @override
   String get publicKey;
   @override
   @JsonKey(ignore: true)
-  _$$_KeychainDeriveKeypairResultCopyWith<_$_KeychainDeriveKeypairResult>
+  _$$KeychainDeriveKeypairResultImplCopyWith<_$KeychainDeriveKeypairResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

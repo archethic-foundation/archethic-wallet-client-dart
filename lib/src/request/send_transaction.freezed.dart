@@ -77,11 +77,12 @@ class _$SendTransactionResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SendTransactionResultCopyWith<$Res>
+abstract class _$$SendTransactionResultImplCopyWith<$Res>
     implements $SendTransactionResultCopyWith<$Res> {
-  factory _$$_SendTransactionResultCopyWith(_$_SendTransactionResult value,
-          $Res Function(_$_SendTransactionResult) then) =
-      __$$_SendTransactionResultCopyWithImpl<$Res>;
+  factory _$$SendTransactionResultImplCopyWith(
+          _$SendTransactionResultImpl value,
+          $Res Function(_$SendTransactionResultImpl) then) =
+      __$$SendTransactionResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -89,11 +90,12 @@ abstract class _$$_SendTransactionResultCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SendTransactionResultCopyWithImpl<$Res>
-    extends _$SendTransactionResultCopyWithImpl<$Res, _$_SendTransactionResult>
-    implements _$$_SendTransactionResultCopyWith<$Res> {
-  __$$_SendTransactionResultCopyWithImpl(_$_SendTransactionResult _value,
-      $Res Function(_$_SendTransactionResult) _then)
+class __$$SendTransactionResultImplCopyWithImpl<$Res>
+    extends _$SendTransactionResultCopyWithImpl<$Res,
+        _$SendTransactionResultImpl>
+    implements _$$SendTransactionResultImplCopyWith<$Res> {
+  __$$SendTransactionResultImplCopyWithImpl(_$SendTransactionResultImpl _value,
+      $Res Function(_$SendTransactionResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,7 +105,7 @@ class __$$_SendTransactionResultCopyWithImpl<$Res>
     Object? nbConfirmations = null,
     Object? maxConfirmations = null,
   }) {
-    return _then(_$_SendTransactionResult(
+    return _then(_$SendTransactionResultImpl(
       transactionAddress: null == transactionAddress
           ? _value.transactionAddress
           : transactionAddress // ignore: cast_nullable_to_non_nullable
@@ -122,15 +124,15 @@ class __$$_SendTransactionResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SendTransactionResult extends _SendTransactionResult {
-  const _$_SendTransactionResult(
+class _$SendTransactionResultImpl extends _SendTransactionResult {
+  const _$SendTransactionResultImpl(
       {required this.transactionAddress,
       required this.nbConfirmations,
       required this.maxConfirmations})
       : super._();
 
-  factory _$_SendTransactionResult.fromJson(Map<String, dynamic> json) =>
-      _$$_SendTransactionResultFromJson(json);
+  factory _$SendTransactionResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SendTransactionResultImplFromJson(json);
 
   @override
   final String transactionAddress;
@@ -148,7 +150,7 @@ class _$_SendTransactionResult extends _SendTransactionResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SendTransactionResult &&
+            other is _$SendTransactionResultImpl &&
             (identical(other.transactionAddress, transactionAddress) ||
                 other.transactionAddress == transactionAddress) &&
             (identical(other.nbConfirmations, nbConfirmations) ||
@@ -165,13 +167,13 @@ class _$_SendTransactionResult extends _SendTransactionResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SendTransactionResultCopyWith<_$_SendTransactionResult> get copyWith =>
-      __$$_SendTransactionResultCopyWithImpl<_$_SendTransactionResult>(
-          this, _$identity);
+  _$$SendTransactionResultImplCopyWith<_$SendTransactionResultImpl>
+      get copyWith => __$$SendTransactionResultImplCopyWithImpl<
+          _$SendTransactionResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SendTransactionResultToJson(
+    return _$$SendTransactionResultImplToJson(
       this,
     );
   }
@@ -181,11 +183,11 @@ abstract class _SendTransactionResult extends SendTransactionResult {
   const factory _SendTransactionResult(
       {required final String transactionAddress,
       required final int nbConfirmations,
-      required final int maxConfirmations}) = _$_SendTransactionResult;
+      required final int maxConfirmations}) = _$SendTransactionResultImpl;
   const _SendTransactionResult._() : super._();
 
   factory _SendTransactionResult.fromJson(Map<String, dynamic> json) =
-      _$_SendTransactionResult.fromJson;
+      _$SendTransactionResultImpl.fromJson;
 
   @override
   String get transactionAddress;
@@ -195,6 +197,6 @@ abstract class _SendTransactionResult extends SendTransactionResult {
   int get maxConfirmations;
   @override
   @JsonKey(ignore: true)
-  _$$_SendTransactionResultCopyWith<_$_SendTransactionResult> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SendTransactionResultImplCopyWith<_$SendTransactionResultImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

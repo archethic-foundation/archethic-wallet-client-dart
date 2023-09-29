@@ -70,23 +70,25 @@ class _$GetCurrentAccountResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_GetCurrentAccountResultCopyWith<$Res>
+abstract class _$$GetCurrentAccountResultImplCopyWith<$Res>
     implements $GetCurrentAccountResultCopyWith<$Res> {
-  factory _$$_GetCurrentAccountResultCopyWith(_$_GetCurrentAccountResult value,
-          $Res Function(_$_GetCurrentAccountResult) then) =
-      __$$_GetCurrentAccountResultCopyWithImpl<$Res>;
+  factory _$$GetCurrentAccountResultImplCopyWith(
+          _$GetCurrentAccountResultImpl value,
+          $Res Function(_$GetCurrentAccountResultImpl) then) =
+      __$$GetCurrentAccountResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String genesisAddress});
 }
 
 /// @nodoc
-class __$$_GetCurrentAccountResultCopyWithImpl<$Res>
+class __$$GetCurrentAccountResultImplCopyWithImpl<$Res>
     extends _$GetCurrentAccountResultCopyWithImpl<$Res,
-        _$_GetCurrentAccountResult>
-    implements _$$_GetCurrentAccountResultCopyWith<$Res> {
-  __$$_GetCurrentAccountResultCopyWithImpl(_$_GetCurrentAccountResult _value,
-      $Res Function(_$_GetCurrentAccountResult) _then)
+        _$GetCurrentAccountResultImpl>
+    implements _$$GetCurrentAccountResultImplCopyWith<$Res> {
+  __$$GetCurrentAccountResultImplCopyWithImpl(
+      _$GetCurrentAccountResultImpl _value,
+      $Res Function(_$GetCurrentAccountResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,7 +97,7 @@ class __$$_GetCurrentAccountResultCopyWithImpl<$Res>
     Object? name = null,
     Object? genesisAddress = null,
   }) {
-    return _then(_$_GetCurrentAccountResult(
+    return _then(_$GetCurrentAccountResultImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -110,13 +112,13 @@ class __$$_GetCurrentAccountResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GetCurrentAccountResult extends _GetCurrentAccountResult {
-  const _$_GetCurrentAccountResult(
+class _$GetCurrentAccountResultImpl extends _GetCurrentAccountResult {
+  const _$GetCurrentAccountResultImpl(
       {required this.name, required this.genesisAddress})
       : super._();
 
-  factory _$_GetCurrentAccountResult.fromJson(Map<String, dynamic> json) =>
-      _$$_GetCurrentAccountResultFromJson(json);
+  factory _$GetCurrentAccountResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetCurrentAccountResultImplFromJson(json);
 
   @override
   final String name;
@@ -132,7 +134,7 @@ class _$_GetCurrentAccountResult extends _GetCurrentAccountResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetCurrentAccountResult &&
+            other is _$GetCurrentAccountResultImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.genesisAddress, genesisAddress) ||
                 other.genesisAddress == genesisAddress));
@@ -145,14 +147,13 @@ class _$_GetCurrentAccountResult extends _GetCurrentAccountResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetCurrentAccountResultCopyWith<_$_GetCurrentAccountResult>
-      get copyWith =>
-          __$$_GetCurrentAccountResultCopyWithImpl<_$_GetCurrentAccountResult>(
-              this, _$identity);
+  _$$GetCurrentAccountResultImplCopyWith<_$GetCurrentAccountResultImpl>
+      get copyWith => __$$GetCurrentAccountResultImplCopyWithImpl<
+          _$GetCurrentAccountResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetCurrentAccountResultToJson(
+    return _$$GetCurrentAccountResultImplToJson(
       this,
     );
   }
@@ -161,11 +162,11 @@ class _$_GetCurrentAccountResult extends _GetCurrentAccountResult {
 abstract class _GetCurrentAccountResult extends GetCurrentAccountResult {
   const factory _GetCurrentAccountResult(
       {required final String name,
-      required final String genesisAddress}) = _$_GetCurrentAccountResult;
+      required final String genesisAddress}) = _$GetCurrentAccountResultImpl;
   const _GetCurrentAccountResult._() : super._();
 
   factory _GetCurrentAccountResult.fromJson(Map<String, dynamic> json) =
-      _$_GetCurrentAccountResult.fromJson;
+      _$GetCurrentAccountResultImpl.fromJson;
 
   @override
   String get name;
@@ -173,6 +174,6 @@ abstract class _GetCurrentAccountResult extends GetCurrentAccountResult {
   String get genesisAddress;
   @override
   @JsonKey(ignore: true)
-  _$$_GetCurrentAccountResultCopyWith<_$_GetCurrentAccountResult>
+  _$$GetCurrentAccountResultImplCopyWith<_$GetCurrentAccountResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
