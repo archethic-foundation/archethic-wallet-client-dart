@@ -65,23 +65,25 @@ class _$SignTransactionsResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SignTransactionsResultCopyWith<$Res>
+abstract class _$$SignTransactionsResultImplCopyWith<$Res>
     implements $SignTransactionsResultCopyWith<$Res> {
-  factory _$$_SignTransactionsResultCopyWith(_$_SignTransactionsResult value,
-          $Res Function(_$_SignTransactionsResult) then) =
-      __$$_SignTransactionsResultCopyWithImpl<$Res>;
+  factory _$$SignTransactionsResultImplCopyWith(
+          _$SignTransactionsResultImpl value,
+          $Res Function(_$SignTransactionsResultImpl) then) =
+      __$$SignTransactionsResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<SignTransactionsResultDetail> signedTxs});
 }
 
 /// @nodoc
-class __$$_SignTransactionsResultCopyWithImpl<$Res>
+class __$$SignTransactionsResultImplCopyWithImpl<$Res>
     extends _$SignTransactionsResultCopyWithImpl<$Res,
-        _$_SignTransactionsResult>
-    implements _$$_SignTransactionsResultCopyWith<$Res> {
-  __$$_SignTransactionsResultCopyWithImpl(_$_SignTransactionsResult _value,
-      $Res Function(_$_SignTransactionsResult) _then)
+        _$SignTransactionsResultImpl>
+    implements _$$SignTransactionsResultImplCopyWith<$Res> {
+  __$$SignTransactionsResultImplCopyWithImpl(
+      _$SignTransactionsResultImpl _value,
+      $Res Function(_$SignTransactionsResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -89,7 +91,7 @@ class __$$_SignTransactionsResultCopyWithImpl<$Res>
   $Res call({
     Object? signedTxs = null,
   }) {
-    return _then(_$_SignTransactionsResult(
+    return _then(_$SignTransactionsResultImpl(
       signedTxs: null == signedTxs
           ? _value._signedTxs
           : signedTxs // ignore: cast_nullable_to_non_nullable
@@ -100,14 +102,14 @@ class __$$_SignTransactionsResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SignTransactionsResult extends _SignTransactionsResult {
-  const _$_SignTransactionsResult(
+class _$SignTransactionsResultImpl extends _SignTransactionsResult {
+  const _$SignTransactionsResultImpl(
       {required final List<SignTransactionsResultDetail> signedTxs})
       : _signedTxs = signedTxs,
         super._();
 
-  factory _$_SignTransactionsResult.fromJson(Map<String, dynamic> json) =>
-      _$$_SignTransactionsResultFromJson(json);
+  factory _$SignTransactionsResultImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SignTransactionsResultImplFromJson(json);
 
   final List<SignTransactionsResultDetail> _signedTxs;
   @override
@@ -126,7 +128,7 @@ class _$_SignTransactionsResult extends _SignTransactionsResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SignTransactionsResult &&
+            other is _$SignTransactionsResultImpl &&
             const DeepCollectionEquality()
                 .equals(other._signedTxs, _signedTxs));
   }
@@ -139,13 +141,13 @@ class _$_SignTransactionsResult extends _SignTransactionsResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SignTransactionsResultCopyWith<_$_SignTransactionsResult> get copyWith =>
-      __$$_SignTransactionsResultCopyWithImpl<_$_SignTransactionsResult>(
-          this, _$identity);
+  _$$SignTransactionsResultImplCopyWith<_$SignTransactionsResultImpl>
+      get copyWith => __$$SignTransactionsResultImplCopyWithImpl<
+          _$SignTransactionsResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SignTransactionsResultToJson(
+    return _$$SignTransactionsResultImplToJson(
       this,
     );
   }
@@ -154,18 +156,18 @@ class _$_SignTransactionsResult extends _SignTransactionsResult {
 abstract class _SignTransactionsResult extends SignTransactionsResult {
   const factory _SignTransactionsResult(
           {required final List<SignTransactionsResultDetail> signedTxs}) =
-      _$_SignTransactionsResult;
+      _$SignTransactionsResultImpl;
   const _SignTransactionsResult._() : super._();
 
   factory _SignTransactionsResult.fromJson(Map<String, dynamic> json) =
-      _$_SignTransactionsResult.fromJson;
+      _$SignTransactionsResultImpl.fromJson;
 
   @override
   List<SignTransactionsResultDetail> get signedTxs;
   @override
   @JsonKey(ignore: true)
-  _$$_SignTransactionsResultCopyWith<_$_SignTransactionsResult> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SignTransactionsResultImplCopyWith<_$SignTransactionsResultImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 SignTransactionsResultDetail _$SignTransactionsResultDetailFromJson(
@@ -249,12 +251,12 @@ class _$SignTransactionsResultDetailCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SignTransactionsResultDetailCopyWith<$Res>
+abstract class _$$SignTransactionsResultDetailImplCopyWith<$Res>
     implements $SignTransactionsResultDetailCopyWith<$Res> {
-  factory _$$_SignTransactionsResultDetailCopyWith(
-          _$_SignTransactionsResultDetail value,
-          $Res Function(_$_SignTransactionsResultDetail) then) =
-      __$$_SignTransactionsResultDetailCopyWithImpl<$Res>;
+  factory _$$SignTransactionsResultDetailImplCopyWith(
+          _$SignTransactionsResultDetailImpl value,
+          $Res Function(_$SignTransactionsResultDetailImpl) then) =
+      __$$SignTransactionsResultDetailImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -265,13 +267,13 @@ abstract class _$$_SignTransactionsResultDetailCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SignTransactionsResultDetailCopyWithImpl<$Res>
+class __$$SignTransactionsResultDetailImplCopyWithImpl<$Res>
     extends _$SignTransactionsResultDetailCopyWithImpl<$Res,
-        _$_SignTransactionsResultDetail>
-    implements _$$_SignTransactionsResultDetailCopyWith<$Res> {
-  __$$_SignTransactionsResultDetailCopyWithImpl(
-      _$_SignTransactionsResultDetail _value,
-      $Res Function(_$_SignTransactionsResultDetail) _then)
+        _$SignTransactionsResultDetailImpl>
+    implements _$$SignTransactionsResultDetailImplCopyWith<$Res> {
+  __$$SignTransactionsResultDetailImplCopyWithImpl(
+      _$SignTransactionsResultDetailImpl _value,
+      $Res Function(_$SignTransactionsResultDetailImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -282,7 +284,7 @@ class __$$_SignTransactionsResultDetailCopyWithImpl<$Res>
     Object? previousSignature = null,
     Object? originSignature = null,
   }) {
-    return _then(_$_SignTransactionsResultDetail(
+    return _then(_$SignTransactionsResultDetailImpl(
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -305,16 +307,17 @@ class __$$_SignTransactionsResultDetailCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SignTransactionsResultDetail extends _SignTransactionsResultDetail {
-  const _$_SignTransactionsResultDetail(
+class _$SignTransactionsResultDetailImpl extends _SignTransactionsResultDetail {
+  const _$SignTransactionsResultDetailImpl(
       {required this.address,
       required this.previousPublicKey,
       required this.previousSignature,
       required this.originSignature})
       : super._();
 
-  factory _$_SignTransactionsResultDetail.fromJson(Map<String, dynamic> json) =>
-      _$$_SignTransactionsResultDetailFromJson(json);
+  factory _$SignTransactionsResultDetailImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SignTransactionsResultDetailImplFromJson(json);
 
   /// Address: hash of the new generated public key for the given transaction
   @override
@@ -341,7 +344,7 @@ class _$_SignTransactionsResultDetail extends _SignTransactionsResultDetail {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SignTransactionsResultDetail &&
+            other is _$SignTransactionsResultDetailImpl &&
             (identical(other.address, address) || other.address == address) &&
             (identical(other.previousPublicKey, previousPublicKey) ||
                 other.previousPublicKey == previousPublicKey) &&
@@ -359,13 +362,14 @@ class _$_SignTransactionsResultDetail extends _SignTransactionsResultDetail {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SignTransactionsResultDetailCopyWith<_$_SignTransactionsResultDetail>
-      get copyWith => __$$_SignTransactionsResultDetailCopyWithImpl<
-          _$_SignTransactionsResultDetail>(this, _$identity);
+  _$$SignTransactionsResultDetailImplCopyWith<
+          _$SignTransactionsResultDetailImpl>
+      get copyWith => __$$SignTransactionsResultDetailImplCopyWithImpl<
+          _$SignTransactionsResultDetailImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SignTransactionsResultDetailToJson(
+    return _$$SignTransactionsResultDetailImplToJson(
       this,
     );
   }
@@ -374,14 +378,15 @@ class _$_SignTransactionsResultDetail extends _SignTransactionsResultDetail {
 abstract class _SignTransactionsResultDetail
     extends SignTransactionsResultDetail {
   const factory _SignTransactionsResultDetail(
-      {required final String address,
-      required final String previousPublicKey,
-      required final String previousSignature,
-      required final String originSignature}) = _$_SignTransactionsResultDetail;
+          {required final String address,
+          required final String previousPublicKey,
+          required final String previousSignature,
+          required final String originSignature}) =
+      _$SignTransactionsResultDetailImpl;
   const _SignTransactionsResultDetail._() : super._();
 
   factory _SignTransactionsResultDetail.fromJson(Map<String, dynamic> json) =
-      _$_SignTransactionsResultDetail.fromJson;
+      _$SignTransactionsResultDetailImpl.fromJson;
 
   @override
 
@@ -401,6 +406,7 @@ abstract class _SignTransactionsResultDetail
   String get originSignature;
   @override
   @JsonKey(ignore: true)
-  _$$_SignTransactionsResultDetailCopyWith<_$_SignTransactionsResultDetail>
+  _$$SignTransactionsResultDetailImplCopyWith<
+          _$SignTransactionsResultDetailImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

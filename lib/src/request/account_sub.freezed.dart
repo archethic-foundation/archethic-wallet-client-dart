@@ -68,22 +68,22 @@ class _$AccountBalanceCopyWithImpl<$Res, $Val extends AccountBalance>
 }
 
 /// @nodoc
-abstract class _$$_AccountBalanceCopyWith<$Res>
+abstract class _$$AccountBalanceImplCopyWith<$Res>
     implements $AccountBalanceCopyWith<$Res> {
-  factory _$$_AccountBalanceCopyWith(
-          _$_AccountBalance value, $Res Function(_$_AccountBalance) then) =
-      __$$_AccountBalanceCopyWithImpl<$Res>;
+  factory _$$AccountBalanceImplCopyWith(_$AccountBalanceImpl value,
+          $Res Function(_$AccountBalanceImpl) then) =
+      __$$AccountBalanceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String nativeTokenName, double nativeTokenValue});
 }
 
 /// @nodoc
-class __$$_AccountBalanceCopyWithImpl<$Res>
-    extends _$AccountBalanceCopyWithImpl<$Res, _$_AccountBalance>
-    implements _$$_AccountBalanceCopyWith<$Res> {
-  __$$_AccountBalanceCopyWithImpl(
-      _$_AccountBalance _value, $Res Function(_$_AccountBalance) _then)
+class __$$AccountBalanceImplCopyWithImpl<$Res>
+    extends _$AccountBalanceCopyWithImpl<$Res, _$AccountBalanceImpl>
+    implements _$$AccountBalanceImplCopyWith<$Res> {
+  __$$AccountBalanceImplCopyWithImpl(
+      _$AccountBalanceImpl _value, $Res Function(_$AccountBalanceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_AccountBalanceCopyWithImpl<$Res>
     Object? nativeTokenName = null,
     Object? nativeTokenValue = null,
   }) {
-    return _then(_$_AccountBalance(
+    return _then(_$AccountBalanceImpl(
       nativeTokenName: null == nativeTokenName
           ? _value.nativeTokenName
           : nativeTokenName // ignore: cast_nullable_to_non_nullable
@@ -107,13 +107,13 @@ class __$$_AccountBalanceCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AccountBalance extends _AccountBalance {
-  const _$_AccountBalance(
+class _$AccountBalanceImpl extends _AccountBalance {
+  const _$AccountBalanceImpl(
       {required this.nativeTokenName, required this.nativeTokenValue})
       : super._();
 
-  factory _$_AccountBalance.fromJson(Map<String, dynamic> json) =>
-      _$$_AccountBalanceFromJson(json);
+  factory _$AccountBalanceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AccountBalanceImplFromJson(json);
 
   @override
   final String nativeTokenName;
@@ -129,7 +129,7 @@ class _$_AccountBalance extends _AccountBalance {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AccountBalance &&
+            other is _$AccountBalanceImpl &&
             (identical(other.nativeTokenName, nativeTokenName) ||
                 other.nativeTokenName == nativeTokenName) &&
             (identical(other.nativeTokenValue, nativeTokenValue) ||
@@ -144,12 +144,13 @@ class _$_AccountBalance extends _AccountBalance {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AccountBalanceCopyWith<_$_AccountBalance> get copyWith =>
-      __$$_AccountBalanceCopyWithImpl<_$_AccountBalance>(this, _$identity);
+  _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
+      __$$AccountBalanceImplCopyWithImpl<_$AccountBalanceImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AccountBalanceToJson(
+    return _$$AccountBalanceImplToJson(
       this,
     );
   }
@@ -158,11 +159,11 @@ class _$_AccountBalance extends _AccountBalance {
 abstract class _AccountBalance extends AccountBalance {
   const factory _AccountBalance(
       {required final String nativeTokenName,
-      required final double nativeTokenValue}) = _$_AccountBalance;
+      required final double nativeTokenValue}) = _$AccountBalanceImpl;
   const _AccountBalance._() : super._();
 
   factory _AccountBalance.fromJson(Map<String, dynamic> json) =
-      _$_AccountBalance.fromJson;
+      _$AccountBalanceImpl.fromJson;
 
   @override
   String get nativeTokenName;
@@ -170,7 +171,7 @@ abstract class _AccountBalance extends AccountBalance {
   double get nativeTokenValue;
   @override
   @JsonKey(ignore: true)
-  _$$_AccountBalanceCopyWith<_$_AccountBalance> get copyWith =>
+  _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -256,10 +257,10 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
 }
 
 /// @nodoc
-abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
-  factory _$$_AccountCopyWith(
-          _$_Account value, $Res Function(_$_Account) then) =
-      __$$_AccountCopyWithImpl<$Res>;
+abstract class _$$AccountImplCopyWith<$Res> implements $AccountCopyWith<$Res> {
+  factory _$$AccountImplCopyWith(
+          _$AccountImpl value, $Res Function(_$AccountImpl) then) =
+      __$$AccountImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -273,10 +274,11 @@ abstract class _$$_AccountCopyWith<$Res> implements $AccountCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AccountCopyWithImpl<$Res>
-    extends _$AccountCopyWithImpl<$Res, _$_Account>
-    implements _$$_AccountCopyWith<$Res> {
-  __$$_AccountCopyWithImpl(_$_Account _value, $Res Function(_$_Account) _then)
+class __$$AccountImplCopyWithImpl<$Res>
+    extends _$AccountCopyWithImpl<$Res, _$AccountImpl>
+    implements _$$AccountImplCopyWith<$Res> {
+  __$$AccountImplCopyWithImpl(
+      _$AccountImpl _value, $Res Function(_$AccountImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -287,7 +289,7 @@ class __$$_AccountCopyWithImpl<$Res>
     Object? lastAddress = freezed,
     Object? balance = freezed,
   }) {
-    return _then(_$_Account(
+    return _then(_$AccountImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -310,16 +312,16 @@ class __$$_AccountCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Account extends _Account {
-  const _$_Account(
+class _$AccountImpl extends _Account {
+  const _$AccountImpl(
       {required this.name,
       required this.genesisAddress,
       this.lastAddress,
       this.balance})
       : super._();
 
-  factory _$_Account.fromJson(Map<String, dynamic> json) =>
-      _$$_AccountFromJson(json);
+  factory _$AccountImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AccountImplFromJson(json);
 
   @override
   final String name;
@@ -339,7 +341,7 @@ class _$_Account extends _Account {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Account &&
+            other is _$AccountImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.genesisAddress, genesisAddress) ||
                 other.genesisAddress == genesisAddress) &&
@@ -356,12 +358,12 @@ class _$_Account extends _Account {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AccountCopyWith<_$_Account> get copyWith =>
-      __$$_AccountCopyWithImpl<_$_Account>(this, _$identity);
+  _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>
+      __$$AccountImplCopyWithImpl<_$AccountImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AccountToJson(
+    return _$$AccountImplToJson(
       this,
     );
   }
@@ -372,10 +374,10 @@ abstract class _Account extends Account {
       {required final String name,
       required final String genesisAddress,
       final String? lastAddress,
-      final AccountBalance? balance}) = _$_Account;
+      final AccountBalance? balance}) = _$AccountImpl;
   const _Account._() : super._();
 
-  factory _Account.fromJson(Map<String, dynamic> json) = _$_Account.fromJson;
+  factory _Account.fromJson(Map<String, dynamic> json) = _$AccountImpl.fromJson;
 
   @override
   String get name;
@@ -387,6 +389,6 @@ abstract class _Account extends Account {
   AccountBalance? get balance;
   @override
   @JsonKey(ignore: true)
-  _$$_AccountCopyWith<_$_Account> get copyWith =>
+  _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

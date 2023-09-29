@@ -74,22 +74,22 @@ class _$RequestOriginCopyWithImpl<$Res, $Val extends RequestOrigin>
 }
 
 /// @nodoc
-abstract class _$$_RequestOriginCopyWith<$Res>
+abstract class _$$RequestOriginImplCopyWith<$Res>
     implements $RequestOriginCopyWith<$Res> {
-  factory _$$_RequestOriginCopyWith(
-          _$_RequestOrigin value, $Res Function(_$_RequestOrigin) then) =
-      __$$_RequestOriginCopyWithImpl<$Res>;
+  factory _$$RequestOriginImplCopyWith(
+          _$RequestOriginImpl value, $Res Function(_$RequestOriginImpl) then) =
+      __$$RequestOriginImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String? url, String? logo});
 }
 
 /// @nodoc
-class __$$_RequestOriginCopyWithImpl<$Res>
-    extends _$RequestOriginCopyWithImpl<$Res, _$_RequestOrigin>
-    implements _$$_RequestOriginCopyWith<$Res> {
-  __$$_RequestOriginCopyWithImpl(
-      _$_RequestOrigin _value, $Res Function(_$_RequestOrigin) _then)
+class __$$RequestOriginImplCopyWithImpl<$Res>
+    extends _$RequestOriginCopyWithImpl<$Res, _$RequestOriginImpl>
+    implements _$$RequestOriginImplCopyWith<$Res> {
+  __$$RequestOriginImplCopyWithImpl(
+      _$RequestOriginImpl _value, $Res Function(_$RequestOriginImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_RequestOriginCopyWithImpl<$Res>
     Object? url = freezed,
     Object? logo = freezed,
   }) {
-    return _then(_$_RequestOrigin(
+    return _then(_$RequestOriginImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -118,11 +118,12 @@ class __$$_RequestOriginCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RequestOrigin extends _RequestOrigin {
-  const _$_RequestOrigin({required this.name, this.url, this.logo}) : super._();
+class _$RequestOriginImpl extends _RequestOrigin {
+  const _$RequestOriginImpl({required this.name, this.url, this.logo})
+      : super._();
 
-  factory _$_RequestOrigin.fromJson(Map<String, dynamic> json) =>
-      _$$_RequestOriginFromJson(json);
+  factory _$RequestOriginImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RequestOriginImplFromJson(json);
 
   @override
   final String name;
@@ -140,7 +141,7 @@ class _$_RequestOrigin extends _RequestOrigin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RequestOrigin &&
+            other is _$RequestOriginImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.logo, logo) || other.logo == logo));
@@ -153,12 +154,12 @@ class _$_RequestOrigin extends _RequestOrigin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RequestOriginCopyWith<_$_RequestOrigin> get copyWith =>
-      __$$_RequestOriginCopyWithImpl<_$_RequestOrigin>(this, _$identity);
+  _$$RequestOriginImplCopyWith<_$RequestOriginImpl> get copyWith =>
+      __$$RequestOriginImplCopyWithImpl<_$RequestOriginImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RequestOriginToJson(
+    return _$$RequestOriginImplToJson(
       this,
     );
   }
@@ -168,11 +169,11 @@ abstract class _RequestOrigin extends RequestOrigin {
   const factory _RequestOrigin(
       {required final String name,
       final String? url,
-      final String? logo}) = _$_RequestOrigin;
+      final String? logo}) = _$RequestOriginImpl;
   const _RequestOrigin._() : super._();
 
   factory _RequestOrigin.fromJson(Map<String, dynamic> json) =
-      _$_RequestOrigin.fromJson;
+      _$RequestOriginImpl.fromJson;
 
   @override
   String get name;
@@ -182,7 +183,7 @@ abstract class _RequestOrigin extends RequestOrigin {
   String? get logo;
   @override
   @JsonKey(ignore: true)
-  _$$_RequestOriginCopyWith<_$_RequestOrigin> get copyWith =>
+  _$$RequestOriginImplCopyWith<_$RequestOriginImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -254,10 +255,10 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
 }
 
 /// @nodoc
-abstract class _$$_RequestCopyWith<$Res> implements $RequestCopyWith<$Res> {
-  factory _$$_RequestCopyWith(
-          _$_Request value, $Res Function(_$_Request) then) =
-      __$$_RequestCopyWithImpl<$Res>;
+abstract class _$$RequestImplCopyWith<$Res> implements $RequestCopyWith<$Res> {
+  factory _$$RequestImplCopyWith(
+          _$RequestImpl value, $Res Function(_$RequestImpl) then) =
+      __$$RequestImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({RequestOrigin origin, int version, Map<String, dynamic> payload});
@@ -267,10 +268,11 @@ abstract class _$$_RequestCopyWith<$Res> implements $RequestCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_RequestCopyWithImpl<$Res>
-    extends _$RequestCopyWithImpl<$Res, _$_Request>
-    implements _$$_RequestCopyWith<$Res> {
-  __$$_RequestCopyWithImpl(_$_Request _value, $Res Function(_$_Request) _then)
+class __$$RequestImplCopyWithImpl<$Res>
+    extends _$RequestCopyWithImpl<$Res, _$RequestImpl>
+    implements _$$RequestImplCopyWith<$Res> {
+  __$$RequestImplCopyWithImpl(
+      _$RequestImpl _value, $Res Function(_$RequestImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -280,7 +282,7 @@ class __$$_RequestCopyWithImpl<$Res>
     Object? version = null,
     Object? payload = null,
   }) {
-    return _then(_$_Request(
+    return _then(_$RequestImpl(
       origin: null == origin
           ? _value.origin
           : origin // ignore: cast_nullable_to_non_nullable
@@ -299,16 +301,16 @@ class __$$_RequestCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Request extends _Request {
-  const _$_Request(
+class _$RequestImpl extends _Request {
+  const _$RequestImpl(
       {required this.origin,
       required this.version,
       required final Map<String, dynamic> payload})
       : _payload = payload,
         super._();
 
-  factory _$_Request.fromJson(Map<String, dynamic> json) =>
-      _$$_RequestFromJson(json);
+  factory _$RequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RequestImplFromJson(json);
 
   @override
   final RequestOrigin origin;
@@ -333,7 +335,7 @@ class _$_Request extends _Request {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Request &&
+            other is _$RequestImpl &&
             (identical(other.origin, origin) || other.origin == origin) &&
             (identical(other.version, version) || other.version == version) &&
             const DeepCollectionEquality().equals(other._payload, _payload));
@@ -347,12 +349,12 @@ class _$_Request extends _Request {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RequestCopyWith<_$_Request> get copyWith =>
-      __$$_RequestCopyWithImpl<_$_Request>(this, _$identity);
+  _$$RequestImplCopyWith<_$RequestImpl> get copyWith =>
+      __$$RequestImplCopyWithImpl<_$RequestImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RequestToJson(
+    return _$$RequestImplToJson(
       this,
     );
   }
@@ -362,10 +364,10 @@ abstract class _Request extends Request {
   const factory _Request(
       {required final RequestOrigin origin,
       required final int version,
-      required final Map<String, dynamic> payload}) = _$_Request;
+      required final Map<String, dynamic> payload}) = _$RequestImpl;
   const _Request._() : super._();
 
-  factory _Request.fromJson(Map<String, dynamic> json) = _$_Request.fromJson;
+  factory _Request.fromJson(Map<String, dynamic> json) = _$RequestImpl.fromJson;
 
   @override
   RequestOrigin get origin;
@@ -375,6 +377,6 @@ abstract class _Request extends Request {
   Map<String, dynamic> get payload;
   @override
   @JsonKey(ignore: true)
-  _$$_RequestCopyWith<_$_Request> get copyWith =>
+  _$$RequestImplCopyWith<_$RequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

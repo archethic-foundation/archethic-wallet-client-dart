@@ -66,25 +66,25 @@ class _$GetServicesFromKeychainResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_GetServicesFromKeychainResultCopyWith<$Res>
+abstract class _$$GetServicesFromKeychainResultImplCopyWith<$Res>
     implements $GetServicesFromKeychainResultCopyWith<$Res> {
-  factory _$$_GetServicesFromKeychainResultCopyWith(
-          _$_GetServicesFromKeychainResult value,
-          $Res Function(_$_GetServicesFromKeychainResult) then) =
-      __$$_GetServicesFromKeychainResultCopyWithImpl<$Res>;
+  factory _$$GetServicesFromKeychainResultImplCopyWith(
+          _$GetServicesFromKeychainResultImpl value,
+          $Res Function(_$GetServicesFromKeychainResultImpl) then) =
+      __$$GetServicesFromKeychainResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Service> services});
 }
 
 /// @nodoc
-class __$$_GetServicesFromKeychainResultCopyWithImpl<$Res>
+class __$$GetServicesFromKeychainResultImplCopyWithImpl<$Res>
     extends _$GetServicesFromKeychainResultCopyWithImpl<$Res,
-        _$_GetServicesFromKeychainResult>
-    implements _$$_GetServicesFromKeychainResultCopyWith<$Res> {
-  __$$_GetServicesFromKeychainResultCopyWithImpl(
-      _$_GetServicesFromKeychainResult _value,
-      $Res Function(_$_GetServicesFromKeychainResult) _then)
+        _$GetServicesFromKeychainResultImpl>
+    implements _$$GetServicesFromKeychainResultImplCopyWith<$Res> {
+  __$$GetServicesFromKeychainResultImplCopyWithImpl(
+      _$GetServicesFromKeychainResultImpl _value,
+      $Res Function(_$GetServicesFromKeychainResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_GetServicesFromKeychainResultCopyWithImpl<$Res>
   $Res call({
     Object? services = null,
   }) {
-    return _then(_$_GetServicesFromKeychainResult(
+    return _then(_$GetServicesFromKeychainResultImpl(
       services: null == services
           ? _value._services
           : services // ignore: cast_nullable_to_non_nullable
@@ -103,15 +103,16 @@ class __$$_GetServicesFromKeychainResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_GetServicesFromKeychainResult extends _GetServicesFromKeychainResult {
-  const _$_GetServicesFromKeychainResult(
+class _$GetServicesFromKeychainResultImpl
+    extends _GetServicesFromKeychainResult {
+  const _$GetServicesFromKeychainResultImpl(
       {required final List<Service> services})
       : _services = services,
         super._();
 
-  factory _$_GetServicesFromKeychainResult.fromJson(
+  factory _$GetServicesFromKeychainResultImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$_GetServicesFromKeychainResultFromJson(json);
+      _$$GetServicesFromKeychainResultImplFromJson(json);
 
   final List<Service> _services;
   @override
@@ -130,7 +131,7 @@ class _$_GetServicesFromKeychainResult extends _GetServicesFromKeychainResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_GetServicesFromKeychainResult &&
+            other is _$GetServicesFromKeychainResultImpl &&
             const DeepCollectionEquality().equals(other._services, _services));
   }
 
@@ -142,13 +143,14 @@ class _$_GetServicesFromKeychainResult extends _GetServicesFromKeychainResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_GetServicesFromKeychainResultCopyWith<_$_GetServicesFromKeychainResult>
-      get copyWith => __$$_GetServicesFromKeychainResultCopyWithImpl<
-          _$_GetServicesFromKeychainResult>(this, _$identity);
+  _$$GetServicesFromKeychainResultImplCopyWith<
+          _$GetServicesFromKeychainResultImpl>
+      get copyWith => __$$GetServicesFromKeychainResultImplCopyWithImpl<
+          _$GetServicesFromKeychainResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GetServicesFromKeychainResultToJson(
+    return _$$GetServicesFromKeychainResultImplToJson(
       this,
     );
   }
@@ -158,16 +160,17 @@ abstract class _GetServicesFromKeychainResult
     extends GetServicesFromKeychainResult {
   const factory _GetServicesFromKeychainResult(
           {required final List<Service> services}) =
-      _$_GetServicesFromKeychainResult;
+      _$GetServicesFromKeychainResultImpl;
   const _GetServicesFromKeychainResult._() : super._();
 
   factory _GetServicesFromKeychainResult.fromJson(Map<String, dynamic> json) =
-      _$_GetServicesFromKeychainResult.fromJson;
+      _$GetServicesFromKeychainResultImpl.fromJson;
 
   @override
   List<Service> get services;
   @override
   @JsonKey(ignore: true)
-  _$$_GetServicesFromKeychainResultCopyWith<_$_GetServicesFromKeychainResult>
+  _$$GetServicesFromKeychainResultImplCopyWith<
+          _$GetServicesFromKeychainResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

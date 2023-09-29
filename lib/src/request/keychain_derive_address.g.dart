@@ -6,14 +6,14 @@ part of 'keychain_derive_address.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_KeychainDeriveAddressResult _$$_KeychainDeriveAddressResultFromJson(
+_$KeychainDeriveAddressResultImpl _$$KeychainDeriveAddressResultImplFromJson(
         Map<String, dynamic> json) =>
-    _$_KeychainDeriveAddressResult(
+    _$KeychainDeriveAddressResultImpl(
       address: json['address'] as String,
     );
 
-Map<String, dynamic> _$$_KeychainDeriveAddressResultToJson(
-        _$_KeychainDeriveAddressResult instance) =>
+Map<String, dynamic> _$$KeychainDeriveAddressResultImplToJson(
+        _$KeychainDeriveAddressResultImpl instance) =>
     <String, dynamic>{
       'address': instance.address,
     };

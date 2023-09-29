@@ -66,25 +66,25 @@ class _$KeychainDeriveAddressResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_KeychainDeriveAddressResultCopyWith<$Res>
+abstract class _$$KeychainDeriveAddressResultImplCopyWith<$Res>
     implements $KeychainDeriveAddressResultCopyWith<$Res> {
-  factory _$$_KeychainDeriveAddressResultCopyWith(
-          _$_KeychainDeriveAddressResult value,
-          $Res Function(_$_KeychainDeriveAddressResult) then) =
-      __$$_KeychainDeriveAddressResultCopyWithImpl<$Res>;
+  factory _$$KeychainDeriveAddressResultImplCopyWith(
+          _$KeychainDeriveAddressResultImpl value,
+          $Res Function(_$KeychainDeriveAddressResultImpl) then) =
+      __$$KeychainDeriveAddressResultImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String address});
 }
 
 /// @nodoc
-class __$$_KeychainDeriveAddressResultCopyWithImpl<$Res>
+class __$$KeychainDeriveAddressResultImplCopyWithImpl<$Res>
     extends _$KeychainDeriveAddressResultCopyWithImpl<$Res,
-        _$_KeychainDeriveAddressResult>
-    implements _$$_KeychainDeriveAddressResultCopyWith<$Res> {
-  __$$_KeychainDeriveAddressResultCopyWithImpl(
-      _$_KeychainDeriveAddressResult _value,
-      $Res Function(_$_KeychainDeriveAddressResult) _then)
+        _$KeychainDeriveAddressResultImpl>
+    implements _$$KeychainDeriveAddressResultImplCopyWith<$Res> {
+  __$$KeychainDeriveAddressResultImplCopyWithImpl(
+      _$KeychainDeriveAddressResultImpl _value,
+      $Res Function(_$KeychainDeriveAddressResultImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_KeychainDeriveAddressResultCopyWithImpl<$Res>
   $Res call({
     Object? address = null,
   }) {
-    return _then(_$_KeychainDeriveAddressResult(
+    return _then(_$KeychainDeriveAddressResultImpl(
       address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -103,11 +103,12 @@ class __$$_KeychainDeriveAddressResultCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_KeychainDeriveAddressResult extends _KeychainDeriveAddressResult {
-  const _$_KeychainDeriveAddressResult({required this.address}) : super._();
+class _$KeychainDeriveAddressResultImpl extends _KeychainDeriveAddressResult {
+  const _$KeychainDeriveAddressResultImpl({required this.address}) : super._();
 
-  factory _$_KeychainDeriveAddressResult.fromJson(Map<String, dynamic> json) =>
-      _$$_KeychainDeriveAddressResultFromJson(json);
+  factory _$KeychainDeriveAddressResultImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$KeychainDeriveAddressResultImplFromJson(json);
 
   @override
   final String address;
@@ -121,7 +122,7 @@ class _$_KeychainDeriveAddressResult extends _KeychainDeriveAddressResult {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_KeychainDeriveAddressResult &&
+            other is _$KeychainDeriveAddressResultImpl &&
             (identical(other.address, address) || other.address == address));
   }
 
@@ -132,13 +133,13 @@ class _$_KeychainDeriveAddressResult extends _KeychainDeriveAddressResult {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_KeychainDeriveAddressResultCopyWith<_$_KeychainDeriveAddressResult>
-      get copyWith => __$$_KeychainDeriveAddressResultCopyWithImpl<
-          _$_KeychainDeriveAddressResult>(this, _$identity);
+  _$$KeychainDeriveAddressResultImplCopyWith<_$KeychainDeriveAddressResultImpl>
+      get copyWith => __$$KeychainDeriveAddressResultImplCopyWithImpl<
+          _$KeychainDeriveAddressResultImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_KeychainDeriveAddressResultToJson(
+    return _$$KeychainDeriveAddressResultImplToJson(
       this,
     );
   }
@@ -147,16 +148,16 @@ class _$_KeychainDeriveAddressResult extends _KeychainDeriveAddressResult {
 abstract class _KeychainDeriveAddressResult
     extends KeychainDeriveAddressResult {
   const factory _KeychainDeriveAddressResult({required final String address}) =
-      _$_KeychainDeriveAddressResult;
+      _$KeychainDeriveAddressResultImpl;
   const _KeychainDeriveAddressResult._() : super._();
 
   factory _KeychainDeriveAddressResult.fromJson(Map<String, dynamic> json) =
-      _$_KeychainDeriveAddressResult.fromJson;
+      _$KeychainDeriveAddressResultImpl.fromJson;
 
   @override
   String get address;
   @override
   @JsonKey(ignore: true)
-  _$$_KeychainDeriveAddressResultCopyWith<_$_KeychainDeriveAddressResult>
+  _$$KeychainDeriveAddressResultImplCopyWith<_$KeychainDeriveAddressResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

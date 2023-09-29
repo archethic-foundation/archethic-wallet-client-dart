@@ -6,13 +6,13 @@ part of 'app_account.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_AppAccount _$$_AppAccountFromJson(Map<String, dynamic> json) =>
-    _$_AppAccount(
+_$AppAccountImpl _$$AppAccountImplFromJson(Map<String, dynamic> json) =>
+    _$AppAccountImpl(
       name: json['name'] as String,
       genesisAddress: json['genesisAddress'] as String,
     );
 
-Map<String, dynamic> _$$_AppAccountToJson(_$_AppAccount instance) =>
+Map<String, dynamic> _$$AppAccountImplToJson(_$AppAccountImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'genesisAddress': instance.genesisAddress,

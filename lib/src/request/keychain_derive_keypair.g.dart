@@ -6,14 +6,14 @@ part of 'keychain_derive_keypair.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_KeychainDeriveKeypairResult _$$_KeychainDeriveKeypairResultFromJson(
+_$KeychainDeriveKeypairResultImpl _$$KeychainDeriveKeypairResultImplFromJson(
         Map<String, dynamic> json) =>
-    _$_KeychainDeriveKeypairResult(
+    _$KeychainDeriveKeypairResultImpl(
       publicKey: json['publicKey'] as String,
     );
 
-Map<String, dynamic> _$$_KeychainDeriveKeypairResultToJson(
-        _$_KeychainDeriveKeypairResult instance) =>
+Map<String, dynamic> _$$KeychainDeriveKeypairResultImplToJson(
+        _$KeychainDeriveKeypairResultImpl instance) =>
     <String, dynamic>{
       'publicKey': instance.publicKey,
     };
