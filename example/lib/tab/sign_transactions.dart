@@ -19,12 +19,12 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
   final payloadTextController = TextEditingController(
     text: r'''
 {
-    "serviceName": "aeweb-ARCHETHIC-website",
+    "serviceName": "archethic-wallet-BOB",
     "pathSuffix": "",
     "transactions": [
         {
             "type": "token",
-            "version": 1,
+            "version": 2,
             "data": {
                 "content": "{ \"name\": \"NFT 001\", \"supply\": 100000000, \"type\": \"non-fungible\", \"symbol\": \"NFT1\", \"aeip\": [2], \"properties\": {}}",
                 "code": "",
@@ -42,7 +42,7 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
         },
         {
             "type": "token",
-            "version": 1,
+            "version": 2,
             "data": {
                 "content": "{ \"name\": \"NFT 002\", \"supply\": 100000000, \"type\": \"non-fungible\", \"symbol\": \"NFT2\", \"aeip\": [2], \"properties\": {}}",
                 "code": "",
