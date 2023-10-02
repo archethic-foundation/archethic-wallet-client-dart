@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ArchethicDappSession {
-  String get dappPubKey => throw _privateConstructorUsedError;
+  String get sessionId => throw _privateConstructorUsedError;
+  Uint8List get aesKey => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ArchethicDappSessionCopyWith<ArchethicDappSession> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $ArchethicDappSessionCopyWith<$Res> {
           $Res Function(ArchethicDappSession) then) =
       _$ArchethicDappSessionCopyWithImpl<$Res, ArchethicDappSession>;
   @useResult
-  $Res call({String dappPubKey});
+  $Res call({String sessionId, Uint8List aesKey});
 }
 
 /// @nodoc
@@ -46,13 +47,18 @@ class _$ArchethicDappSessionCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dappPubKey = null,
+    Object? sessionId = null,
+    Object? aesKey = null,
   }) {
     return _then(_value.copyWith(
-      dappPubKey: null == dappPubKey
-          ? _value.dappPubKey
-          : dappPubKey // ignore: cast_nullable_to_non_nullable
+      sessionId: null == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
               as String,
+      aesKey: null == aesKey
+          ? _value.aesKey
+          : aesKey // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ) as $Val);
   }
 }
@@ -65,7 +71,7 @@ abstract class _$$ArchethicDappSessionImplCopyWith<$Res>
       __$$ArchethicDappSessionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String dappPubKey});
+  $Res call({String sessionId, Uint8List aesKey});
 }
 
 /// @nodoc
@@ -79,13 +85,18 @@ class __$$ArchethicDappSessionImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dappPubKey = null,
+    Object? sessionId = null,
+    Object? aesKey = null,
   }) {
     return _then(_$ArchethicDappSessionImpl(
-      dappPubKey: null == dappPubKey
-          ? _value.dappPubKey
-          : dappPubKey // ignore: cast_nullable_to_non_nullable
+      sessionId: null == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
               as String,
+      aesKey: null == aesKey
+          ? _value.aesKey
+          : aesKey // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -93,14 +104,18 @@ class __$$ArchethicDappSessionImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ArchethicDappSessionImpl extends _ArchethicDappSession {
-  const _$ArchethicDappSessionImpl({required this.dappPubKey}) : super._();
+  const _$ArchethicDappSessionImpl(
+      {required this.sessionId, required this.aesKey})
+      : super._();
 
   @override
-  final String dappPubKey;
+  final String sessionId;
+  @override
+  final Uint8List aesKey;
 
   @override
   String toString() {
-    return 'ArchethicDappSession(dappPubKey: $dappPubKey)';
+    return 'ArchethicDappSession(sessionId: $sessionId, aesKey: $aesKey)';
   }
 
   @override
@@ -108,12 +123,14 @@ class _$ArchethicDappSessionImpl extends _ArchethicDappSession {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ArchethicDappSessionImpl &&
-            (identical(other.dappPubKey, dappPubKey) ||
-                other.dappPubKey == dappPubKey));
+            (identical(other.sessionId, sessionId) ||
+                other.sessionId == sessionId) &&
+            const DeepCollectionEquality().equals(other.aesKey, aesKey));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, dappPubKey);
+  int get hashCode => Object.hash(
+      runtimeType, sessionId, const DeepCollectionEquality().hash(aesKey));
 
   @JsonKey(ignore: true)
   @override
@@ -125,12 +142,15 @@ class _$ArchethicDappSessionImpl extends _ArchethicDappSession {
 }
 
 abstract class _ArchethicDappSession extends ArchethicDappSession {
-  const factory _ArchethicDappSession({required final String dappPubKey}) =
-      _$ArchethicDappSessionImpl;
+  const factory _ArchethicDappSession(
+      {required final String sessionId,
+      required final Uint8List aesKey}) = _$ArchethicDappSessionImpl;
   const _ArchethicDappSession._() : super._();
 
   @override
-  String get dappPubKey;
+  String get sessionId;
+  @override
+  Uint8List get aesKey;
   @override
   @JsonKey(ignore: true)
   _$$ArchethicDappSessionImplCopyWith<_$ArchethicDappSessionImpl>

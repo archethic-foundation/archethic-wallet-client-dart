@@ -2,7 +2,9 @@
 import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
+import 'dart:typed_data';
 
+import 'package:archethic_lib_dart/archethic_lib_dart.dart' as aelib;
 import 'package:archethic_wallet_client/src/core/failures.dart';
 import 'package:archethic_wallet_client/src/core/request.dart';
 import 'package:archethic_wallet_client/src/core/result.dart';
@@ -30,7 +32,8 @@ part 'websocket.dart';
 @freezed
 class ArchethicDappSession with _$ArchethicDappSession {
   const factory ArchethicDappSession({
-    required String dappPubKey,
+    required String sessionId,
+    required Uint8List aesKey,
   }) = _ArchethicDappSession;
 
   const ArchethicDappSession._();

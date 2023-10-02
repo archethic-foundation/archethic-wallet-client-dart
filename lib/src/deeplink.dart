@@ -46,12 +46,46 @@ class DeeplinkArchethicDappClient
   Future<Result<ArchethicDappSession, Failure>> openSession(
     OpenSessionRequest sessionRequest,
   ) async {
-    await Future.delayed(const Duration(seconds: 5));
-    const session = ArchethicDappSession(dappPubKey: 'test');
-    _connectionStateController.add(
-      const ArchethicDappConnectionState.connected(session: session),
+    // Handshake
+    final keypair = aelib.deriveKeyPair('a random seed', 0);
+    final encryptedAesKey = await _send(
+      requestEndpoint: 'open_session_handshake',
+      replyEndpoint: 'open_session_handshake_result',
+      params: {
+        'pubKey': aelib.uint8ListToHex(keypair.publicKey!),
+      },
     );
-    return const Result.success(session);
+    final sessionAesKey = aelib.ecDecrypt(encryptedAesKey, keypair.privateKey);
+
+    // Impersonation challenge.
+    return _send(
+      requestEndpoint: 'open_session_challenge',
+      replyEndpoint: 'open_session_challenge_result',
+      params: {
+        'origin': sessionRequest.origin.toJson(),
+        'challenge': aelib.uint8ListToHex(
+          aelib.aesEncrypt(generateSessionChallenge(), sessionAesKey),
+        ),
+      },
+    ).then(
+      (value) => value.map(
+        failure: (failure) => Result.failure(
+          Failure.fromDeeplinkRpcFailure(failure),
+        ),
+        success: (success) {
+          final sessionResponse = OpenSessionResponse.fromJson(success);
+          final session = ArchethicDappSession(
+            sessionId: sessionResponse.sessionId,
+            aesKey: sessionAesKey,
+          );
+
+          _connectionStateController.add(
+            ArchethicDappConnectionState.connected(session: session),
+          );
+          return Result.success(session);
+        },
+      ),
+    );
   }
 
   Future<DeeplinkRpcResponse> _send({

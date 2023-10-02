@@ -28,3 +28,14 @@ class OpenSessionRequest with _$OpenSessionRequest {
   factory OpenSessionRequest.fromJson(Map<String, dynamic> json) =>
       _$OpenSessionRequestFromJson(json);
 }
+
+@freezed
+class OpenSessionResponse with _$OpenSessionResponse {
+  const factory OpenSessionResponse({
+    required String sessionId,
+  }) = _OpenSessionResponse;
+  const OpenSessionResponse._();
+
+  factory OpenSessionResponse.fromJson(Map<String, dynamic> json) =>
+      _$OpenSessionResponseFromJson(json);
+}

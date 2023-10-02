@@ -117,21 +117,43 @@ class WebsocketArchethicDappClient
   @override
   Future<Result<ArchethicDappSession, Failure>> openSession(
     OpenSessionRequest sessionRequest,
-  ) async {
-    await Future.delayed(const Duration(seconds: 5));
+  ) =>
+      Result.guard(() async {
+        // Handshake
+        final keypair = aelib.deriveKeyPair('a random seed', 0);
+        final encryptedAesKey = await _send(
+          method: 'openSessionHandshake',
+          params: {
+            'pubKey': aelib.uint8ListToHex(keypair.publicKey!),
+          },
+        );
+        final sessionAesKey =
+            aelib.ecDecrypt(encryptedAesKey, keypair.privateKey);
 
-    // final failure = Failure.timeout();
-    // _connectionStateController
-    //     .add(ArchethicDappConnectionState.connected(sessionFailure: failure));
-    // return Result.failure(failure);
+        // Impersonation challenge.
+        final session = await _send(
+          method: 'openSessionChallenge',
+          params: {
+            'origin': sessionRequest.origin.toJson(),
+            'challenge': aelib.uint8ListToHex(
+              aelib.aesEncrypt(generateSessionChallenge(), sessionAesKey),
+            ),
+          },
+        ).then(
+          (value) {
+            final sessionResponse = OpenSessionResponse.fromJson(value);
+            return ArchethicDappSession(
+              sessionId: sessionResponse.sessionId,
+              aesKey: sessionAesKey,
+            );
+          },
+        );
 
-    const session = ArchethicDappSession(dappPubKey: 'test');
-
-    _connectionStateController.add(
-      const ArchethicDappConnectionState.connected(session: session),
-    );
-    return Result.failure(Failure.timeout());
-  }
+        _connectionStateController.add(
+          ArchethicDappConnectionState.connected(session: session),
+        );
+        return session;
+      });
 
   Future<Map<String, dynamic>> _send({
     required String method,

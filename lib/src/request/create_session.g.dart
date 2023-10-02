@@ -38,3 +38,15 @@ Map<String, dynamic> _$$OpenSessionRequestImplToJson(
       'origin': instance.origin,
       'maxDuration': instance.maxDuration.inMicroseconds,
     };
+
+_$OpenSessionResponseImpl _$$OpenSessionResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OpenSessionResponseImpl(
+      sessionId: json['sessionId'] as String,
+    );
+
+Map<String, dynamic> _$$OpenSessionResponseImplToJson(
+        _$OpenSessionResponseImpl instance) =>
+    <String, dynamic>{
+      'sessionId': instance.sessionId,
+    };
