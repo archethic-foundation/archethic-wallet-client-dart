@@ -5,6 +5,7 @@ part 'request.freezed.dart';
 part 'request.g.dart';
 
 /// Identifies a request source.
+/// TODO(Chralu): remove when session will be done
 @freezed
 class RequestOrigin with _$RequestOrigin {
   const factory RequestOrigin({

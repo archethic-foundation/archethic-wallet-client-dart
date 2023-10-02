@@ -1,21 +1,20 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dapp_example/aewalletclient_mixin.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
 import 'package:flutter_dapp_example/widgets/space.dart';
 
 class SignTransactionsTab extends StatefulWidget {
-  const SignTransactionsTab({required this.aewalletClient, super.key});
-
-  final ArchethicDAppClient aewalletClient;
+  const SignTransactionsTab({super.key});
 
   @override
   State<SignTransactionsTab> createState() => _SignTransactionsTabState();
 }
 
-class _SignTransactionsTabState extends State<SignTransactionsTab> {
+class _SignTransactionsTabState extends State<SignTransactionsTab>
+    with AEWalletClientInstance {
   final payloadTextController = TextEditingController(
     text: r'''
 {
@@ -93,7 +92,7 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
             child: const Icon(Icons.send),
             onPressed: () async {
               try {
-                final response = await widget.aewalletClient.signTransactions(
+                final response = await aewalletClient.signTransactions(
                   jsonDecode(payloadTextController.text),
                 );
                 response.when(

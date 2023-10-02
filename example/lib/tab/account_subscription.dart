@@ -2,21 +2,21 @@ import 'dart:async';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dapp_example/aewalletclient_mixin.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
 import 'package:flutter_dapp_example/widgets/space.dart';
 
 class AccountSubscriptionTab extends StatefulWidget {
   const AccountSubscriptionTab({
-    required this.aewalletClient,
     super.key,
   });
-  final ArchethicDAppClient aewalletClient;
 
   @override
   State<AccountSubscriptionTab> createState() => _AccountSubscriptionTabState();
 }
 
-class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
+class _AccountSubscriptionTabState extends State<AccountSubscriptionTab>
+    with AEWalletClientInstance {
   Subscription<Account>? accountSub;
   StreamSubscription<Account>? accountStreamSub;
   String? dropdownValue;
@@ -41,7 +41,7 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           FutureBuilder(
-            future: widget.aewalletClient.getAccounts(),
+            future: aewalletClient.getAccounts(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return const Center(child: CircularProgressIndicator());
@@ -100,8 +100,8 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
             OutlinedButton(
               child: const Icon(Icons.play_arrow),
               onPressed: () async {
-                final subscription = await widget.aewalletClient
-                    .subscribeAccount(dropdownValue!);
+                final subscription =
+                    await aewalletClient.subscribeAccount(dropdownValue!);
 
                 subscription.when(
                   success: (success) {
@@ -130,7 +130,7 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
             OutlinedButton(
               child: const Icon(Icons.stop),
               onPressed: () async {
-                await widget.aewalletClient.unsubscribeAccount(accountSub!.id);
+                await aewalletClient.unsubscribeAccount(accountSub!.id);
                 setState(() {
                   accountStreamSub?.cancel();
                   accountStreamSub = null;

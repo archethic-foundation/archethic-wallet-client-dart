@@ -1,21 +1,20 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dapp_example/aewalletclient_mixin.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
 import 'package:flutter_dapp_example/widgets/space.dart';
 
 class AddServiceTab extends StatefulWidget {
-  const AddServiceTab({required this.aewalletClient, super.key});
-
-  final ArchethicDAppClient aewalletClient;
+  const AddServiceTab({super.key});
 
   @override
   State<AddServiceTab> createState() => _AddServiceTabState();
 }
 
-class _AddServiceTabState extends State<AddServiceTab> {
+class _AddServiceTabState extends State<AddServiceTab>
+    with AEWalletClientInstance {
   final payloadTextController = TextEditingController(
     text: '',
   );
@@ -46,7 +45,7 @@ class _AddServiceTabState extends State<AddServiceTab> {
           OutlinedButton(
             child: const Icon(Icons.send),
             onPressed: () async {
-              final response = await widget.aewalletClient
+              final response = await aewalletClient
                   .addService({'name': payloadTextController.text});
               response.when(
                 failure: (failure) {

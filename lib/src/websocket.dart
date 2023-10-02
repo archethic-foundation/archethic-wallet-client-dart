@@ -1,7 +1,9 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 part of 'archethic_wallet_client_base.dart';
 
-class WebsocketArchethicDappClient implements ArchethicDAppClient {
+class WebsocketArchethicDappClient
+    with ArchechicDAppClientSessionChallenge
+    implements ArchethicDAppClient {
   WebsocketArchethicDappClient({
     required this.origin,
   });
@@ -110,6 +112,25 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
           .where((event) => event.subscriptionId == subscriptionId)
           .map((event) => event.data),
     );
+  }
+
+  @override
+  Future<Result<ArchethicDappSession, Failure>> openSession(
+    OpenSessionRequest sessionRequest,
+  ) async {
+    await Future.delayed(const Duration(seconds: 5));
+
+    // final failure = Failure.timeout();
+    // _connectionStateController
+    //     .add(ArchethicDappConnectionState.connected(sessionFailure: failure));
+    // return Result.failure(failure);
+
+    const session = ArchethicDappSession(dappPubKey: 'test');
+
+    _connectionStateController.add(
+      const ArchethicDappConnectionState.connected(session: session),
+    );
+    return Result.failure(Failure.timeout());
   }
 
   Future<Map<String, dynamic>> _send({

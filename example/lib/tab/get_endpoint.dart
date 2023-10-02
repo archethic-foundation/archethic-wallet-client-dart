@@ -1,13 +1,10 @@
-import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dapp_example/aewalletclient_mixin.dart';
 
-class GetEndpointTab extends StatelessWidget {
+class GetEndpointTab extends StatelessWidget with AEWalletClientInstance {
   const GetEndpointTab({
-    required this.aewalletClient,
     super.key,
   });
-
-  final ArchethicDAppClient aewalletClient;
 
   @override
   Widget build(BuildContext context) {

@@ -8,6 +8,7 @@ import 'package:archethic_wallet_client/src/core/request.dart';
 import 'package:archethic_wallet_client/src/core/result.dart';
 import 'package:archethic_wallet_client/src/core/subscription.dart';
 import 'package:archethic_wallet_client/src/request/account_sub.dart';
+import 'package:archethic_wallet_client/src/request/create_session.dart';
 import 'package:archethic_wallet_client/src/request/get_accounts.dart';
 import 'package:archethic_wallet_client/src/request/get_current_account.dart';
 import 'package:archethic_wallet_client/src/request/get_endpoint.dart';
@@ -27,12 +28,33 @@ part 'deeplink.dart';
 part 'websocket.dart';
 
 @freezed
+class ArchethicDappSession with _$ArchethicDappSession {
+  const factory ArchethicDappSession({
+    required String dappPubKey,
+  }) = _ArchethicDappSession;
+
+  const ArchethicDappSession._();
+}
+
+@freezed
 class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
   const ArchethicDappConnectionState._();
 
   const factory ArchethicDappConnectionState.disconnected() = _Disconnected;
-  const factory ArchethicDappConnectionState.connected() = _Connected;
+  const factory ArchethicDappConnectionState.connected({
+    ArchethicDappSession? session,
+    Failure? sessionFailure,
+  }) = _Connected;
   const factory ArchethicDappConnectionState.connecting() = _Connecting;
+
+  bool get isConnected => this is _Connected;
+  bool get isNotConnected => !isConnected;
+  bool get isSessionOpened =>
+      this is _Connected && (this as _Connected).session != null;
+  bool get isNotSessionOpened => !isSessionOpened;
+  bool get didSessionOpeningFail => sessionOpeningFailure != null;
+  Failure? get sessionOpeningFailure =>
+      this is _Connected ? (this as _Connected).sessionFailure : null;
 }
 
 abstract class ArchethicDAppClient {
@@ -75,6 +97,10 @@ abstract class ArchethicDAppClient {
 
   Future<void> close();
 
+  Future<Result<ArchethicDappSession, Failure>> openSession(
+    OpenSessionRequest sessionRequest,
+  );
+
   Future<Result<GetEndpointResult, Failure>> getEndpoint();
 
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
@@ -113,4 +139,34 @@ abstract class ArchethicDAppClient {
   Future<Result<SignTransactionsResult, Failure>> signTransactions(
     Map<String, dynamic> data,
   );
+
+  String generateSessionChallenge();
+}
+
+mixin ArchechicDAppClientSessionChallenge {
+  String generateSessionChallenge() {
+    const _sessionChallengeElements = [
+      '👍',
+      '✨',
+      '🐛',
+      '❤️',
+      '⚠️',
+      '🚨',
+      '⚡️',
+      '📱',
+      '🗝️',
+      '🎨',
+      '🔗',
+      '🎉',
+      '🔨',
+      '⚽️',
+      '🎬',
+      '🎲',
+      '⏰',
+    ];
+
+    final elements = [..._sessionChallengeElements];
+    elements.shuffle();
+    return elements.take(5).join(' ');
+  }
 }

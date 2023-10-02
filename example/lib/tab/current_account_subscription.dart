@@ -2,15 +2,14 @@ import 'dart:async';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dapp_example/aewalletclient_mixin.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
 import 'package:flutter_dapp_example/widgets/space.dart';
 
 class CurrentAccountSubscriptionTab extends StatefulWidget {
   const CurrentAccountSubscriptionTab({
-    required this.aewalletClient,
     super.key,
   });
-  final ArchethicDAppClient aewalletClient;
 
   @override
   State<CurrentAccountSubscriptionTab> createState() =>
@@ -18,7 +17,7 @@ class CurrentAccountSubscriptionTab extends StatefulWidget {
 }
 
 class _CurrentAccountSubscriptionTabState
-    extends State<CurrentAccountSubscriptionTab> {
+    extends State<CurrentAccountSubscriptionTab> with AEWalletClientInstance {
   Subscription<Account>? accountSub;
   StreamSubscription<Account>? accountStreamSub;
 
@@ -58,7 +57,7 @@ class _CurrentAccountSubscriptionTabState
               child: const Icon(Icons.play_arrow),
               onPressed: () async {
                 final subscription =
-                    await widget.aewalletClient.subscribeCurrentAccount();
+                    await aewalletClient.subscribeCurrentAccount();
 
                 subscription.when(
                   success: (success) {
@@ -87,8 +86,7 @@ class _CurrentAccountSubscriptionTabState
             OutlinedButton(
               child: const Icon(Icons.stop),
               onPressed: () async {
-                await widget.aewalletClient
-                    .unsubscribeCurrentAccount(accountSub!.id);
+                await aewalletClient.unsubscribeCurrentAccount(accountSub!.id);
                 setState(() {
                   accountStreamSub?.cancel();
                   accountStreamSub = null;

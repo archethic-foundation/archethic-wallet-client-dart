@@ -1,7 +1,9 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 part of 'archethic_wallet_client_base.dart';
 
-class DeeplinkArchethicDappClient implements ArchethicDAppClient {
+class DeeplinkArchethicDappClient
+    with ArchechicDAppClientSessionChallenge
+    implements ArchethicDAppClient {
   DeeplinkArchethicDappClient({
     required this.origin,
     required this.replyBaseUrl,
@@ -23,10 +25,12 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   @override
   ArchethicDappConnectionState get state => _state;
 
+  final _connectionStateController =
+      StreamController<ArchethicDappConnectionState>.broadcast()
+        ..add(const ArchethicDappConnectionState.connected());
   @override
-  Stream<ArchethicDappConnectionState> get connectionStateStream async* {
-    yield const ArchethicDappConnectionState.connected();
-  }
+  Stream<ArchethicDappConnectionState> get connectionStateStream =>
+      _connectionStateController.stream;
 
   @override
   Future<void> connect() async {
@@ -36,6 +40,18 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   @override
   Future<void> close() async {
     return;
+  }
+
+  @override
+  Future<Result<ArchethicDappSession, Failure>> openSession(
+    OpenSessionRequest sessionRequest,
+  ) async {
+    await Future.delayed(const Duration(seconds: 5));
+    const session = ArchethicDappSession(dappPubKey: 'test');
+    _connectionStateController.add(
+      const ArchethicDappConnectionState.connected(session: session),
+    );
+    return const Result.success(session);
   }
 
   Future<DeeplinkRpcResponse> _send({

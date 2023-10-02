@@ -1,22 +1,21 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dapp_example/aewalletclient_mixin.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
 import 'package:flutter_dapp_example/widgets/space.dart';
 
 class KeychainDeriveAddressTab extends StatefulWidget {
-  const KeychainDeriveAddressTab({required this.aewalletClient, super.key});
-
-  final ArchethicDAppClient aewalletClient;
+  const KeychainDeriveAddressTab({super.key});
 
   @override
   State<KeychainDeriveAddressTab> createState() =>
       _KeychainDeriveAddressTabState();
 }
 
-class _KeychainDeriveAddressTabState extends State<KeychainDeriveAddressTab> {
+class _KeychainDeriveAddressTabState extends State<KeychainDeriveAddressTab>
+    with AEWalletClientInstance {
   final payloadServiceNameController = TextEditingController(
     text: '',
   );
@@ -76,8 +75,7 @@ class _KeychainDeriveAddressTabState extends State<KeychainDeriveAddressTab> {
           OutlinedButton(
             child: const Icon(Icons.send),
             onPressed: () async {
-              final response =
-                  await widget.aewalletClient.keychainDeriveAddress({
+              final response = await aewalletClient.keychainDeriveAddress({
                 'serviceName': payloadServiceNameController.text,
                 'index': int.tryParse(payloadIndexController.text),
                 'pathSuffix': payloadSuffixController.text,

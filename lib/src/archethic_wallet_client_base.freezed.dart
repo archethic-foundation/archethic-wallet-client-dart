@@ -15,25 +15,152 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
+mixin _$ArchethicDappSession {
+  String get dappPubKey => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ArchethicDappSessionCopyWith<ArchethicDappSession> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ArchethicDappSessionCopyWith<$Res> {
+  factory $ArchethicDappSessionCopyWith(ArchethicDappSession value,
+          $Res Function(ArchethicDappSession) then) =
+      _$ArchethicDappSessionCopyWithImpl<$Res, ArchethicDappSession>;
+  @useResult
+  $Res call({String dappPubKey});
+}
+
+/// @nodoc
+class _$ArchethicDappSessionCopyWithImpl<$Res,
+        $Val extends ArchethicDappSession>
+    implements $ArchethicDappSessionCopyWith<$Res> {
+  _$ArchethicDappSessionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dappPubKey = null,
+  }) {
+    return _then(_value.copyWith(
+      dappPubKey: null == dappPubKey
+          ? _value.dappPubKey
+          : dappPubKey // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ArchethicDappSessionImplCopyWith<$Res>
+    implements $ArchethicDappSessionCopyWith<$Res> {
+  factory _$$ArchethicDappSessionImplCopyWith(_$ArchethicDappSessionImpl value,
+          $Res Function(_$ArchethicDappSessionImpl) then) =
+      __$$ArchethicDappSessionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String dappPubKey});
+}
+
+/// @nodoc
+class __$$ArchethicDappSessionImplCopyWithImpl<$Res>
+    extends _$ArchethicDappSessionCopyWithImpl<$Res, _$ArchethicDappSessionImpl>
+    implements _$$ArchethicDappSessionImplCopyWith<$Res> {
+  __$$ArchethicDappSessionImplCopyWithImpl(_$ArchethicDappSessionImpl _value,
+      $Res Function(_$ArchethicDappSessionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dappPubKey = null,
+  }) {
+    return _then(_$ArchethicDappSessionImpl(
+      dappPubKey: null == dappPubKey
+          ? _value.dappPubKey
+          : dappPubKey // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ArchethicDappSessionImpl extends _ArchethicDappSession {
+  const _$ArchethicDappSessionImpl({required this.dappPubKey}) : super._();
+
+  @override
+  final String dappPubKey;
+
+  @override
+  String toString() {
+    return 'ArchethicDappSession(dappPubKey: $dappPubKey)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ArchethicDappSessionImpl &&
+            (identical(other.dappPubKey, dappPubKey) ||
+                other.dappPubKey == dappPubKey));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, dappPubKey);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ArchethicDappSessionImplCopyWith<_$ArchethicDappSessionImpl>
+      get copyWith =>
+          __$$ArchethicDappSessionImplCopyWithImpl<_$ArchethicDappSessionImpl>(
+              this, _$identity);
+}
+
+abstract class _ArchethicDappSession extends ArchethicDappSession {
+  const factory _ArchethicDappSession({required final String dappPubKey}) =
+      _$ArchethicDappSessionImpl;
+  const _ArchethicDappSession._() : super._();
+
+  @override
+  String get dappPubKey;
+  @override
+  @JsonKey(ignore: true)
+  _$$ArchethicDappSessionImplCopyWith<_$ArchethicDappSessionImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ArchethicDappConnectionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function() connected,
+    required TResult Function(
+            ArchethicDappSession? session, Failure? sessionFailure)
+        connected,
     required TResult Function() connecting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function()? connected,
+    TResult? Function(ArchethicDappSession? session, Failure? sessionFailure)?
+        connected,
     TResult? Function()? connecting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function()? connected,
+    TResult Function(ArchethicDappSession? session, Failure? sessionFailure)?
+        connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) =>
@@ -122,7 +249,9 @@ class _$DisconnectedImpl extends _Disconnected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function() connected,
+    required TResult Function(
+            ArchethicDappSession? session, Failure? sessionFailure)
+        connected,
     required TResult Function() connecting,
   }) {
     return disconnected();
@@ -132,7 +261,8 @@ class _$DisconnectedImpl extends _Disconnected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function()? connected,
+    TResult? Function(ArchethicDappSession? session, Failure? sessionFailure)?
+        connected,
     TResult? Function()? connecting,
   }) {
     return disconnected?.call();
@@ -142,7 +272,8 @@ class _$DisconnectedImpl extends _Disconnected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function()? connected,
+    TResult Function(ArchethicDappSession? session, Failure? sessionFailure)?
+        connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) {
@@ -197,6 +328,11 @@ abstract class _$$ConnectedImplCopyWith<$Res> {
   factory _$$ConnectedImplCopyWith(
           _$ConnectedImpl value, $Res Function(_$ConnectedImpl) then) =
       __$$ConnectedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ArchethicDappSession? session, Failure? sessionFailure});
+
+  $ArchethicDappSessionCopyWith<$Res>? get session;
+  $FailureCopyWith<$Res>? get sessionFailure;
 }
 
 /// @nodoc
@@ -206,57 +342,118 @@ class __$$ConnectedImplCopyWithImpl<$Res>
   __$$ConnectedImplCopyWithImpl(
       _$ConnectedImpl _value, $Res Function(_$ConnectedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? session = freezed,
+    Object? sessionFailure = freezed,
+  }) {
+    return _then(_$ConnectedImpl(
+      session: freezed == session
+          ? _value.session
+          : session // ignore: cast_nullable_to_non_nullable
+              as ArchethicDappSession?,
+      sessionFailure: freezed == sessionFailure
+          ? _value.sessionFailure
+          : sessionFailure // ignore: cast_nullable_to_non_nullable
+              as Failure?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ArchethicDappSessionCopyWith<$Res>? get session {
+    if (_value.session == null) {
+      return null;
+    }
+
+    return $ArchethicDappSessionCopyWith<$Res>(_value.session!, (value) {
+      return _then(_value.copyWith(session: value));
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FailureCopyWith<$Res>? get sessionFailure {
+    if (_value.sessionFailure == null) {
+      return null;
+    }
+
+    return $FailureCopyWith<$Res>(_value.sessionFailure!, (value) {
+      return _then(_value.copyWith(sessionFailure: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$ConnectedImpl extends _Connected {
-  const _$ConnectedImpl() : super._();
+  const _$ConnectedImpl({this.session, this.sessionFailure}) : super._();
+
+  @override
+  final ArchethicDappSession? session;
+  @override
+  final Failure? sessionFailure;
 
   @override
   String toString() {
-    return 'ArchethicDappConnectionState.connected()';
+    return 'ArchethicDappConnectionState.connected(session: $session, sessionFailure: $sessionFailure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ConnectedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ConnectedImpl &&
+            (identical(other.session, session) || other.session == session) &&
+            (identical(other.sessionFailure, sessionFailure) ||
+                other.sessionFailure == sessionFailure));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, session, sessionFailure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConnectedImplCopyWith<_$ConnectedImpl> get copyWith =>
+      __$$ConnectedImplCopyWithImpl<_$ConnectedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function() connected,
+    required TResult Function(
+            ArchethicDappSession? session, Failure? sessionFailure)
+        connected,
     required TResult Function() connecting,
   }) {
-    return connected();
+    return connected(session, sessionFailure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function()? connected,
+    TResult? Function(ArchethicDappSession? session, Failure? sessionFailure)?
+        connected,
     TResult? Function()? connecting,
   }) {
-    return connected?.call();
+    return connected?.call(session, sessionFailure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function()? connected,
+    TResult Function(ArchethicDappSession? session, Failure? sessionFailure)?
+        connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) {
     if (connected != null) {
-      return connected();
+      return connected(session, sessionFailure);
     }
     return orElse();
   }
@@ -297,8 +494,16 @@ class _$ConnectedImpl extends _Connected {
 }
 
 abstract class _Connected extends ArchethicDappConnectionState {
-  const factory _Connected() = _$ConnectedImpl;
+  const factory _Connected(
+      {final ArchethicDappSession? session,
+      final Failure? sessionFailure}) = _$ConnectedImpl;
   const _Connected._() : super._();
+
+  ArchethicDappSession? get session;
+  Failure? get sessionFailure;
+  @JsonKey(ignore: true)
+  _$$ConnectedImplCopyWith<_$ConnectedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -340,7 +545,9 @@ class _$ConnectingImpl extends _Connecting {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function() connected,
+    required TResult Function(
+            ArchethicDappSession? session, Failure? sessionFailure)
+        connected,
     required TResult Function() connecting,
   }) {
     return connecting();
@@ -350,7 +557,8 @@ class _$ConnectingImpl extends _Connecting {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function()? connected,
+    TResult? Function(ArchethicDappSession? session, Failure? sessionFailure)?
+        connected,
     TResult? Function()? connecting,
   }) {
     return connecting?.call();
@@ -360,7 +568,8 @@ class _$ConnectingImpl extends _Connecting {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function()? connected,
+    TResult Function(ArchethicDappSession? session, Failure? sessionFailure)?
+        connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) {

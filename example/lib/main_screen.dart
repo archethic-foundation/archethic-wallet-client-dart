@@ -1,5 +1,5 @@
-import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dapp_example/aewalletclient_mixin.dart';
 import 'package:flutter_dapp_example/header.dart';
 import 'package:flutter_dapp_example/navigation_drawer_section.dart';
 import 'package:flutter_dapp_example/tab/account_subscription.dart';
@@ -17,16 +17,13 @@ import 'package:flutter_dapp_example/tab/transaction_send.dart';
 class MainScreen extends StatefulWidget {
   const MainScreen({
     super.key,
-    required this.aewalletClient,
   });
-
-  final ArchethicDAppClient aewalletClient;
 
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen> with AEWalletClientInstance {
   int navDrawerIndex = 0;
   void _onDestinationSelected(int selectedIndex) {
     setState(() {
@@ -39,7 +36,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: Column(
         children: [
-          Header(aewalletClient: widget.aewalletClient),
+          Header(aewalletClient: aewalletClient),
           Expanded(
             child: Row(
               children: [
@@ -79,42 +76,28 @@ class _MainScreenState extends State<MainScreen> {
   Widget getDetail(int index) {
     switch (index) {
       case 0:
-        return GetEndpointTab(
-          aewalletClient: widget.aewalletClient,
-        );
+        return GetEndpointTab();
       case 1:
-        return GetCurrentAccountTab(
-          aewalletClient: widget.aewalletClient,
-        );
+        return GetCurrentAccountTab();
       case 2:
-        return GetAccountsTab(
-          aewalletClient: widget.aewalletClient,
-        );
+        return GetAccountsTab();
       case 3:
-        return GetServicesFromKeychainTab(
-          aewalletClient: widget.aewalletClient,
-        );
+        return GetServicesFromKeychainTab();
       case 4:
-        return KeychainDeriveKeypairTab(
-          aewalletClient: widget.aewalletClient,
-        );
+        return KeychainDeriveKeypairTab();
 
       case 5:
-        return KeychainDeriveAddressTab(
-          aewalletClient: widget.aewalletClient,
-        );
+        return KeychainDeriveAddressTab();
       case 6:
-        return AccountSubscriptionTab(aewalletClient: widget.aewalletClient);
+        return AccountSubscriptionTab();
       case 7:
-        return CurrentAccountSubscriptionTab(
-          aewalletClient: widget.aewalletClient,
-        );
+        return CurrentAccountSubscriptionTab();
       case 8:
-        return TransactionSendTab(aewalletClient: widget.aewalletClient);
+        return TransactionSendTab();
       case 9:
-        return SignTransactionsTab(aewalletClient: widget.aewalletClient);
+        return SignTransactionsTab();
       case 10:
-        return AddServiceTab(aewalletClient: widget.aewalletClient);
+        return AddServiceTab();
       default:
         return const SizedBox();
     }
