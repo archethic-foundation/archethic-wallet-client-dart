@@ -55,7 +55,8 @@ class WebsocketArchethicDappClient
     _connectionStateController.add(
       const ArchethicDappConnectionState.connecting(),
     );
-    final socket = WebSocketChannel.connect(Uri.parse('ws://127.0.0.1:12345'));
+    final socket = await connectWebSocket(Uri.parse('ws://127.0.0.1:12345'));
+
     log(
       'Connection opened',
       name: logName,

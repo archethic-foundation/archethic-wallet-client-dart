@@ -644,6 +644,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.0"
+  web_socket_channel_connect:
+    dependency: transitive
+    description:
+      name: web_socket_channel_connect
+      sha256: "21c402f6c8c93be8c4e4cb64359608d53230d188e59469fd0a7156d7c859f7f3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2+4"
   x25519:
     dependency: transitive
     description:

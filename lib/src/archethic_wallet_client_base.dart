@@ -24,7 +24,7 @@ import 'package:deeplink_rpc/deeplink_rpc.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
+import 'package:web_socket_channel_connect/web_socket_channel_connect.dart';
 
 part 'archethic_wallet_client_base.freezed.dart';
 part 'deeplink.dart';
