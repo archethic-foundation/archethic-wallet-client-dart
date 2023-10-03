@@ -19,22 +19,26 @@ class Header extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              SvgPicture.asset(
-                'assets/images/AELogo.svg',
-                semanticsLabel: 'AE Logo',
-                height: 30,
-              ),
-              Text(
-                'awc example',
-                style: TextStyle(
-                  fontFamily: 'Caveat',
-                  fontSize: 50,
-                  color: Theme.of(context).colorScheme.primary,
+          Expanded(
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  'assets/images/AELogo.svg',
+                  semanticsLabel: 'AE Logo',
+                  height: 30,
                 ),
-              ),
-            ],
+                Expanded(
+                  child: Text(
+                    'awc example',
+                    style: TextStyle(
+                      fontFamily: 'Caveat',
+                      fontSize: 50,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           ConnectionButton(aewalletClient: aewalletClient),
         ],

@@ -34,41 +34,22 @@ class _MainScreenState extends State<MainScreen> with AEWalletClientInstance {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Header(aewalletClient: aewalletClient),
-          Expanded(
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10, bottom: 10),
-                    child: Card(
-                      elevation: 0,
-                      clipBehavior: Clip.antiAlias,
-                      child: NavigationDrawerSection(
-                        onDestinationSelected: _onDestinationSelected,
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 8,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 10, bottom: 10),
-                    child: Card(
-                      elevation: 0,
-                      clipBehavior: Clip.antiAlias,
-                      color: Theme.of(context).colorScheme.onInverseSurface,
-                      child: getDetail(navDrawerIndex),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+      drawer: Card(
+        elevation: 0,
+        clipBehavior: Clip.antiAlias,
+        child: NavigationDrawerSection(
+          onDestinationSelected: _onDestinationSelected,
+        ),
+      ),
+      appBar: AppBar(title: Header(aewalletClient: aewalletClient)),
+      body: Padding(
+        padding: const EdgeInsets.only(right: 10, bottom: 10),
+        child: Card(
+          elevation: 0,
+          clipBehavior: Clip.antiAlias,
+          color: Theme.of(context).colorScheme.onInverseSurface,
+          child: getDetail(navDrawerIndex),
+        ),
       ),
     );
   }
