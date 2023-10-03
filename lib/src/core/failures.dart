@@ -75,8 +75,8 @@ class Failure with _$Failure implements Exception {
         stack: stack,
       );
 
-  factory Failure.fromRpcException(RpcException exception) {
-    switch (exception.code) {
+  factory Failure.fromRpcErrorCode(int code) {
+    switch (code) {
       case -32601:
         return Failure.unsupportedMethod();
       case -32602:
@@ -106,32 +106,9 @@ class Failure with _$Failure implements Exception {
     }
   }
 
-  factory Failure.fromDeeplinkRpcFailure(DeeplinkRpcFailure failure) {
-    switch (failure.code) {
-      case -32602:
-        return Failure.invalidParams();
-      case 4001:
-        return Failure.userRejected();
-      case 4901:
-        return Failure.connectivity();
-      case 5001:
-        return Failure.timeout();
-      case 5002:
-        return Failure.consensusNotReached();
-      case 5003:
-        return Failure.invalidTransaction();
-      case 5004:
-        return Failure.insufficientFunds();
-      case 5005:
-        return Failure.unknownAccount();
-      case 5006:
-        return Failure.invalidConfirmation();
-      case 5007:
-        return Failure.serviceNotFound();
-      case 5008:
-        return Failure.serviceAlreadyExists();
-      default:
-        return Failure.other();
-    }
-  }
+  factory Failure.fromRpcException(RpcException exception) =>
+      Failure.fromRpcErrorCode(exception.code);
+
+  factory Failure.fromDeeplinkRpcFailure(DeeplinkRpcFailure failure) =>
+      Failure.fromRpcErrorCode(failure.code);
 }

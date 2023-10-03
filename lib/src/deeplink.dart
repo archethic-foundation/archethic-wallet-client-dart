@@ -48,7 +48,18 @@ class DeeplinkArchethicDappClient
   ) async =>
       Result.guard(() async {
         // Handshake
-        final keypair = aelib.deriveKeyPair('a random seed', 0);
+        final keypair = aelib.deriveKeyPair(
+          aelib.uint8ListToHex(
+            Uint8List.fromList(
+              List<int>.generate(
+                32,
+                (int i) => math.Random.secure().nextInt(256),
+              ),
+            ),
+          ),
+          0,
+        );
+
         final encryptedAesKey = await _send(
           requestEndpoint: 'open_session_handshake',
           replyEndpoint: 'open_session_handshake_result',
@@ -86,6 +97,18 @@ class DeeplinkArchethicDappClient
             return session;
           },
         );
+      }).then((sessionOrFailure) {
+        _connectionStateController.add(
+          sessionOrFailure.map(
+            success: (success) => ArchethicDappConnectionState.connected(
+              session: success.value,
+            ),
+            failure: (failure) => ArchethicDappConnectionState.connected(
+              sessionFailure: failure.failure,
+            ),
+          ),
+        );
+        return sessionOrFailure;
       });
 
   Future<DeeplinkRpcResponse> _send({
@@ -237,7 +260,7 @@ class DeeplinkArchethicDappClient
       );
 }
 
-extension DeeplinkRpcResponseFailure on Future<DeeplinkRpcResponse> {
+extension DeeplinkFutureRpcResponseFailure on Future<DeeplinkRpcResponse> {
   Future<T> mapValueOrThrow<T>(
     T Function(Map<String, dynamic> value) map,
   ) async =>
