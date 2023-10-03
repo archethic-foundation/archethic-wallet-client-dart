@@ -45,48 +45,48 @@ class DeeplinkArchethicDappClient
   @override
   Future<Result<ArchethicDappSession, Failure>> openSession(
     OpenSessionRequest sessionRequest,
-  ) async {
-    // Handshake
-    final keypair = aelib.deriveKeyPair('a random seed', 0);
-    final encryptedAesKey = await _send(
-      requestEndpoint: 'open_session_handshake',
-      replyEndpoint: 'open_session_handshake_result',
-      params: {
-        'pubKey': aelib.uint8ListToHex(keypair.publicKey!),
-      },
-    );
-    final sessionAesKey = aelib.ecDecrypt(encryptedAesKey, keypair.privateKey);
+  ) async =>
+      Result.guard(() async {
+        // Handshake
+        final keypair = aelib.deriveKeyPair('a random seed', 0);
+        final encryptedAesKey = await _send(
+          requestEndpoint: 'open_session_handshake',
+          replyEndpoint: 'open_session_handshake_result',
+          params: {
+            'pubKey': aelib.uint8ListToHex(keypair.publicKey!),
+          },
+        ).mapValueOrThrow((value) => value['aesKey']);
 
-    // Impersonation challenge.
-    return _send(
-      requestEndpoint: 'open_session_challenge',
-      replyEndpoint: 'open_session_challenge_result',
-      params: {
-        'origin': sessionRequest.origin.toJson(),
-        'challenge': aelib.uint8ListToHex(
-          aelib.aesEncrypt(generateSessionChallenge(), sessionAesKey),
-        ),
-      },
-    ).then(
-      (value) => value.map(
-        failure: (failure) => Result.failure(
-          Failure.fromDeeplinkRpcFailure(failure),
-        ),
-        success: (success) {
-          final sessionResponse = OpenSessionResponse.fromJson(success);
-          final session = ArchethicDappSession(
-            sessionId: sessionResponse.sessionId,
-            aesKey: sessionAesKey,
-          );
+        final sessionAesKey = aelib.ecDecrypt(
+          encryptedAesKey,
+          keypair.privateKey,
+        );
 
-          _connectionStateController.add(
-            ArchethicDappConnectionState.connected(session: session),
-          );
-          return Result.success(session);
-        },
-      ),
-    );
-  }
+        // Impersonation challenge.
+        return _send(
+          requestEndpoint: 'open_session_challenge',
+          replyEndpoint: 'open_session_challenge_result',
+          params: {
+            'origin': sessionRequest.origin.toJson(),
+            'challenge': aelib.uint8ListToHex(
+              aelib.aesEncrypt(generateSessionChallenge(), sessionAesKey),
+            ),
+          },
+        ).mapValueOrThrow(
+          (value) {
+            final sessionResponse = OpenSessionResponse.fromJson(value);
+            final session = ArchethicDappSession(
+              sessionId: sessionResponse.sessionId,
+              aesKey: sessionAesKey,
+            );
+
+            _connectionStateController.add(
+              ArchethicDappConnectionState.connected(session: session),
+            );
+            return session;
+          },
+        );
+      });
 
   Future<DeeplinkRpcResponse> _send({
     required String requestEndpoint,
@@ -106,17 +106,13 @@ class DeeplinkArchethicDappClient
       );
 
   @override
-  Future<Result<GetEndpointResult, Failure>> getEndpoint() async => _send(
-        requestEndpoint: 'get_endpoint',
-        replyEndpoint: 'get_endpoint_result',
-      ).then(
-        (result) => result.map(
-          failure: (failure) => Result.failure(
-            Failure.fromDeeplinkRpcFailure(failure),
-          ),
-          success: (success) => Result.success(
-            GetEndpointResult.fromJson(success),
-          ),
+  Future<Result<GetEndpointResult, Failure>> getEndpoint() async =>
+      Result.guard(
+        () => _send(
+          requestEndpoint: 'get_endpoint',
+          replyEndpoint: 'get_endpoint_result',
+        ).mapValueOrThrow(
+          GetEndpointResult.fromJson,
         ),
       );
 
@@ -124,47 +120,35 @@ class DeeplinkArchethicDappClient
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
     Map<String, dynamic> data,
   ) =>
-      _send(
-        requestEndpoint: 'send_transaction',
-        replyEndpoint: 'send_transaction_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(SendTransactionResult.fromJson(success)),
+      Result.guard(
+        () => _send(
+          requestEndpoint: 'send_transaction',
+          replyEndpoint: 'send_transaction_result',
+          params: data,
+        ).mapValueOrThrow(
+          SendTransactionResult.fromJson,
         ),
       );
 
   @override
-  Future<Result<GetAccountsResult, Failure>> getAccounts() async => _send(
-        requestEndpoint: 'get_accounts',
-        replyEndpoint: 'get_accounts_result',
-      ).then(
-        (result) => result.map(
-          failure: (failure) => Result.failure(
-            Failure.fromDeeplinkRpcFailure(failure),
-          ),
-          success: (success) => Result.success(
-            GetAccountsResult.fromJson(success),
-          ),
+  Future<Result<GetAccountsResult, Failure>> getAccounts() async =>
+      Result.guard(
+        () async => _send(
+          requestEndpoint: 'get_accounts',
+          replyEndpoint: 'get_accounts_result',
+        ).mapValueOrThrow(
+          GetAccountsResult.fromJson,
         ),
       );
 
   @override
   Future<Result<GetCurrentAccountResult, Failure>> getCurrentAccount() async =>
-      _send(
-        requestEndpoint: 'get_current_account',
-        replyEndpoint: 'get_current_account_result',
-      ).then(
-        (result) => result.map(
-          failure: (failure) => Result.failure(
-            Failure.fromDeeplinkRpcFailure(failure),
-          ),
-          success: (success) => Result.success(
-            GetCurrentAccountResult.fromJson(success),
-          ),
+      Result.guard(
+        () async => _send(
+          requestEndpoint: 'get_current_account',
+          replyEndpoint: 'get_current_account_result',
+        ).mapValueOrThrow(
+          GetCurrentAccountResult.fromJson,
         ),
       );
 
@@ -188,33 +172,25 @@ class DeeplinkArchethicDappClient
   @override
   Future<Result<SendTransactionResult, Failure>> addService(
     Map<String, dynamic> data,
-  ) =>
-      _send(
-        requestEndpoint: 'add_service',
-        replyEndpoint: 'add_service_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(SendTransactionResult.fromJson(success)),
+  ) async =>
+      Result.guard(
+        () => _send(
+          requestEndpoint: 'add_service',
+          replyEndpoint: 'add_service_result',
+          params: data,
+        ).mapValueOrThrow(
+          SendTransactionResult.fromJson,
         ),
       );
 
   @override
   Future<Result<GetServicesFromKeychainResult, Failure>>
-      getServicesFromKeychain() async => _send(
-            requestEndpoint: 'get_services_from_keychain',
-            replyEndpoint: 'get_services_from_keychain_result',
-          ).then(
-            (result) => result.map(
-              failure: (failure) => Result.failure(
-                Failure.fromDeeplinkRpcFailure(failure),
-              ),
-              success: (success) => Result.success(
-                GetServicesFromKeychainResult.fromJson(success),
-              ),
+      getServicesFromKeychain() async => Result.guard(
+            () => _send(
+              requestEndpoint: 'get_services_from_keychain',
+              replyEndpoint: 'get_services_from_keychain_result',
+            ).mapValueOrThrow(
+              GetServicesFromKeychainResult.fromJson,
             ),
           );
 
@@ -222,16 +198,13 @@ class DeeplinkArchethicDappClient
   Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
     Map<String, dynamic> data,
   ) =>
-      _send(
-        requestEndpoint: 'keychain_derive_keypair',
-        replyEndpoint: 'keychain_derive_keypair_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(KeychainDeriveKeypairResult.fromJson(success)),
+      Result.guard(
+        () => _send(
+          requestEndpoint: 'keychain_derive_keypair',
+          replyEndpoint: 'keychain_derive_keypair_result',
+          params: data,
+        ).mapValueOrThrow(
+          KeychainDeriveKeypairResult.fromJson,
         ),
       );
 
@@ -239,16 +212,13 @@ class DeeplinkArchethicDappClient
   Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
     Map<String, dynamic> data,
   ) =>
-      _send(
-        requestEndpoint: 'keychain_derive_address',
-        replyEndpoint: 'keychain_derive_address_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(KeychainDeriveAddressResult.fromJson(success)),
+      Result.guard(
+        () => _send(
+          requestEndpoint: 'keychain_derive_address',
+          replyEndpoint: 'keychain_derive_address_result',
+          params: data,
+        ).mapValueOrThrow(
+          KeychainDeriveAddressResult.fromJson,
         ),
       );
 
@@ -256,16 +226,23 @@ class DeeplinkArchethicDappClient
   Future<Result<SignTransactionsResult, Failure>> signTransactions(
     Map<String, dynamic> data,
   ) =>
-      _send(
-        requestEndpoint: 'sign_transactions',
-        replyEndpoint: 'sign_transactions_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(SignTransactionsResult.fromJson(success)),
+      Result.guard(
+        () => _send(
+          requestEndpoint: 'sign_transactions',
+          replyEndpoint: 'sign_transactions_result',
+          params: data,
+        ).mapValueOrThrow(
+          SignTransactionsResult.fromJson,
         ),
+      );
+}
+
+extension DeeplinkRpcResponseFailure on Future<DeeplinkRpcResponse> {
+  Future<T> mapValueOrThrow<T>(
+    T Function(Map<String, dynamic> value) map,
+  ) async =>
+      (await this).map(
+        failure: (failure) => throw Failure.fromDeeplinkRpcFailure(failure),
+        success: (success) => map(success),
       );
 }

@@ -120,13 +120,24 @@ class WebsocketArchethicDappClient
   ) =>
       Result.guard(() async {
         // Handshake
-        final keypair = aelib.deriveKeyPair('a random seed', 0);
+        final keypair = aelib.deriveKeyPair(
+          aelib.uint8ListToHex(
+            Uint8List.fromList(
+              List<int>.generate(
+                32,
+                (int i) => math.Random.secure().nextInt(256),
+              ),
+            ),
+          ),
+          0,
+        );
         final encryptedAesKey = await _send(
           method: 'openSessionHandshake',
           params: {
             'pubKey': aelib.uint8ListToHex(keypair.publicKey!),
           },
-        );
+        ).then((value) => value['aesKey']);
+
         final sessionAesKey =
             aelib.ecDecrypt(encryptedAesKey, keypair.privateKey);
 
@@ -138,6 +149,7 @@ class WebsocketArchethicDappClient
             'challenge': aelib.uint8ListToHex(
               aelib.aesEncrypt(generateSessionChallenge(), sessionAesKey),
             ),
+            'maxDuration': sessionRequest.maxDuration.inSeconds,
           },
         ).then(
           (value) {
@@ -149,10 +161,19 @@ class WebsocketArchethicDappClient
           },
         );
 
-        _connectionStateController.add(
-          ArchethicDappConnectionState.connected(session: session),
-        );
         return session;
+      }).then((sessionOrFailure) {
+        _connectionStateController.add(
+          sessionOrFailure.map(
+            success: (success) => ArchethicDappConnectionState.connected(
+              session: success.value,
+            ),
+            failure: (failure) => ArchethicDappConnectionState.connected(
+              sessionFailure: failure.failure,
+            ),
+          ),
+        );
+        return sessionOrFailure;
       });
 
   Future<Map<String, dynamic>> _send({
