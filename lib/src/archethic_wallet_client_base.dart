@@ -174,4 +174,27 @@ mixin ArchechicDAppClientSessionChallenge {
     elements.shuffle();
     return elements.take(5).join(' ');
   }
+
+  aelib.KeyPair generateKeyPair() => aelib.deriveKeyPair(
+        aelib.uint8ListToHex(
+          Uint8List.fromList(
+            List<int>.generate(
+              32,
+              (int i) => math.Random.secure().nextInt(256),
+            ),
+          ),
+        ),
+        0,
+      );
+
+  String aesEncrypt(String data, Uint8List key) => aelib.uint8ListToHex(
+        aelib.aesEncrypt(
+          aelib.uint8ListToHex(
+            Uint8List.fromList(
+              utf8.encode(data),
+            ),
+          ),
+          key,
+        ),
+      );
 }

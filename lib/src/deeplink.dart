@@ -48,28 +48,18 @@ class DeeplinkArchethicDappClient
   ) async =>
       Result.guard(() async {
         // Handshake
-        final keypair = aelib.deriveKeyPair(
-          aelib.uint8ListToHex(
-            Uint8List.fromList(
-              List<int>.generate(
-                32,
-                (int i) => math.Random.secure().nextInt(256),
-              ),
-            ),
-          ),
-          0,
-        );
+        final keypair = generateKeyPair();
 
-        final (encryptedAesKey, sessionId) = await _send(
+        final handshakeResult = await _send(
           requestEndpoint: 'open_session_handshake',
           replyEndpoint: 'open_session_handshake_result',
-          params: {
-            'pubKey': aelib.uint8ListToHex(keypair.publicKey!),
-          },
-        ).mapValueOrThrow((value) => (value['aesKey'], value['sessionId']));
+          params: OpenSessionHandshakeRequest(
+            pubKey: aelib.uint8ListToHex(keypair.publicKey!),
+          ).toJson(),
+        ).mapValueOrThrow(OpenSessionHandshakeResponse.fromJson);
 
         final sessionAesKey = aelib.ecDecrypt(
-          encryptedAesKey,
+          handshakeResult.aesKey,
           keypair.privateKey,
         );
 
@@ -77,25 +67,19 @@ class DeeplinkArchethicDappClient
         return _send(
           requestEndpoint: 'open_session_challenge',
           replyEndpoint: 'open_session_challenge_result',
-          params: {
-            'sessionId': sessionId,
-            'origin': sessionRequest.origin.toJson(),
-            'challenge': aelib.uint8ListToHex(
-              aelib.aesEncrypt(
-                aelib.uint8ListToHex(
-                  Uint8List.fromList(
-                    utf8.encode(sessionRequest.challenge),
-                  ),
-                ),
-                sessionAesKey,
-              ),
+          params: OpenSessionChallengeRequest(
+            sessionId: handshakeResult.sessionId,
+            origin: sessionRequest.origin,
+            challenge: aesEncrypt(
+              sessionRequest.challenge,
+              sessionAesKey,
             ),
-            'maxDuration': sessionRequest.maxDuration.inSeconds,
-          },
+            maxDuration: sessionRequest.maxDuration.inSeconds,
+          ).toJson(),
         ).mapValueOrThrow(
           (value) {
             final session = ArchethicDappSession(
-              sessionId: sessionId,
+              sessionId: handshakeResult.sessionId,
               aesKey: sessionAesKey,
             );
 

@@ -121,49 +121,34 @@ class WebsocketArchethicDappClient
   ) =>
       Result.guard(() async {
         // Handshake
-        final keypair = aelib.deriveKeyPair(
-          aelib.uint8ListToHex(
-            Uint8List.fromList(
-              List<int>.generate(
-                32,
-                (int i) => math.Random.secure().nextInt(256),
-              ),
-            ),
-          ),
-          0,
-        );
-        final (encryptedAesKey, sessionId) = await _send(
+        final keypair = generateKeyPair();
+
+        final handshakeResult = await _send(
           method: 'openSessionHandshake',
-          params: {
-            'pubKey': aelib.uint8ListToHex(keypair.publicKey!),
-          },
-        ).then((value) => (value['aesKey'], value['sessionId']));
+          params: OpenSessionHandshakeRequest(
+            pubKey: aelib.uint8ListToHex(keypair.publicKey!),
+          ).toJson(),
+        ).then(OpenSessionHandshakeResponse.fromJson);
 
         final sessionAesKey =
-            aelib.ecDecrypt(encryptedAesKey, keypair.privateKey);
+            aelib.ecDecrypt(handshakeResult.aesKey, keypair.privateKey);
 
         // Impersonation challenge.
         final session = await _send(
           method: 'openSessionChallenge',
-          params: {
-            'sessionId': sessionId,
-            'origin': sessionRequest.origin.toJson(),
-            'challenge': aelib.uint8ListToHex(
-              aelib.aesEncrypt(
-                aelib.uint8ListToHex(
-                  Uint8List.fromList(
-                    utf8.encode(sessionRequest.challenge),
-                  ),
-                ),
-                sessionAesKey,
-              ),
+          params: OpenSessionChallengeRequest(
+            sessionId: handshakeResult.sessionId,
+            origin: sessionRequest.origin,
+            challenge: aesEncrypt(
+              sessionRequest.challenge,
+              sessionAesKey,
             ),
-            'maxDuration': sessionRequest.maxDuration.inSeconds,
-          },
+            maxDuration: sessionRequest.maxDuration.inSeconds,
+          ).toJson(),
         ).then(
           (value) {
             return ArchethicDappSession(
-              sessionId: sessionId,
+              sessionId: handshakeResult.sessionId,
               aesKey: sessionAesKey,
             );
           },
