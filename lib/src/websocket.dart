@@ -132,12 +132,12 @@ class WebsocketArchethicDappClient
           ),
           0,
         );
-        final encryptedAesKey = await _send(
+        final (encryptedAesKey, sessionId) = await _send(
           method: 'openSessionHandshake',
           params: {
             'pubKey': aelib.uint8ListToHex(keypair.publicKey!),
           },
-        ).then((value) => value['aesKey']);
+        ).then((value) => (value['aesKey'], value['sessionId']));
 
         final sessionAesKey =
             aelib.ecDecrypt(encryptedAesKey, keypair.privateKey);
@@ -146,17 +146,24 @@ class WebsocketArchethicDappClient
         final session = await _send(
           method: 'openSessionChallenge',
           params: {
+            'sessionId': sessionId,
             'origin': sessionRequest.origin.toJson(),
             'challenge': aelib.uint8ListToHex(
-              aelib.aesEncrypt(generateSessionChallenge(), sessionAesKey),
+              aelib.aesEncrypt(
+                aelib.uint8ListToHex(
+                  Uint8List.fromList(
+                    utf8.encode(sessionRequest.challenge),
+                  ),
+                ),
+                sessionAesKey,
+              ),
             ),
             'maxDuration': sessionRequest.maxDuration.inSeconds,
           },
         ).then(
           (value) {
-            final sessionResponse = OpenSessionResponse.fromJson(value);
             return ArchethicDappSession(
-              sessionId: sessionResponse.sessionId,
+              sessionId: sessionId,
               aesKey: sessionAesKey,
             );
           },

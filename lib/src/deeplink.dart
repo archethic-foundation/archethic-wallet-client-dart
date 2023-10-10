@@ -60,13 +60,13 @@ class DeeplinkArchethicDappClient
           0,
         );
 
-        final encryptedAesKey = await _send(
+        final (encryptedAesKey, sessionId) = await _send(
           requestEndpoint: 'open_session_handshake',
           replyEndpoint: 'open_session_handshake_result',
           params: {
             'pubKey': aelib.uint8ListToHex(keypair.publicKey!),
           },
-        ).mapValueOrThrow((value) => value['aesKey']);
+        ).mapValueOrThrow((value) => (value['aesKey'], value['sessionId']));
 
         final sessionAesKey = aelib.ecDecrypt(
           encryptedAesKey,
@@ -78,16 +78,24 @@ class DeeplinkArchethicDappClient
           requestEndpoint: 'open_session_challenge',
           replyEndpoint: 'open_session_challenge_result',
           params: {
+            'sessionId': sessionId,
             'origin': sessionRequest.origin.toJson(),
             'challenge': aelib.uint8ListToHex(
-              aelib.aesEncrypt(generateSessionChallenge(), sessionAesKey),
+              aelib.aesEncrypt(
+                aelib.uint8ListToHex(
+                  Uint8List.fromList(
+                    utf8.encode(sessionRequest.challenge),
+                  ),
+                ),
+                sessionAesKey,
+              ),
             ),
+            'maxDuration': sessionRequest.maxDuration.inSeconds,
           },
         ).mapValueOrThrow(
           (value) {
-            final sessionResponse = OpenSessionResponse.fromJson(value);
             final session = ArchethicDappSession(
-              sessionId: sessionResponse.sessionId,
+              sessionId: sessionId,
               aesKey: sessionAesKey,
             );
 
