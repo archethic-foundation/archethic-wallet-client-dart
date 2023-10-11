@@ -18,6 +18,49 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ArchethicDappSession {
   String get sessionId => throw _privateConstructorUsedError;
   Uint8List get aesKey => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String sessionId, Uint8List aesKey)
+        waitingForValidation,
+    required TResult Function(String sessionId, Uint8List aesKey) validated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String sessionId, Uint8List aesKey)? waitingForValidation,
+    TResult? Function(String sessionId, Uint8List aesKey)? validated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String sessionId, Uint8List aesKey)? waitingForValidation,
+    TResult Function(String sessionId, Uint8List aesKey)? validated,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ArchethicDappSessionWaitingValidation value)
+        waitingForValidation,
+    required TResult Function(_ArchethicDappSessionWaitingValidated value)
+        validated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ArchethicDappSessionWaitingValidation value)?
+        waitingForValidation,
+    TResult? Function(_ArchethicDappSessionWaitingValidated value)? validated,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ArchethicDappSessionWaitingValidation value)?
+        waitingForValidation,
+    TResult Function(_ArchethicDappSessionWaitingValidated value)? validated,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ArchethicDappSessionCopyWith<ArchethicDappSession> get copyWith =>
@@ -64,22 +107,25 @@ class _$ArchethicDappSessionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$ArchethicDappSessionImplCopyWith<$Res>
+abstract class _$$ArchethicDappSessionWaitingValidationImplCopyWith<$Res>
     implements $ArchethicDappSessionCopyWith<$Res> {
-  factory _$$ArchethicDappSessionImplCopyWith(_$ArchethicDappSessionImpl value,
-          $Res Function(_$ArchethicDappSessionImpl) then) =
-      __$$ArchethicDappSessionImplCopyWithImpl<$Res>;
+  factory _$$ArchethicDappSessionWaitingValidationImplCopyWith(
+          _$ArchethicDappSessionWaitingValidationImpl value,
+          $Res Function(_$ArchethicDappSessionWaitingValidationImpl) then) =
+      __$$ArchethicDappSessionWaitingValidationImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String sessionId, Uint8List aesKey});
 }
 
 /// @nodoc
-class __$$ArchethicDappSessionImplCopyWithImpl<$Res>
-    extends _$ArchethicDappSessionCopyWithImpl<$Res, _$ArchethicDappSessionImpl>
-    implements _$$ArchethicDappSessionImplCopyWith<$Res> {
-  __$$ArchethicDappSessionImplCopyWithImpl(_$ArchethicDappSessionImpl _value,
-      $Res Function(_$ArchethicDappSessionImpl) _then)
+class __$$ArchethicDappSessionWaitingValidationImplCopyWithImpl<$Res>
+    extends _$ArchethicDappSessionCopyWithImpl<$Res,
+        _$ArchethicDappSessionWaitingValidationImpl>
+    implements _$$ArchethicDappSessionWaitingValidationImplCopyWith<$Res> {
+  __$$ArchethicDappSessionWaitingValidationImplCopyWithImpl(
+      _$ArchethicDappSessionWaitingValidationImpl _value,
+      $Res Function(_$ArchethicDappSessionWaitingValidationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +134,7 @@ class __$$ArchethicDappSessionImplCopyWithImpl<$Res>
     Object? sessionId = null,
     Object? aesKey = null,
   }) {
-    return _then(_$ArchethicDappSessionImpl(
+    return _then(_$ArchethicDappSessionWaitingValidationImpl(
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
@@ -103,8 +149,9 @@ class __$$ArchethicDappSessionImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ArchethicDappSessionImpl extends _ArchethicDappSession {
-  const _$ArchethicDappSessionImpl(
+class _$ArchethicDappSessionWaitingValidationImpl
+    extends _ArchethicDappSessionWaitingValidation {
+  const _$ArchethicDappSessionWaitingValidationImpl(
       {required this.sessionId, required this.aesKey})
       : super._();
 
@@ -115,14 +162,14 @@ class _$ArchethicDappSessionImpl extends _ArchethicDappSession {
 
   @override
   String toString() {
-    return 'ArchethicDappSession(sessionId: $sessionId, aesKey: $aesKey)';
+    return 'ArchethicDappSession.waitingForValidation(sessionId: $sessionId, aesKey: $aesKey)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ArchethicDappSessionImpl &&
+            other is _$ArchethicDappSessionWaitingValidationImpl &&
             (identical(other.sessionId, sessionId) ||
                 other.sessionId == sessionId) &&
             const DeepCollectionEquality().equals(other.aesKey, aesKey));
@@ -135,17 +182,85 @@ class _$ArchethicDappSessionImpl extends _ArchethicDappSession {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ArchethicDappSessionImplCopyWith<_$ArchethicDappSessionImpl>
-      get copyWith =>
-          __$$ArchethicDappSessionImplCopyWithImpl<_$ArchethicDappSessionImpl>(
-              this, _$identity);
+  _$$ArchethicDappSessionWaitingValidationImplCopyWith<
+          _$ArchethicDappSessionWaitingValidationImpl>
+      get copyWith => __$$ArchethicDappSessionWaitingValidationImplCopyWithImpl<
+          _$ArchethicDappSessionWaitingValidationImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String sessionId, Uint8List aesKey)
+        waitingForValidation,
+    required TResult Function(String sessionId, Uint8List aesKey) validated,
+  }) {
+    return waitingForValidation(sessionId, aesKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String sessionId, Uint8List aesKey)? waitingForValidation,
+    TResult? Function(String sessionId, Uint8List aesKey)? validated,
+  }) {
+    return waitingForValidation?.call(sessionId, aesKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String sessionId, Uint8List aesKey)? waitingForValidation,
+    TResult Function(String sessionId, Uint8List aesKey)? validated,
+    required TResult orElse(),
+  }) {
+    if (waitingForValidation != null) {
+      return waitingForValidation(sessionId, aesKey);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ArchethicDappSessionWaitingValidation value)
+        waitingForValidation,
+    required TResult Function(_ArchethicDappSessionWaitingValidated value)
+        validated,
+  }) {
+    return waitingForValidation(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ArchethicDappSessionWaitingValidation value)?
+        waitingForValidation,
+    TResult? Function(_ArchethicDappSessionWaitingValidated value)? validated,
+  }) {
+    return waitingForValidation?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ArchethicDappSessionWaitingValidation value)?
+        waitingForValidation,
+    TResult Function(_ArchethicDappSessionWaitingValidated value)? validated,
+    required TResult orElse(),
+  }) {
+    if (waitingForValidation != null) {
+      return waitingForValidation(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _ArchethicDappSession extends ArchethicDappSession {
-  const factory _ArchethicDappSession(
-      {required final String sessionId,
-      required final Uint8List aesKey}) = _$ArchethicDappSessionImpl;
-  const _ArchethicDappSession._() : super._();
+abstract class _ArchethicDappSessionWaitingValidation
+    extends ArchethicDappSession {
+  const factory _ArchethicDappSessionWaitingValidation(
+          {required final String sessionId, required final Uint8List aesKey}) =
+      _$ArchethicDappSessionWaitingValidationImpl;
+  const _ArchethicDappSessionWaitingValidation._() : super._();
 
   @override
   String get sessionId;
@@ -153,7 +268,175 @@ abstract class _ArchethicDappSession extends ArchethicDappSession {
   Uint8List get aesKey;
   @override
   @JsonKey(ignore: true)
-  _$$ArchethicDappSessionImplCopyWith<_$ArchethicDappSessionImpl>
+  _$$ArchethicDappSessionWaitingValidationImplCopyWith<
+          _$ArchethicDappSessionWaitingValidationImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ArchethicDappSessionWaitingValidatedImplCopyWith<$Res>
+    implements $ArchethicDappSessionCopyWith<$Res> {
+  factory _$$ArchethicDappSessionWaitingValidatedImplCopyWith(
+          _$ArchethicDappSessionWaitingValidatedImpl value,
+          $Res Function(_$ArchethicDappSessionWaitingValidatedImpl) then) =
+      __$$ArchethicDappSessionWaitingValidatedImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String sessionId, Uint8List aesKey});
+}
+
+/// @nodoc
+class __$$ArchethicDappSessionWaitingValidatedImplCopyWithImpl<$Res>
+    extends _$ArchethicDappSessionCopyWithImpl<$Res,
+        _$ArchethicDappSessionWaitingValidatedImpl>
+    implements _$$ArchethicDappSessionWaitingValidatedImplCopyWith<$Res> {
+  __$$ArchethicDappSessionWaitingValidatedImplCopyWithImpl(
+      _$ArchethicDappSessionWaitingValidatedImpl _value,
+      $Res Function(_$ArchethicDappSessionWaitingValidatedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sessionId = null,
+    Object? aesKey = null,
+  }) {
+    return _then(_$ArchethicDappSessionWaitingValidatedImpl(
+      sessionId: null == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      aesKey: null == aesKey
+          ? _value.aesKey
+          : aesKey // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ArchethicDappSessionWaitingValidatedImpl
+    extends _ArchethicDappSessionWaitingValidated {
+  const _$ArchethicDappSessionWaitingValidatedImpl(
+      {required this.sessionId, required this.aesKey})
+      : super._();
+
+  @override
+  final String sessionId;
+  @override
+  final Uint8List aesKey;
+
+  @override
+  String toString() {
+    return 'ArchethicDappSession.validated(sessionId: $sessionId, aesKey: $aesKey)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ArchethicDappSessionWaitingValidatedImpl &&
+            (identical(other.sessionId, sessionId) ||
+                other.sessionId == sessionId) &&
+            const DeepCollectionEquality().equals(other.aesKey, aesKey));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, sessionId, const DeepCollectionEquality().hash(aesKey));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ArchethicDappSessionWaitingValidatedImplCopyWith<
+          _$ArchethicDappSessionWaitingValidatedImpl>
+      get copyWith => __$$ArchethicDappSessionWaitingValidatedImplCopyWithImpl<
+          _$ArchethicDappSessionWaitingValidatedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String sessionId, Uint8List aesKey)
+        waitingForValidation,
+    required TResult Function(String sessionId, Uint8List aesKey) validated,
+  }) {
+    return validated(sessionId, aesKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String sessionId, Uint8List aesKey)? waitingForValidation,
+    TResult? Function(String sessionId, Uint8List aesKey)? validated,
+  }) {
+    return validated?.call(sessionId, aesKey);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String sessionId, Uint8List aesKey)? waitingForValidation,
+    TResult Function(String sessionId, Uint8List aesKey)? validated,
+    required TResult orElse(),
+  }) {
+    if (validated != null) {
+      return validated(sessionId, aesKey);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ArchethicDappSessionWaitingValidation value)
+        waitingForValidation,
+    required TResult Function(_ArchethicDappSessionWaitingValidated value)
+        validated,
+  }) {
+    return validated(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ArchethicDappSessionWaitingValidation value)?
+        waitingForValidation,
+    TResult? Function(_ArchethicDappSessionWaitingValidated value)? validated,
+  }) {
+    return validated?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ArchethicDappSessionWaitingValidation value)?
+        waitingForValidation,
+    TResult Function(_ArchethicDappSessionWaitingValidated value)? validated,
+    required TResult orElse(),
+  }) {
+    if (validated != null) {
+      return validated(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ArchethicDappSessionWaitingValidated
+    extends ArchethicDappSession {
+  const factory _ArchethicDappSessionWaitingValidated(
+          {required final String sessionId, required final Uint8List aesKey}) =
+      _$ArchethicDappSessionWaitingValidatedImpl;
+  const _ArchethicDappSessionWaitingValidated._() : super._();
+
+  @override
+  String get sessionId;
+  @override
+  Uint8List get aesKey;
+  @override
+  @JsonKey(ignore: true)
+  _$$ArchethicDappSessionWaitingValidatedImplCopyWith<
+          _$ArchethicDappSessionWaitingValidatedImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 

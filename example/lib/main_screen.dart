@@ -57,28 +57,28 @@ class _MainScreenState extends State<MainScreen> with AEWalletClientInstance {
   Widget getDetail(int index) {
     switch (index) {
       case 0:
-        return GetEndpointTab();
+        return const GetEndpointTab();
       case 1:
-        return GetCurrentAccountTab();
+        return const GetCurrentAccountTab();
       case 2:
-        return GetAccountsTab();
+        return const GetAccountsTab();
       case 3:
-        return GetServicesFromKeychainTab();
+        return const GetServicesFromKeychainTab();
       case 4:
-        return KeychainDeriveKeypairTab();
+        return const KeychainDeriveKeypairTab();
 
       case 5:
-        return KeychainDeriveAddressTab();
+        return const KeychainDeriveAddressTab();
       case 6:
-        return AccountSubscriptionTab();
+        return const AccountSubscriptionTab();
       case 7:
-        return CurrentAccountSubscriptionTab();
+        return const CurrentAccountSubscriptionTab();
       case 8:
-        return TransactionSendTab();
+        return const TransactionSendTab();
       case 9:
-        return SignTransactionsTab();
+        return const SignTransactionsTab();
       case 10:
-        return AddServiceTab();
+        return const AddServiceTab();
       default:
         return const SizedBox();
     }

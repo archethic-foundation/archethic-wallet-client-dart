@@ -4,23 +4,23 @@ part 'create_session.freezed.dart';
 part 'create_session.g.dart';
 
 @freezed
-class SessionRequestOrigin with _$SessionRequestOrigin {
-  const factory SessionRequestOrigin({
+class RPCSessionOrigin with _$RPCSessionOrigin {
+  const factory RPCSessionOrigin({
     required String name,
     String? url,
     String? logo,
-  }) = _SessionRequestOrigin;
-  const SessionRequestOrigin._();
+  }) = _RPCSessionOrigin;
+  const RPCSessionOrigin._();
 
-  factory SessionRequestOrigin.fromJson(Map<String, dynamic> json) =>
-      _$SessionRequestOriginFromJson(json);
+  factory RPCSessionOrigin.fromJson(Map<String, dynamic> json) =>
+      _$RPCSessionOriginFromJson(json);
 }
 
 @freezed
 class OpenSessionRequest with _$OpenSessionRequest {
   const factory OpenSessionRequest({
     required String challenge,
-    required SessionRequestOrigin origin,
+    required RPCSessionOrigin origin,
     required Duration maxDuration,
   }) = _OpenSessionRequest;
   const OpenSessionRequest._();
@@ -31,10 +31,10 @@ class OpenSessionRequest with _$OpenSessionRequest {
 
 @freezed
 class OpenSessionHandshakeRequest with _$OpenSessionHandshakeRequest {
-  const OpenSessionHandshakeRequest._();
   const factory OpenSessionHandshakeRequest({
     required String pubKey,
   }) = _OpenSessionHandshakeRequest;
+  const OpenSessionHandshakeRequest._();
 
   factory OpenSessionHandshakeRequest.fromJson(Map<String, dynamic> json) =>
       _$OpenSessionHandshakeRequestFromJson(json);
@@ -42,11 +42,11 @@ class OpenSessionHandshakeRequest with _$OpenSessionHandshakeRequest {
 
 @freezed
 class OpenSessionHandshakeResponse with _$OpenSessionHandshakeResponse {
-  const OpenSessionHandshakeResponse._();
   const factory OpenSessionHandshakeResponse({
     required String aesKey,
     required String sessionId,
   }) = _OpenSessionHandshakeResponse;
+  const OpenSessionHandshakeResponse._();
 
   factory OpenSessionHandshakeResponse.fromJson(Map<String, dynamic> json) =>
       _$OpenSessionHandshakeResponseFromJson(json);
@@ -54,13 +54,13 @@ class OpenSessionHandshakeResponse with _$OpenSessionHandshakeResponse {
 
 @freezed
 class OpenSessionChallengeRequest with _$OpenSessionChallengeRequest {
-  const OpenSessionChallengeRequest._();
   const factory OpenSessionChallengeRequest({
     required String sessionId,
-    required SessionRequestOrigin origin,
+    required RPCSessionOrigin origin,
     required String challenge,
     required int maxDuration,
   }) = _OpenSessionChallengeRequest;
+  const OpenSessionChallengeRequest._();
 
   factory OpenSessionChallengeRequest.fromJson(Map<String, dynamic> json) =>
       _$OpenSessionChallengeRequestFromJson(json);

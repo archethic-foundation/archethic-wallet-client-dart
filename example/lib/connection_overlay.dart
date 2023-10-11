@@ -95,7 +95,7 @@ class _DisconnectedPopupBody extends StatelessWidget
 }
 
 class _ConnectingPopupBody extends StatelessWidget {
-  const _ConnectingPopupBody({super.key});
+  const _ConnectingPopupBody();
 
   @override
   Widget build(BuildContext context) {
@@ -112,9 +112,7 @@ class _ConnectingPopupBody extends StatelessWidget {
 }
 
 class _ConnectedPopupBody extends StatefulWidget {
-  const _ConnectedPopupBody({
-    super.key,
-  });
+  const _ConnectedPopupBody();
 
   @override
   State<_ConnectedPopupBody> createState() => _ConnectedPopupBodyState();
@@ -177,7 +175,7 @@ class _ConnectedPopupBodyState extends State<_ConnectedPopupBody>
               await aewalletClient.openSession(
                 OpenSessionRequest(
                   challenge: _generateChallenge(),
-                  origin: const SessionRequestOrigin(name: 'Example DApp'),
+                  origin: const RPCSessionOrigin(name: 'Example DApp'),
                   maxDuration: const Duration(minutes: 30),
                 ),
               );

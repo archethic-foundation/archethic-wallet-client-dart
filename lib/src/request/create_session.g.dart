@@ -6,16 +6,16 @@ part of 'create_session.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SessionRequestOriginImpl _$$SessionRequestOriginImplFromJson(
+_$RPCSessionOriginImpl _$$RPCSessionOriginImplFromJson(
         Map<String, dynamic> json) =>
-    _$SessionRequestOriginImpl(
+    _$RPCSessionOriginImpl(
       name: json['name'] as String,
       url: json['url'] as String?,
       logo: json['logo'] as String?,
     );
 
-Map<String, dynamic> _$$SessionRequestOriginImplToJson(
-        _$SessionRequestOriginImpl instance) =>
+Map<String, dynamic> _$$RPCSessionOriginImplToJson(
+        _$RPCSessionOriginImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'url': instance.url,
@@ -26,8 +26,7 @@ _$OpenSessionRequestImpl _$$OpenSessionRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenSessionRequestImpl(
       challenge: json['challenge'] as String,
-      origin:
-          SessionRequestOrigin.fromJson(json['origin'] as Map<String, dynamic>),
+      origin: RPCSessionOrigin.fromJson(json['origin'] as Map<String, dynamic>),
       maxDuration: Duration(microseconds: json['maxDuration'] as int),
     );
 
@@ -69,8 +68,7 @@ _$OpenSessionChallengeRequestImpl _$$OpenSessionChallengeRequestImplFromJson(
         Map<String, dynamic> json) =>
     _$OpenSessionChallengeRequestImpl(
       sessionId: json['sessionId'] as String,
-      origin:
-          SessionRequestOrigin.fromJson(json['origin'] as Map<String, dynamic>),
+      origin: RPCSessionOrigin.fromJson(json['origin'] as Map<String, dynamic>),
       challenge: json['challenge'] as String,
       maxDuration: json['maxDuration'] as int,
     );

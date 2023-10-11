@@ -10,6 +10,7 @@ import 'package:archethic_lib_dart/archethic_lib_dart.dart' as aelib;
 import 'package:archethic_wallet_client/src/core/failures.dart';
 import 'package:archethic_wallet_client/src/core/request.dart';
 import 'package:archethic_wallet_client/src/core/result.dart';
+import 'package:archethic_wallet_client/src/core/stream.dart';
 import 'package:archethic_wallet_client/src/core/subscription.dart';
 import 'package:archethic_wallet_client/src/request/account_sub.dart';
 import 'package:archethic_wallet_client/src/request/create_session.dart';
@@ -33,10 +34,15 @@ part 'websocket.dart';
 
 @freezed
 class ArchethicDappSession with _$ArchethicDappSession {
-  const factory ArchethicDappSession({
+  const factory ArchethicDappSession.waitingForValidation({
     required String sessionId,
     required Uint8List aesKey,
-  }) = _ArchethicDappSession;
+  }) = _ArchethicDappSessionWaitingValidation;
+
+  const factory ArchethicDappSession.validated({
+    required String sessionId,
+    required Uint8List aesKey,
+  }) = _ArchethicDappSessionWaitingValidated;
 
   const ArchethicDappSession._();
 }
@@ -55,8 +61,14 @@ class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
   bool get isConnected => this is _Connected;
   bool get isNotConnected => !isConnected;
   bool get isSessionOpened =>
-      this is _Connected && (this as _Connected).session != null;
+      this is _Connected &&
+      (this as _Connected).session is _ArchethicDappSessionWaitingValidated;
   bool get isNotSessionOpened => !isSessionOpened;
+  ArchethicDappSession? get openedSession => mapOrNull(
+        connected: (connected) => connected.session?.mapOrNull(
+          validated: (validated) => validated,
+        ),
+      );
   bool get didSessionOpeningFail => sessionOpeningFailure != null;
   Failure? get sessionOpeningFailure =>
       this is _Connected ? (this as _Connected).sessionFailure : null;
@@ -66,16 +78,14 @@ abstract class ArchethicDAppClient {
   /// Creates a Deeplink or Websocket client according
   /// to current Platform capabilities.
   factory ArchethicDAppClient.auto({
-    required RequestOrigin origin,
     required String replyBaseUrl,
   }) {
     if (WebsocketArchethicDappClient.isAvailable) {
-      return ArchethicDAppClient.websocket(origin: origin);
+      return ArchethicDAppClient.websocket();
     }
 
     if (DeeplinkArchethicDappClient.isAvailable) {
       return ArchethicDAppClient.deeplink(
-        origin: origin,
         replyBaseUrl: replyBaseUrl,
       );
     }
@@ -86,17 +96,13 @@ abstract class ArchethicDAppClient {
   }
 
   factory ArchethicDAppClient.deeplink({
-    required RequestOrigin origin,
     required String replyBaseUrl,
   }) = DeeplinkArchethicDappClient;
 
-  factory ArchethicDAppClient.websocket({
-    required RequestOrigin origin,
-  }) = WebsocketArchethicDappClient;
+  factory ArchethicDAppClient.websocket() = WebsocketArchethicDappClient;
 
   Stream<ArchethicDappConnectionState> get connectionStateStream;
   ArchethicDappConnectionState get state;
-  RequestOrigin get origin;
 
   Future<void> connect();
 

@@ -20,6 +20,10 @@ class Failure with _$Failure implements Exception {
         code: -32601,
         message: 'Unsupported method.',
       );
+  factory Failure.invalidSession() => const Failure(
+        code: 5009,
+        message: 'Invalid session.',
+      );
   factory Failure.timeout() => const Failure(
         code: 5001,
         message: 'Operation timeout.',

@@ -14,36 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SessionRequestOrigin _$SessionRequestOriginFromJson(Map<String, dynamic> json) {
-  return _SessionRequestOrigin.fromJson(json);
+RPCSessionOrigin _$RPCSessionOriginFromJson(Map<String, dynamic> json) {
+  return _RPCSessionOrigin.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SessionRequestOrigin {
+mixin _$RPCSessionOrigin {
   String get name => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
   String? get logo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SessionRequestOriginCopyWith<SessionRequestOrigin> get copyWith =>
+  $RPCSessionOriginCopyWith<RPCSessionOrigin> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SessionRequestOriginCopyWith<$Res> {
-  factory $SessionRequestOriginCopyWith(SessionRequestOrigin value,
-          $Res Function(SessionRequestOrigin) then) =
-      _$SessionRequestOriginCopyWithImpl<$Res, SessionRequestOrigin>;
+abstract class $RPCSessionOriginCopyWith<$Res> {
+  factory $RPCSessionOriginCopyWith(
+          RPCSessionOrigin value, $Res Function(RPCSessionOrigin) then) =
+      _$RPCSessionOriginCopyWithImpl<$Res, RPCSessionOrigin>;
   @useResult
   $Res call({String name, String? url, String? logo});
 }
 
 /// @nodoc
-class _$SessionRequestOriginCopyWithImpl<$Res,
-        $Val extends SessionRequestOrigin>
-    implements $SessionRequestOriginCopyWith<$Res> {
-  _$SessionRequestOriginCopyWithImpl(this._value, this._then);
+class _$RPCSessionOriginCopyWithImpl<$Res, $Val extends RPCSessionOrigin>
+    implements $RPCSessionOriginCopyWith<$Res> {
+  _$RPCSessionOriginCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -75,22 +74,22 @@ class _$SessionRequestOriginCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$SessionRequestOriginImplCopyWith<$Res>
-    implements $SessionRequestOriginCopyWith<$Res> {
-  factory _$$SessionRequestOriginImplCopyWith(_$SessionRequestOriginImpl value,
-          $Res Function(_$SessionRequestOriginImpl) then) =
-      __$$SessionRequestOriginImplCopyWithImpl<$Res>;
+abstract class _$$RPCSessionOriginImplCopyWith<$Res>
+    implements $RPCSessionOriginCopyWith<$Res> {
+  factory _$$RPCSessionOriginImplCopyWith(_$RPCSessionOriginImpl value,
+          $Res Function(_$RPCSessionOriginImpl) then) =
+      __$$RPCSessionOriginImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String? url, String? logo});
 }
 
 /// @nodoc
-class __$$SessionRequestOriginImplCopyWithImpl<$Res>
-    extends _$SessionRequestOriginCopyWithImpl<$Res, _$SessionRequestOriginImpl>
-    implements _$$SessionRequestOriginImplCopyWith<$Res> {
-  __$$SessionRequestOriginImplCopyWithImpl(_$SessionRequestOriginImpl _value,
-      $Res Function(_$SessionRequestOriginImpl) _then)
+class __$$RPCSessionOriginImplCopyWithImpl<$Res>
+    extends _$RPCSessionOriginCopyWithImpl<$Res, _$RPCSessionOriginImpl>
+    implements _$$RPCSessionOriginImplCopyWith<$Res> {
+  __$$RPCSessionOriginImplCopyWithImpl(_$RPCSessionOriginImpl _value,
+      $Res Function(_$RPCSessionOriginImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -100,7 +99,7 @@ class __$$SessionRequestOriginImplCopyWithImpl<$Res>
     Object? url = freezed,
     Object? logo = freezed,
   }) {
-    return _then(_$SessionRequestOriginImpl(
+    return _then(_$RPCSessionOriginImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -119,12 +118,12 @@ class __$$SessionRequestOriginImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SessionRequestOriginImpl extends _SessionRequestOrigin {
-  const _$SessionRequestOriginImpl({required this.name, this.url, this.logo})
+class _$RPCSessionOriginImpl extends _RPCSessionOrigin {
+  const _$RPCSessionOriginImpl({required this.name, this.url, this.logo})
       : super._();
 
-  factory _$SessionRequestOriginImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SessionRequestOriginImplFromJson(json);
+  factory _$RPCSessionOriginImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RPCSessionOriginImplFromJson(json);
 
   @override
   final String name;
@@ -135,14 +134,14 @@ class _$SessionRequestOriginImpl extends _SessionRequestOrigin {
 
   @override
   String toString() {
-    return 'SessionRequestOrigin(name: $name, url: $url, logo: $logo)';
+    return 'RPCSessionOrigin(name: $name, url: $url, logo: $logo)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SessionRequestOriginImpl &&
+            other is _$RPCSessionOriginImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.url, url) || other.url == url) &&
             (identical(other.logo, logo) || other.logo == logo));
@@ -155,28 +154,27 @@ class _$SessionRequestOriginImpl extends _SessionRequestOrigin {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SessionRequestOriginImplCopyWith<_$SessionRequestOriginImpl>
-      get copyWith =>
-          __$$SessionRequestOriginImplCopyWithImpl<_$SessionRequestOriginImpl>(
-              this, _$identity);
+  _$$RPCSessionOriginImplCopyWith<_$RPCSessionOriginImpl> get copyWith =>
+      __$$RPCSessionOriginImplCopyWithImpl<_$RPCSessionOriginImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SessionRequestOriginImplToJson(
+    return _$$RPCSessionOriginImplToJson(
       this,
     );
   }
 }
 
-abstract class _SessionRequestOrigin extends SessionRequestOrigin {
-  const factory _SessionRequestOrigin(
+abstract class _RPCSessionOrigin extends RPCSessionOrigin {
+  const factory _RPCSessionOrigin(
       {required final String name,
       final String? url,
-      final String? logo}) = _$SessionRequestOriginImpl;
-  const _SessionRequestOrigin._() : super._();
+      final String? logo}) = _$RPCSessionOriginImpl;
+  const _RPCSessionOrigin._() : super._();
 
-  factory _SessionRequestOrigin.fromJson(Map<String, dynamic> json) =
-      _$SessionRequestOriginImpl.fromJson;
+  factory _RPCSessionOrigin.fromJson(Map<String, dynamic> json) =
+      _$RPCSessionOriginImpl.fromJson;
 
   @override
   String get name;
@@ -186,8 +184,8 @@ abstract class _SessionRequestOrigin extends SessionRequestOrigin {
   String? get logo;
   @override
   @JsonKey(ignore: true)
-  _$$SessionRequestOriginImplCopyWith<_$SessionRequestOriginImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$RPCSessionOriginImplCopyWith<_$RPCSessionOriginImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 OpenSessionRequest _$OpenSessionRequestFromJson(Map<String, dynamic> json) {
@@ -197,7 +195,7 @@ OpenSessionRequest _$OpenSessionRequestFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OpenSessionRequest {
   String get challenge => throw _privateConstructorUsedError;
-  SessionRequestOrigin get origin => throw _privateConstructorUsedError;
+  RPCSessionOrigin get origin => throw _privateConstructorUsedError;
   Duration get maxDuration => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -212,10 +210,9 @@ abstract class $OpenSessionRequestCopyWith<$Res> {
           OpenSessionRequest value, $Res Function(OpenSessionRequest) then) =
       _$OpenSessionRequestCopyWithImpl<$Res, OpenSessionRequest>;
   @useResult
-  $Res call(
-      {String challenge, SessionRequestOrigin origin, Duration maxDuration});
+  $Res call({String challenge, RPCSessionOrigin origin, Duration maxDuration});
 
-  $SessionRequestOriginCopyWith<$Res> get origin;
+  $RPCSessionOriginCopyWith<$Res> get origin;
 }
 
 /// @nodoc
@@ -243,7 +240,7 @@ class _$OpenSessionRequestCopyWithImpl<$Res, $Val extends OpenSessionRequest>
       origin: null == origin
           ? _value.origin
           : origin // ignore: cast_nullable_to_non_nullable
-              as SessionRequestOrigin,
+              as RPCSessionOrigin,
       maxDuration: null == maxDuration
           ? _value.maxDuration
           : maxDuration // ignore: cast_nullable_to_non_nullable
@@ -253,8 +250,8 @@ class _$OpenSessionRequestCopyWithImpl<$Res, $Val extends OpenSessionRequest>
 
   @override
   @pragma('vm:prefer-inline')
-  $SessionRequestOriginCopyWith<$Res> get origin {
-    return $SessionRequestOriginCopyWith<$Res>(_value.origin, (value) {
+  $RPCSessionOriginCopyWith<$Res> get origin {
+    return $RPCSessionOriginCopyWith<$Res>(_value.origin, (value) {
       return _then(_value.copyWith(origin: value) as $Val);
     });
   }
@@ -268,11 +265,10 @@ abstract class _$$OpenSessionRequestImplCopyWith<$Res>
       __$$OpenSessionRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String challenge, SessionRequestOrigin origin, Duration maxDuration});
+  $Res call({String challenge, RPCSessionOrigin origin, Duration maxDuration});
 
   @override
-  $SessionRequestOriginCopyWith<$Res> get origin;
+  $RPCSessionOriginCopyWith<$Res> get origin;
 }
 
 /// @nodoc
@@ -298,7 +294,7 @@ class __$$OpenSessionRequestImplCopyWithImpl<$Res>
       origin: null == origin
           ? _value.origin
           : origin // ignore: cast_nullable_to_non_nullable
-              as SessionRequestOrigin,
+              as RPCSessionOrigin,
       maxDuration: null == maxDuration
           ? _value.maxDuration
           : maxDuration // ignore: cast_nullable_to_non_nullable
@@ -322,7 +318,7 @@ class _$OpenSessionRequestImpl extends _OpenSessionRequest {
   @override
   final String challenge;
   @override
-  final SessionRequestOrigin origin;
+  final RPCSessionOrigin origin;
   @override
   final Duration maxDuration;
 
@@ -365,7 +361,7 @@ class _$OpenSessionRequestImpl extends _OpenSessionRequest {
 abstract class _OpenSessionRequest extends OpenSessionRequest {
   const factory _OpenSessionRequest(
       {required final String challenge,
-      required final SessionRequestOrigin origin,
+      required final RPCSessionOrigin origin,
       required final Duration maxDuration}) = _$OpenSessionRequestImpl;
   const _OpenSessionRequest._() : super._();
 
@@ -375,7 +371,7 @@ abstract class _OpenSessionRequest extends OpenSessionRequest {
   @override
   String get challenge;
   @override
-  SessionRequestOrigin get origin;
+  RPCSessionOrigin get origin;
   @override
   Duration get maxDuration;
   @override
@@ -710,7 +706,7 @@ OpenSessionChallengeRequest _$OpenSessionChallengeRequestFromJson(
 /// @nodoc
 mixin _$OpenSessionChallengeRequest {
   String get sessionId => throw _privateConstructorUsedError;
-  SessionRequestOrigin get origin => throw _privateConstructorUsedError;
+  RPCSessionOrigin get origin => throw _privateConstructorUsedError;
   String get challenge => throw _privateConstructorUsedError;
   int get maxDuration => throw _privateConstructorUsedError;
 
@@ -730,11 +726,11 @@ abstract class $OpenSessionChallengeRequestCopyWith<$Res> {
   @useResult
   $Res call(
       {String sessionId,
-      SessionRequestOrigin origin,
+      RPCSessionOrigin origin,
       String challenge,
       int maxDuration});
 
-  $SessionRequestOriginCopyWith<$Res> get origin;
+  $RPCSessionOriginCopyWith<$Res> get origin;
 }
 
 /// @nodoc
@@ -764,7 +760,7 @@ class _$OpenSessionChallengeRequestCopyWithImpl<$Res,
       origin: null == origin
           ? _value.origin
           : origin // ignore: cast_nullable_to_non_nullable
-              as SessionRequestOrigin,
+              as RPCSessionOrigin,
       challenge: null == challenge
           ? _value.challenge
           : challenge // ignore: cast_nullable_to_non_nullable
@@ -778,8 +774,8 @@ class _$OpenSessionChallengeRequestCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $SessionRequestOriginCopyWith<$Res> get origin {
-    return $SessionRequestOriginCopyWith<$Res>(_value.origin, (value) {
+  $RPCSessionOriginCopyWith<$Res> get origin {
+    return $RPCSessionOriginCopyWith<$Res>(_value.origin, (value) {
       return _then(_value.copyWith(origin: value) as $Val);
     });
   }
@@ -796,12 +792,12 @@ abstract class _$$OpenSessionChallengeRequestImplCopyWith<$Res>
   @useResult
   $Res call(
       {String sessionId,
-      SessionRequestOrigin origin,
+      RPCSessionOrigin origin,
       String challenge,
       int maxDuration});
 
   @override
-  $SessionRequestOriginCopyWith<$Res> get origin;
+  $RPCSessionOriginCopyWith<$Res> get origin;
 }
 
 /// @nodoc
@@ -830,7 +826,7 @@ class __$$OpenSessionChallengeRequestImplCopyWithImpl<$Res>
       origin: null == origin
           ? _value.origin
           : origin // ignore: cast_nullable_to_non_nullable
-              as SessionRequestOrigin,
+              as RPCSessionOrigin,
       challenge: null == challenge
           ? _value.challenge
           : challenge // ignore: cast_nullable_to_non_nullable
@@ -860,7 +856,7 @@ class _$OpenSessionChallengeRequestImpl extends _OpenSessionChallengeRequest {
   @override
   final String sessionId;
   @override
-  final SessionRequestOrigin origin;
+  final RPCSessionOrigin origin;
   @override
   final String challenge;
   @override
@@ -909,7 +905,7 @@ abstract class _OpenSessionChallengeRequest
     extends OpenSessionChallengeRequest {
   const factory _OpenSessionChallengeRequest(
       {required final String sessionId,
-      required final SessionRequestOrigin origin,
+      required final RPCSessionOrigin origin,
       required final String challenge,
       required final int maxDuration}) = _$OpenSessionChallengeRequestImpl;
   const _OpenSessionChallengeRequest._() : super._();
@@ -920,7 +916,7 @@ abstract class _OpenSessionChallengeRequest
   @override
   String get sessionId;
   @override
-  SessionRequestOrigin get origin;
+  RPCSessionOrigin get origin;
   @override
   String get challenge;
   @override
