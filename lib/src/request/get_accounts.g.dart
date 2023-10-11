@@ -33,3 +33,11 @@ Map<String, dynamic> _$$GetAccountsResultImplToJson(
     <String, dynamic>{
       'accounts': instance.accounts,
     };
+
+_$GetAccountsRequestImpl _$$GetAccountsRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GetAccountsRequestImpl();
+
+Map<String, dynamic> _$$GetAccountsRequestImplToJson(
+        _$GetAccountsRequestImpl instance) =>
+    <String, dynamic>{};

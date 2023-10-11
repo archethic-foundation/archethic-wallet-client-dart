@@ -16,45 +16,55 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Session {
+  DateTime get createdAt => throw _privateConstructorUsedError;
   String get sessionId => throw _privateConstructorUsedError;
   Uint8List get aesKey => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sessionId, Uint8List aesKey)
+    required TResult Function(
+            DateTime createdAt, String sessionId, Uint8List aesKey)
         waitingForValidation,
-    required TResult Function(String sessionId, Uint8List aesKey) validated,
+    required TResult Function(DateTime createdAt, String sessionId,
+            Uint8List aesKey, RPCSessionOrigin origin)
+        validated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult? Function(String sessionId, Uint8List aesKey)? validated,
+    TResult? Function(DateTime createdAt, String sessionId, Uint8List aesKey)?
+        waitingForValidation,
+    TResult? Function(DateTime createdAt, String sessionId, Uint8List aesKey,
+            RPCSessionOrigin origin)?
+        validated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult Function(String sessionId, Uint8List aesKey)? validated,
+    TResult Function(DateTime createdAt, String sessionId, Uint8List aesKey)?
+        waitingForValidation,
+    TResult Function(DateTime createdAt, String sessionId, Uint8List aesKey,
+            RPCSessionOrigin origin)?
+        validated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SessionWaitingValidation value)
+    required TResult Function(SessionWaitingForValidation value)
         waitingForValidation,
-    required TResult Function(_SessionWaitingValidated value) validated,
+    required TResult Function(ValidatedSession value) validated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SessionWaitingValidation value)? waitingForValidation,
-    TResult? Function(_SessionWaitingValidated value)? validated,
+    TResult? Function(SessionWaitingForValidation value)? waitingForValidation,
+    TResult? Function(ValidatedSession value)? validated,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SessionWaitingValidation value)? waitingForValidation,
-    TResult Function(_SessionWaitingValidated value)? validated,
+    TResult Function(SessionWaitingForValidation value)? waitingForValidation,
+    TResult Function(ValidatedSession value)? validated,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -68,7 +78,7 @@ abstract class $SessionCopyWith<$Res> {
   factory $SessionCopyWith(Session value, $Res Function(Session) then) =
       _$SessionCopyWithImpl<$Res, Session>;
   @useResult
-  $Res call({String sessionId, Uint8List aesKey});
+  $Res call({DateTime createdAt, String sessionId, Uint8List aesKey});
 }
 
 /// @nodoc
@@ -84,10 +94,15 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? createdAt = null,
     Object? sessionId = null,
     Object? aesKey = null,
   }) {
     return _then(_value.copyWith(
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
@@ -101,33 +116,38 @@ class _$SessionCopyWithImpl<$Res, $Val extends Session>
 }
 
 /// @nodoc
-abstract class _$$SessionWaitingValidationImplCopyWith<$Res>
+abstract class _$$SessionWaitingForValidationImplCopyWith<$Res>
     implements $SessionCopyWith<$Res> {
-  factory _$$SessionWaitingValidationImplCopyWith(
-          _$SessionWaitingValidationImpl value,
-          $Res Function(_$SessionWaitingValidationImpl) then) =
-      __$$SessionWaitingValidationImplCopyWithImpl<$Res>;
+  factory _$$SessionWaitingForValidationImplCopyWith(
+          _$SessionWaitingForValidationImpl value,
+          $Res Function(_$SessionWaitingForValidationImpl) then) =
+      __$$SessionWaitingForValidationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String sessionId, Uint8List aesKey});
+  $Res call({DateTime createdAt, String sessionId, Uint8List aesKey});
 }
 
 /// @nodoc
-class __$$SessionWaitingValidationImplCopyWithImpl<$Res>
-    extends _$SessionCopyWithImpl<$Res, _$SessionWaitingValidationImpl>
-    implements _$$SessionWaitingValidationImplCopyWith<$Res> {
-  __$$SessionWaitingValidationImplCopyWithImpl(
-      _$SessionWaitingValidationImpl _value,
-      $Res Function(_$SessionWaitingValidationImpl) _then)
+class __$$SessionWaitingForValidationImplCopyWithImpl<$Res>
+    extends _$SessionCopyWithImpl<$Res, _$SessionWaitingForValidationImpl>
+    implements _$$SessionWaitingForValidationImplCopyWith<$Res> {
+  __$$SessionWaitingForValidationImplCopyWithImpl(
+      _$SessionWaitingForValidationImpl _value,
+      $Res Function(_$SessionWaitingForValidationImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? createdAt = null,
     Object? sessionId = null,
     Object? aesKey = null,
   }) {
-    return _then(_$SessionWaitingValidationImpl(
+    return _then(_$SessionWaitingForValidationImpl(
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
@@ -142,11 +162,13 @@ class __$$SessionWaitingValidationImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SessionWaitingValidationImpl extends _SessionWaitingValidation {
-  const _$SessionWaitingValidationImpl(
-      {required this.sessionId, required this.aesKey})
+class _$SessionWaitingForValidationImpl extends SessionWaitingForValidation {
+  const _$SessionWaitingForValidationImpl(
+      {required this.createdAt, required this.sessionId, required this.aesKey})
       : super._();
 
+  @override
+  final DateTime createdAt;
   @override
   final String sessionId;
   @override
@@ -154,58 +176,69 @@ class _$SessionWaitingValidationImpl extends _SessionWaitingValidation {
 
   @override
   String toString() {
-    return 'Session.waitingForValidation(sessionId: $sessionId, aesKey: $aesKey)';
+    return 'Session.waitingForValidation(createdAt: $createdAt, sessionId: $sessionId, aesKey: $aesKey)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SessionWaitingValidationImpl &&
+            other is _$SessionWaitingForValidationImpl &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.sessionId, sessionId) ||
                 other.sessionId == sessionId) &&
             const DeepCollectionEquality().equals(other.aesKey, aesKey));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, sessionId, const DeepCollectionEquality().hash(aesKey));
+  int get hashCode => Object.hash(runtimeType, createdAt, sessionId,
+      const DeepCollectionEquality().hash(aesKey));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SessionWaitingValidationImplCopyWith<_$SessionWaitingValidationImpl>
-      get copyWith => __$$SessionWaitingValidationImplCopyWithImpl<
-          _$SessionWaitingValidationImpl>(this, _$identity);
+  _$$SessionWaitingForValidationImplCopyWith<_$SessionWaitingForValidationImpl>
+      get copyWith => __$$SessionWaitingForValidationImplCopyWithImpl<
+          _$SessionWaitingForValidationImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sessionId, Uint8List aesKey)
+    required TResult Function(
+            DateTime createdAt, String sessionId, Uint8List aesKey)
         waitingForValidation,
-    required TResult Function(String sessionId, Uint8List aesKey) validated,
+    required TResult Function(DateTime createdAt, String sessionId,
+            Uint8List aesKey, RPCSessionOrigin origin)
+        validated,
   }) {
-    return waitingForValidation(sessionId, aesKey);
+    return waitingForValidation(createdAt, sessionId, aesKey);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult? Function(String sessionId, Uint8List aesKey)? validated,
+    TResult? Function(DateTime createdAt, String sessionId, Uint8List aesKey)?
+        waitingForValidation,
+    TResult? Function(DateTime createdAt, String sessionId, Uint8List aesKey,
+            RPCSessionOrigin origin)?
+        validated,
   }) {
-    return waitingForValidation?.call(sessionId, aesKey);
+    return waitingForValidation?.call(createdAt, sessionId, aesKey);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult Function(String sessionId, Uint8List aesKey)? validated,
+    TResult Function(DateTime createdAt, String sessionId, Uint8List aesKey)?
+        waitingForValidation,
+    TResult Function(DateTime createdAt, String sessionId, Uint8List aesKey,
+            RPCSessionOrigin origin)?
+        validated,
     required TResult orElse(),
   }) {
     if (waitingForValidation != null) {
-      return waitingForValidation(sessionId, aesKey);
+      return waitingForValidation(createdAt, sessionId, aesKey);
     }
     return orElse();
   }
@@ -213,9 +246,9 @@ class _$SessionWaitingValidationImpl extends _SessionWaitingValidation {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SessionWaitingValidation value)
+    required TResult Function(SessionWaitingForValidation value)
         waitingForValidation,
-    required TResult Function(_SessionWaitingValidated value) validated,
+    required TResult Function(ValidatedSession value) validated,
   }) {
     return waitingForValidation(this);
   }
@@ -223,8 +256,8 @@ class _$SessionWaitingValidationImpl extends _SessionWaitingValidation {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SessionWaitingValidation value)? waitingForValidation,
-    TResult? Function(_SessionWaitingValidated value)? validated,
+    TResult? Function(SessionWaitingForValidation value)? waitingForValidation,
+    TResult? Function(ValidatedSession value)? validated,
   }) {
     return waitingForValidation?.call(this);
   }
@@ -232,8 +265,8 @@ class _$SessionWaitingValidationImpl extends _SessionWaitingValidation {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SessionWaitingValidation value)? waitingForValidation,
-    TResult Function(_SessionWaitingValidated value)? validated,
+    TResult Function(SessionWaitingForValidation value)? waitingForValidation,
+    TResult Function(ValidatedSession value)? validated,
     required TResult orElse(),
   }) {
     if (waitingForValidation != null) {
@@ -243,50 +276,63 @@ class _$SessionWaitingValidationImpl extends _SessionWaitingValidation {
   }
 }
 
-abstract class _SessionWaitingValidation extends Session {
-  const factory _SessionWaitingValidation(
-      {required final String sessionId,
-      required final Uint8List aesKey}) = _$SessionWaitingValidationImpl;
-  const _SessionWaitingValidation._() : super._();
+abstract class SessionWaitingForValidation extends Session {
+  const factory SessionWaitingForValidation(
+      {required final DateTime createdAt,
+      required final String sessionId,
+      required final Uint8List aesKey}) = _$SessionWaitingForValidationImpl;
+  const SessionWaitingForValidation._() : super._();
 
+  @override
+  DateTime get createdAt;
   @override
   String get sessionId;
   @override
   Uint8List get aesKey;
   @override
   @JsonKey(ignore: true)
-  _$$SessionWaitingValidationImplCopyWith<_$SessionWaitingValidationImpl>
+  _$$SessionWaitingForValidationImplCopyWith<_$SessionWaitingForValidationImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SessionWaitingValidatedImplCopyWith<$Res>
+abstract class _$$ValidatedSessionImplCopyWith<$Res>
     implements $SessionCopyWith<$Res> {
-  factory _$$SessionWaitingValidatedImplCopyWith(
-          _$SessionWaitingValidatedImpl value,
-          $Res Function(_$SessionWaitingValidatedImpl) then) =
-      __$$SessionWaitingValidatedImplCopyWithImpl<$Res>;
+  factory _$$ValidatedSessionImplCopyWith(_$ValidatedSessionImpl value,
+          $Res Function(_$ValidatedSessionImpl) then) =
+      __$$ValidatedSessionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String sessionId, Uint8List aesKey});
+  $Res call(
+      {DateTime createdAt,
+      String sessionId,
+      Uint8List aesKey,
+      RPCSessionOrigin origin});
+
+  $RPCSessionOriginCopyWith<$Res> get origin;
 }
 
 /// @nodoc
-class __$$SessionWaitingValidatedImplCopyWithImpl<$Res>
-    extends _$SessionCopyWithImpl<$Res, _$SessionWaitingValidatedImpl>
-    implements _$$SessionWaitingValidatedImplCopyWith<$Res> {
-  __$$SessionWaitingValidatedImplCopyWithImpl(
-      _$SessionWaitingValidatedImpl _value,
-      $Res Function(_$SessionWaitingValidatedImpl) _then)
+class __$$ValidatedSessionImplCopyWithImpl<$Res>
+    extends _$SessionCopyWithImpl<$Res, _$ValidatedSessionImpl>
+    implements _$$ValidatedSessionImplCopyWith<$Res> {
+  __$$ValidatedSessionImplCopyWithImpl(_$ValidatedSessionImpl _value,
+      $Res Function(_$ValidatedSessionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? createdAt = null,
     Object? sessionId = null,
     Object? aesKey = null,
+    Object? origin = null,
   }) {
-    return _then(_$SessionWaitingValidatedImpl(
+    return _then(_$ValidatedSessionImpl(
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       sessionId: null == sessionId
           ? _value.sessionId
           : sessionId // ignore: cast_nullable_to_non_nullable
@@ -295,76 +341,107 @@ class __$$SessionWaitingValidatedImplCopyWithImpl<$Res>
           ? _value.aesKey
           : aesKey // ignore: cast_nullable_to_non_nullable
               as Uint8List,
+      origin: null == origin
+          ? _value.origin
+          : origin // ignore: cast_nullable_to_non_nullable
+              as RPCSessionOrigin,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RPCSessionOriginCopyWith<$Res> get origin {
+    return $RPCSessionOriginCopyWith<$Res>(_value.origin, (value) {
+      return _then(_value.copyWith(origin: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$SessionWaitingValidatedImpl extends _SessionWaitingValidated {
-  const _$SessionWaitingValidatedImpl(
-      {required this.sessionId, required this.aesKey})
+class _$ValidatedSessionImpl extends ValidatedSession {
+  const _$ValidatedSessionImpl(
+      {required this.createdAt,
+      required this.sessionId,
+      required this.aesKey,
+      required this.origin})
       : super._();
 
+  @override
+  final DateTime createdAt;
   @override
   final String sessionId;
   @override
   final Uint8List aesKey;
+  @override
+  final RPCSessionOrigin origin;
 
   @override
   String toString() {
-    return 'Session.validated(sessionId: $sessionId, aesKey: $aesKey)';
+    return 'Session.validated(createdAt: $createdAt, sessionId: $sessionId, aesKey: $aesKey, origin: $origin)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SessionWaitingValidatedImpl &&
+            other is _$ValidatedSessionImpl &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
             (identical(other.sessionId, sessionId) ||
                 other.sessionId == sessionId) &&
-            const DeepCollectionEquality().equals(other.aesKey, aesKey));
+            const DeepCollectionEquality().equals(other.aesKey, aesKey) &&
+            (identical(other.origin, origin) || other.origin == origin));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, sessionId, const DeepCollectionEquality().hash(aesKey));
+  int get hashCode => Object.hash(runtimeType, createdAt, sessionId,
+      const DeepCollectionEquality().hash(aesKey), origin);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SessionWaitingValidatedImplCopyWith<_$SessionWaitingValidatedImpl>
-      get copyWith => __$$SessionWaitingValidatedImplCopyWithImpl<
-          _$SessionWaitingValidatedImpl>(this, _$identity);
+  _$$ValidatedSessionImplCopyWith<_$ValidatedSessionImpl> get copyWith =>
+      __$$ValidatedSessionImplCopyWithImpl<_$ValidatedSessionImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String sessionId, Uint8List aesKey)
+    required TResult Function(
+            DateTime createdAt, String sessionId, Uint8List aesKey)
         waitingForValidation,
-    required TResult Function(String sessionId, Uint8List aesKey) validated,
+    required TResult Function(DateTime createdAt, String sessionId,
+            Uint8List aesKey, RPCSessionOrigin origin)
+        validated,
   }) {
-    return validated(sessionId, aesKey);
+    return validated(createdAt, sessionId, aesKey, origin);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult? Function(String sessionId, Uint8List aesKey)? validated,
+    TResult? Function(DateTime createdAt, String sessionId, Uint8List aesKey)?
+        waitingForValidation,
+    TResult? Function(DateTime createdAt, String sessionId, Uint8List aesKey,
+            RPCSessionOrigin origin)?
+        validated,
   }) {
-    return validated?.call(sessionId, aesKey);
+    return validated?.call(createdAt, sessionId, aesKey, origin);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult Function(String sessionId, Uint8List aesKey)? validated,
+    TResult Function(DateTime createdAt, String sessionId, Uint8List aesKey)?
+        waitingForValidation,
+    TResult Function(DateTime createdAt, String sessionId, Uint8List aesKey,
+            RPCSessionOrigin origin)?
+        validated,
     required TResult orElse(),
   }) {
     if (validated != null) {
-      return validated(sessionId, aesKey);
+      return validated(createdAt, sessionId, aesKey, origin);
     }
     return orElse();
   }
@@ -372,9 +449,9 @@ class _$SessionWaitingValidatedImpl extends _SessionWaitingValidated {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_SessionWaitingValidation value)
+    required TResult Function(SessionWaitingForValidation value)
         waitingForValidation,
-    required TResult Function(_SessionWaitingValidated value) validated,
+    required TResult Function(ValidatedSession value) validated,
   }) {
     return validated(this);
   }
@@ -382,8 +459,8 @@ class _$SessionWaitingValidatedImpl extends _SessionWaitingValidated {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_SessionWaitingValidation value)? waitingForValidation,
-    TResult? Function(_SessionWaitingValidated value)? validated,
+    TResult? Function(SessionWaitingForValidation value)? waitingForValidation,
+    TResult? Function(ValidatedSession value)? validated,
   }) {
     return validated?.call(this);
   }
@@ -391,8 +468,8 @@ class _$SessionWaitingValidatedImpl extends _SessionWaitingValidated {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_SessionWaitingValidation value)? waitingForValidation,
-    TResult Function(_SessionWaitingValidated value)? validated,
+    TResult Function(SessionWaitingForValidation value)? waitingForValidation,
+    TResult Function(ValidatedSession value)? validated,
     required TResult orElse(),
   }) {
     if (validated != null) {
@@ -402,18 +479,23 @@ class _$SessionWaitingValidatedImpl extends _SessionWaitingValidated {
   }
 }
 
-abstract class _SessionWaitingValidated extends Session {
-  const factory _SessionWaitingValidated(
-      {required final String sessionId,
-      required final Uint8List aesKey}) = _$SessionWaitingValidatedImpl;
-  const _SessionWaitingValidated._() : super._();
+abstract class ValidatedSession extends Session {
+  const factory ValidatedSession(
+      {required final DateTime createdAt,
+      required final String sessionId,
+      required final Uint8List aesKey,
+      required final RPCSessionOrigin origin}) = _$ValidatedSessionImpl;
+  const ValidatedSession._() : super._();
 
+  @override
+  DateTime get createdAt;
   @override
   String get sessionId;
   @override
   Uint8List get aesKey;
+  RPCSessionOrigin get origin;
   @override
   @JsonKey(ignore: true)
-  _$$SessionWaitingValidatedImplCopyWith<_$SessionWaitingValidatedImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$ValidatedSessionImplCopyWith<_$ValidatedSessionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

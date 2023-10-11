@@ -81,3 +81,17 @@ Map<String, dynamic> _$$OpenSessionChallengeRequestImplToJson(
       'challenge': instance.challenge,
       'maxDuration': instance.maxDuration,
     };
+
+_$OpenSessionChallengeResponseImpl _$$OpenSessionChallengeResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$OpenSessionChallengeResponseImpl(
+      sessionId: json['sessionId'] as String,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+    );
+
+Map<String, dynamic> _$$OpenSessionChallengeResponseImplToJson(
+        _$OpenSessionChallengeResponseImpl instance) =>
+    <String, dynamic>{
+      'sessionId': instance.sessionId,
+      'createdAt': instance.createdAt.toIso8601String(),
+    };

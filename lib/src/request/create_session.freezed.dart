@@ -926,3 +926,174 @@ abstract class _OpenSessionChallengeRequest
   _$$OpenSessionChallengeRequestImplCopyWith<_$OpenSessionChallengeRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+OpenSessionChallengeResponse _$OpenSessionChallengeResponseFromJson(
+    Map<String, dynamic> json) {
+  return _OpenSessionChallengeResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$OpenSessionChallengeResponse {
+  String get sessionId => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $OpenSessionChallengeResponseCopyWith<OpenSessionChallengeResponse>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $OpenSessionChallengeResponseCopyWith<$Res> {
+  factory $OpenSessionChallengeResponseCopyWith(
+          OpenSessionChallengeResponse value,
+          $Res Function(OpenSessionChallengeResponse) then) =
+      _$OpenSessionChallengeResponseCopyWithImpl<$Res,
+          OpenSessionChallengeResponse>;
+  @useResult
+  $Res call({String sessionId, DateTime createdAt});
+}
+
+/// @nodoc
+class _$OpenSessionChallengeResponseCopyWithImpl<$Res,
+        $Val extends OpenSessionChallengeResponse>
+    implements $OpenSessionChallengeResponseCopyWith<$Res> {
+  _$OpenSessionChallengeResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sessionId = null,
+    Object? createdAt = null,
+  }) {
+    return _then(_value.copyWith(
+      sessionId: null == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$OpenSessionChallengeResponseImplCopyWith<$Res>
+    implements $OpenSessionChallengeResponseCopyWith<$Res> {
+  factory _$$OpenSessionChallengeResponseImplCopyWith(
+          _$OpenSessionChallengeResponseImpl value,
+          $Res Function(_$OpenSessionChallengeResponseImpl) then) =
+      __$$OpenSessionChallengeResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String sessionId, DateTime createdAt});
+}
+
+/// @nodoc
+class __$$OpenSessionChallengeResponseImplCopyWithImpl<$Res>
+    extends _$OpenSessionChallengeResponseCopyWithImpl<$Res,
+        _$OpenSessionChallengeResponseImpl>
+    implements _$$OpenSessionChallengeResponseImplCopyWith<$Res> {
+  __$$OpenSessionChallengeResponseImplCopyWithImpl(
+      _$OpenSessionChallengeResponseImpl _value,
+      $Res Function(_$OpenSessionChallengeResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? sessionId = null,
+    Object? createdAt = null,
+  }) {
+    return _then(_$OpenSessionChallengeResponseImpl(
+      sessionId: null == sessionId
+          ? _value.sessionId
+          : sessionId // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OpenSessionChallengeResponseImpl extends _OpenSessionChallengeResponse {
+  const _$OpenSessionChallengeResponseImpl(
+      {required this.sessionId, required this.createdAt})
+      : super._();
+
+  factory _$OpenSessionChallengeResponseImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$OpenSessionChallengeResponseImplFromJson(json);
+
+  @override
+  final String sessionId;
+  @override
+  final DateTime createdAt;
+
+  @override
+  String toString() {
+    return 'OpenSessionChallengeResponse(sessionId: $sessionId, createdAt: $createdAt)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OpenSessionChallengeResponseImpl &&
+            (identical(other.sessionId, sessionId) ||
+                other.sessionId == sessionId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, sessionId, createdAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OpenSessionChallengeResponseImplCopyWith<
+          _$OpenSessionChallengeResponseImpl>
+      get copyWith => __$$OpenSessionChallengeResponseImplCopyWithImpl<
+          _$OpenSessionChallengeResponseImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OpenSessionChallengeResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _OpenSessionChallengeResponse
+    extends OpenSessionChallengeResponse {
+  const factory _OpenSessionChallengeResponse(
+      {required final String sessionId,
+      required final DateTime createdAt}) = _$OpenSessionChallengeResponseImpl;
+  const _OpenSessionChallengeResponse._() : super._();
+
+  factory _OpenSessionChallengeResponse.fromJson(Map<String, dynamic> json) =
+      _$OpenSessionChallengeResponseImpl.fromJson;
+
+  @override
+  String get sessionId;
+  @override
+  DateTime get createdAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$OpenSessionChallengeResponseImplCopyWith<
+          _$OpenSessionChallengeResponseImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

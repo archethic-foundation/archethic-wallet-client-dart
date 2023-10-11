@@ -42,9 +42,7 @@ class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
           );
   bool get isNotSessionOpened => !isSessionOpened;
   Session? get openedSession => mapOrNull(
-        connected: (connected) => connected.session?.mapOrNull(
-          validated: (validated) => validated,
-        ),
+        connected: (connected) => connected.session,
       );
   bool get didSessionOpeningFail => sessionOpeningFailure != null;
   Failure? get sessionOpeningFailure =>

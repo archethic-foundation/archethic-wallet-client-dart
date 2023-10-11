@@ -317,3 +317,283 @@ abstract class _SubscriptionUpdate extends SubscriptionUpdate {
   _$$SubscriptionUpdateImplCopyWith<_$SubscriptionUpdateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+SubscribeResponse _$SubscribeResponseFromJson(Map<String, dynamic> json) {
+  return _SubscribeResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SubscribeResponse {
+  String get subscriptionId => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SubscribeResponseCopyWith<SubscribeResponse> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SubscribeResponseCopyWith<$Res> {
+  factory $SubscribeResponseCopyWith(
+          SubscribeResponse value, $Res Function(SubscribeResponse) then) =
+      _$SubscribeResponseCopyWithImpl<$Res, SubscribeResponse>;
+  @useResult
+  $Res call({String subscriptionId});
+}
+
+/// @nodoc
+class _$SubscribeResponseCopyWithImpl<$Res, $Val extends SubscribeResponse>
+    implements $SubscribeResponseCopyWith<$Res> {
+  _$SubscribeResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subscriptionId = null,
+  }) {
+    return _then(_value.copyWith(
+      subscriptionId: null == subscriptionId
+          ? _value.subscriptionId
+          : subscriptionId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SubscribeResponseImplCopyWith<$Res>
+    implements $SubscribeResponseCopyWith<$Res> {
+  factory _$$SubscribeResponseImplCopyWith(_$SubscribeResponseImpl value,
+          $Res Function(_$SubscribeResponseImpl) then) =
+      __$$SubscribeResponseImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String subscriptionId});
+}
+
+/// @nodoc
+class __$$SubscribeResponseImplCopyWithImpl<$Res>
+    extends _$SubscribeResponseCopyWithImpl<$Res, _$SubscribeResponseImpl>
+    implements _$$SubscribeResponseImplCopyWith<$Res> {
+  __$$SubscribeResponseImplCopyWithImpl(_$SubscribeResponseImpl _value,
+      $Res Function(_$SubscribeResponseImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subscriptionId = null,
+  }) {
+    return _then(_$SubscribeResponseImpl(
+      subscriptionId: null == subscriptionId
+          ? _value.subscriptionId
+          : subscriptionId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SubscribeResponseImpl extends _SubscribeResponse {
+  const _$SubscribeResponseImpl({required this.subscriptionId}) : super._();
+
+  factory _$SubscribeResponseImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubscribeResponseImplFromJson(json);
+
+  @override
+  final String subscriptionId;
+
+  @override
+  String toString() {
+    return 'SubscribeResponse(subscriptionId: $subscriptionId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubscribeResponseImpl &&
+            (identical(other.subscriptionId, subscriptionId) ||
+                other.subscriptionId == subscriptionId));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, subscriptionId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubscribeResponseImplCopyWith<_$SubscribeResponseImpl> get copyWith =>
+      __$$SubscribeResponseImplCopyWithImpl<_$SubscribeResponseImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SubscribeResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SubscribeResponse extends SubscribeResponse {
+  const factory _SubscribeResponse({required final String subscriptionId}) =
+      _$SubscribeResponseImpl;
+  const _SubscribeResponse._() : super._();
+
+  factory _SubscribeResponse.fromJson(Map<String, dynamic> json) =
+      _$SubscribeResponseImpl.fromJson;
+
+  @override
+  String get subscriptionId;
+  @override
+  @JsonKey(ignore: true)
+  _$$SubscribeResponseImplCopyWith<_$SubscribeResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UnsubscribeRequest _$UnsubscribeRequestFromJson(Map<String, dynamic> json) {
+  return _UnsubscribeRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$UnsubscribeRequest {
+  String get subscriptionId => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UnsubscribeRequestCopyWith<UnsubscribeRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UnsubscribeRequestCopyWith<$Res> {
+  factory $UnsubscribeRequestCopyWith(
+          UnsubscribeRequest value, $Res Function(UnsubscribeRequest) then) =
+      _$UnsubscribeRequestCopyWithImpl<$Res, UnsubscribeRequest>;
+  @useResult
+  $Res call({String subscriptionId});
+}
+
+/// @nodoc
+class _$UnsubscribeRequestCopyWithImpl<$Res, $Val extends UnsubscribeRequest>
+    implements $UnsubscribeRequestCopyWith<$Res> {
+  _$UnsubscribeRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subscriptionId = null,
+  }) {
+    return _then(_value.copyWith(
+      subscriptionId: null == subscriptionId
+          ? _value.subscriptionId
+          : subscriptionId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$UnsubscribeRequestImplCopyWith<$Res>
+    implements $UnsubscribeRequestCopyWith<$Res> {
+  factory _$$UnsubscribeRequestImplCopyWith(_$UnsubscribeRequestImpl value,
+          $Res Function(_$UnsubscribeRequestImpl) then) =
+      __$$UnsubscribeRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String subscriptionId});
+}
+
+/// @nodoc
+class __$$UnsubscribeRequestImplCopyWithImpl<$Res>
+    extends _$UnsubscribeRequestCopyWithImpl<$Res, _$UnsubscribeRequestImpl>
+    implements _$$UnsubscribeRequestImplCopyWith<$Res> {
+  __$$UnsubscribeRequestImplCopyWithImpl(_$UnsubscribeRequestImpl _value,
+      $Res Function(_$UnsubscribeRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? subscriptionId = null,
+  }) {
+    return _then(_$UnsubscribeRequestImpl(
+      subscriptionId: null == subscriptionId
+          ? _value.subscriptionId
+          : subscriptionId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$UnsubscribeRequestImpl extends _UnsubscribeRequest {
+  const _$UnsubscribeRequestImpl({required this.subscriptionId}) : super._();
+
+  factory _$UnsubscribeRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UnsubscribeRequestImplFromJson(json);
+
+  @override
+  final String subscriptionId;
+
+  @override
+  String toString() {
+    return 'UnsubscribeRequest(subscriptionId: $subscriptionId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UnsubscribeRequestImpl &&
+            (identical(other.subscriptionId, subscriptionId) ||
+                other.subscriptionId == subscriptionId));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, subscriptionId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UnsubscribeRequestImplCopyWith<_$UnsubscribeRequestImpl> get copyWith =>
+      __$$UnsubscribeRequestImplCopyWithImpl<_$UnsubscribeRequestImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$UnsubscribeRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _UnsubscribeRequest extends UnsubscribeRequest {
+  const factory _UnsubscribeRequest({required final String subscriptionId}) =
+      _$UnsubscribeRequestImpl;
+  const _UnsubscribeRequest._() : super._();
+
+  factory _UnsubscribeRequest.fromJson(Map<String, dynamic> json) =
+      _$UnsubscribeRequestImpl.fromJson;
+
+  @override
+  String get subscriptionId;
+  @override
+  @JsonKey(ignore: true)
+  _$$UnsubscribeRequestImplCopyWith<_$UnsubscribeRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -19,3 +19,27 @@ Map<String, dynamic> _$$SubscriptionUpdateImplToJson(
       'subscriptionId': instance.subscriptionId,
       'data': instance.data,
     };
+
+_$SubscribeResponseImpl _$$SubscribeResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SubscribeResponseImpl(
+      subscriptionId: json['subscriptionId'] as String,
+    );
+
+Map<String, dynamic> _$$SubscribeResponseImplToJson(
+        _$SubscribeResponseImpl instance) =>
+    <String, dynamic>{
+      'subscriptionId': instance.subscriptionId,
+    };
+
+_$UnsubscribeRequestImpl _$$UnsubscribeRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$UnsubscribeRequestImpl(
+      subscriptionId: json['subscriptionId'] as String,
+    );
+
+Map<String, dynamic> _$$UnsubscribeRequestImplToJson(
+        _$UnsubscribeRequestImpl instance) =>
+    <String, dynamic>{
+      'subscriptionId': instance.subscriptionId,
+    };

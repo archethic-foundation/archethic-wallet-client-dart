@@ -28,3 +28,12 @@ class GetAccountsResult with _$GetAccountsResult {
   factory GetAccountsResult.fromJson(Map<String, dynamic> json) =>
       _$GetAccountsResultFromJson(json);
 }
+
+@freezed
+class GetAccountsRequest with _$GetAccountsRequest {
+  const factory GetAccountsRequest() = _GetAccountsRequest;
+  const GetAccountsRequest._();
+
+  factory GetAccountsRequest.fromJson(Map<String, dynamic> json) =>
+      _$GetAccountsRequestFromJson(json);
+}

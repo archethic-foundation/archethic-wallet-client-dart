@@ -65,3 +65,15 @@ class OpenSessionChallengeRequest with _$OpenSessionChallengeRequest {
   factory OpenSessionChallengeRequest.fromJson(Map<String, dynamic> json) =>
       _$OpenSessionChallengeRequestFromJson(json);
 }
+
+@freezed
+class OpenSessionChallengeResponse with _$OpenSessionChallengeResponse {
+  const factory OpenSessionChallengeResponse({
+    required String sessionId,
+    required DateTime createdAt,
+  }) = _OpenSessionChallengeResponse;
+  const OpenSessionChallengeResponse._();
+
+  factory OpenSessionChallengeResponse.fromJson(Map<String, dynamic> json) =>
+      _$OpenSessionChallengeResponseFromJson(json);
+}

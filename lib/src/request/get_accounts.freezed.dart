@@ -340,3 +340,85 @@ abstract class _GetAccountsResult extends GetAccountsResult {
   _$$GetAccountsResultImplCopyWith<_$GetAccountsResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+GetAccountsRequest _$GetAccountsRequestFromJson(Map<String, dynamic> json) {
+  return _GetAccountsRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GetAccountsRequest {
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetAccountsRequestCopyWith<$Res> {
+  factory $GetAccountsRequestCopyWith(
+          GetAccountsRequest value, $Res Function(GetAccountsRequest) then) =
+      _$GetAccountsRequestCopyWithImpl<$Res, GetAccountsRequest>;
+}
+
+/// @nodoc
+class _$GetAccountsRequestCopyWithImpl<$Res, $Val extends GetAccountsRequest>
+    implements $GetAccountsRequestCopyWith<$Res> {
+  _$GetAccountsRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetAccountsRequestImplCopyWith<$Res> {
+  factory _$$GetAccountsRequestImplCopyWith(_$GetAccountsRequestImpl value,
+          $Res Function(_$GetAccountsRequestImpl) then) =
+      __$$GetAccountsRequestImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetAccountsRequestImplCopyWithImpl<$Res>
+    extends _$GetAccountsRequestCopyWithImpl<$Res, _$GetAccountsRequestImpl>
+    implements _$$GetAccountsRequestImplCopyWith<$Res> {
+  __$$GetAccountsRequestImplCopyWithImpl(_$GetAccountsRequestImpl _value,
+      $Res Function(_$GetAccountsRequestImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GetAccountsRequestImpl extends _GetAccountsRequest {
+  const _$GetAccountsRequestImpl() : super._();
+
+  factory _$GetAccountsRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetAccountsRequestImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'GetAccountsRequest()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetAccountsRequestImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GetAccountsRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GetAccountsRequest extends GetAccountsRequest {
+  const factory _GetAccountsRequest() = _$GetAccountsRequestImpl;
+  const _GetAccountsRequest._() : super._();
+
+  factory _GetAccountsRequest.fromJson(Map<String, dynamic> json) =
+      _$GetAccountsRequestImpl.fromJson;
+}
