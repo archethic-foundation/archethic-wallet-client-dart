@@ -17,8 +17,7 @@ class WebsocketArchethicDappClient
   static bool get isAvailable =>
       kIsWeb || Platform.isLinux || Platform.isMacOS || Platform.isWindows;
 
-  final _subscriptionValues =
-      StreamController<RPCSubscriptionUpdateDTO>.broadcast();
+  final _subscriptionValues = StreamController<SubscriptionUpdate>.broadcast();
 
   @override
   ArchethicDappConnectionState get state => _connectionStateController.state;
@@ -58,7 +57,7 @@ class WebsocketArchethicDappClient
       (params) {
         log('Received value');
         _subscriptionValues.add(
-          RPCSubscriptionUpdateDTO.fromJson(params.value),
+          SubscriptionUpdate.fromJson(params.value),
         );
       },
     );
@@ -104,7 +103,7 @@ class WebsocketArchethicDappClient
   }
 
   @override
-  Future<Result<ArchethicDappSession, Failure>> openSession(
+  Future<Result<Session, Failure>> openSession(
     OpenSessionRequest sessionRequest,
   ) =>
       Result.guard(() async {
@@ -127,7 +126,7 @@ class WebsocketArchethicDappClient
 
         _connectionStateController.add(
           ArchethicDappConnectionState.connected(
-            session: ArchethicDappSession.waitingForValidation(
+            session: Session.waitingForValidation(
               sessionId: handshakeResult.sessionId,
               aesKey: sessionAesKey,
             ),
@@ -149,7 +148,7 @@ class WebsocketArchethicDappClient
             ).toJson(),
           ),
         ).then(
-          (value) => ArchethicDappSession.waitingForValidation(
+          (value) => Session.waitingForValidation(
             sessionId: handshakeResult.sessionId,
             aesKey: sessionAesKey,
           ),

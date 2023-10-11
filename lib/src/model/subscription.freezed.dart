@@ -152,36 +152,34 @@ abstract class _Subscription<DataT> extends Subscription<DataT> {
       throw _privateConstructorUsedError;
 }
 
-RPCSubscriptionUpdateDTO _$RPCSubscriptionUpdateDTOFromJson(
-    Map<String, dynamic> json) {
-  return _RPCSubscriptionUpdateDTO.fromJson(json);
+SubscriptionUpdate _$SubscriptionUpdateFromJson(Map<String, dynamic> json) {
+  return _SubscriptionUpdate.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RPCSubscriptionUpdateDTO {
+mixin _$SubscriptionUpdate {
   String get subscriptionId => throw _privateConstructorUsedError;
   Map<String, dynamic> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RPCSubscriptionUpdateDTOCopyWith<RPCSubscriptionUpdateDTO> get copyWith =>
+  $SubscriptionUpdateCopyWith<SubscriptionUpdate> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RPCSubscriptionUpdateDTOCopyWith<$Res> {
-  factory $RPCSubscriptionUpdateDTOCopyWith(RPCSubscriptionUpdateDTO value,
-          $Res Function(RPCSubscriptionUpdateDTO) then) =
-      _$RPCSubscriptionUpdateDTOCopyWithImpl<$Res, RPCSubscriptionUpdateDTO>;
+abstract class $SubscriptionUpdateCopyWith<$Res> {
+  factory $SubscriptionUpdateCopyWith(
+          SubscriptionUpdate value, $Res Function(SubscriptionUpdate) then) =
+      _$SubscriptionUpdateCopyWithImpl<$Res, SubscriptionUpdate>;
   @useResult
   $Res call({String subscriptionId, Map<String, dynamic> data});
 }
 
 /// @nodoc
-class _$RPCSubscriptionUpdateDTOCopyWithImpl<$Res,
-        $Val extends RPCSubscriptionUpdateDTO>
-    implements $RPCSubscriptionUpdateDTOCopyWith<$Res> {
-  _$RPCSubscriptionUpdateDTOCopyWithImpl(this._value, this._then);
+class _$SubscriptionUpdateCopyWithImpl<$Res, $Val extends SubscriptionUpdate>
+    implements $SubscriptionUpdateCopyWith<$Res> {
+  _$SubscriptionUpdateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -208,25 +206,22 @@ class _$RPCSubscriptionUpdateDTOCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$RPCSubscriptionUpdateDTOImplCopyWith<$Res>
-    implements $RPCSubscriptionUpdateDTOCopyWith<$Res> {
-  factory _$$RPCSubscriptionUpdateDTOImplCopyWith(
-          _$RPCSubscriptionUpdateDTOImpl value,
-          $Res Function(_$RPCSubscriptionUpdateDTOImpl) then) =
-      __$$RPCSubscriptionUpdateDTOImplCopyWithImpl<$Res>;
+abstract class _$$SubscriptionUpdateImplCopyWith<$Res>
+    implements $SubscriptionUpdateCopyWith<$Res> {
+  factory _$$SubscriptionUpdateImplCopyWith(_$SubscriptionUpdateImpl value,
+          $Res Function(_$SubscriptionUpdateImpl) then) =
+      __$$SubscriptionUpdateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String subscriptionId, Map<String, dynamic> data});
 }
 
 /// @nodoc
-class __$$RPCSubscriptionUpdateDTOImplCopyWithImpl<$Res>
-    extends _$RPCSubscriptionUpdateDTOCopyWithImpl<$Res,
-        _$RPCSubscriptionUpdateDTOImpl>
-    implements _$$RPCSubscriptionUpdateDTOImplCopyWith<$Res> {
-  __$$RPCSubscriptionUpdateDTOImplCopyWithImpl(
-      _$RPCSubscriptionUpdateDTOImpl _value,
-      $Res Function(_$RPCSubscriptionUpdateDTOImpl) _then)
+class __$$SubscriptionUpdateImplCopyWithImpl<$Res>
+    extends _$SubscriptionUpdateCopyWithImpl<$Res, _$SubscriptionUpdateImpl>
+    implements _$$SubscriptionUpdateImplCopyWith<$Res> {
+  __$$SubscriptionUpdateImplCopyWithImpl(_$SubscriptionUpdateImpl _value,
+      $Res Function(_$SubscriptionUpdateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -235,7 +230,7 @@ class __$$RPCSubscriptionUpdateDTOImplCopyWithImpl<$Res>
     Object? subscriptionId = null,
     Object? data = null,
   }) {
-    return _then(_$RPCSubscriptionUpdateDTOImpl(
+    return _then(_$SubscriptionUpdateImpl(
       subscriptionId: null == subscriptionId
           ? _value.subscriptionId
           : subscriptionId // ignore: cast_nullable_to_non_nullable
@@ -250,14 +245,14 @@ class __$$RPCSubscriptionUpdateDTOImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$RPCSubscriptionUpdateDTOImpl extends _RPCSubscriptionUpdateDTO {
-  const _$RPCSubscriptionUpdateDTOImpl(
+class _$SubscriptionUpdateImpl extends _SubscriptionUpdate {
+  const _$SubscriptionUpdateImpl(
       {required this.subscriptionId, required final Map<String, dynamic> data})
       : _data = data,
         super._();
 
-  factory _$RPCSubscriptionUpdateDTOImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RPCSubscriptionUpdateDTOImplFromJson(json);
+  factory _$SubscriptionUpdateImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubscriptionUpdateImplFromJson(json);
 
   @override
   final String subscriptionId;
@@ -271,14 +266,14 @@ class _$RPCSubscriptionUpdateDTOImpl extends _RPCSubscriptionUpdateDTO {
 
   @override
   String toString() {
-    return 'RPCSubscriptionUpdateDTO(subscriptionId: $subscriptionId, data: $data)';
+    return 'SubscriptionUpdate(subscriptionId: $subscriptionId, data: $data)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RPCSubscriptionUpdateDTOImpl &&
+            other is _$SubscriptionUpdateImpl &&
             (identical(other.subscriptionId, subscriptionId) ||
                 other.subscriptionId == subscriptionId) &&
             const DeepCollectionEquality().equals(other._data, _data));
@@ -292,27 +287,26 @@ class _$RPCSubscriptionUpdateDTOImpl extends _RPCSubscriptionUpdateDTO {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RPCSubscriptionUpdateDTOImplCopyWith<_$RPCSubscriptionUpdateDTOImpl>
-      get copyWith => __$$RPCSubscriptionUpdateDTOImplCopyWithImpl<
-          _$RPCSubscriptionUpdateDTOImpl>(this, _$identity);
+  _$$SubscriptionUpdateImplCopyWith<_$SubscriptionUpdateImpl> get copyWith =>
+      __$$SubscriptionUpdateImplCopyWithImpl<_$SubscriptionUpdateImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RPCSubscriptionUpdateDTOImplToJson(
+    return _$$SubscriptionUpdateImplToJson(
       this,
     );
   }
 }
 
-abstract class _RPCSubscriptionUpdateDTO extends RPCSubscriptionUpdateDTO {
-  const factory _RPCSubscriptionUpdateDTO(
-          {required final String subscriptionId,
-          required final Map<String, dynamic> data}) =
-      _$RPCSubscriptionUpdateDTOImpl;
-  const _RPCSubscriptionUpdateDTO._() : super._();
+abstract class _SubscriptionUpdate extends SubscriptionUpdate {
+  const factory _SubscriptionUpdate(
+      {required final String subscriptionId,
+      required final Map<String, dynamic> data}) = _$SubscriptionUpdateImpl;
+  const _SubscriptionUpdate._() : super._();
 
-  factory _RPCSubscriptionUpdateDTO.fromJson(Map<String, dynamic> json) =
-      _$RPCSubscriptionUpdateDTOImpl.fromJson;
+  factory _SubscriptionUpdate.fromJson(Map<String, dynamic> json) =
+      _$SubscriptionUpdateImpl.fromJson;
 
   @override
   String get subscriptionId;
@@ -320,6 +314,6 @@ abstract class _RPCSubscriptionUpdateDTO extends RPCSubscriptionUpdateDTO {
   Map<String, dynamic> get data;
   @override
   @JsonKey(ignore: true)
-  _$$RPCSubscriptionUpdateDTOImplCopyWith<_$RPCSubscriptionUpdateDTOImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$SubscriptionUpdateImplCopyWith<_$SubscriptionUpdateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

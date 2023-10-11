@@ -39,7 +39,7 @@ class DeeplinkArchethicDappClient
   }
 
   @override
-  Future<Result<ArchethicDappSession, Failure>> openSession(
+  Future<Result<Session, Failure>> openSession(
     OpenSessionRequest sessionRequest,
   ) async =>
       Result.guard(() async {
@@ -63,7 +63,7 @@ class DeeplinkArchethicDappClient
 
         _connectionStateController.add(
           ArchethicDappConnectionState.connected(
-            session: ArchethicDappSession.waitingForValidation(
+            session: Session.waitingForValidation(
               sessionId: handshakeResult.sessionId,
               aesKey: sessionAesKey,
             ),
@@ -86,7 +86,7 @@ class DeeplinkArchethicDappClient
             ).toJson(),
           ),
         ).mapValueOrThrow(
-          (value) => ArchethicDappSession.validated(
+          (value) => Session.validated(
             sessionId: handshakeResult.sessionId,
             aesKey: sessionAesKey,
           ),

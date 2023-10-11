@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:archethic_lib_dart/archethic_lib_dart.dart' as aelib;
-import 'package:archethic_wallet_client/archethic_wallet_client.dart';
+import 'package:archethic_wallet_client/src/model/session.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 abstract class RPCRequest {
@@ -57,7 +57,7 @@ class RPCAuthenticatedRequest extends RPCRequest {
   });
 
   factory RPCAuthenticatedRequest.fromJson(
-    ArchethicDappSession session,
+    Session session,
     String data,
   ) =>
       RPCAuthenticatedRequest(
@@ -79,7 +79,7 @@ class RPCAuthenticatedRequest extends RPCRequest {
   }) =>
       authenticated(this);
 
-  Map<String, dynamic> toJson(ArchethicDappSession session) {
+  Map<String, dynamic> toJson(Session session) {
     return {
       'sessionId': session.sessionId,
       'version': RPCRequest.protocolVersion,

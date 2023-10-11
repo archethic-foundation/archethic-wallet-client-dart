@@ -7,21 +7,9 @@ import 'dart:math' as math;
 import 'dart:typed_data';
 
 import 'package:archethic_lib_dart/archethic_lib_dart.dart' as aelib;
-import 'package:archethic_wallet_client/src/core/failures.dart';
-import 'package:archethic_wallet_client/src/core/request.dart';
+import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:archethic_wallet_client/src/core/result.dart';
 import 'package:archethic_wallet_client/src/core/stream.dart';
-import 'package:archethic_wallet_client/src/core/subscription.dart';
-import 'package:archethic_wallet_client/src/request/account_sub.dart';
-import 'package:archethic_wallet_client/src/request/create_session.dart';
-import 'package:archethic_wallet_client/src/request/get_accounts.dart';
-import 'package:archethic_wallet_client/src/request/get_current_account.dart';
-import 'package:archethic_wallet_client/src/request/get_endpoint.dart';
-import 'package:archethic_wallet_client/src/request/get_services_from_keychain.dart';
-import 'package:archethic_wallet_client/src/request/keychain_derive_address.dart';
-import 'package:archethic_wallet_client/src/request/keychain_derive_keypair.dart';
-import 'package:archethic_wallet_client/src/request/send_transaction.dart';
-import 'package:archethic_wallet_client/src/request/sign_transactions.dart';
 import 'package:deeplink_rpc/deeplink_rpc.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -33,27 +21,12 @@ part 'deeplink.dart';
 part 'websocket.dart';
 
 @freezed
-class ArchethicDappSession with _$ArchethicDappSession {
-  const factory ArchethicDappSession.waitingForValidation({
-    required String sessionId,
-    required Uint8List aesKey,
-  }) = _ArchethicDappSessionWaitingValidation;
-
-  const factory ArchethicDappSession.validated({
-    required String sessionId,
-    required Uint8List aesKey,
-  }) = _ArchethicDappSessionWaitingValidated;
-
-  const ArchethicDappSession._();
-}
-
-@freezed
 class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
   const ArchethicDappConnectionState._();
 
   const factory ArchethicDappConnectionState.disconnected() = _Disconnected;
   const factory ArchethicDappConnectionState.connected({
-    ArchethicDappSession? session,
+    Session? session,
     Failure? sessionFailure,
   }) = _Connected;
   const factory ArchethicDappConnectionState.connecting() = _Connecting;
@@ -62,9 +35,13 @@ class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
   bool get isNotConnected => !isConnected;
   bool get isSessionOpened =>
       this is _Connected &&
-      (this as _Connected).session is _ArchethicDappSessionWaitingValidated;
+      (this as _Connected).session != null &&
+      (this as _Connected).session!.map(
+            validated: (_) => true,
+            waitingForValidation: (_) => false,
+          );
   bool get isNotSessionOpened => !isSessionOpened;
-  ArchethicDappSession? get openedSession => mapOrNull(
+  Session? get openedSession => mapOrNull(
         connected: (connected) => connected.session?.mapOrNull(
           validated: (validated) => validated,
         ),
@@ -108,7 +85,7 @@ abstract class ArchethicDAppClient {
 
   Future<void> close();
 
-  Future<Result<ArchethicDappSession, Failure>> openSession(
+  Future<Result<Session, Failure>> openSession(
     OpenSessionRequest sessionRequest,
   );
 

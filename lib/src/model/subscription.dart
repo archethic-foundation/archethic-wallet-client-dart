@@ -14,14 +14,14 @@ class Subscription<DataT> with _$Subscription<DataT> {
 }
 
 @freezed
-class RPCSubscriptionUpdateDTO with _$RPCSubscriptionUpdateDTO {
-  const factory RPCSubscriptionUpdateDTO({
+class SubscriptionUpdate with _$SubscriptionUpdate {
+  const factory SubscriptionUpdate({
     required String subscriptionId,
     required Map<String, dynamic> data,
-  }) = _RPCSubscriptionUpdateDTO;
+  }) = _SubscriptionUpdate;
 
-  const RPCSubscriptionUpdateDTO._();
+  const SubscriptionUpdate._();
 
-  factory RPCSubscriptionUpdateDTO.fromJson(Map<String, dynamic> json) =>
-      _$RPCSubscriptionUpdateDTOFromJson(json);
+  factory SubscriptionUpdate.fromJson(Map<String, dynamic> json) =>
+      _$SubscriptionUpdateFromJson(json);
 }

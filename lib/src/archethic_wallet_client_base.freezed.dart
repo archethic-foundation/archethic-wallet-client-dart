@@ -15,438 +15,11 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ArchethicDappSession {
-  String get sessionId => throw _privateConstructorUsedError;
-  Uint8List get aesKey => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String sessionId, Uint8List aesKey)
-        waitingForValidation,
-    required TResult Function(String sessionId, Uint8List aesKey) validated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult? Function(String sessionId, Uint8List aesKey)? validated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult Function(String sessionId, Uint8List aesKey)? validated,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ArchethicDappSessionWaitingValidation value)
-        waitingForValidation,
-    required TResult Function(_ArchethicDappSessionWaitingValidated value)
-        validated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ArchethicDappSessionWaitingValidation value)?
-        waitingForValidation,
-    TResult? Function(_ArchethicDappSessionWaitingValidated value)? validated,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ArchethicDappSessionWaitingValidation value)?
-        waitingForValidation,
-    TResult Function(_ArchethicDappSessionWaitingValidated value)? validated,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ArchethicDappSessionCopyWith<ArchethicDappSession> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ArchethicDappSessionCopyWith<$Res> {
-  factory $ArchethicDappSessionCopyWith(ArchethicDappSession value,
-          $Res Function(ArchethicDappSession) then) =
-      _$ArchethicDappSessionCopyWithImpl<$Res, ArchethicDappSession>;
-  @useResult
-  $Res call({String sessionId, Uint8List aesKey});
-}
-
-/// @nodoc
-class _$ArchethicDappSessionCopyWithImpl<$Res,
-        $Val extends ArchethicDappSession>
-    implements $ArchethicDappSessionCopyWith<$Res> {
-  _$ArchethicDappSessionCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sessionId = null,
-    Object? aesKey = null,
-  }) {
-    return _then(_value.copyWith(
-      sessionId: null == sessionId
-          ? _value.sessionId
-          : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      aesKey: null == aesKey
-          ? _value.aesKey
-          : aesKey // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ArchethicDappSessionWaitingValidationImplCopyWith<$Res>
-    implements $ArchethicDappSessionCopyWith<$Res> {
-  factory _$$ArchethicDappSessionWaitingValidationImplCopyWith(
-          _$ArchethicDappSessionWaitingValidationImpl value,
-          $Res Function(_$ArchethicDappSessionWaitingValidationImpl) then) =
-      __$$ArchethicDappSessionWaitingValidationImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String sessionId, Uint8List aesKey});
-}
-
-/// @nodoc
-class __$$ArchethicDappSessionWaitingValidationImplCopyWithImpl<$Res>
-    extends _$ArchethicDappSessionCopyWithImpl<$Res,
-        _$ArchethicDappSessionWaitingValidationImpl>
-    implements _$$ArchethicDappSessionWaitingValidationImplCopyWith<$Res> {
-  __$$ArchethicDappSessionWaitingValidationImplCopyWithImpl(
-      _$ArchethicDappSessionWaitingValidationImpl _value,
-      $Res Function(_$ArchethicDappSessionWaitingValidationImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sessionId = null,
-    Object? aesKey = null,
-  }) {
-    return _then(_$ArchethicDappSessionWaitingValidationImpl(
-      sessionId: null == sessionId
-          ? _value.sessionId
-          : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      aesKey: null == aesKey
-          ? _value.aesKey
-          : aesKey // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ArchethicDappSessionWaitingValidationImpl
-    extends _ArchethicDappSessionWaitingValidation {
-  const _$ArchethicDappSessionWaitingValidationImpl(
-      {required this.sessionId, required this.aesKey})
-      : super._();
-
-  @override
-  final String sessionId;
-  @override
-  final Uint8List aesKey;
-
-  @override
-  String toString() {
-    return 'ArchethicDappSession.waitingForValidation(sessionId: $sessionId, aesKey: $aesKey)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ArchethicDappSessionWaitingValidationImpl &&
-            (identical(other.sessionId, sessionId) ||
-                other.sessionId == sessionId) &&
-            const DeepCollectionEquality().equals(other.aesKey, aesKey));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, sessionId, const DeepCollectionEquality().hash(aesKey));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ArchethicDappSessionWaitingValidationImplCopyWith<
-          _$ArchethicDappSessionWaitingValidationImpl>
-      get copyWith => __$$ArchethicDappSessionWaitingValidationImplCopyWithImpl<
-          _$ArchethicDappSessionWaitingValidationImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String sessionId, Uint8List aesKey)
-        waitingForValidation,
-    required TResult Function(String sessionId, Uint8List aesKey) validated,
-  }) {
-    return waitingForValidation(sessionId, aesKey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult? Function(String sessionId, Uint8List aesKey)? validated,
-  }) {
-    return waitingForValidation?.call(sessionId, aesKey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult Function(String sessionId, Uint8List aesKey)? validated,
-    required TResult orElse(),
-  }) {
-    if (waitingForValidation != null) {
-      return waitingForValidation(sessionId, aesKey);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ArchethicDappSessionWaitingValidation value)
-        waitingForValidation,
-    required TResult Function(_ArchethicDappSessionWaitingValidated value)
-        validated,
-  }) {
-    return waitingForValidation(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ArchethicDappSessionWaitingValidation value)?
-        waitingForValidation,
-    TResult? Function(_ArchethicDappSessionWaitingValidated value)? validated,
-  }) {
-    return waitingForValidation?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ArchethicDappSessionWaitingValidation value)?
-        waitingForValidation,
-    TResult Function(_ArchethicDappSessionWaitingValidated value)? validated,
-    required TResult orElse(),
-  }) {
-    if (waitingForValidation != null) {
-      return waitingForValidation(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ArchethicDappSessionWaitingValidation
-    extends ArchethicDappSession {
-  const factory _ArchethicDappSessionWaitingValidation(
-          {required final String sessionId, required final Uint8List aesKey}) =
-      _$ArchethicDappSessionWaitingValidationImpl;
-  const _ArchethicDappSessionWaitingValidation._() : super._();
-
-  @override
-  String get sessionId;
-  @override
-  Uint8List get aesKey;
-  @override
-  @JsonKey(ignore: true)
-  _$$ArchethicDappSessionWaitingValidationImplCopyWith<
-          _$ArchethicDappSessionWaitingValidationImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$ArchethicDappSessionWaitingValidatedImplCopyWith<$Res>
-    implements $ArchethicDappSessionCopyWith<$Res> {
-  factory _$$ArchethicDappSessionWaitingValidatedImplCopyWith(
-          _$ArchethicDappSessionWaitingValidatedImpl value,
-          $Res Function(_$ArchethicDappSessionWaitingValidatedImpl) then) =
-      __$$ArchethicDappSessionWaitingValidatedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String sessionId, Uint8List aesKey});
-}
-
-/// @nodoc
-class __$$ArchethicDappSessionWaitingValidatedImplCopyWithImpl<$Res>
-    extends _$ArchethicDappSessionCopyWithImpl<$Res,
-        _$ArchethicDappSessionWaitingValidatedImpl>
-    implements _$$ArchethicDappSessionWaitingValidatedImplCopyWith<$Res> {
-  __$$ArchethicDappSessionWaitingValidatedImplCopyWithImpl(
-      _$ArchethicDappSessionWaitingValidatedImpl _value,
-      $Res Function(_$ArchethicDappSessionWaitingValidatedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sessionId = null,
-    Object? aesKey = null,
-  }) {
-    return _then(_$ArchethicDappSessionWaitingValidatedImpl(
-      sessionId: null == sessionId
-          ? _value.sessionId
-          : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      aesKey: null == aesKey
-          ? _value.aesKey
-          : aesKey // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$ArchethicDappSessionWaitingValidatedImpl
-    extends _ArchethicDappSessionWaitingValidated {
-  const _$ArchethicDappSessionWaitingValidatedImpl(
-      {required this.sessionId, required this.aesKey})
-      : super._();
-
-  @override
-  final String sessionId;
-  @override
-  final Uint8List aesKey;
-
-  @override
-  String toString() {
-    return 'ArchethicDappSession.validated(sessionId: $sessionId, aesKey: $aesKey)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ArchethicDappSessionWaitingValidatedImpl &&
-            (identical(other.sessionId, sessionId) ||
-                other.sessionId == sessionId) &&
-            const DeepCollectionEquality().equals(other.aesKey, aesKey));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, sessionId, const DeepCollectionEquality().hash(aesKey));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ArchethicDappSessionWaitingValidatedImplCopyWith<
-          _$ArchethicDappSessionWaitingValidatedImpl>
-      get copyWith => __$$ArchethicDappSessionWaitingValidatedImplCopyWithImpl<
-          _$ArchethicDappSessionWaitingValidatedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String sessionId, Uint8List aesKey)
-        waitingForValidation,
-    required TResult Function(String sessionId, Uint8List aesKey) validated,
-  }) {
-    return validated(sessionId, aesKey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult? Function(String sessionId, Uint8List aesKey)? validated,
-  }) {
-    return validated?.call(sessionId, aesKey);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String sessionId, Uint8List aesKey)? waitingForValidation,
-    TResult Function(String sessionId, Uint8List aesKey)? validated,
-    required TResult orElse(),
-  }) {
-    if (validated != null) {
-      return validated(sessionId, aesKey);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ArchethicDappSessionWaitingValidation value)
-        waitingForValidation,
-    required TResult Function(_ArchethicDappSessionWaitingValidated value)
-        validated,
-  }) {
-    return validated(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ArchethicDappSessionWaitingValidation value)?
-        waitingForValidation,
-    TResult? Function(_ArchethicDappSessionWaitingValidated value)? validated,
-  }) {
-    return validated?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ArchethicDappSessionWaitingValidation value)?
-        waitingForValidation,
-    TResult Function(_ArchethicDappSessionWaitingValidated value)? validated,
-    required TResult orElse(),
-  }) {
-    if (validated != null) {
-      return validated(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _ArchethicDappSessionWaitingValidated
-    extends ArchethicDappSession {
-  const factory _ArchethicDappSessionWaitingValidated(
-          {required final String sessionId, required final Uint8List aesKey}) =
-      _$ArchethicDappSessionWaitingValidatedImpl;
-  const _ArchethicDappSessionWaitingValidated._() : super._();
-
-  @override
-  String get sessionId;
-  @override
-  Uint8List get aesKey;
-  @override
-  @JsonKey(ignore: true)
-  _$$ArchethicDappSessionWaitingValidatedImplCopyWith<
-          _$ArchethicDappSessionWaitingValidatedImpl>
-      get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$ArchethicDappConnectionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function(
-            ArchethicDappSession? session, Failure? sessionFailure)
+    required TResult Function(Session? session, Failure? sessionFailure)
         connected,
     required TResult Function() connecting,
   }) =>
@@ -454,16 +27,14 @@ mixin _$ArchethicDappConnectionState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function(ArchethicDappSession? session, Failure? sessionFailure)?
-        connected,
+    TResult? Function(Session? session, Failure? sessionFailure)? connected,
     TResult? Function()? connecting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function(ArchethicDappSession? session, Failure? sessionFailure)?
-        connected,
+    TResult Function(Session? session, Failure? sessionFailure)? connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) =>
@@ -552,8 +123,7 @@ class _$DisconnectedImpl extends _Disconnected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function(
-            ArchethicDappSession? session, Failure? sessionFailure)
+    required TResult Function(Session? session, Failure? sessionFailure)
         connected,
     required TResult Function() connecting,
   }) {
@@ -564,8 +134,7 @@ class _$DisconnectedImpl extends _Disconnected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function(ArchethicDappSession? session, Failure? sessionFailure)?
-        connected,
+    TResult? Function(Session? session, Failure? sessionFailure)? connected,
     TResult? Function()? connecting,
   }) {
     return disconnected?.call();
@@ -575,8 +144,7 @@ class _$DisconnectedImpl extends _Disconnected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function(ArchethicDappSession? session, Failure? sessionFailure)?
-        connected,
+    TResult Function(Session? session, Failure? sessionFailure)? connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) {
@@ -632,9 +200,9 @@ abstract class _$$ConnectedImplCopyWith<$Res> {
           _$ConnectedImpl value, $Res Function(_$ConnectedImpl) then) =
       __$$ConnectedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({ArchethicDappSession? session, Failure? sessionFailure});
+  $Res call({Session? session, Failure? sessionFailure});
 
-  $ArchethicDappSessionCopyWith<$Res>? get session;
+  $SessionCopyWith<$Res>? get session;
   $FailureCopyWith<$Res>? get sessionFailure;
 }
 
@@ -656,7 +224,7 @@ class __$$ConnectedImplCopyWithImpl<$Res>
       session: freezed == session
           ? _value.session
           : session // ignore: cast_nullable_to_non_nullable
-              as ArchethicDappSession?,
+              as Session?,
       sessionFailure: freezed == sessionFailure
           ? _value.sessionFailure
           : sessionFailure // ignore: cast_nullable_to_non_nullable
@@ -666,12 +234,12 @@ class __$$ConnectedImplCopyWithImpl<$Res>
 
   @override
   @pragma('vm:prefer-inline')
-  $ArchethicDappSessionCopyWith<$Res>? get session {
+  $SessionCopyWith<$Res>? get session {
     if (_value.session == null) {
       return null;
     }
 
-    return $ArchethicDappSessionCopyWith<$Res>(_value.session!, (value) {
+    return $SessionCopyWith<$Res>(_value.session!, (value) {
       return _then(_value.copyWith(session: value));
     });
   }
@@ -695,7 +263,7 @@ class _$ConnectedImpl extends _Connected {
   const _$ConnectedImpl({this.session, this.sessionFailure}) : super._();
 
   @override
-  final ArchethicDappSession? session;
+  final Session? session;
   @override
   final Failure? sessionFailure;
 
@@ -727,8 +295,7 @@ class _$ConnectedImpl extends _Connected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function(
-            ArchethicDappSession? session, Failure? sessionFailure)
+    required TResult Function(Session? session, Failure? sessionFailure)
         connected,
     required TResult Function() connecting,
   }) {
@@ -739,8 +306,7 @@ class _$ConnectedImpl extends _Connected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function(ArchethicDappSession? session, Failure? sessionFailure)?
-        connected,
+    TResult? Function(Session? session, Failure? sessionFailure)? connected,
     TResult? Function()? connecting,
   }) {
     return connected?.call(session, sessionFailure);
@@ -750,8 +316,7 @@ class _$ConnectedImpl extends _Connected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function(ArchethicDappSession? session, Failure? sessionFailure)?
-        connected,
+    TResult Function(Session? session, Failure? sessionFailure)? connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) {
@@ -798,11 +363,11 @@ class _$ConnectedImpl extends _Connected {
 
 abstract class _Connected extends ArchethicDappConnectionState {
   const factory _Connected(
-      {final ArchethicDappSession? session,
+      {final Session? session,
       final Failure? sessionFailure}) = _$ConnectedImpl;
   const _Connected._() : super._();
 
-  ArchethicDappSession? get session;
+  Session? get session;
   Failure? get sessionFailure;
   @JsonKey(ignore: true)
   _$$ConnectedImplCopyWith<_$ConnectedImpl> get copyWith =>
@@ -848,8 +413,7 @@ class _$ConnectingImpl extends _Connecting {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function(
-            ArchethicDappSession? session, Failure? sessionFailure)
+    required TResult Function(Session? session, Failure? sessionFailure)
         connected,
     required TResult Function() connecting,
   }) {
@@ -860,8 +424,7 @@ class _$ConnectingImpl extends _Connecting {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function(ArchethicDappSession? session, Failure? sessionFailure)?
-        connected,
+    TResult? Function(Session? session, Failure? sessionFailure)? connected,
     TResult? Function()? connecting,
   }) {
     return connecting?.call();
@@ -871,8 +434,7 @@ class _$ConnectingImpl extends _Connecting {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function(ArchethicDappSession? session, Failure? sessionFailure)?
-        connected,
+    TResult Function(Session? session, Failure? sessionFailure)? connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) {

@@ -6,15 +6,15 @@ part of 'subscription.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RPCSubscriptionUpdateDTOImpl _$$RPCSubscriptionUpdateDTOImplFromJson(
+_$SubscriptionUpdateImpl _$$SubscriptionUpdateImplFromJson(
         Map<String, dynamic> json) =>
-    _$RPCSubscriptionUpdateDTOImpl(
+    _$SubscriptionUpdateImpl(
       subscriptionId: json['subscriptionId'] as String,
       data: json['data'] as Map<String, dynamic>,
     );
 
-Map<String, dynamic> _$$RPCSubscriptionUpdateDTOImplToJson(
-        _$RPCSubscriptionUpdateDTOImpl instance) =>
+Map<String, dynamic> _$$SubscriptionUpdateImplToJson(
+        _$SubscriptionUpdateImpl instance) =>
     <String, dynamic>{
       'subscriptionId': instance.subscriptionId,
       'data': instance.data,
