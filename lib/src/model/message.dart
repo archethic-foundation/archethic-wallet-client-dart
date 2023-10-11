@@ -6,19 +6,19 @@ import 'package:archethic_lib_dart/archethic_lib_dart.dart' as aelib;
 import 'package:archethic_wallet_client/src/model/session.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-abstract class RPCRequest {
-  const RPCRequest({
+abstract class RPCMessage {
+  const RPCMessage({
     this.payload = const {},
   });
 
-  const factory RPCRequest.anonymous({Map<String, dynamic> payload}) =
-      RPCAnonymousRequest;
-  const factory RPCRequest.authenticated({Map<String, dynamic> payload}) =
-      RPCAuthenticatedRequest;
+  const factory RPCMessage.anonymous({Map<String, dynamic> payload}) =
+      RPCAnonymousMessage;
+  const factory RPCMessage.authenticated({Map<String, dynamic> payload}) =
+      RPCAuthenticatedMessage;
 
   T map<T>({
-    required T Function(RPCAnonymousRequest) anonymous,
-    required T Function(RPCAuthenticatedRequest) authenticated,
+    required T Function(RPCAnonymousMessage) anonymous,
+    required T Function(RPCAuthenticatedMessage) authenticated,
   });
 
   final Map<String, dynamic> payload;
@@ -27,40 +27,40 @@ abstract class RPCRequest {
 }
 
 @immutable
-class RPCAnonymousRequest extends RPCRequest {
-  const RPCAnonymousRequest({
+class RPCAnonymousMessage extends RPCMessage {
+  const RPCAnonymousMessage({
     super.payload,
   });
 
-  factory RPCAnonymousRequest.fromJson(Map<String, dynamic> data) =>
-      RPCAnonymousRequest(payload: data);
+  factory RPCAnonymousMessage.fromJson(Map<String, dynamic> data) =>
+      RPCAnonymousMessage(payload: data);
 
   @override
   T map<T>({
-    required T Function(RPCAnonymousRequest) anonymous,
-    required T Function(RPCAuthenticatedRequest) authenticated,
+    required T Function(RPCAnonymousMessage) anonymous,
+    required T Function(RPCAuthenticatedMessage) authenticated,
   }) =>
       anonymous(this);
 
   Map<String, dynamic> toJson() {
     return {
-      'version': RPCRequest.protocolVersion,
+      'version': RPCMessage.protocolVersion,
       'payload': payload,
     };
   }
 }
 
 @immutable
-class RPCAuthenticatedRequest extends RPCRequest {
-  const RPCAuthenticatedRequest({
+class RPCAuthenticatedMessage extends RPCMessage {
+  const RPCAuthenticatedMessage({
     super.payload,
   });
 
-  factory RPCAuthenticatedRequest.fromJson(
+  factory RPCAuthenticatedMessage.fromJson(
     Session session,
     String data,
   ) =>
-      RPCAuthenticatedRequest(
+      RPCAuthenticatedMessage(
         payload: jsonDecode(
           utf8.decode(
             aelib.hexToUint8List(
@@ -74,15 +74,15 @@ class RPCAuthenticatedRequest extends RPCRequest {
 
   @override
   T map<T>({
-    required T Function(RPCAnonymousRequest) anonymous,
-    required T Function(RPCAuthenticatedRequest) authenticated,
+    required T Function(RPCAnonymousMessage) anonymous,
+    required T Function(RPCAuthenticatedMessage) authenticated,
   }) =>
       authenticated(this);
 
   Map<String, dynamic> toJson(Session session) {
     return {
       'sessionId': session.sessionId,
-      'version': RPCRequest.protocolVersion,
+      'version': RPCMessage.protocolVersion,
       'payload': aelib.uint8ListToHex(
         aelib.aesEncrypt(
           aelib.uint8ListToHex(

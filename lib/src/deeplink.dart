@@ -49,12 +49,12 @@ class DeeplinkArchethicDappClient
         final handshakeResult = await _send(
           requestEndpoint: 'open_session_handshake',
           replyEndpoint: 'open_session_handshake_result',
-          request: RPCRequest.anonymous(
+          request: RPCMessage.anonymous(
             payload: OpenSessionHandshakeRequest(
               pubKey: aelib.uint8ListToHex(keypair.publicKey!),
             ).toJson(),
           ),
-        ).mapValueOrThrow(OpenSessionHandshakeResponse.fromJson);
+        ).then(OpenSessionHandshakeResponse.fromJson);
 
         final sessionAesKey = aelib.ecDecrypt(
           handshakeResult.aesKey,
@@ -74,7 +74,7 @@ class DeeplinkArchethicDappClient
         return _send(
           requestEndpoint: 'open_session_challenge',
           replyEndpoint: 'open_session_challenge_result',
-          request: RPCRequest.authenticated(
+          request: RPCMessage.authenticated(
             payload: OpenSessionChallengeRequest(
               sessionId: handshakeResult.sessionId,
               origin: sessionRequest.origin,
@@ -85,7 +85,7 @@ class DeeplinkArchethicDappClient
               maxDuration: sessionRequest.maxDuration.inSeconds,
             ).toJson(),
           ),
-        ).mapValueOrThrow(
+        ).then(
           (value) => Session.validated(
             sessionId: handshakeResult.sessionId,
             aesKey: sessionAesKey,
@@ -105,27 +105,41 @@ class DeeplinkArchethicDappClient
         return sessionOrFailure;
       });
 
-  Future<DeeplinkRpcResponse> _send({
+  Future<Map<String, dynamic>> _send({
     required String requestEndpoint,
     required String replyEndpoint,
-    required RPCRequest request,
+    required RPCMessage request,
   }) async =>
-      _deeplinkRpcClient.send(
-        request: DeeplinkRpcRequest(
-          requestUrl: '$requestBaseUrl/$requestEndpoint',
-          replyUrl: '$replyBaseUrl/$replyEndpoint',
-          params: request.map(
-            anonymous: (anonymous) => anonymous.toJson(),
-            authenticated: (authenticated) {
-              final session = state.openedSession;
-              if (session == null) {
-                throw Failure.invalidSession();
-              }
-              return authenticated.toJson(session);
-            },
-          ),
-        ),
-      );
+      _deeplinkRpcClient
+          .send(
+            request: DeeplinkRpcRequest(
+              requestUrl: '$requestBaseUrl/$requestEndpoint',
+              replyUrl: '$replyBaseUrl/$replyEndpoint',
+              params: request.map(
+                anonymous: (anonymous) => anonymous.toJson(),
+                authenticated: (authenticated) {
+                  final session = state.openedSession;
+                  if (session == null) {
+                    throw Failure.invalidSession();
+                  }
+                  return authenticated.toJson(session);
+                },
+              ),
+            ),
+          )
+          .mapValueOrThrow(
+            (value) => request.map(
+              anonymous: (anonymous) =>
+                  RPCAnonymousMessage.fromJson(value).payload,
+              authenticated: (authenticated) {
+                final session = state.openedSession;
+                if (session == null) {
+                  throw Failure.invalidSession();
+                }
+                return RPCAuthenticatedMessage.fromJson(session, value).payload;
+              },
+            ),
+          );
 
   @override
   Future<Result<GetEndpointResult, Failure>> getEndpoint() async =>
@@ -133,10 +147,8 @@ class DeeplinkArchethicDappClient
         () => _send(
           requestEndpoint: 'get_endpoint',
           replyEndpoint: 'get_endpoint_result',
-          request: const RPCRequest.authenticated(),
-        ).mapValueOrThrow(
-          GetEndpointResult.fromJson,
-        ),
+          request: const RPCMessage.authenticated(),
+        ).then(GetEndpointResult.fromJson),
       );
 
   @override
@@ -147,10 +159,8 @@ class DeeplinkArchethicDappClient
         () => _send(
           requestEndpoint: 'send_transaction',
           replyEndpoint: 'send_transaction_result',
-          request: RPCRequest.authenticated(payload: data),
-        ).mapValueOrThrow(
-          SendTransactionResult.fromJson,
-        ),
+          request: RPCMessage.authenticated(payload: data),
+        ).then(SendTransactionResult.fromJson),
       );
 
   @override
@@ -159,10 +169,8 @@ class DeeplinkArchethicDappClient
         () async => _send(
           requestEndpoint: 'get_accounts',
           replyEndpoint: 'get_accounts_result',
-          request: const RPCRequest.authenticated(),
-        ).mapValueOrThrow(
-          GetAccountsResult.fromJson,
-        ),
+          request: const RPCMessage.authenticated(),
+        ).then(GetAccountsResult.fromJson),
       );
 
   @override
@@ -171,10 +179,8 @@ class DeeplinkArchethicDappClient
         () async => _send(
           requestEndpoint: 'get_current_account',
           replyEndpoint: 'get_current_account_result',
-          request: const RPCRequest.authenticated(),
-        ).mapValueOrThrow(
-          GetCurrentAccountResult.fromJson,
-        ),
+          request: const RPCMessage.authenticated(),
+        ).then(GetCurrentAccountResult.fromJson),
       );
 
   @override
@@ -202,10 +208,8 @@ class DeeplinkArchethicDappClient
         () => _send(
           requestEndpoint: 'add_service',
           replyEndpoint: 'add_service_result',
-          request: RPCRequest.authenticated(payload: data),
-        ).mapValueOrThrow(
-          SendTransactionResult.fromJson,
-        ),
+          request: RPCMessage.authenticated(payload: data),
+        ).then(SendTransactionResult.fromJson),
       );
 
   @override
@@ -214,10 +218,8 @@ class DeeplinkArchethicDappClient
             () => _send(
               requestEndpoint: 'get_services_from_keychain',
               replyEndpoint: 'get_services_from_keychain_result',
-              request: const RPCRequest.authenticated(),
-            ).mapValueOrThrow(
-              GetServicesFromKeychainResult.fromJson,
-            ),
+              request: const RPCMessage.authenticated(),
+            ).then(GetServicesFromKeychainResult.fromJson),
           );
 
   @override
@@ -228,10 +230,8 @@ class DeeplinkArchethicDappClient
         () => _send(
           requestEndpoint: 'keychain_derive_keypair',
           replyEndpoint: 'keychain_derive_keypair_result',
-          request: RPCRequest.authenticated(payload: data),
-        ).mapValueOrThrow(
-          KeychainDeriveKeypairResult.fromJson,
-        ),
+          request: RPCMessage.authenticated(payload: data),
+        ).then(KeychainDeriveKeypairResult.fromJson),
       );
 
   @override
@@ -242,10 +242,8 @@ class DeeplinkArchethicDappClient
         () => _send(
           requestEndpoint: 'keychain_derive_address',
           replyEndpoint: 'keychain_derive_address_result',
-          request: RPCRequest.authenticated(payload: data),
-        ).mapValueOrThrow(
-          KeychainDeriveAddressResult.fromJson,
-        ),
+          request: RPCMessage.authenticated(payload: data),
+        ).then(KeychainDeriveAddressResult.fromJson),
       );
 
   @override
@@ -256,16 +254,14 @@ class DeeplinkArchethicDappClient
         () => _send(
           requestEndpoint: 'sign_transactions',
           replyEndpoint: 'sign_transactions_result',
-          request: RPCRequest.authenticated(payload: data),
-        ).mapValueOrThrow(
-          SignTransactionsResult.fromJson,
-        ),
+          request: RPCMessage.authenticated(payload: data),
+        ).then(SignTransactionsResult.fromJson),
       );
 }
 
 extension DeeplinkFutureRpcResponseFailure on Future<DeeplinkRpcResponse> {
   Future<T> mapValueOrThrow<T>(
-    T Function(Map<String, dynamic> value) map,
+    T Function(dynamic value) map,
   ) async =>
       (await this).map(
         failure: (failure) => throw Failure.fromDeeplinkRpcFailure(failure),

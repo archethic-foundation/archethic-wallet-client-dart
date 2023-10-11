@@ -3,7 +3,7 @@ library archethic_wallet_client;
 
 export 'src/archethic_wallet_client_base.dart';
 export 'src/model/failures.dart';
-export 'src/model/request.dart';
+export 'src/model/message.dart';
 export 'src/model/session.dart';
 export 'src/model/subscription.dart';
 export 'src/request/account_sub.dart';
