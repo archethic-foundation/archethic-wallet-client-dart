@@ -537,3 +537,97 @@ abstract class _SubscribeAccountRequest extends SubscribeAccountRequest {
   _$$SubscribeAccountRequestImplCopyWith<_$SubscribeAccountRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+SubscribeCurrentAccountRequest _$SubscribeCurrentAccountRequestFromJson(
+    Map<String, dynamic> json) {
+  return _SubscribeCurrentAccountRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SubscribeCurrentAccountRequest {
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SubscribeCurrentAccountRequestCopyWith<$Res> {
+  factory $SubscribeCurrentAccountRequestCopyWith(
+          SubscribeCurrentAccountRequest value,
+          $Res Function(SubscribeCurrentAccountRequest) then) =
+      _$SubscribeCurrentAccountRequestCopyWithImpl<$Res,
+          SubscribeCurrentAccountRequest>;
+}
+
+/// @nodoc
+class _$SubscribeCurrentAccountRequestCopyWithImpl<$Res,
+        $Val extends SubscribeCurrentAccountRequest>
+    implements $SubscribeCurrentAccountRequestCopyWith<$Res> {
+  _$SubscribeCurrentAccountRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SubscribeCurrentAccountRequestImplCopyWith<$Res> {
+  factory _$$SubscribeCurrentAccountRequestImplCopyWith(
+          _$SubscribeCurrentAccountRequestImpl value,
+          $Res Function(_$SubscribeCurrentAccountRequestImpl) then) =
+      __$$SubscribeCurrentAccountRequestImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SubscribeCurrentAccountRequestImplCopyWithImpl<$Res>
+    extends _$SubscribeCurrentAccountRequestCopyWithImpl<$Res,
+        _$SubscribeCurrentAccountRequestImpl>
+    implements _$$SubscribeCurrentAccountRequestImplCopyWith<$Res> {
+  __$$SubscribeCurrentAccountRequestImplCopyWithImpl(
+      _$SubscribeCurrentAccountRequestImpl _value,
+      $Res Function(_$SubscribeCurrentAccountRequestImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SubscribeCurrentAccountRequestImpl
+    extends _SubscribeCurrentAccountRequest {
+  const _$SubscribeCurrentAccountRequestImpl() : super._();
+
+  factory _$SubscribeCurrentAccountRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SubscribeCurrentAccountRequestImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'SubscribeCurrentAccountRequest()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubscribeCurrentAccountRequestImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SubscribeCurrentAccountRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SubscribeCurrentAccountRequest
+    extends SubscribeCurrentAccountRequest {
+  const factory _SubscribeCurrentAccountRequest() =
+      _$SubscribeCurrentAccountRequestImpl;
+  const _SubscribeCurrentAccountRequest._() : super._();
+
+  factory _SubscribeCurrentAccountRequest.fromJson(Map<String, dynamic> json) =
+      _$SubscribeCurrentAccountRequestImpl.fromJson;
+}

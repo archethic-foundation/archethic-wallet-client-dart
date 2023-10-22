@@ -39,3 +39,15 @@ class SubscribeAccountRequest with _$SubscribeAccountRequest {
   factory SubscribeAccountRequest.fromJson(Map<String, dynamic> json) =>
       _$SubscribeAccountRequestFromJson(json);
 }
+
+@freezed
+class SubscribeCurrentAccountRequest with _$SubscribeCurrentAccountRequest {
+  const SubscribeCurrentAccountRequest._();
+  const factory SubscribeCurrentAccountRequest() =
+      _SubscribeCurrentAccountRequest;
+
+  factory SubscribeCurrentAccountRequest.fromJson(Map<String, dynamic> json) =>
+      _$SubscribeCurrentAccountRequestFromJson(json);
+}
+
+typedef SubscribeAccountNotification = Account;
