@@ -174,3 +174,97 @@ abstract class _GetServicesFromKeychainResult
           _$GetServicesFromKeychainResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+GetServicesFromKeychainRequest _$GetServicesFromKeychainRequestFromJson(
+    Map<String, dynamic> json) {
+  return _GetServicesFromKeychainRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GetServicesFromKeychainRequest {
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetServicesFromKeychainRequestCopyWith<$Res> {
+  factory $GetServicesFromKeychainRequestCopyWith(
+          GetServicesFromKeychainRequest value,
+          $Res Function(GetServicesFromKeychainRequest) then) =
+      _$GetServicesFromKeychainRequestCopyWithImpl<$Res,
+          GetServicesFromKeychainRequest>;
+}
+
+/// @nodoc
+class _$GetServicesFromKeychainRequestCopyWithImpl<$Res,
+        $Val extends GetServicesFromKeychainRequest>
+    implements $GetServicesFromKeychainRequestCopyWith<$Res> {
+  _$GetServicesFromKeychainRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetServicesFromKeychainRequestImplCopyWith<$Res> {
+  factory _$$GetServicesFromKeychainRequestImplCopyWith(
+          _$GetServicesFromKeychainRequestImpl value,
+          $Res Function(_$GetServicesFromKeychainRequestImpl) then) =
+      __$$GetServicesFromKeychainRequestImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetServicesFromKeychainRequestImplCopyWithImpl<$Res>
+    extends _$GetServicesFromKeychainRequestCopyWithImpl<$Res,
+        _$GetServicesFromKeychainRequestImpl>
+    implements _$$GetServicesFromKeychainRequestImplCopyWith<$Res> {
+  __$$GetServicesFromKeychainRequestImplCopyWithImpl(
+      _$GetServicesFromKeychainRequestImpl _value,
+      $Res Function(_$GetServicesFromKeychainRequestImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GetServicesFromKeychainRequestImpl
+    extends _GetServicesFromKeychainRequest {
+  const _$GetServicesFromKeychainRequestImpl() : super._();
+
+  factory _$GetServicesFromKeychainRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$GetServicesFromKeychainRequestImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'GetServicesFromKeychainRequest()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetServicesFromKeychainRequestImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GetServicesFromKeychainRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GetServicesFromKeychainRequest
+    extends GetServicesFromKeychainRequest {
+  const factory _GetServicesFromKeychainRequest() =
+      _$GetServicesFromKeychainRequestImpl;
+  const _GetServicesFromKeychainRequest._() : super._();
+
+  factory _GetServicesFromKeychainRequest.fromJson(Map<String, dynamic> json) =
+      _$GetServicesFromKeychainRequestImpl.fromJson;
+}

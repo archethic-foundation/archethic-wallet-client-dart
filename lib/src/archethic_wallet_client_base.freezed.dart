@@ -19,21 +19,22 @@ mixin _$ArchethicDappConnectionState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function() connected,
+    required TResult Function(Session? session, Failure? sessionFailure)
+        connected,
     required TResult Function() connecting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function()? connected,
+    TResult? Function(Session? session, Failure? sessionFailure)? connected,
     TResult? Function()? connecting,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function()? connected,
+    TResult Function(Session? session, Failure? sessionFailure)? connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) =>
@@ -122,7 +123,8 @@ class _$DisconnectedImpl extends _Disconnected {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function() connected,
+    required TResult Function(Session? session, Failure? sessionFailure)
+        connected,
     required TResult Function() connecting,
   }) {
     return disconnected();
@@ -132,7 +134,7 @@ class _$DisconnectedImpl extends _Disconnected {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function()? connected,
+    TResult? Function(Session? session, Failure? sessionFailure)? connected,
     TResult? Function()? connecting,
   }) {
     return disconnected?.call();
@@ -142,7 +144,7 @@ class _$DisconnectedImpl extends _Disconnected {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function()? connected,
+    TResult Function(Session? session, Failure? sessionFailure)? connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) {
@@ -197,6 +199,10 @@ abstract class _$$ConnectedImplCopyWith<$Res> {
   factory _$$ConnectedImplCopyWith(
           _$ConnectedImpl value, $Res Function(_$ConnectedImpl) then) =
       __$$ConnectedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Session? session, Failure? sessionFailure});
+
+  $SessionCopyWith<$Res>? get session;
 }
 
 /// @nodoc
@@ -206,57 +212,103 @@ class __$$ConnectedImplCopyWithImpl<$Res>
   __$$ConnectedImplCopyWithImpl(
       _$ConnectedImpl _value, $Res Function(_$ConnectedImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? session = freezed,
+    Object? sessionFailure = freezed,
+  }) {
+    return _then(_$ConnectedImpl(
+      session: freezed == session
+          ? _value.session
+          : session // ignore: cast_nullable_to_non_nullable
+              as Session?,
+      sessionFailure: freezed == sessionFailure
+          ? _value.sessionFailure
+          : sessionFailure // ignore: cast_nullable_to_non_nullable
+              as Failure?,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SessionCopyWith<$Res>? get session {
+    if (_value.session == null) {
+      return null;
+    }
+
+    return $SessionCopyWith<$Res>(_value.session!, (value) {
+      return _then(_value.copyWith(session: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$ConnectedImpl extends _Connected {
-  const _$ConnectedImpl() : super._();
+  const _$ConnectedImpl({this.session, this.sessionFailure}) : super._();
+
+  @override
+  final Session? session;
+  @override
+  final Failure? sessionFailure;
 
   @override
   String toString() {
-    return 'ArchethicDappConnectionState.connected()';
+    return 'ArchethicDappConnectionState.connected(session: $session, sessionFailure: $sessionFailure)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ConnectedImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ConnectedImpl &&
+            (identical(other.session, session) || other.session == session) &&
+            (identical(other.sessionFailure, sessionFailure) ||
+                other.sessionFailure == sessionFailure));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, session, sessionFailure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ConnectedImplCopyWith<_$ConnectedImpl> get copyWith =>
+      __$$ConnectedImplCopyWithImpl<_$ConnectedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function() connected,
+    required TResult Function(Session? session, Failure? sessionFailure)
+        connected,
     required TResult Function() connecting,
   }) {
-    return connected();
+    return connected(session, sessionFailure);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function()? connected,
+    TResult? Function(Session? session, Failure? sessionFailure)? connected,
     TResult? Function()? connecting,
   }) {
-    return connected?.call();
+    return connected?.call(session, sessionFailure);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function()? connected,
+    TResult Function(Session? session, Failure? sessionFailure)? connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) {
     if (connected != null) {
-      return connected();
+      return connected(session, sessionFailure);
     }
     return orElse();
   }
@@ -297,8 +349,16 @@ class _$ConnectedImpl extends _Connected {
 }
 
 abstract class _Connected extends ArchethicDappConnectionState {
-  const factory _Connected() = _$ConnectedImpl;
+  const factory _Connected(
+      {final Session? session,
+      final Failure? sessionFailure}) = _$ConnectedImpl;
   const _Connected._() : super._();
+
+  Session? get session;
+  Failure? get sessionFailure;
+  @JsonKey(ignore: true)
+  _$$ConnectedImplCopyWith<_$ConnectedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -340,7 +400,8 @@ class _$ConnectingImpl extends _Connecting {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() disconnected,
-    required TResult Function() connected,
+    required TResult Function(Session? session, Failure? sessionFailure)
+        connected,
     required TResult Function() connecting,
   }) {
     return connecting();
@@ -350,7 +411,7 @@ class _$ConnectingImpl extends _Connecting {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? disconnected,
-    TResult? Function()? connected,
+    TResult? Function(Session? session, Failure? sessionFailure)? connected,
     TResult? Function()? connecting,
   }) {
     return connecting?.call();
@@ -360,7 +421,7 @@ class _$ConnectingImpl extends _Connecting {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? disconnected,
-    TResult Function()? connected,
+    TResult Function(Session? session, Failure? sessionFailure)? connected,
     TResult Function()? connecting,
     required TResult orElse(),
   }) {

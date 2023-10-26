@@ -15,3 +15,13 @@ class GetServicesFromKeychainResult with _$GetServicesFromKeychainResult {
   factory GetServicesFromKeychainResult.fromJson(Map<String, dynamic> json) =>
       _$GetServicesFromKeychainResultFromJson(json);
 }
+
+@freezed
+class GetServicesFromKeychainRequest with _$GetServicesFromKeychainRequest {
+  const factory GetServicesFromKeychainRequest() =
+      _GetServicesFromKeychainRequest;
+  const GetServicesFromKeychainRequest._();
+
+  factory GetServicesFromKeychainRequest.fromJson(Map<String, dynamic> json) =>
+      _$GetServicesFromKeychainRequestFromJson(json);
+}

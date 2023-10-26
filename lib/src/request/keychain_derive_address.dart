@@ -14,3 +14,16 @@ class KeychainDeriveAddressResult with _$KeychainDeriveAddressResult {
   factory KeychainDeriveAddressResult.fromJson(Map<String, dynamic> json) =>
       _$KeychainDeriveAddressResultFromJson(json);
 }
+
+@freezed
+class KeychainDeriveAddressRequest with _$KeychainDeriveAddressRequest {
+  const factory KeychainDeriveAddressRequest({
+    required String serviceName,
+    @Default(0) int index,
+    @Default('') String pathSuffix,
+  }) = _KeychainDeriveAddressRequest;
+  const KeychainDeriveAddressRequest._();
+
+  factory KeychainDeriveAddressRequest.fromJson(Map<String, dynamic> json) =>
+      _$KeychainDeriveAddressRequestFromJson(json);
+}

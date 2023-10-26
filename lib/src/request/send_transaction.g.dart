@@ -21,3 +21,19 @@ Map<String, dynamic> _$$SendTransactionResultImplToJson(
       'nbConfirmations': instance.nbConfirmations,
       'maxConfirmations': instance.maxConfirmations,
     };
+
+_$SendTransactionRequestImpl _$$SendTransactionRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SendTransactionRequestImpl(
+      data: Data.fromJson(json['data'] as Map<String, dynamic>),
+      type: json['type'] as String,
+      version: json['version'] as int,
+    );
+
+Map<String, dynamic> _$$SendTransactionRequestImplToJson(
+        _$SendTransactionRequestImpl instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+      'type': instance.type,
+      'version': instance.version,
+    };

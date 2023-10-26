@@ -1,32 +1,32 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 part of 'archethic_wallet_client_base.dart';
 
-class DeeplinkArchethicDappClient implements ArchethicDAppClient {
+class DeeplinkArchethicDappClient
+    with ArchechicDAppClientSessionChallenge
+    implements ArchethicDAppClient {
   DeeplinkArchethicDappClient({
-    required this.origin,
     required this.replyBaseUrl,
   });
 
   final _deeplinkRpcClient = DeeplinkRpcClient();
-  final _state = const ArchethicDappConnectionState.connected();
+  final _connectionStateController =
+      CachedBroadcastStreamController<ArchethicDappConnectionState>(
+    const ArchethicDappConnectionState.connected(),
+  );
 
   final String replyBaseUrl;
   final String requestBaseUrl = 'aewallet://archethic.tech';
 
   static bool get isAvailable => Platform.isAndroid || Platform.isIOS;
 
-  @override
-  final RequestOrigin origin;
-
   bool handleRoute(String? path) => _deeplinkRpcClient.handleRoute(path);
 
   @override
-  ArchethicDappConnectionState get state => _state;
+  ArchethicDappConnectionState get state => _connectionStateController.state;
 
   @override
-  Stream<ArchethicDappConnectionState> get connectionStateStream async* {
-    yield const ArchethicDappConnectionState.connected();
-  }
+  Stream<ArchethicDappConnectionState> get connectionStateStream =>
+      _connectionStateController.stream;
 
   @override
   Future<void> connect() async {
@@ -35,94 +35,177 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
 
   @override
   Future<void> close() async {
+    _connectionStateController.add(
+      const ArchethicDappConnectionState.connected(),
+    );
     return;
   }
 
-  Future<DeeplinkRpcResponse> _send({
+  @override
+  Future<Result<Session, Failure>> openSession(
+    OpenSessionRequest sessionRequest,
+  ) async =>
+      Result.guard(() async {
+        // Handshake
+        final keypair = generateKeyPair();
+
+        final handshakeResult = await _sendAnonymous(
+          requestEndpoint: 'open_session_handshake',
+          replyEndpoint: 'open_session_handshake_result',
+          payload: OpenSessionHandshakeRequest(
+            pubKey: aelib.uint8ListToHex(keypair.publicKey!),
+          ).toJson(),
+        ).then(OpenSessionHandshakeResponse.fromJson);
+
+        final sessionAesKey = aelib.ecDecrypt(
+          handshakeResult.aesKey,
+          keypair.privateKey,
+        );
+
+        _connectionStateController.add(
+          ArchethicDappConnectionState.connected(
+            session: Session.waitingForValidation(
+              createdAt: DateTime.now(),
+              sessionId: handshakeResult.sessionId,
+              aesKey: sessionAesKey,
+            ),
+          ),
+        );
+
+        // Impersonation challenge.
+        return _sendAuthenticated(
+          requestEndpoint: 'open_session_challenge',
+          replyEndpoint: 'open_session_challenge_result',
+          payload: OpenSessionChallengeRequest(
+            sessionId: handshakeResult.sessionId,
+            origin: sessionRequest.origin,
+            challenge: sessionRequest.challenge,
+            maxDuration: sessionRequest.maxDuration.inSeconds,
+          ).toJson(),
+        ).then(
+          (value) => Session.validated(
+            sessionId: handshakeResult.sessionId,
+            aesKey: sessionAesKey,
+            origin: sessionRequest.origin,
+            createdAt: OpenSessionChallengeResponse.fromJson(value).createdAt,
+          ),
+        );
+      }).then((sessionOrFailure) {
+        _connectionStateController.add(
+          sessionOrFailure.map(
+            success: (success) => ArchethicDappConnectionState.connected(
+              session: success.value,
+            ),
+            failure: (failure) => ArchethicDappConnectionState.connected(
+              sessionFailure: failure.failure,
+            ),
+          ),
+        );
+        return sessionOrFailure;
+      });
+
+  Future<Map<String, dynamic>> _sendAnonymous({
     required String requestEndpoint,
     required String replyEndpoint,
-    Map<String, dynamic> params = const {},
+    Map<String, dynamic> payload = const {},
   }) async =>
-      _deeplinkRpcClient.send(
-        request: DeeplinkRpcRequest(
-          requestUrl: '$requestBaseUrl/$requestEndpoint',
-          replyUrl: '$replyBaseUrl/$replyEndpoint',
-          params: Request(
-            version: 1,
-            origin: origin,
-            payload: params,
-          ).toJson(),
+      _send(
+        requestEndpoint: requestEndpoint,
+        replyEndpoint: replyEndpoint,
+        request: RPCAnonymousMessage(
+          payload: payload,
         ),
       );
+  Future<Map<String, dynamic>> _sendAuthenticated({
+    required String requestEndpoint,
+    required String replyEndpoint,
+    Map<String, dynamic> payload = const {},
+  }) async {
+    final session = state.openedSession;
+    if (session == null) {
+      throw Failure.invalidSession;
+    }
+
+    return _send(
+      requestEndpoint: requestEndpoint,
+      replyEndpoint: replyEndpoint,
+      request: RPCAuthenticatedMessage(
+        payload: payload,
+        session: session,
+      ),
+    );
+  }
+
+  Future<Map<String, dynamic>> _send({
+    required String requestEndpoint,
+    required String replyEndpoint,
+    required RPCMessage request,
+  }) async =>
+      _deeplinkRpcClient
+          .send(
+            request: DeeplinkRpcRequest(
+              requestUrl: '$requestBaseUrl/$requestEndpoint',
+              replyUrl: '$replyBaseUrl/$replyEndpoint',
+              params: request.toJson(),
+            ),
+          )
+          .mapValueOrThrow(
+            (value) async => request.map(
+              anonymous: (anonymous) =>
+                  RPCAnonymousMessage.fromJson(value).payload,
+              authenticated: (authenticated) async {
+                return RPCAuthenticatedMessage.fromJson(
+                  state.openedSession!,
+                  value,
+                ).payload;
+              },
+            ),
+          );
 
   @override
-  Future<Result<GetEndpointResult, Failure>> getEndpoint() async => _send(
-        requestEndpoint: 'get_endpoint',
-        replyEndpoint: 'get_endpoint_result',
-      ).then(
-        (result) => result.map(
-          failure: (failure) => Result.failure(
-            Failure.fromDeeplinkRpcFailure(failure),
-          ),
-          success: (success) => Result.success(
-            GetEndpointResult.fromJson(success),
-          ),
-        ),
+  Future<Result<GetEndpointResult, Failure>> getEndpoint() async =>
+      Result.guard(
+        () => _sendAuthenticated(
+          requestEndpoint: 'get_endpoint',
+          replyEndpoint: 'get_endpoint_result',
+        ).then(GetEndpointResult.fromJson),
       );
 
   @override
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
     Map<String, dynamic> data,
   ) =>
-      _send(
-        requestEndpoint: 'send_transaction',
-        replyEndpoint: 'send_transaction_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(SendTransactionResult.fromJson(success)),
-        ),
+      Result.guard(
+        () => _sendAuthenticated(
+          requestEndpoint: 'send_transaction',
+          replyEndpoint: 'send_transaction_result',
+          payload: data,
+        ).then(SendTransactionResult.fromJson),
       );
 
   @override
-  Future<Result<GetAccountsResult, Failure>> getAccounts() async => _send(
-        requestEndpoint: 'get_accounts',
-        replyEndpoint: 'get_accounts_result',
-      ).then(
-        (result) => result.map(
-          failure: (failure) => Result.failure(
-            Failure.fromDeeplinkRpcFailure(failure),
-          ),
-          success: (success) => Result.success(
-            GetAccountsResult.fromJson(success),
-          ),
-        ),
+  Future<Result<GetAccountsResult, Failure>> getAccounts() async =>
+      Result.guard(
+        () async => _sendAuthenticated(
+          requestEndpoint: 'get_accounts',
+          replyEndpoint: 'get_accounts_result',
+        ).then(GetAccountsResult.fromJson),
       );
 
   @override
   Future<Result<GetCurrentAccountResult, Failure>> getCurrentAccount() async =>
-      _send(
-        requestEndpoint: 'get_current_account',
-        replyEndpoint: 'get_current_account_result',
-      ).then(
-        (result) => result.map(
-          failure: (failure) => Result.failure(
-            Failure.fromDeeplinkRpcFailure(failure),
-          ),
-          success: (success) => Result.success(
-            GetCurrentAccountResult.fromJson(success),
-          ),
-        ),
+      Result.guard(
+        () async => _sendAuthenticated(
+          requestEndpoint: 'get_current_account',
+          replyEndpoint: 'get_current_account_result',
+        ).then(GetCurrentAccountResult.fromJson),
       );
 
   @override
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
     String accountName,
   ) async =>
-      Result.failure(Failure.unsupportedMethod());
+      const Result.failure(Failure.unsupportedMethod);
 
   @override
   Future<void> unsubscribeAccount(String subscriptionId) async {}
@@ -130,92 +213,75 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   @override
   Future<Result<Subscription<Account>, Failure>>
       subscribeCurrentAccount() async =>
-          Result.failure(Failure.unsupportedMethod());
+          const Result.failure(Failure.unsupportedMethod);
 
   @override
   Future<void> unsubscribeCurrentAccount(String subscriptionId) async {}
 
   @override
   Future<Result<SendTransactionResult, Failure>> addService(
-    Map<String, dynamic> data,
-  ) =>
-      _send(
-        requestEndpoint: 'add_service',
-        replyEndpoint: 'add_service_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(SendTransactionResult.fromJson(success)),
-        ),
+    String name,
+  ) async =>
+      Result.guard(
+        () => _sendAuthenticated(
+          requestEndpoint: 'add_service',
+          replyEndpoint: 'add_service_result',
+          payload: AddServiceRequest(name: name).toJson(),
+        ).then(SendTransactionResult.fromJson),
       );
 
   @override
   Future<Result<GetServicesFromKeychainResult, Failure>>
-      getServicesFromKeychain() async => _send(
-            requestEndpoint: 'get_services_from_keychain',
-            replyEndpoint: 'get_services_from_keychain_result',
-          ).then(
-            (result) => result.map(
-              failure: (failure) => Result.failure(
-                Failure.fromDeeplinkRpcFailure(failure),
-              ),
-              success: (success) => Result.success(
-                GetServicesFromKeychainResult.fromJson(success),
-              ),
-            ),
+      getServicesFromKeychain() async => Result.guard(
+            () => _sendAuthenticated(
+              requestEndpoint: 'get_services_from_keychain',
+              replyEndpoint: 'get_services_from_keychain_result',
+            ).then(GetServicesFromKeychainResult.fromJson),
           );
 
   @override
   Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
     Map<String, dynamic> data,
   ) =>
-      _send(
-        requestEndpoint: 'keychain_derive_keypair',
-        replyEndpoint: 'keychain_derive_keypair_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(KeychainDeriveKeypairResult.fromJson(success)),
-        ),
+      Result.guard(
+        () => _sendAuthenticated(
+          requestEndpoint: 'keychain_derive_keypair',
+          replyEndpoint: 'keychain_derive_keypair_result',
+          payload: data,
+        ).then(KeychainDeriveKeypairResult.fromJson),
       );
 
   @override
   Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
     Map<String, dynamic> data,
   ) =>
-      _send(
-        requestEndpoint: 'keychain_derive_address',
-        replyEndpoint: 'keychain_derive_address_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(KeychainDeriveAddressResult.fromJson(success)),
-        ),
+      Result.guard(
+        () => _sendAuthenticated(
+          requestEndpoint: 'keychain_derive_address',
+          replyEndpoint: 'keychain_derive_address_result',
+          payload: data,
+        ).then(KeychainDeriveAddressResult.fromJson),
       );
 
   @override
   Future<Result<SignTransactionsResult, Failure>> signTransactions(
     Map<String, dynamic> data,
   ) =>
-      _send(
-        requestEndpoint: 'sign_transactions',
-        replyEndpoint: 'sign_transactions_result',
-        params: data,
-      ).then(
-        (result) => result.map(
-          failure: (failure) =>
-              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
-          success: (success) =>
-              Result.success(SignTransactionsResult.fromJson(success)),
-        ),
+      Result.guard(
+        () => _sendAuthenticated(
+          requestEndpoint: 'sign_transactions',
+          replyEndpoint: 'sign_transactions_result',
+          payload: data,
+        ).then(SignTransactionsResult.fromJson),
+      );
+}
+
+extension DeeplinkFutureRpcResponseFailure on Future<DeeplinkRpcResponse> {
+  Future<T> mapValueOrThrow<T>(
+    FutureOr<T> Function(dynamic value) map,
+  ) async =>
+      (await this).map(
+        failure: (failure) => throw Failure.fromDeeplinkRpcFailure(failure),
+        success: (success) => map(success),
       );
 }

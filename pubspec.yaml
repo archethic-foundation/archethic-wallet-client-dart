@@ -31,6 +31,7 @@ dependencies:
 
   # StreamChannel wrappers for WebSockets. Provides a cross-platform WebSocketChannel API, a cross-platform implementation of that API that communicates over an underlying StreamChannel.
   web_socket_channel: ^2.4.0
+  web_socket_channel_connect: ^1.0.2+4
 
 dev_dependencies:
   # A build system for Dart code generation and modular compilation

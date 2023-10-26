@@ -17,3 +17,19 @@ Map<String, dynamic> _$$KeychainDeriveAddressResultImplToJson(
     <String, dynamic>{
       'address': instance.address,
     };
+
+_$KeychainDeriveAddressRequestImpl _$$KeychainDeriveAddressRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$KeychainDeriveAddressRequestImpl(
+      serviceName: json['serviceName'] as String,
+      index: json['index'] as int? ?? 0,
+      pathSuffix: json['pathSuffix'] as String? ?? '',
+    );
+
+Map<String, dynamic> _$$KeychainDeriveAddressRequestImplToJson(
+        _$KeychainDeriveAddressRequestImpl instance) =>
+    <String, dynamic>{
+      'serviceName': instance.serviceName,
+      'index': instance.index,
+      'pathSuffix': instance.pathSuffix,
+    };

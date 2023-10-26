@@ -21,3 +21,11 @@ Map<String, dynamic> _$$GetCurrentAccountResultImplToJson(
       'serviceName': instance.serviceName,
       'genesisAddress': instance.genesisAddress,
     };
+
+_$GetCurrentAccountRequestImpl _$$GetCurrentAccountRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GetCurrentAccountRequestImpl();
+
+Map<String, dynamic> _$$GetCurrentAccountRequestImplToJson(
+        _$GetCurrentAccountRequestImpl instance) =>
+    <String, dynamic>{};

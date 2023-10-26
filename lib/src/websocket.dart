@@ -1,37 +1,26 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 part of 'archethic_wallet_client_base.dart';
 
-class WebsocketArchethicDappClient implements ArchethicDAppClient {
-  WebsocketArchethicDappClient({
-    required this.origin,
-  });
-
-  @override
-  final RequestOrigin origin;
+class WebsocketArchethicDappClient
+    with ArchechicDAppClientSessionChallenge
+    implements ArchethicDAppClient {
+  WebsocketArchethicDappClient();
 
   Peer? _client;
   final _connectionStateController =
-      StreamController<ArchethicDappConnectionState>.broadcast()
-        ..add(const ArchethicDappConnectionState.disconnected());
+      CachedBroadcastStreamController<ArchethicDappConnectionState>(
+    const ArchethicDappConnectionState.disconnected(),
+  );
 
   static const logName = 'WebsocketArchethicDappClient';
 
   static bool get isAvailable =>
       kIsWeb || Platform.isLinux || Platform.isMacOS || Platform.isWindows;
 
-  final _subscriptionValues =
-      StreamController<RPCSubscriptionUpdateDTO>.broadcast();
+  final _subscriptionValues = StreamController<SubscriptionUpdate>.broadcast();
 
   @override
-  ArchethicDappConnectionState get state {
-    if (_client == null) {
-      return const ArchethicDappConnectionState.disconnected();
-    }
-    if (_client!.isClosed) {
-      return const ArchethicDappConnectionState.disconnected();
-    }
-    return const ArchethicDappConnectionState.connected();
-  }
+  ArchethicDappConnectionState get state => _connectionStateController.state;
 
   @override
   Stream<ArchethicDappConnectionState> get connectionStateStream =>
@@ -53,7 +42,8 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     _connectionStateController.add(
       const ArchethicDappConnectionState.connecting(),
     );
-    final socket = WebSocketChannel.connect(Uri.parse('ws://127.0.0.1:12345'));
+    final socket = await connectWebSocket(Uri.parse('ws://127.0.0.1:12345'));
+
     log(
       'Connection opened',
       name: logName,
@@ -64,10 +54,15 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     final client = Peer(socket.cast<String>());
     client.registerMethod(
       'addSubscriptionNotification',
-      (params) {
+      (params) async {
         log('Received value');
+        final decodedPayload = RPCAuthenticatedMessage.fromJson(
+          state.openedSession!,
+          params.value,
+        ).payload;
+
         _subscriptionValues.add(
-          RPCSubscriptionUpdateDTO.fromJson(params.value),
+          SubscriptionUpdate.fromJson(decodedPayload),
         );
       },
     );
@@ -98,12 +93,13 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     required String method,
     Map<String, dynamic> params = const {},
   }) async {
-    final subscriptionData = await _send(
+    final subscriptionData = await _sendAuthenticated(
       method: method,
-      params: params,
+      payload: params,
     );
 
-    final subscriptionId = subscriptionData['subscriptionId'];
+    final subscriptionId =
+        SubscribeResponse.fromJson(subscriptionData).subscriptionId;
     return Subscription(
       id: subscriptionId,
       updates: _subscriptionValues.stream
@@ -112,9 +108,108 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     );
   }
 
+  Future<void> _unsubscribe({
+    required String method,
+    required String subscriptionId,
+  }) =>
+      _sendAuthenticated(
+        method: method,
+        payload: UnsubscribeRequest(subscriptionId: subscriptionId).toJson(),
+      );
+
+  @override
+  Future<Result<Session, Failure>> openSession(
+    OpenSessionRequest sessionRequest,
+  ) =>
+      Result.guard(() async {
+        // Handshake
+        final keypair = generateKeyPair();
+
+        final handshakeResult = await _sendAnonymous(
+          method: 'openSessionHandshake',
+          payload: OpenSessionHandshakeRequest(
+            pubKey: aelib.uint8ListToHex(keypair.publicKey!),
+          ).toJson(),
+        ).then((data) => OpenSessionHandshakeResponse.fromJson(data));
+
+        final sessionAesKey = aelib.ecDecrypt(
+          handshakeResult.aesKey,
+          keypair.privateKey,
+        );
+
+        _connectionStateController.add(
+          ArchethicDappConnectionState.connected(
+            session: Session.waitingForValidation(
+              createdAt: DateTime.now(),
+              sessionId: handshakeResult.sessionId,
+              aesKey: sessionAesKey,
+            ),
+          ),
+        );
+
+        // Impersonation challenge.
+        final session = await _sendAuthenticated(
+          method: 'openSessionChallenge',
+          payload: OpenSessionChallengeRequest(
+            sessionId: handshakeResult.sessionId,
+            origin: sessionRequest.origin,
+            challenge: sessionRequest.challenge,
+            maxDuration: sessionRequest.maxDuration.inSeconds,
+          ).toJson(),
+        ).then(
+          (value) => Session.validated(
+            sessionId: handshakeResult.sessionId,
+            aesKey: sessionAesKey,
+            origin: sessionRequest.origin,
+            createdAt: OpenSessionChallengeResponse.fromJson(value).createdAt,
+          ),
+        );
+
+        return session;
+      }).then((sessionOrFailure) {
+        _connectionStateController.add(
+          sessionOrFailure.map(
+            success: (success) => ArchethicDappConnectionState.connected(
+              session: success.value,
+            ),
+            failure: (failure) => ArchethicDappConnectionState.connected(
+              sessionFailure: failure.failure,
+            ),
+          ),
+        );
+        return sessionOrFailure;
+      });
+
+  Future<Map<String, dynamic>> _sendAnonymous({
+    required String method,
+    Map<String, dynamic> payload = const {},
+  }) async =>
+      _send(
+        method: method,
+        request: RPCAnonymousMessage(payload: payload),
+      );
+
+  Future<Map<String, dynamic>> _sendAuthenticated({
+    required String method,
+    Map<String, dynamic> payload = const {},
+  }) async {
+    final session = state.openedSession;
+    if (session == null) {
+      throw Failure.invalidSession;
+    }
+
+    return _send(
+      method: method,
+      request: RPCAuthenticatedMessage(
+        payload: payload,
+        session: session,
+      ),
+    );
+  }
+
   Future<Map<String, dynamic>> _send({
     required String method,
-    Map<String, dynamic> params = const {},
+    required RPCMessage request,
   }) async {
     if (_client == null || _client!.isClosed) {
       _client = null;
@@ -123,14 +218,18 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     return _client!
         .sendRequest(
       method,
-      Request(
-        version: 1,
-        origin: origin,
-        payload: params,
-      ).toJson(),
+      request.toJson(),
     )
         .then(
-      (result) => result,
+      (result) async => request.map(
+        anonymous: (anonymous) => RPCAnonymousMessage.fromJson(result).payload,
+        authenticated: (authenticated) async {
+          return RPCAuthenticatedMessage.fromJson(
+            state.openedSession!,
+            result,
+          ).payload;
+        },
+      ),
       onError: (e, stack) {
         if (e is StateError) {
           log(
@@ -139,7 +238,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
             error: e,
             stackTrace: stack,
           );
-          throw Failure.connectivity();
+          throw Failure.connectivity;
         }
         if (e is RpcException) {
           log(
@@ -157,17 +256,16 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
           error: e,
           stackTrace: stack,
         );
-        throw Failure.other(
-          cause: e,
-          stack: stack,
-        );
+        throw Failure.other;
       },
     );
   }
 
   @override
   Future<Result<GetEndpointResult, Failure>> getEndpoint() => Result.guard(
-        () => _send(method: 'getEndpoint').then(
+        () => _sendAuthenticated(
+          method: 'getEndpoint',
+        ).then(
           (result) => GetEndpointResult.fromJson(result),
         ),
       );
@@ -177,9 +275,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     Map<String, dynamic> data,
   ) =>
       Result.guard(
-        () => _send(
+        () => _sendAuthenticated(
           method: 'sendTransaction',
-          params: data,
+          payload: data,
         ).then(
           (result) => SendTransactionResult.fromJson(result),
         ),
@@ -187,7 +285,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
 
   @override
   Future<Result<GetAccountsResult, Failure>> getAccounts() => Result.guard(
-        () => _send(method: 'getAccounts').then(
+        () => _sendAuthenticated(
+          method: 'getAccounts',
+        ).then(
           (result) => GetAccountsResult.fromJson(result),
         ),
       );
@@ -195,7 +295,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   @override
   Future<Result<GetCurrentAccountResult, Failure>> getCurrentAccount() =>
       Result.guard(
-        () => _send(method: 'getCurrentAccount').then(
+        () => _sendAuthenticated(
+          method: 'getCurrentAccount',
+        ).then(
           (result) => GetCurrentAccountResult.fromJson(result),
         ),
       );
@@ -208,9 +310,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
         () async {
           final subscriptionDTO = await _subscribe(
             method: 'subscribeAccount',
-            params: {
-              'serviceName': serviceName,
-            },
+            params: SubscribeAccountRequest(serviceName: serviceName).toJson(),
           );
           return Subscription(
             id: subscriptionDTO.id,
@@ -222,14 +322,15 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
       );
 
   @override
-  Future<void> unsubscribeAccount(String subscriptionId) async {
-    await _send(
-      method: 'unsubscribeAccount',
-      params: {
-        'subscriptionId': subscriptionId,
-      },
-    );
-  }
+  Future<Result<void, Failure>> unsubscribeAccount(
+    String subscriptionId,
+  ) async =>
+      Result.guard(
+        () => _unsubscribe(
+          method: 'unsubscribeAccount',
+          subscriptionId: subscriptionId,
+        ),
+      );
 
   @override
   Future<Result<Subscription<Account>, Failure>>
@@ -248,23 +349,22 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
           );
 
   @override
-  Future<void> unsubscribeCurrentAccount(String subscriptionId) async {
-    await _send(
-      method: 'unsubscribeCurrentAccount',
-      params: {
-        'subscriptionId': subscriptionId,
-      },
-    );
-  }
+  Future<void> unsubscribeCurrentAccount(String subscriptionId) async =>
+      Result.guard(
+        () => _unsubscribe(
+          method: 'unsubscribeCurrentAccount',
+          subscriptionId: subscriptionId,
+        ),
+      );
 
   @override
   Future<Result<SendTransactionResult, Failure>> addService(
-    Map<String, dynamic> data,
+    String name,
   ) =>
       Result.guard(
-        () => _send(
+        () => _sendAuthenticated(
           method: 'addService',
-          params: data,
+          payload: AddServiceRequest(name: name).toJson(),
         ).then(
           (result) => SendTransactionResult.fromJson(result),
         ),
@@ -273,7 +373,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   @override
   Future<Result<GetServicesFromKeychainResult, Failure>>
       getServicesFromKeychain() => Result.guard(
-            () => _send(method: 'getServicesFromKeychain').then(
+            () => _sendAuthenticated(
+              method: 'getServicesFromKeychain',
+            ).then(
               (result) => GetServicesFromKeychainResult.fromJson(result),
             ),
           );
@@ -283,9 +385,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     Map<String, dynamic> data,
   ) =>
       Result.guard(
-        () => _send(
+        () => _sendAuthenticated(
           method: 'keychainDeriveKeypair',
-          params: data,
+          payload: data,
         ).then(
           (result) => KeychainDeriveKeypairResult.fromJson(result),
         ),
@@ -296,9 +398,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     Map<String, dynamic> data,
   ) =>
       Result.guard(
-        () => _send(
+        () => _sendAuthenticated(
           method: 'keychainDeriveAddress',
-          params: data,
+          payload: data,
         ).then(
           (result) => KeychainDeriveAddressResult.fromJson(result),
         ),
@@ -309,9 +411,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     Map<String, dynamic> data,
   ) =>
       Result.guard(
-        () => _send(
+        () => _sendAuthenticated(
           method: 'signTransactions',
-          params: data,
+          payload: data,
         ).then(
           (result) => SignTransactionsResult.fromJson(result),
         ),

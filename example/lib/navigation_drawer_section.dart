@@ -107,10 +107,9 @@ class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
           ),
         ),
         ...destinationsClassic.map((destination) {
-          return NavigationDrawerDestination(
-            label: Text(destination.label),
-            icon: destination.icon,
-            selectedIcon: destination.selectedIcon,
+          return _NavigationDrawerDestinationFactory.build(
+            context: context,
+            destination: destination,
           );
         }),
         const Divider(indent: 28, endIndent: 28),
@@ -122,10 +121,9 @@ class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
           ),
         ),
         ...destinationsSub.map((destination) {
-          return NavigationDrawerDestination(
-            label: Text(destination.label),
-            icon: destination.icon,
-            selectedIcon: destination.selectedIcon,
+          return _NavigationDrawerDestinationFactory.build(
+            context: context,
+            destination: destination,
           );
         }),
         const Divider(indent: 28, endIndent: 28),
@@ -137,13 +135,24 @@ class _NavigationDrawerSectionState extends State<NavigationDrawerSection> {
           ),
         ),
         ...destinationsWithConfirmation.map((destination) {
-          return NavigationDrawerDestination(
-            label: Text(destination.label),
-            icon: destination.icon,
-            selectedIcon: destination.selectedIcon,
+          return _NavigationDrawerDestinationFactory.build(
+            context: context,
+            destination: destination,
           );
         }),
       ],
     );
   }
+}
+
+class _NavigationDrawerDestinationFactory {
+  static NavigationDrawerDestination build({
+    required BuildContext context,
+    required MenuDestination destination,
+  }) =>
+      NavigationDrawerDestination(
+        label: Expanded(child: Text(destination.label, maxLines: 2)),
+        icon: destination.icon,
+        selectedIcon: destination.selectedIcon,
+      );
 }

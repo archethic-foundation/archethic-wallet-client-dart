@@ -1,5 +1,5 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
-import 'package:archethic_wallet_client/src/core/failures.dart';
+import 'package:archethic_wallet_client/src/model/failures.dart';
 import 'package:flutter/foundation.dart';
 
 extension FutureResult<ValueT, FailureT extends Exception>
@@ -66,12 +66,9 @@ abstract class Result<ValueT, FailureT extends Exception> {
       return Result.success(await run());
     } on Failure catch (e) {
       return Result.failure(e);
-    } catch (e, stack) {
-      return Result.failure(
-        Failure.other(
-          cause: e,
-          stack: stack,
-        ),
+    } catch (e) {
+      return const Result.failure(
+        Failure.other,
       );
     }
   }

@@ -6,6 +6,20 @@ part of 'get_accounts.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+_$AppAccountImpl _$$AppAccountImplFromJson(Map<String, dynamic> json) =>
+    _$AppAccountImpl(
+      shortName: json['shortName'] as String,
+      serviceName: json['serviceName'] as String,
+      genesisAddress: json['genesisAddress'] as String,
+    );
+
+Map<String, dynamic> _$$AppAccountImplToJson(_$AppAccountImpl instance) =>
+    <String, dynamic>{
+      'shortName': instance.shortName,
+      'serviceName': instance.serviceName,
+      'genesisAddress': instance.genesisAddress,
+    };
+
 _$GetAccountsResultImpl _$$GetAccountsResultImplFromJson(
         Map<String, dynamic> json) =>
     _$GetAccountsResultImpl(
@@ -19,3 +33,11 @@ Map<String, dynamic> _$$GetAccountsResultImplToJson(
     <String, dynamic>{
       'accounts': instance.accounts,
     };
+
+_$GetAccountsRequestImpl _$$GetAccountsRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GetAccountsRequestImpl();
+
+Map<String, dynamic> _$$GetAccountsRequestImplToJson(
+        _$GetAccountsRequestImpl instance) =>
+    <String, dynamic>{};
