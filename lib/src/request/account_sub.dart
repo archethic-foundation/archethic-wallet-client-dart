@@ -51,4 +51,4 @@ class SubscribeCurrentAccountRequest with _$SubscribeCurrentAccountRequest {
       _$SubscribeCurrentAccountRequestFromJson(json);
 }
 
-typedef SubscribeAccountNotification = Account;
+typedef SubscribeAccountNotification = Account?;
