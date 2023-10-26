@@ -200,3 +200,196 @@ abstract class _SendTransactionResult extends SendTransactionResult {
   _$$SendTransactionResultImplCopyWith<_$SendTransactionResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+SendTransactionRequest _$SendTransactionRequestFromJson(
+    Map<String, dynamic> json) {
+  return _SendTransactionRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SendTransactionRequest {
+  Data get data => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+  int get version => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SendTransactionRequestCopyWith<SendTransactionRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SendTransactionRequestCopyWith<$Res> {
+  factory $SendTransactionRequestCopyWith(SendTransactionRequest value,
+          $Res Function(SendTransactionRequest) then) =
+      _$SendTransactionRequestCopyWithImpl<$Res, SendTransactionRequest>;
+  @useResult
+  $Res call({Data data, String type, int version});
+
+  $DataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class _$SendTransactionRequestCopyWithImpl<$Res,
+        $Val extends SendTransactionRequest>
+    implements $SendTransactionRequestCopyWith<$Res> {
+  _$SendTransactionRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+    Object? type = null,
+    Object? version = null,
+  }) {
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Data,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DataCopyWith<$Res> get data {
+    return $DataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$SendTransactionRequestImplCopyWith<$Res>
+    implements $SendTransactionRequestCopyWith<$Res> {
+  factory _$$SendTransactionRequestImplCopyWith(
+          _$SendTransactionRequestImpl value,
+          $Res Function(_$SendTransactionRequestImpl) then) =
+      __$$SendTransactionRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Data data, String type, int version});
+
+  @override
+  $DataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$$SendTransactionRequestImplCopyWithImpl<$Res>
+    extends _$SendTransactionRequestCopyWithImpl<$Res,
+        _$SendTransactionRequestImpl>
+    implements _$$SendTransactionRequestImplCopyWith<$Res> {
+  __$$SendTransactionRequestImplCopyWithImpl(
+      _$SendTransactionRequestImpl _value,
+      $Res Function(_$SendTransactionRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+    Object? type = null,
+    Object? version = null,
+  }) {
+    return _then(_$SendTransactionRequestImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Data,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SendTransactionRequestImpl extends _SendTransactionRequest {
+  const _$SendTransactionRequestImpl(
+      {required this.data, required this.type, required this.version})
+      : super._();
+
+  factory _$SendTransactionRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SendTransactionRequestImplFromJson(json);
+
+  @override
+  final Data data;
+  @override
+  final String type;
+  @override
+  final int version;
+
+  @override
+  String toString() {
+    return 'SendTransactionRequest(data: $data, type: $type, version: $version)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendTransactionRequestImpl &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.version, version) || other.version == version));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, data, type, version);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendTransactionRequestImplCopyWith<_$SendTransactionRequestImpl>
+      get copyWith => __$$SendTransactionRequestImplCopyWithImpl<
+          _$SendTransactionRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SendTransactionRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SendTransactionRequest extends SendTransactionRequest {
+  const factory _SendTransactionRequest(
+      {required final Data data,
+      required final String type,
+      required final int version}) = _$SendTransactionRequestImpl;
+  const _SendTransactionRequest._() : super._();
+
+  factory _SendTransactionRequest.fromJson(Map<String, dynamic> json) =
+      _$SendTransactionRequestImpl.fromJson;
+
+  @override
+  Data get data;
+  @override
+  String get type;
+  @override
+  int get version;
+  @override
+  @JsonKey(ignore: true)
+  _$$SendTransactionRequestImplCopyWith<_$SendTransactionRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
