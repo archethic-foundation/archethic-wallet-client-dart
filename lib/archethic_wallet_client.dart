@@ -7,6 +7,7 @@ export 'src/model/message.dart';
 export 'src/model/session.dart';
 export 'src/model/subscription.dart';
 export 'src/request/account_sub.dart';
+export 'src/request/add_service.dart';
 export 'src/request/create_session.dart';
 export 'src/request/get_accounts.dart';
 export 'src/request/get_current_account.dart';

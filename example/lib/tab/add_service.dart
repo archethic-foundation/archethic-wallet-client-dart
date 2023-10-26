@@ -45,8 +45,9 @@ class _AddServiceTabState extends State<AddServiceTab>
           OutlinedButton(
             child: const Icon(Icons.send),
             onPressed: () async {
-              final response = await aewalletClient
-                  .addService({'name': payloadTextController.text});
+              final response = await aewalletClient.addService(
+                payloadTextController.text,
+              );
               response.when(
                 failure: (failure) {
                   log(

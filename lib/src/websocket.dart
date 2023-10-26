@@ -359,12 +359,12 @@ class WebsocketArchethicDappClient
 
   @override
   Future<Result<SendTransactionResult, Failure>> addService(
-    Map<String, dynamic> data,
+    String name,
   ) =>
       Result.guard(
         () => _sendAuthenticated(
           method: 'addService',
-          payload: data,
+          payload: AddServiceRequest(name: name).toJson(),
         ).then(
           (result) => SendTransactionResult.fromJson(result),
         ),

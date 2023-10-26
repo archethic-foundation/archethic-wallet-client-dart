@@ -220,13 +220,13 @@ class DeeplinkArchethicDappClient
 
   @override
   Future<Result<SendTransactionResult, Failure>> addService(
-    Map<String, dynamic> data,
+    String name,
   ) async =>
       Result.guard(
         () => _sendAuthenticated(
           requestEndpoint: 'add_service',
           replyEndpoint: 'add_service_result',
-          payload: data,
+          payload: AddServiceRequest(name: name).toJson(),
         ).then(SendTransactionResult.fromJson),
       );
 
