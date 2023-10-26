@@ -42,9 +42,10 @@ class SubscribeAccountRequest with _$SubscribeAccountRequest {
 
 @freezed
 class SubscribeCurrentAccountRequest with _$SubscribeCurrentAccountRequest {
-  const SubscribeCurrentAccountRequest._();
   const factory SubscribeCurrentAccountRequest() =
       _SubscribeCurrentAccountRequest;
+
+  const SubscribeCurrentAccountRequest._();
 
   factory SubscribeCurrentAccountRequest.fromJson(Map<String, dynamic> json) =>
       _$SubscribeCurrentAccountRequestFromJson(json);

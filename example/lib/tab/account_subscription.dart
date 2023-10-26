@@ -119,7 +119,7 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab>
                   failure: (failure) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       ResultSnackbar.error(
-                        failure.message ?? 'Subscription failed',
+                        failure.message,
                       ),
                     );
                   },

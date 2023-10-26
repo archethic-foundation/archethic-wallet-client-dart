@@ -82,7 +82,7 @@ class _TransactionSendTabState extends State<TransactionSendTab>
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
                       ResultSnackbar.error(
-                        failure.message ?? 'An error occured',
+                        failure.message,
                       ),
                     );
                   },

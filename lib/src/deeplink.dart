@@ -120,7 +120,7 @@ class DeeplinkArchethicDappClient
   }) async {
     final session = state.openedSession;
     if (session == null) {
-      throw Failure.invalidSession();
+      throw Failure.invalidSession;
     }
 
     return _send(
@@ -202,7 +202,7 @@ class DeeplinkArchethicDappClient
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
     String accountName,
   ) async =>
-      Result.failure(Failure.unsupportedMethod());
+      const Result.failure(Failure.unsupportedMethod);
 
   @override
   Future<void> unsubscribeAccount(String subscriptionId) async {}
@@ -210,7 +210,7 @@ class DeeplinkArchethicDappClient
   @override
   Future<Result<Subscription<Account>, Failure>>
       subscribeCurrentAccount() async =>
-          Result.failure(Failure.unsupportedMethod());
+          const Result.failure(Failure.unsupportedMethod);
 
   @override
   Future<void> unsubscribeCurrentAccount(String subscriptionId) async {}

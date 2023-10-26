@@ -17,3 +17,11 @@ Map<String, dynamic> _$$GetEndpointResultImplToJson(
     <String, dynamic>{
       'endpointUrl': instance.endpointUrl,
     };
+
+_$GetEndpointRequestImpl _$$GetEndpointRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$GetEndpointRequestImpl();
+
+Map<String, dynamic> _$$GetEndpointRequestImplToJson(
+        _$GetEndpointRequestImpl instance) =>
+    <String, dynamic>{};

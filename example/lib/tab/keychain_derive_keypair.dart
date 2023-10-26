@@ -87,7 +87,7 @@ class _KeychainDeriveKeypairTabState extends State<KeychainDeriveKeypairTab>
                     error: failure,
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
-                    ResultSnackbar.error(failure.message ?? 'An error occured'),
+                    ResultSnackbar.error(failure.message),
                   );
                 },
                 success: (result) {

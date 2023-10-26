@@ -75,7 +75,7 @@ class _CurrentAccountSubscriptionTabState
                   failure: (failure) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       ResultSnackbar.error(
-                        failure.message ?? 'Subscription failed',
+                        failure.message,
                       ),
                     );
                   },

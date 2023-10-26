@@ -66,12 +66,9 @@ abstract class Result<ValueT, FailureT extends Exception> {
       return Result.success(await run());
     } on Failure catch (e) {
       return Result.failure(e);
-    } catch (e, stack) {
-      return Result.failure(
-        Failure.other(
-          cause: e,
-          stack: stack,
-        ),
+    } catch (e) {
+      return const Result.failure(
+        Failure.other,
       );
     }
   }

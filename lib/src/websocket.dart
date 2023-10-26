@@ -182,7 +182,7 @@ class WebsocketArchethicDappClient
 
   Future<Map<String, dynamic>> _sendAnonymous({
     required String method,
-    required Map<String, dynamic> payload,
+    Map<String, dynamic> payload = const {},
   }) async =>
       _send(
         method: method,
@@ -195,7 +195,7 @@ class WebsocketArchethicDappClient
   }) async {
     final session = state.openedSession;
     if (session == null) {
-      throw Failure.invalidSession();
+      throw Failure.invalidSession;
     }
 
     return _send(
@@ -238,7 +238,7 @@ class WebsocketArchethicDappClient
             error: e,
             stackTrace: stack,
           );
-          throw Failure.connectivity();
+          throw Failure.connectivity;
         }
         if (e is RpcException) {
           log(
@@ -256,10 +256,7 @@ class WebsocketArchethicDappClient
           error: e,
           stackTrace: stack,
         );
-        throw Failure.other(
-          cause: e,
-          stack: stack,
-        );
+        throw Failure.other;
       },
     );
   }

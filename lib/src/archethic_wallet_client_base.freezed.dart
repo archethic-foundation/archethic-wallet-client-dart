@@ -203,7 +203,6 @@ abstract class _$$ConnectedImplCopyWith<$Res> {
   $Res call({Session? session, Failure? sessionFailure});
 
   $SessionCopyWith<$Res>? get session;
-  $FailureCopyWith<$Res>? get sessionFailure;
 }
 
 /// @nodoc
@@ -241,18 +240,6 @@ class __$$ConnectedImplCopyWithImpl<$Res>
 
     return $SessionCopyWith<$Res>(_value.session!, (value) {
       return _then(_value.copyWith(session: value));
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $FailureCopyWith<$Res>? get sessionFailure {
-    if (_value.sessionFailure == null) {
-      return null;
-    }
-
-    return $FailureCopyWith<$Res>(_value.sessionFailure!, (value) {
-      return _then(_value.copyWith(sessionFailure: value));
     });
   }
 }

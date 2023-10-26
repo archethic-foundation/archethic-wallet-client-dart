@@ -54,7 +54,7 @@ class _AddServiceTabState extends State<AddServiceTab>
                     error: failure,
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
-                    ResultSnackbar.error(failure.message ?? 'An error occured'),
+                    ResultSnackbar.error(failure.message),
                   );
                 },
                 success: (result) {
