@@ -35,6 +35,9 @@ class DeeplinkArchethicDappClient
 
   @override
   Future<void> close() async {
+    _connectionStateController.add(
+      const ArchethicDappConnectionState.connected(),
+    );
     return;
   }
 
