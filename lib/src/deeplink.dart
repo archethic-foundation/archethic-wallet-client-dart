@@ -76,10 +76,7 @@ class DeeplinkArchethicDappClient
           payload: OpenSessionChallengeRequest(
             sessionId: handshakeResult.sessionId,
             origin: sessionRequest.origin,
-            challenge: aesEncrypt(
-              sessionRequest.challenge,
-              sessionAesKey,
-            ),
+            challenge: sessionRequest.challenge,
             maxDuration: sessionRequest.maxDuration.inSeconds,
           ).toJson(),
         ).then(

@@ -90,30 +90,6 @@ class RPCAuthenticatedMessage extends RPCMessage {
 
   final Session session;
 
-  // static Future<RPCAuthenticatedMessage> fromJson(
-  //   FutureOr<Session?> Function(String sessionId) findSession,
-  //   Map<String, dynamic> data,
-  // ) async {
-  //   final sessionId = data['sessionId'];
-  //   final session = await findSession(sessionId);
-
-  //   if (session == null) throw Failure.invalidSession();
-
-  //   return RPCAuthenticatedMessage(
-  //     session: session,
-  //     version: data['version'],
-  //     payload: jsonDecode(
-  //       utf8.decode(
-  //         aelib.hexToUint8List(
-  //           aelib.uint8ListToHex(
-  //             aelib.aesDecrypt(data['payload'], session.aesKey),
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   static String sessionIdFromJson(
     Map<String, dynamic> data,
   ) {
