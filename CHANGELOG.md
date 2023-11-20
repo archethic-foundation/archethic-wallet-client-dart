@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.0.8
+- Update Archethic Dart SDK
+
 ## 1.0.7
 - Update Archethic Dart SDK version 3.3.1
   
