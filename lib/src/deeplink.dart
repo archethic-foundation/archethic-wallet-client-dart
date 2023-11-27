@@ -71,6 +71,22 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
       );
 
   @override
+  Future<Result<RefreshCurrentAccountResult, Failure>>
+      refreshCurrentAccount() async => _send(
+            requestEndpoint: 'refresh_current_account',
+            replyEndpoint: 'refresh_current_account_result',
+          ).then(
+            (result) => result.map(
+              failure: (failure) => Result.failure(
+                Failure.fromDeeplinkRpcFailure(failure),
+              ),
+              success: (success) => Result.success(
+                RefreshCurrentAccountResult.fromJson(success),
+              ),
+            ),
+          );
+
+  @override
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
     Map<String, dynamic> data,
   ) =>

@@ -14,6 +14,7 @@ import 'package:archethic_wallet_client/src/request/get_endpoint.dart';
 import 'package:archethic_wallet_client/src/request/get_services_from_keychain.dart';
 import 'package:archethic_wallet_client/src/request/keychain_derive_address.dart';
 import 'package:archethic_wallet_client/src/request/keychain_derive_keypair.dart';
+import 'package:archethic_wallet_client/src/request/refresh_current_account.dart';
 import 'package:archethic_wallet_client/src/request/send_transaction.dart';
 import 'package:archethic_wallet_client/src/request/sign_transactions.dart';
 import 'package:deeplink_rpc/deeplink_rpc.dart';
@@ -76,6 +77,8 @@ abstract class ArchethicDAppClient {
   Future<void> close();
 
   Future<Result<GetEndpointResult, Failure>> getEndpoint();
+
+  Future<Result<RefreshCurrentAccountResult, Failure>> refreshCurrentAccount();
 
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
     String accountName,

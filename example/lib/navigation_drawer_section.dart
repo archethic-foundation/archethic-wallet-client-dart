@@ -39,6 +39,11 @@ const List<MenuDestination> destinationsClassic = <MenuDestination>[
     Icon(Icons.arrow_right),
     Icon(Icons.arrow_right),
   ),
+  MenuDestination(
+    'Refresh current account',
+    Icon(Icons.arrow_right),
+    Icon(Icons.arrow_right),
+  ),
 ];
 
 const List<MenuDestination> destinationsSub = <MenuDestination>[
