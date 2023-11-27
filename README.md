@@ -194,8 +194,6 @@ Gets the endpoint URL used on AEWallet.
 
 ## refresh_current_account
 
-Gets the endpoint URL used on AEWallet.
-
 ### Request
 
 ```typescript
