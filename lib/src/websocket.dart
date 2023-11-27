@@ -173,6 +173,14 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
       );
 
   @override
+  Future<Result<RefreshCurrentAccountResult, Failure>>
+      refreshCurrentAccount() => Result.guard(
+            () => _send(method: 'refreshCurrentAccount').then(
+              (result) => RefreshCurrentAccountResult.fromJson(result),
+            ),
+          );
+
+  @override
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
     Map<String, dynamic> data,
   ) =>

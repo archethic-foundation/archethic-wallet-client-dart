@@ -11,6 +11,7 @@ import 'package:flutter_dapp_example/tab/get_endpoint.dart';
 import 'package:flutter_dapp_example/tab/get_services_from_keychain.dart';
 import 'package:flutter_dapp_example/tab/keychain_derive_address.dart';
 import 'package:flutter_dapp_example/tab/keychain_derive_keypair.dart';
+import 'package:flutter_dapp_example/tab/refresh_current_account.dart';
 import 'package:flutter_dapp_example/tab/sign_transactions.dart';
 import 'package:flutter_dapp_example/tab/transaction_send.dart';
 
@@ -98,23 +99,25 @@ class _MainScreenState extends State<MainScreen> {
         return KeychainDeriveKeypairTab(
           aewalletClient: widget.aewalletClient,
         );
-
       case 5:
         return KeychainDeriveAddressTab(
           aewalletClient: widget.aewalletClient,
         );
       case 6:
-        return AccountSubscriptionTab(aewalletClient: widget.aewalletClient);
+        return RefreshCurrentAccountTab(aewalletClient: widget.aewalletClient);
       case 7:
+        return AccountSubscriptionTab(aewalletClient: widget.aewalletClient);
+      case 8:
         return CurrentAccountSubscriptionTab(
           aewalletClient: widget.aewalletClient,
         );
-      case 8:
-        return TransactionSendTab(aewalletClient: widget.aewalletClient);
       case 9:
-        return SignTransactionsTab(aewalletClient: widget.aewalletClient);
+        return TransactionSendTab(aewalletClient: widget.aewalletClient);
       case 10:
+        return SignTransactionsTab(aewalletClient: widget.aewalletClient);
+      case 11:
         return AddServiceTab(aewalletClient: widget.aewalletClient);
+
       default:
         return const SizedBox();
     }

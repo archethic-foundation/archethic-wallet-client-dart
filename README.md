@@ -191,6 +191,24 @@ Gets the endpoint URL used on AEWallet.
 }
 ```
 
+
+## refresh_current_account
+
+Gets the endpoint URL used on AEWallet.
+
+### Request
+
+```typescript
+// no payload in request
+```
+
+### Success Response
+
+```typescript
+// no response
+```
+
+
 ## get_accounts
 
 Gets the accounts available on AEWallet.
