@@ -28,6 +28,7 @@ _$SendTransactionRequestImpl _$$SendTransactionRequestImplFromJson(
       data: Data.fromJson(json['data'] as Map<String, dynamic>),
       type: json['type'] as String,
       version: json['version'] as int,
+      generateEncryptedSeedSC: json['generateEncryptedSeedSC'] as bool?,
     );
 
 Map<String, dynamic> _$$SendTransactionRequestImplToJson(
@@ -36,4 +37,5 @@ Map<String, dynamic> _$$SendTransactionRequestImplToJson(
       'data': instance.data,
       'type': instance.type,
       'version': instance.version,
+      'generateEncryptedSeedSC': instance.generateEncryptedSeedSC,
     };

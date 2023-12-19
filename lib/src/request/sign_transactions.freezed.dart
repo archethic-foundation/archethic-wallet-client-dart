@@ -613,8 +613,13 @@ SignTransactionRequest _$SignTransactionRequestFromJson(
 
 /// @nodoc
 mixin _$SignTransactionRequest {
+  /// Service name to identify the derivation path to use
   String get serviceName => throw _privateConstructorUsedError;
+
+  /// Additional information to add to a service derivation path (optional - default to empty)
   String get pathSuffix => throw _privateConstructorUsedError;
+
+  /// - List of transaction's infos
   List<SignTransactionRequestData> get transactions =>
       throw _privateConstructorUsedError;
 
@@ -733,12 +738,19 @@ class _$SignTransactionRequestImpl extends _SignTransactionRequest {
   factory _$SignTransactionRequestImpl.fromJson(Map<String, dynamic> json) =>
       _$$SignTransactionRequestImplFromJson(json);
 
+  /// Service name to identify the derivation path to use
   @override
   final String serviceName;
+
+  /// Additional information to add to a service derivation path (optional - default to empty)
   @override
   @JsonKey()
   final String pathSuffix;
+
+  /// - List of transaction's infos
   final List<SignTransactionRequestData> _transactions;
+
+  /// - List of transaction's infos
   @override
   @JsonKey()
   List<SignTransactionRequestData> get transactions {
@@ -797,10 +809,16 @@ abstract class _SignTransactionRequest extends SignTransactionRequest {
       _$SignTransactionRequestImpl.fromJson;
 
   @override
+
+  /// Service name to identify the derivation path to use
   String get serviceName;
   @override
+
+  /// Additional information to add to a service derivation path (optional - default to empty)
   String get pathSuffix;
   @override
+
+  /// - List of transaction's infos
   List<SignTransactionRequestData> get transactions;
   @override
   @JsonKey(ignore: true)

@@ -53,8 +53,13 @@ class SignTransactionRequestData with _$SignTransactionRequestData {
 @freezed
 class SignTransactionRequest with _$SignTransactionRequest {
   const factory SignTransactionRequest({
+    /// Service name to identify the derivation path to use
     required String serviceName,
+
+    /// Additional information to add to a service derivation path (optional - default to empty)
     @Default('') String pathSuffix,
+
+    /// - List of transaction's infos
     @Default([]) List<SignTransactionRequestData> transactions,
   }) = _SignTransactionRequest;
 

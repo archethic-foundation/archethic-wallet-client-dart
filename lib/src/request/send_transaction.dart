@@ -21,9 +21,17 @@ class SendTransactionResult with _$SendTransactionResult {
 @freezed
 class SendTransactionRequest with _$SendTransactionRequest {
   const factory SendTransactionRequest({
+    /// - [Data]: transaction data zone (identity, keychain, smart contract, etc.)
     required Data data,
+
+    /// - Type: transaction type
     required String type,
+
+    /// - Version: version of the transaction (used for backward compatiblity)
     required int version,
+
+    /// - Flag to generate and add the encrypted smart contract's seed in a secret
+    bool? generateEncryptedSeedSC,
   }) = _SendTransactionRequest;
   const SendTransactionRequest._();
 
