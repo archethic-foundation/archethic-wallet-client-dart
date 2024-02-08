@@ -37,6 +37,24 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   Stream<ArchethicDappConnectionState> get connectionStateStream =>
       _connectionStateController.stream;
 
+  Future<WebSocketChannel> _connectWebSocket(Uri uri) async {
+    try {
+      final socket = WebSocketChannel.connect(uri);
+
+      await socket.ready;
+      return socket;
+    } catch (error) {
+      log(
+        'Connection failed',
+        name: logName,
+      );
+      _connectionStateController.add(
+        const ArchethicDappConnectionState.disconnected(),
+      );
+      throw Failure.connectivity();
+    }
+  }
+
   @override
   Future<void> connect() async {
     if (_client != null && !_client!.isClosed) {
@@ -53,7 +71,9 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     _connectionStateController.add(
       const ArchethicDappConnectionState.connecting(),
     );
-    final socket = WebSocketChannel.connect(Uri.parse('ws://127.0.0.1:12345'));
+
+    final socket = await _connectWebSocket(Uri.parse('ws://127.0.0.1:12345'));
+
     log(
       'Connection opened',
       name: logName,
@@ -61,6 +81,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     _connectionStateController.add(
       const ArchethicDappConnectionState.connected(),
     );
+
     final client = Peer(socket.cast<String>());
     client.registerMethod(
       'addSubscriptionNotification',
