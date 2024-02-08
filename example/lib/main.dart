@@ -6,11 +6,11 @@ void main() {
   runApp(const MyApp());
 }
 
-final _aewalletClient = ArchethicDAppClient.auto(
+final _aewalletClient = ArchethicDAppClient.deeplink(
   origin: const RequestOrigin(
     name: 'FlutterDappExample',
   ),
-  replyBaseUrl: 'flutterdappexample://dapp.example',
+  replyBaseUrl: 'https://ae-dex-alpha.web.app',
 )..connect();
 
 class MyApp extends StatelessWidget {

@@ -212,11 +212,10 @@ packages:
   deeplink_rpc:
     dependency: "direct main"
     description:
-      name: deeplink_rpc
-      sha256: "2f5cc42034bba567c7b654be5aa8535602fef1d94842b5de0759db120cf55b9e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.5"
+      path: "../lib-deeplink-rpc"
+      relative: true
+    source: path
+    version: "1.0.6"
   dependency_validator:
     dependency: "direct dev"
     description:

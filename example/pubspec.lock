@@ -23,7 +23,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.0.8"
+    version: "1.0.9"
   archive:
     dependency: transitive
     description:
@@ -123,11 +123,10 @@ packages:
   deeplink_rpc:
     dependency: transitive
     description:
-      name: deeplink_rpc
-      sha256: "2f5cc42034bba567c7b654be5aa8535602fef1d94842b5de0759db120cf55b9e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.5"
+      path: "../../lib-deeplink-rpc"
+      relative: true
+    source: path
+    version: "1.0.6"
   ecdsa:
     dependency: transitive
     description:
@@ -343,6 +342,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      sha256: "6bbb9d6f7056729537a4309bda2e74e18e5d9f14302489cc1e93f33b3fe32cac"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2+1"
   logging:
     dependency: transitive
     description:
