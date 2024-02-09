@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.0.10
+- Connect waits for connection to be ready or failed.
+
 ## 1.0.9
 - Add a flag in sendTx method to add encrypted smart contract's seed in a secret while his creation
 - Add a method to refresh current account in the wallet
