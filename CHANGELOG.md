@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.0.11
+- Update Archethic Dart SDK version 3.3.7
+  
 ## 1.0.10
 - Connect waits for connection to be ready or failed.
 
