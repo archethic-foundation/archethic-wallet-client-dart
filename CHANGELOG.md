@@ -1,5 +1,7 @@
 Changelog
 =========
+## 1.1.0-dev.0
+- Add MessageChannel RPC for web clients
 
 ## 1.0.11
 - Update Archethic Dart SDK version 3.3.7
