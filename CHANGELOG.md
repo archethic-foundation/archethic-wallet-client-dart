@@ -1,5 +1,8 @@
 Changelog
 =========
+## 1.1.0-dev.1
+- Add MessageChannel RPC for web clients - Exclude Desktop
+
 ## 1.1.0-dev.0
 - Add MessageChannel RPC for web clients
 
