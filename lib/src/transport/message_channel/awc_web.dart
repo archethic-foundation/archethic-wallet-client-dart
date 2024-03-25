@@ -2,6 +2,7 @@
 library awc;
 
 import 'dart:async';
+import 'dart:developer';
 import 'dart:html';
 
 import 'package:js/js.dart';
@@ -14,13 +15,13 @@ external set onAWCReady(void Function(MessagePort awc) f);
 
 Future<MessagePort> get asyncAWC async {
   if (awc != null) return awc!;
-  print('Wait for awc');
+  log('Wait for awc');
   final awcReadyCompleter = Completer<MessagePort>();
 
   if (awc != null) awcReadyCompleter.complete(awc!);
 
   onAWCReady = allowInterop((awc) {
-    print('AWC ready !');
+    log('AWC ready !');
   });
 
   return awcReadyCompleter.future;

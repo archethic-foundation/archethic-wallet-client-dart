@@ -107,7 +107,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
     try {
       return await channelBuilder();
     } catch (error) {
-      print(
+      log(
         'Connection failed : $error',
       );
       _connectionStateController.add(

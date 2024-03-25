@@ -11,15 +11,18 @@ class MessageChannelArchethicDappClient extends AWCJsonRPCClient
     implements ArchethicDAppClient {
   MessageChannelArchethicDappClient({
     required super.origin,
-  }) : super(channelBuilder: () async {
-          if (awcAvailable != true) throw Failure.connectivity();
+  }) : super(
+          channelBuilder: () async {
+            if (awcAvailable != true) throw Failure.connectivity();
 
-          return MessagePortStreamChannel(
-            port: await asyncAWC,
-          );
-        }, disposeChannel: (StreamChannel<String> channel) async {
-          await (channel as MessagePortStreamChannel).dispose();
-        });
+            return MessagePortStreamChannel(
+              port: await asyncAWC,
+            );
+          },
+          disposeChannel: (StreamChannel<String> channel) async {
+            await (channel as MessagePortStreamChannel).dispose();
+          },
+        );
 
   static bool get isAvailable => kIsWeb && awcAvailable == true;
 }

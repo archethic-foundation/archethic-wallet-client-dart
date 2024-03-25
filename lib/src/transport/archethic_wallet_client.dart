@@ -1,5 +1,6 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
@@ -69,23 +70,23 @@ abstract class ArchethicDAppClient {
   }) {
     final transportMethodsReport = ArchethicDAppTransportMethodsReport.check();
 
-    print('''
+    log('''
 [Transport methods check]
 $transportMethodsReport
       ''');
 
     if (transportMethodsReport.messageChannel) {
-      print('Using Message Channel');
+      log('Using Message Channel');
       return ArchethicDAppClient.messageChannel(origin: origin);
     }
 
     if (transportMethodsReport.websocket) {
-      print('Using WebSocket');
+      log('Using WebSocket');
       return ArchethicDAppClient.websocket(origin: origin);
     }
 
     if (transportMethodsReport.deeplink) {
-      print('Using Deeplink');
+      log('Using Deeplink');
       return ArchethicDAppClient.deeplink(
         origin: origin,
         replyBaseUrl: replyBaseUrl,
