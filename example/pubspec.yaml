@@ -32,27 +32,13 @@ dependencies:
   archethic_wallet_client:
     path: ../
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-
   flutter:
     sdk: flutter
 
   # An SVG rendering and widget library for Flutter, which allows painting and displaying Scalable Vector Graphics 1.1 files.
-  flutter_svg: ^2.0.4
-
-  # deeplink_rpc:
-  #   path: ../../../lib-deeplink-rpc
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
-  flutter_lints: ^2.0.2
-
   flutter_test:
     sdk: flutter
 
