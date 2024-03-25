@@ -11,7 +11,10 @@ import 'package:archethic_wallet_client/src/request/keychain_derive_address.dart
 import 'package:archethic_wallet_client/src/request/keychain_derive_keypair.dart';
 import 'package:archethic_wallet_client/src/request/sign_transactions.dart';
 import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
-import 'package:archethic_wallet_client/src/transport/message_channel/message_channel.dart';
+
+import 'package:archethic_wallet_client/src/transport/message_channel/message_channel_desktop.dart'
+    if (dart.library.js) 'package:archethic_wallet_client/src/transport/message_channel/message_channel.dart';
+
 import 'package:deeplink_rpc/deeplink_rpc.dart';
 import 'package:flutter/foundation.dart'
     show TargetPlatform, defaultTargetPlatform, kIsWeb;
