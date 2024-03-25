@@ -23,13 +23,16 @@ dependencies:
   # Annotations for the freezed code-generator. This package does nothing without freezed too
   freezed_annotation: ^2.4.1
 
+  # Annotations to create static Dart interfaces for JavaScript APIs.
+  js: ^0.6.7
+
   # Annotations for the JsonSerializable code-generator.
   json_annotation: ^4.8.1
 
   # JSON-RPC (v2.0) utility classes. Invoke methods on another machine using JSON-formatted messages. Some assembly required.
   json_rpc_2: ^3.0.2
 
-  stream_channel: any
+  stream_channel: ^2.1.2
 
   # StreamChannel wrappers for WebSockets. Provides a cross-platform WebSocketChannel API, a cross-platform implementation of that API that communicates over an underlying StreamChannel.
   web_socket_channel: ^2.4.0
