@@ -1,31 +1,25 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
 
-import 'package:archethic_wallet_client/src/core/failures.dart';
-import 'package:archethic_wallet_client/src/core/request.dart';
-import 'package:archethic_wallet_client/src/core/result.dart';
-import 'package:archethic_wallet_client/src/core/subscription.dart';
-import 'package:archethic_wallet_client/src/request/account_sub.dart';
+import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:archethic_wallet_client/src/request/get_accounts.dart';
 import 'package:archethic_wallet_client/src/request/get_current_account.dart';
-import 'package:archethic_wallet_client/src/request/get_endpoint.dart';
 import 'package:archethic_wallet_client/src/request/get_services_from_keychain.dart';
 import 'package:archethic_wallet_client/src/request/keychain_derive_address.dart';
 import 'package:archethic_wallet_client/src/request/keychain_derive_keypair.dart';
-import 'package:archethic_wallet_client/src/request/refresh_current_account.dart';
-import 'package:archethic_wallet_client/src/request/send_transaction.dart';
 import 'package:archethic_wallet_client/src/request/sign_transactions.dart';
+import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
+import 'package:archethic_wallet_client/src/transport/message_channel/message_channel.dart';
 import 'package:deeplink_rpc/deeplink_rpc.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/foundation.dart'
+    show TargetPlatform, defaultTargetPlatform, kIsWeb;
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
-part 'archethic_wallet_client_base.freezed.dart';
-part 'deeplink.dart';
-part 'websocket.dart';
+part 'archethic_wallet_client.freezed.dart';
+part 'deeplink/deeplink.dart';
+part 'websocket/websocket.dart';
 
 @freezed
 class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
@@ -36,6 +30,36 @@ class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
   const factory ArchethicDappConnectionState.connecting() = _Connecting;
 }
 
+class ArchethicDAppTransportMethodsReport {
+  ArchethicDAppTransportMethodsReport({
+    required this.websocket,
+    required this.deeplink,
+    required this.messageChannel,
+  });
+
+  factory ArchethicDAppTransportMethodsReport.check() =>
+      ArchethicDAppTransportMethodsReport(
+        websocket: WebsocketArchethicDappClient.isAvailable,
+        deeplink: DeeplinkArchethicDappClient.isAvailable,
+        messageChannel: MessageChannelArchethicDappClient.isAvailable,
+      );
+
+  final bool websocket;
+  final bool deeplink;
+  final bool messageChannel;
+
+  @override
+  String toString() {
+    return '''
+\t${_availabilityIcon(websocket)} Websocket
+\t${_availabilityIcon(deeplink)} Deeplink
+\t${_availabilityIcon(messageChannel)} Message Channel
+''';
+  }
+
+  String _availabilityIcon(bool isAvailable) => isAvailable ? '✅' : '⛔️';
+}
+
 abstract class ArchethicDAppClient {
   /// Creates a Deeplink or Websocket client according
   /// to current Platform capabilities.
@@ -43,11 +67,25 @@ abstract class ArchethicDAppClient {
     required RequestOrigin origin,
     required String replyBaseUrl,
   }) {
-    if (WebsocketArchethicDappClient.isAvailable) {
+    final transportMethodsReport = ArchethicDAppTransportMethodsReport.check();
+
+    print('''
+[Transport methods check]
+$transportMethodsReport
+      ''');
+
+    if (transportMethodsReport.messageChannel) {
+      print('Using Message Channel');
+      return ArchethicDAppClient.messageChannel(origin: origin);
+    }
+
+    if (transportMethodsReport.websocket) {
+      print('Using WebSocket');
       return ArchethicDAppClient.websocket(origin: origin);
     }
 
-    if (DeeplinkArchethicDappClient.isAvailable) {
+    if (transportMethodsReport.deeplink) {
+      print('Using Deeplink');
       return ArchethicDAppClient.deeplink(
         origin: origin,
         replyBaseUrl: replyBaseUrl,
@@ -58,6 +96,10 @@ abstract class ArchethicDAppClient {
       'No ArchethicDAppClient implementation for your current operating system ${Platform.operatingSystem}',
     );
   }
+
+  factory ArchethicDAppClient.messageChannel({
+    required RequestOrigin origin,
+  }) = MessageChannelArchethicDappClient;
 
   factory ArchethicDAppClient.deeplink({
     required RequestOrigin origin,

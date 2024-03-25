@@ -1,23 +1,35 @@
-/// SPDX-License-Identifier: AGPL-3.0-or-later
-part of 'archethic_wallet_client_base.dart';
+import 'dart:async';
+import 'dart:developer';
 
-class WebsocketArchethicDappClient implements ArchethicDAppClient {
-  WebsocketArchethicDappClient({
+import 'package:archethic_wallet_client/archethic_wallet_client.dart';
+import 'package:archethic_wallet_client/src/request/get_accounts.dart';
+import 'package:archethic_wallet_client/src/request/get_current_account.dart';
+import 'package:archethic_wallet_client/src/request/get_services_from_keychain.dart';
+import 'package:archethic_wallet_client/src/request/keychain_derive_address.dart';
+import 'package:archethic_wallet_client/src/request/keychain_derive_keypair.dart';
+import 'package:archethic_wallet_client/src/request/sign_transactions.dart';
+import 'package:json_rpc_2/json_rpc_2.dart';
+import 'package:stream_channel/stream_channel.dart';
+
+class AWCJsonRPCClient implements ArchethicDAppClient {
+  AWCJsonRPCClient({
+    required this.channelBuilder,
     required this.origin,
+    required this.disposeChannel,
   });
 
   @override
   final RequestOrigin origin;
+  final FutureOr<StreamChannel<String>> Function() channelBuilder;
+  final FutureOr<void> Function(StreamChannel<String> channel) disposeChannel;
 
   Peer? _client;
+  StreamChannel<String>? _channel;
   final _connectionStateController =
       StreamController<ArchethicDappConnectionState>.broadcast()
         ..add(const ArchethicDappConnectionState.disconnected());
 
-  static const logName = 'WebsocketArchethicDappClient';
-
-  static bool get isAvailable =>
-      kIsWeb || Platform.isLinux || Platform.isMacOS || Platform.isWindows;
+  static const logName = 'AWCJsonRPCClients';
 
   final _subscriptionValues =
       StreamController<RPCSubscriptionUpdateDTO>.broadcast();
@@ -37,29 +49,11 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
   Stream<ArchethicDappConnectionState> get connectionStateStream =>
       _connectionStateController.stream;
 
-  Future<WebSocketChannel> _connectWebSocket(Uri uri) async {
-    try {
-      final socket = WebSocketChannel.connect(uri);
-
-      await socket.ready;
-      return socket;
-    } catch (error) {
-      log(
-        'Connection failed',
-        name: logName,
-      );
-      _connectionStateController.add(
-        const ArchethicDappConnectionState.disconnected(),
-      );
-      throw Failure.connectivity();
-    }
-  }
-
   @override
   Future<void> connect() async {
     if (_client != null && !_client!.isClosed) {
       log(
-        'Socket already opened. Connection abort.',
+        'Connection already opened. Connection abort.',
         name: logName,
       );
       return;
@@ -72,7 +66,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
       const ArchethicDappConnectionState.connecting(),
     );
 
-    final socket = await _connectWebSocket(Uri.parse('ws://127.0.0.1:12345'));
+    _channel = await _connect();
 
     log(
       'Connection opened',
@@ -82,7 +76,7 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
       const ArchethicDappConnectionState.connected(),
     );
 
-    final client = Peer(socket.cast<String>());
+    final client = Peer(_channel!.cast<String>());
     client.registerMethod(
       'addSubscriptionNotification',
       (params) {
@@ -109,10 +103,26 @@ class WebsocketArchethicDappClient implements ArchethicDAppClient {
     );
   }
 
+  Future<StreamChannel<String>> _connect() async {
+    try {
+      return await channelBuilder();
+    } catch (error) {
+      print(
+        'Connection failed : $error',
+      );
+      _connectionStateController.add(
+        const ArchethicDappConnectionState.disconnected(),
+      );
+      throw Failure.connectivity();
+    }
+  }
+
   @override
   Future<void> close() async {
     await _client?.close();
     _client = null;
+    await disposeChannel(_channel!);
+    _channel = null;
   }
 
   Future<Subscription<Map<String, dynamic>>> _subscribe({
