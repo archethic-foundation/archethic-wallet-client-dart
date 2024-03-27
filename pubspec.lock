@@ -29,10 +29,10 @@ packages:
     dependency: "direct main"
     description:
       name: archethic_lib_dart
-      sha256: c5e252c062ecab7f8bdede233f7f337f0d44018459ebd7f772ed777875ca7de2
+      sha256: "126d8cb7e79dd201c1ec6d2472d12124c3473004413b0befe3ce8d53abb25409"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.9"
+    version: "3.3.10"
   archive:
     dependency: transitive
     description:
