@@ -1,6 +1,6 @@
 name: archethic_wallet_client
 description: A client dart library to interact with Archethic Wallet RPC API.
-version: 1.1.0-dev.3
+version: 1.1.0
 homepage: https://github.com/archethic-foundation/archethic-wallet-client-dart
 
 environment:
@@ -9,10 +9,6 @@ environment:
 dependencies:
   # Archethic dart library for Flutter
   archethic_lib_dart: ^3.3.0
-  #archethic_lib_dart:
-  #  git:
-  #    url: https://github.com/archethic-foundation/libdart.git
-  #    ref: 126-manage-http-status-code-in-callscfunction-method
 
   # A RPC-via-deeplink communication library coded in Dart. This is dedicated to Flutter mobile applications (iOS / Android).
   deeplink_rpc: ^1.0.6
@@ -32,6 +28,7 @@ dependencies:
   # JSON-RPC (v2.0) utility classes. Invoke methods on another machine using JSON-formatted messages. Some assembly required.
   json_rpc_2: ^3.0.2
 
+  # An abstraction for two-way communication channels based on the Dart Stream class.
   stream_channel: ^2.1.2
 
   # StreamChannel wrappers for WebSockets. Provides a cross-platform WebSocketChannel API, a cross-platform implementation of that API that communicates over an underlying StreamChannel.

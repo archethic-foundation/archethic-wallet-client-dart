@@ -3,6 +3,7 @@ library awc;
 
 import 'dart:async';
 import 'dart:developer';
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html';
 
 import 'package:js/js.dart';
