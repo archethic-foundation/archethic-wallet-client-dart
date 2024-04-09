@@ -4,7 +4,7 @@ import 'dart:html';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
-import 'package:archethic_wallet_client/src/transport/message_channel/awc_web.dart';
+import 'package:archethic_wallet_client/src/transport/message_channel/message_channel.js.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stream_channel/stream_channel.dart';
 
