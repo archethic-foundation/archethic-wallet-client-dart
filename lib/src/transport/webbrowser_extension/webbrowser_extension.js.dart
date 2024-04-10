@@ -5,27 +5,14 @@ import 'dart:async';
 
 import 'package:js/js.dart';
 
-// external MessagePort? get awc;
-// external bool? get awcAvailable;
+@JS('archethic')
+external ArchethicJS? get archethic;
 
-// @JS('onAWCReady')
-// external set onAWCReady(void Function(MessagePort awc) f);
-
-// Future<MessagePort> get asyncAWC async {
-//   if (awc != null) return awc!;
-//   log('Wait for awc');
-//   final awcReadyCompleter = Completer<MessagePort>();
-
-//   if (awc != null) awcReadyCompleter.complete(awc!);
-
-//   onAWCReady = allowInterop((awc) {
-//     log('AWC ready !');
-//   });
-
-//   return awcReadyCompleter.future;
-// }
-@JS('archethic.streamChannel')
-external AWCStreamChannelJS? get webBrowserStreamChannel;
+@JS()
+class ArchethicJS {
+  @JS('streamChannel')
+  external AWCStreamChannelJS? get webBrowserStreamChannel;
+}
 
 @JS()
 class AWCStreamChannelJS {
