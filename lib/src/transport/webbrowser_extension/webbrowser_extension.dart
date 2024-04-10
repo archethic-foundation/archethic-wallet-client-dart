@@ -12,9 +12,11 @@ class WebBrowserExtensionDappClient extends AWCJsonRPCClient
     required super.origin,
   }) : super(
           channelBuilder: () async {
-            if (webBrowserStreamChannel == null) throw Failure.connectivity();
+            if (archethic?.webBrowserStreamChannel == null) {
+              throw Failure.connectivity();
+            }
             return WebBrowserExtensionStreamChannel(
-              streamChannel: webBrowserStreamChannel!,
+              streamChannel: archethic!.webBrowserStreamChannel!,
             );
           },
           disposeChannel: (channel) async {
@@ -22,7 +24,7 @@ class WebBrowserExtensionDappClient extends AWCJsonRPCClient
           },
         );
 
-  static bool get isAvailable => webBrowserStreamChannel != null;
+  static bool get isAvailable => archethic?.webBrowserStreamChannel != null;
 }
 
 class WebBrowserExtensionStreamChannel
