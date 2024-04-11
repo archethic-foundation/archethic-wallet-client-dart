@@ -29,10 +29,10 @@ packages:
     dependency: "direct main"
     description:
       name: archethic_lib_dart
-      sha256: "6de293153303da1a32e8b32e12410bf3da351f24aeb5b77fccd052aab852bb7e"
+      sha256: "9bc7f6ebbb8b5cf0e7828818c957a804366b0e88f92999ed5a0fa57e72424f27"
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.11"
+    version: "3.3.12"
   archive:
     dependency: transitive
     description:
@@ -45,10 +45,10 @@ packages:
     dependency: transitive
     description:
       name: args
-      sha256: eef6c46b622e0494a36c5a12d10d77fb4e855501a91c1b9ef9339326e58f0596
+      sha256: "7cf60b9f0cc88203c5a190b4cd62a99feea42759a7fa695010eb5de1c0b2252a"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.2"
+    version: "2.5.0"
   async:
     dependency: transitive
     description:
@@ -287,10 +287,10 @@ packages:
     dependency: "direct dev"
     description:
       name: freezed
-      sha256: "91bce569d4805ea5bad6619a3e8690df8ad062a235165af4c0c5d928dda15eaf"
+      sha256: a434911f643466d78462625df76fd9eb13e57348ff43fe1f77bbe909522c67a1
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.1"
+    version: "2.5.2"
   freezed_annotation:
     dependency: "direct main"
     description:
