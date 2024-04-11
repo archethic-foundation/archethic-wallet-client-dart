@@ -11,7 +11,7 @@ external ArchethicJS? get archethic;
 @JS()
 class ArchethicJS {
   @JS('streamChannel')
-  external AWCStreamChannelJS? get webBrowserStreamChannel;
+  external AWCStreamChannelJS? get streamChannel;
 }
 
 @JS()
