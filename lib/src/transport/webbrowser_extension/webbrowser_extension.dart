@@ -32,13 +32,13 @@ class WebBrowserExtensionStreamChannel
     implements StreamChannel<String> {
   WebBrowserExtensionStreamChannel({required this.streamChannel}) {
     streamChannel.onReceive = allowInterop((message) async {
-      print('[WBE] command received ${message}');
+      print('[WBE] command received $message');
       _in.add(message);
       print('[WBE] command received Done');
     });
 
     _onPostMessageSubscription = _out.stream.listen((event) {
-      print('[WBE] send command ${event}');
+      print('[WBE] send command $event');
       streamChannel.send(event);
       print('[WBE] send command Done');
     });
