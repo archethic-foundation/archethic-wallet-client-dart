@@ -1,5 +1,8 @@
 Changelog
 =========
+## 1.2.1
+- Fix Transport method detection when browser extension missing
+
 ## 1.2.0
 - Web extension support
 
