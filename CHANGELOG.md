@@ -1,5 +1,9 @@
 Changelog
 =========
+
+## 1.2.3
+- Update Archethic Dart SDK version 3.3.13
+
 ## 1.2.2
 - Fix Browser extension detection
 
