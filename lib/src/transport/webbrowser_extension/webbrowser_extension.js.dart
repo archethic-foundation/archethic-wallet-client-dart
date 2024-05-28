@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_setters_without_getters
+
 @JS()
 library awc;
 
@@ -19,28 +21,34 @@ class AWCStreamChannelJS {
   @JS('state')
   external AWCStreamChannelState get state;
 
+  /// This returns a promise.
+  /// You must use `promiseTofuture` to call this from Dart code.
   @JS('connect')
-  external Future<void> connect();
+  external Object connect();
 
+  /// This returns a promise.
+  /// You must use `promiseTofuture` to call this from Dart code.
   @JS('close')
-  external Future<void> close();
+  external Object close();
 
+  /// This returns a promise.
+  /// You must use `promiseTofuture` to call this from Dart code.
   @JS('send')
-  external Future<void> send(String data);
+  external Object send(String data);
 
   @JS('onReceive')
-  external set onReceive(Future<void> Function(String data));
+  external set onReceive(Future<void> Function(String data) callback);
 
   @JS('onReady')
-  external set onReady(Future<void> Function());
+  external set onReady(Future<void> Function() callback);
 
   @JS('onClose')
-  external set onClose(Future<void> Function(String reason));
+  external set onClose(Future<void> Function(String reason) callback);
 }
 
 enum AWCStreamChannelState {
-  CONNECTING,
-  OPEN,
-  CLOSING,
-  CLOSED,
+  connecting,
+  open,
+  closing,
+  closed,
 }
