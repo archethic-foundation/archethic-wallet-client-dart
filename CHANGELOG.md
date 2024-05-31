@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 1.2.7
+- Javascript Async operations are awaitable from Dart.
+
 ## 1.2.6
 - Update Archethic Dart SDK version 3.3.16
 
