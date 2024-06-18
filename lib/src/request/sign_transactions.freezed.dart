@@ -410,3 +410,418 @@ abstract class _SignTransactionsResultDetail
           _$SignTransactionsResultDetailImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+SignTransactionRequestData _$SignTransactionRequestDataFromJson(
+    Map<String, dynamic> json) {
+  return _SignTransactionRequestData.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SignTransactionRequestData {
+  Data get data => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
+  int get version => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SignTransactionRequestDataCopyWith<SignTransactionRequestData>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SignTransactionRequestDataCopyWith<$Res> {
+  factory $SignTransactionRequestDataCopyWith(SignTransactionRequestData value,
+          $Res Function(SignTransactionRequestData) then) =
+      _$SignTransactionRequestDataCopyWithImpl<$Res,
+          SignTransactionRequestData>;
+  @useResult
+  $Res call({Data data, String type, int version});
+
+  $DataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class _$SignTransactionRequestDataCopyWithImpl<$Res,
+        $Val extends SignTransactionRequestData>
+    implements $SignTransactionRequestDataCopyWith<$Res> {
+  _$SignTransactionRequestDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+    Object? type = null,
+    Object? version = null,
+  }) {
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Data,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as int,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DataCopyWith<$Res> get data {
+    return $DataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$SignTransactionRequestDataImplCopyWith<$Res>
+    implements $SignTransactionRequestDataCopyWith<$Res> {
+  factory _$$SignTransactionRequestDataImplCopyWith(
+          _$SignTransactionRequestDataImpl value,
+          $Res Function(_$SignTransactionRequestDataImpl) then) =
+      __$$SignTransactionRequestDataImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Data data, String type, int version});
+
+  @override
+  $DataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$$SignTransactionRequestDataImplCopyWithImpl<$Res>
+    extends _$SignTransactionRequestDataCopyWithImpl<$Res,
+        _$SignTransactionRequestDataImpl>
+    implements _$$SignTransactionRequestDataImplCopyWith<$Res> {
+  __$$SignTransactionRequestDataImplCopyWithImpl(
+      _$SignTransactionRequestDataImpl _value,
+      $Res Function(_$SignTransactionRequestDataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+    Object? type = null,
+    Object? version = null,
+  }) {
+    return _then(_$SignTransactionRequestDataImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Data,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SignTransactionRequestDataImpl extends _SignTransactionRequestData {
+  const _$SignTransactionRequestDataImpl(
+      {required this.data, required this.type, required this.version})
+      : super._();
+
+  factory _$SignTransactionRequestDataImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SignTransactionRequestDataImplFromJson(json);
+
+  @override
+  final Data data;
+  @override
+  final String type;
+  @override
+  final int version;
+
+  @override
+  String toString() {
+    return 'SignTransactionRequestData(data: $data, type: $type, version: $version)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignTransactionRequestDataImpl &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.version, version) || other.version == version));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, data, type, version);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignTransactionRequestDataImplCopyWith<_$SignTransactionRequestDataImpl>
+      get copyWith => __$$SignTransactionRequestDataImplCopyWithImpl<
+          _$SignTransactionRequestDataImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SignTransactionRequestDataImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SignTransactionRequestData extends SignTransactionRequestData {
+  const factory _SignTransactionRequestData(
+      {required final Data data,
+      required final String type,
+      required final int version}) = _$SignTransactionRequestDataImpl;
+  const _SignTransactionRequestData._() : super._();
+
+  factory _SignTransactionRequestData.fromJson(Map<String, dynamic> json) =
+      _$SignTransactionRequestDataImpl.fromJson;
+
+  @override
+  Data get data;
+  @override
+  String get type;
+  @override
+  int get version;
+  @override
+  @JsonKey(ignore: true)
+  _$$SignTransactionRequestDataImplCopyWith<_$SignTransactionRequestDataImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SignTransactionRequest _$SignTransactionRequestFromJson(
+    Map<String, dynamic> json) {
+  return _SignTransactionRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SignTransactionRequest {
+  /// Service name to identify the derivation path to use
+  String get serviceName => throw _privateConstructorUsedError;
+
+  /// Additional information to add to a service derivation path (optional - default to empty)
+  String get pathSuffix => throw _privateConstructorUsedError;
+
+  /// - List of transaction's infos
+  List<SignTransactionRequestData> get transactions =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SignTransactionRequestCopyWith<SignTransactionRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SignTransactionRequestCopyWith<$Res> {
+  factory $SignTransactionRequestCopyWith(SignTransactionRequest value,
+          $Res Function(SignTransactionRequest) then) =
+      _$SignTransactionRequestCopyWithImpl<$Res, SignTransactionRequest>;
+  @useResult
+  $Res call(
+      {String serviceName,
+      String pathSuffix,
+      List<SignTransactionRequestData> transactions});
+}
+
+/// @nodoc
+class _$SignTransactionRequestCopyWithImpl<$Res,
+        $Val extends SignTransactionRequest>
+    implements $SignTransactionRequestCopyWith<$Res> {
+  _$SignTransactionRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceName = null,
+    Object? pathSuffix = null,
+    Object? transactions = null,
+  }) {
+    return _then(_value.copyWith(
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      pathSuffix: null == pathSuffix
+          ? _value.pathSuffix
+          : pathSuffix // ignore: cast_nullable_to_non_nullable
+              as String,
+      transactions: null == transactions
+          ? _value.transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<SignTransactionRequestData>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SignTransactionRequestImplCopyWith<$Res>
+    implements $SignTransactionRequestCopyWith<$Res> {
+  factory _$$SignTransactionRequestImplCopyWith(
+          _$SignTransactionRequestImpl value,
+          $Res Function(_$SignTransactionRequestImpl) then) =
+      __$$SignTransactionRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {String serviceName,
+      String pathSuffix,
+      List<SignTransactionRequestData> transactions});
+}
+
+/// @nodoc
+class __$$SignTransactionRequestImplCopyWithImpl<$Res>
+    extends _$SignTransactionRequestCopyWithImpl<$Res,
+        _$SignTransactionRequestImpl>
+    implements _$$SignTransactionRequestImplCopyWith<$Res> {
+  __$$SignTransactionRequestImplCopyWithImpl(
+      _$SignTransactionRequestImpl _value,
+      $Res Function(_$SignTransactionRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceName = null,
+    Object? pathSuffix = null,
+    Object? transactions = null,
+  }) {
+    return _then(_$SignTransactionRequestImpl(
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      pathSuffix: null == pathSuffix
+          ? _value.pathSuffix
+          : pathSuffix // ignore: cast_nullable_to_non_nullable
+              as String,
+      transactions: null == transactions
+          ? _value._transactions
+          : transactions // ignore: cast_nullable_to_non_nullable
+              as List<SignTransactionRequestData>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SignTransactionRequestImpl extends _SignTransactionRequest {
+  const _$SignTransactionRequestImpl(
+      {required this.serviceName,
+      this.pathSuffix = '',
+      final List<SignTransactionRequestData> transactions = const []})
+      : _transactions = transactions,
+        super._();
+
+  factory _$SignTransactionRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SignTransactionRequestImplFromJson(json);
+
+  /// Service name to identify the derivation path to use
+  @override
+  final String serviceName;
+
+  /// Additional information to add to a service derivation path (optional - default to empty)
+  @override
+  @JsonKey()
+  final String pathSuffix;
+
+  /// - List of transaction's infos
+  final List<SignTransactionRequestData> _transactions;
+
+  /// - List of transaction's infos
+  @override
+  @JsonKey()
+  List<SignTransactionRequestData> get transactions {
+    if (_transactions is EqualUnmodifiableListView) return _transactions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_transactions);
+  }
+
+  @override
+  String toString() {
+    return 'SignTransactionRequest(serviceName: $serviceName, pathSuffix: $pathSuffix, transactions: $transactions)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SignTransactionRequestImpl &&
+            (identical(other.serviceName, serviceName) ||
+                other.serviceName == serviceName) &&
+            (identical(other.pathSuffix, pathSuffix) ||
+                other.pathSuffix == pathSuffix) &&
+            const DeepCollectionEquality()
+                .equals(other._transactions, _transactions));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, serviceName, pathSuffix,
+      const DeepCollectionEquality().hash(_transactions));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SignTransactionRequestImplCopyWith<_$SignTransactionRequestImpl>
+      get copyWith => __$$SignTransactionRequestImplCopyWithImpl<
+          _$SignTransactionRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SignTransactionRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SignTransactionRequest extends SignTransactionRequest {
+  const factory _SignTransactionRequest(
+          {required final String serviceName,
+          final String pathSuffix,
+          final List<SignTransactionRequestData> transactions}) =
+      _$SignTransactionRequestImpl;
+  const _SignTransactionRequest._() : super._();
+
+  factory _SignTransactionRequest.fromJson(Map<String, dynamic> json) =
+      _$SignTransactionRequestImpl.fromJson;
+
+  @override
+
+  /// Service name to identify the derivation path to use
+  String get serviceName;
+  @override
+
+  /// Additional information to add to a service derivation path (optional - default to empty)
+  String get pathSuffix;
+  @override
+
+  /// - List of transaction's infos
+  List<SignTransactionRequestData> get transactions;
+  @override
+  @JsonKey(ignore: true)
+  _$$SignTransactionRequestImplCopyWith<_$SignTransactionRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

@@ -28,3 +28,27 @@ class Account with _$Account {
   factory Account.fromJson(Map<String, dynamic> json) =>
       _$AccountFromJson(json);
 }
+
+@freezed
+class SubscribeAccountRequest with _$SubscribeAccountRequest {
+  const factory SubscribeAccountRequest({
+    required String serviceName,
+  }) = _SubscribeAccountRequest;
+  const SubscribeAccountRequest._();
+
+  factory SubscribeAccountRequest.fromJson(Map<String, dynamic> json) =>
+      _$SubscribeAccountRequestFromJson(json);
+}
+
+@freezed
+class SubscribeCurrentAccountRequest with _$SubscribeCurrentAccountRequest {
+  const factory SubscribeCurrentAccountRequest() =
+      _SubscribeCurrentAccountRequest;
+
+  const SubscribeCurrentAccountRequest._();
+
+  factory SubscribeCurrentAccountRequest.fromJson(Map<String, dynamic> json) =>
+      _$SubscribeCurrentAccountRequestFromJson(json);
+}
+
+typedef SubscribeAccountNotification = Account?;

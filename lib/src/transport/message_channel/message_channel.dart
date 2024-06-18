@@ -14,7 +14,7 @@ class MessageChannelArchethicDappClient extends AWCJsonRPCClient
     required super.origin,
   }) : super(
           channelBuilder: () async {
-            if (awcAvailable != true) throw Failure.connectivity();
+            if (awcAvailable != true) throw Failure.connectivity;
 
             return MessagePortStreamChannel(
               port: await asyncAWC,

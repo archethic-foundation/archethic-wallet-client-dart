@@ -38,3 +38,39 @@ Map<String, dynamic> _$$SignTransactionsResultDetailImplToJson(
       'previousSignature': instance.previousSignature,
       'originSignature': instance.originSignature,
     };
+
+_$SignTransactionRequestDataImpl _$$SignTransactionRequestDataImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SignTransactionRequestDataImpl(
+      data: Data.fromJson(json['data'] as Map<String, dynamic>),
+      type: json['type'] as String,
+      version: (json['version'] as num).toInt(),
+    );
+
+Map<String, dynamic> _$$SignTransactionRequestDataImplToJson(
+        _$SignTransactionRequestDataImpl instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+      'type': instance.type,
+      'version': instance.version,
+    };
+
+_$SignTransactionRequestImpl _$$SignTransactionRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SignTransactionRequestImpl(
+      serviceName: json['serviceName'] as String,
+      pathSuffix: json['pathSuffix'] as String? ?? '',
+      transactions: (json['transactions'] as List<dynamic>?)
+              ?.map((e) => SignTransactionRequestData.fromJson(
+                  e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+    );
+
+Map<String, dynamic> _$$SignTransactionRequestImplToJson(
+        _$SignTransactionRequestImpl instance) =>
+    <String, dynamic>{
+      'serviceName': instance.serviceName,
+      'pathSuffix': instance.pathSuffix,
+      'transactions': instance.transactions,
+    };

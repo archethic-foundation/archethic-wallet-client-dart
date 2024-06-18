@@ -153,3 +153,85 @@ abstract class _GetEndpointResult extends GetEndpointResult {
   _$$GetEndpointResultImplCopyWith<_$GetEndpointResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+GetEndpointRequest _$GetEndpointRequestFromJson(Map<String, dynamic> json) {
+  return _GetEndpointRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GetEndpointRequest {
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetEndpointRequestCopyWith<$Res> {
+  factory $GetEndpointRequestCopyWith(
+          GetEndpointRequest value, $Res Function(GetEndpointRequest) then) =
+      _$GetEndpointRequestCopyWithImpl<$Res, GetEndpointRequest>;
+}
+
+/// @nodoc
+class _$GetEndpointRequestCopyWithImpl<$Res, $Val extends GetEndpointRequest>
+    implements $GetEndpointRequestCopyWith<$Res> {
+  _$GetEndpointRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetEndpointRequestImplCopyWith<$Res> {
+  factory _$$GetEndpointRequestImplCopyWith(_$GetEndpointRequestImpl value,
+          $Res Function(_$GetEndpointRequestImpl) then) =
+      __$$GetEndpointRequestImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetEndpointRequestImplCopyWithImpl<$Res>
+    extends _$GetEndpointRequestCopyWithImpl<$Res, _$GetEndpointRequestImpl>
+    implements _$$GetEndpointRequestImplCopyWith<$Res> {
+  __$$GetEndpointRequestImplCopyWithImpl(_$GetEndpointRequestImpl _value,
+      $Res Function(_$GetEndpointRequestImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GetEndpointRequestImpl extends _GetEndpointRequest {
+  const _$GetEndpointRequestImpl() : super._();
+
+  factory _$GetEndpointRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetEndpointRequestImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'GetEndpointRequest()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetEndpointRequestImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GetEndpointRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GetEndpointRequest extends GetEndpointRequest {
+  const factory _GetEndpointRequest() = _$GetEndpointRequestImpl;
+  const _GetEndpointRequest._() : super._();
+
+  factory _GetEndpointRequest.fromJson(Map<String, dynamic> json) =
+      _$GetEndpointRequestImpl.fromJson;
+}

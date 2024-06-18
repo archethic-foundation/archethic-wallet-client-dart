@@ -74,7 +74,7 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
       );
 
   @override
-  Future<Result<RefreshCurrentAccountResult, Failure>>
+  Future<Result<RefreshCurrentAccountResponse, Failure>>
       refreshCurrentAccount() async => _send(
             requestEndpoint: 'refresh_current_account',
             replyEndpoint: 'refresh_current_account_result',
@@ -84,19 +84,19 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
                 Failure.fromDeeplinkRpcFailure(failure),
               ),
               success: (success) => Result.success(
-                RefreshCurrentAccountResult.fromJson(success),
+                RefreshCurrentAccountResponse.fromJson(success),
               ),
             ),
           );
 
   @override
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
-    Map<String, dynamic> data,
+    SendTransactionRequest data,
   ) =>
       _send(
         requestEndpoint: 'send_transaction',
         replyEndpoint: 'send_transaction_result',
-        params: data,
+        params: data.toJson(),
       ).then(
         (result) => result.map(
           failure: (failure) =>
@@ -141,7 +141,7 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
     String accountName,
   ) async =>
-      Result.failure(Failure.unsupportedMethod());
+      const Result.failure(Failure.unsupportedMethod);
 
   @override
   Future<void> unsubscribeAccount(String subscriptionId) async {}
@@ -149,19 +149,19 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   @override
   Future<Result<Subscription<Account>, Failure>>
       subscribeCurrentAccount() async =>
-          Result.failure(Failure.unsupportedMethod());
+          const Result.failure(Failure.unsupportedMethod);
 
   @override
   Future<void> unsubscribeCurrentAccount(String subscriptionId) async {}
 
   @override
   Future<Result<SendTransactionResult, Failure>> addService(
-    Map<String, dynamic> data,
+    AddServiceRequest data,
   ) =>
       _send(
         requestEndpoint: 'add_service',
         replyEndpoint: 'add_service_result',
-        params: data,
+        params: data.toJson(),
       ).then(
         (result) => result.map(
           failure: (failure) =>
@@ -189,12 +189,12 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
 
   @override
   Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
-    Map<String, dynamic> data,
+    KeychainDeriveKeypairRequest data,
   ) =>
       _send(
         requestEndpoint: 'keychain_derive_keypair',
         replyEndpoint: 'keychain_derive_keypair_result',
-        params: data,
+        params: data.toJson(),
       ).then(
         (result) => result.map(
           failure: (failure) =>
@@ -206,12 +206,12 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
 
   @override
   Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
-    Map<String, dynamic> data,
+    KeychainDeriveAddressRequest data,
   ) =>
       _send(
         requestEndpoint: 'keychain_derive_address',
         replyEndpoint: 'keychain_derive_address_result',
-        params: data,
+        params: data.toJson(),
       ).then(
         (result) => result.map(
           failure: (failure) =>
@@ -223,12 +223,12 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
 
   @override
   Future<Result<SignTransactionsResult, Failure>> signTransactions(
-    Map<String, dynamic> data,
+    SignTransactionRequest data,
   ) =>
       _send(
         requestEndpoint: 'sign_transactions',
         replyEndpoint: 'sign_transactions_result',
-        params: data,
+        params: data.toJson(),
       ).then(
         (result) => result.map(
           failure: (failure) =>

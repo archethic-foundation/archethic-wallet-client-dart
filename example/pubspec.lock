@@ -10,20 +10,19 @@ packages:
     source: hosted
     version: "1.0.0"
   archethic_lib_dart:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: archethic_lib_dart
-      sha256: "9644035fd44b68d6558d906b62bbd74800068e71367e929a1a73d60d2a54e054"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.3.16"
+      path: "../../libdart"
+      relative: true
+    source: path
+    version: "3.4.0"
   archethic_wallet_client:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.2.7"
+    version: "2.0.0"
   archive:
     dependency: transitive
     description:

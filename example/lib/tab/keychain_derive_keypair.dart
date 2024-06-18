@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:archethic_wallet_client/archethic_wallet_client.dart' as awc;
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
@@ -77,11 +78,13 @@ class _KeychainDeriveKeypairTabState extends State<KeychainDeriveKeypairTab> {
             child: const Icon(Icons.send),
             onPressed: () async {
               final response =
-                  await widget.aewalletClient.keychainDeriveKeyPair({
-                'serviceName': payloadServiceNameController.text,
-                'index': int.tryParse(payloadIndexController.text),
-                'pathSuffix': payloadSuffixController.text,
-              });
+                  await widget.aewalletClient.keychainDeriveKeyPair(
+                awc.KeychainDeriveKeypairRequest(
+                  serviceName: payloadServiceNameController.text,
+                  index: int.parse(payloadIndexController.text),
+                  pathSuffix: payloadSuffixController.text,
+                ),
+              );
               response.when(
                 failure: (failure) {
                   log(
@@ -89,7 +92,7 @@ class _KeychainDeriveKeypairTabState extends State<KeychainDeriveKeypairTab> {
                     error: failure,
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
-                    ResultSnackbar.error(failure.message ?? 'An error occured'),
+                    ResultSnackbar.error(failure.message),
                   );
                 },
                 success: (result) {

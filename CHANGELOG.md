@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## 2.0.0
+- Add models for all RPC **Requests** and **Responses**
+
+### Breaking Changes
+- `ArchethicDAppClient` methods use `Requests` models as input instead of `Map<String, dynamic>`
+
 ## 1.2.7
 - Javascript Async operations are awaitable from Dart.
 

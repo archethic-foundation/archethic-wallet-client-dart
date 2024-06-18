@@ -14,7 +14,7 @@ class WebBrowserExtensionDappClient extends AWCJsonRPCClient
   }) : super(
           channelBuilder: () async {
             if (archethic?.streamChannel == null) {
-              throw Failure.connectivity();
+              throw Failure.connectivity;
             }
             final streamChannel = WebBrowserExtensionStreamChannel(
               streamChannel: archethic!.streamChannel!,
