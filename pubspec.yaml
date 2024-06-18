@@ -1,6 +1,6 @@
 name: archethic_wallet_client
 description: A client dart library to interact with Archethic Wallet RPC API.
-version: 1.2.7
+version: 2.0.0
 homepage: https://github.com/archethic-foundation/archethic-wallet-client-dart
 
 environment:

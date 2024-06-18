@@ -94,7 +94,8 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
             onPressed: () async {
               try {
                 final response = await widget.aewalletClient.signTransactions(
-                  jsonDecode(payloadTextController.text),
+                  SignTransactionRequest.fromJson(
+                      jsonDecode(payloadTextController.text)),
                 );
                 response.when(
                   failure: (failure) {
@@ -104,7 +105,7 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
                       ResultSnackbar.error(
-                        failure.message ?? 'An error occured',
+                        failure.message,
                       ),
                     );
                   },

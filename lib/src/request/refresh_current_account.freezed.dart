@@ -14,30 +14,30 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-RefreshCurrentAccountResult _$RefreshCurrentAccountResultFromJson(
+RefreshCurrentAccountRequest _$RefreshCurrentAccountRequestFromJson(
     Map<String, dynamic> json) {
-  return _RefreshCurrentAccountResult.fromJson(json);
+  return _RefreshCurrentAccountRequest.fromJson(json);
 }
 
 /// @nodoc
-mixin _$RefreshCurrentAccountResult {
+mixin _$RefreshCurrentAccountRequest {
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RefreshCurrentAccountResultCopyWith<$Res> {
-  factory $RefreshCurrentAccountResultCopyWith(
-          RefreshCurrentAccountResult value,
-          $Res Function(RefreshCurrentAccountResult) then) =
-      _$RefreshCurrentAccountResultCopyWithImpl<$Res,
-          RefreshCurrentAccountResult>;
+abstract class $RefreshCurrentAccountRequestCopyWith<$Res> {
+  factory $RefreshCurrentAccountRequestCopyWith(
+          RefreshCurrentAccountRequest value,
+          $Res Function(RefreshCurrentAccountRequest) then) =
+      _$RefreshCurrentAccountRequestCopyWithImpl<$Res,
+          RefreshCurrentAccountRequest>;
 }
 
 /// @nodoc
-class _$RefreshCurrentAccountResultCopyWithImpl<$Res,
-        $Val extends RefreshCurrentAccountResult>
-    implements $RefreshCurrentAccountResultCopyWith<$Res> {
-  _$RefreshCurrentAccountResultCopyWithImpl(this._value, this._then);
+class _$RefreshCurrentAccountRequestCopyWithImpl<$Res,
+        $Val extends RefreshCurrentAccountRequest>
+    implements $RefreshCurrentAccountRequestCopyWith<$Res> {
+  _$RefreshCurrentAccountRequestCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -46,43 +46,43 @@ class _$RefreshCurrentAccountResultCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$RefreshCurrentAccountResultImplCopyWith<$Res> {
-  factory _$$RefreshCurrentAccountResultImplCopyWith(
-          _$RefreshCurrentAccountResultImpl value,
-          $Res Function(_$RefreshCurrentAccountResultImpl) then) =
-      __$$RefreshCurrentAccountResultImplCopyWithImpl<$Res>;
+abstract class _$$RefreshCurrentAccountRequestImplCopyWith<$Res> {
+  factory _$$RefreshCurrentAccountRequestImplCopyWith(
+          _$RefreshCurrentAccountRequestImpl value,
+          $Res Function(_$RefreshCurrentAccountRequestImpl) then) =
+      __$$RefreshCurrentAccountRequestImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$RefreshCurrentAccountResultImplCopyWithImpl<$Res>
-    extends _$RefreshCurrentAccountResultCopyWithImpl<$Res,
-        _$RefreshCurrentAccountResultImpl>
-    implements _$$RefreshCurrentAccountResultImplCopyWith<$Res> {
-  __$$RefreshCurrentAccountResultImplCopyWithImpl(
-      _$RefreshCurrentAccountResultImpl _value,
-      $Res Function(_$RefreshCurrentAccountResultImpl) _then)
+class __$$RefreshCurrentAccountRequestImplCopyWithImpl<$Res>
+    extends _$RefreshCurrentAccountRequestCopyWithImpl<$Res,
+        _$RefreshCurrentAccountRequestImpl>
+    implements _$$RefreshCurrentAccountRequestImplCopyWith<$Res> {
+  __$$RefreshCurrentAccountRequestImplCopyWithImpl(
+      _$RefreshCurrentAccountRequestImpl _value,
+      $Res Function(_$RefreshCurrentAccountRequestImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$RefreshCurrentAccountResultImpl extends _RefreshCurrentAccountResult {
-  const _$RefreshCurrentAccountResultImpl() : super._();
+class _$RefreshCurrentAccountRequestImpl extends _RefreshCurrentAccountRequest {
+  const _$RefreshCurrentAccountRequestImpl() : super._();
 
-  factory _$RefreshCurrentAccountResultImpl.fromJson(
+  factory _$RefreshCurrentAccountRequestImpl.fromJson(
           Map<String, dynamic> json) =>
-      _$$RefreshCurrentAccountResultImplFromJson(json);
+      _$$RefreshCurrentAccountRequestImplFromJson(json);
 
   @override
   String toString() {
-    return 'RefreshCurrentAccountResult()';
+    return 'RefreshCurrentAccountRequest()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RefreshCurrentAccountResultImpl);
+            other is _$RefreshCurrentAccountRequestImpl);
   }
 
   @JsonKey(ignore: true)
@@ -91,18 +91,112 @@ class _$RefreshCurrentAccountResultImpl extends _RefreshCurrentAccountResult {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$RefreshCurrentAccountResultImplToJson(
+    return _$$RefreshCurrentAccountRequestImplToJson(
       this,
     );
   }
 }
 
-abstract class _RefreshCurrentAccountResult
-    extends RefreshCurrentAccountResult {
-  const factory _RefreshCurrentAccountResult() =
-      _$RefreshCurrentAccountResultImpl;
-  const _RefreshCurrentAccountResult._() : super._();
+abstract class _RefreshCurrentAccountRequest
+    extends RefreshCurrentAccountRequest {
+  const factory _RefreshCurrentAccountRequest() =
+      _$RefreshCurrentAccountRequestImpl;
+  const _RefreshCurrentAccountRequest._() : super._();
 
-  factory _RefreshCurrentAccountResult.fromJson(Map<String, dynamic> json) =
-      _$RefreshCurrentAccountResultImpl.fromJson;
+  factory _RefreshCurrentAccountRequest.fromJson(Map<String, dynamic> json) =
+      _$RefreshCurrentAccountRequestImpl.fromJson;
+}
+
+RefreshCurrentAccountResponse _$RefreshCurrentAccountResponseFromJson(
+    Map<String, dynamic> json) {
+  return _RefreshCurrentAccountResponse.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RefreshCurrentAccountResponse {
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RefreshCurrentAccountResponseCopyWith<$Res> {
+  factory $RefreshCurrentAccountResponseCopyWith(
+          RefreshCurrentAccountResponse value,
+          $Res Function(RefreshCurrentAccountResponse) then) =
+      _$RefreshCurrentAccountResponseCopyWithImpl<$Res,
+          RefreshCurrentAccountResponse>;
+}
+
+/// @nodoc
+class _$RefreshCurrentAccountResponseCopyWithImpl<$Res,
+        $Val extends RefreshCurrentAccountResponse>
+    implements $RefreshCurrentAccountResponseCopyWith<$Res> {
+  _$RefreshCurrentAccountResponseCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$RefreshCurrentAccountResponseImplCopyWith<$Res> {
+  factory _$$RefreshCurrentAccountResponseImplCopyWith(
+          _$RefreshCurrentAccountResponseImpl value,
+          $Res Function(_$RefreshCurrentAccountResponseImpl) then) =
+      __$$RefreshCurrentAccountResponseImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$RefreshCurrentAccountResponseImplCopyWithImpl<$Res>
+    extends _$RefreshCurrentAccountResponseCopyWithImpl<$Res,
+        _$RefreshCurrentAccountResponseImpl>
+    implements _$$RefreshCurrentAccountResponseImplCopyWith<$Res> {
+  __$$RefreshCurrentAccountResponseImplCopyWithImpl(
+      _$RefreshCurrentAccountResponseImpl _value,
+      $Res Function(_$RefreshCurrentAccountResponseImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RefreshCurrentAccountResponseImpl
+    extends _RefreshCurrentAccountResponse {
+  const _$RefreshCurrentAccountResponseImpl() : super._();
+
+  factory _$RefreshCurrentAccountResponseImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$RefreshCurrentAccountResponseImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'RefreshCurrentAccountResponse()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RefreshCurrentAccountResponseImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RefreshCurrentAccountResponseImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RefreshCurrentAccountResponse
+    extends RefreshCurrentAccountResponse {
+  const factory _RefreshCurrentAccountResponse() =
+      _$RefreshCurrentAccountResponseImpl;
+  const _RefreshCurrentAccountResponse._() : super._();
+
+  factory _RefreshCurrentAccountResponse.fromJson(Map<String, dynamic> json) =
+      _$RefreshCurrentAccountResponseImpl.fromJson;
 }

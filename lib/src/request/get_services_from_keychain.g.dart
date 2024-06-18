@@ -19,3 +19,11 @@ Map<String, dynamic> _$$GetServicesFromKeychainResultImplToJson(
     <String, dynamic>{
       'services': instance.services,
     };
+
+_$GetServicesFromKeychainRequestImpl
+    _$$GetServicesFromKeychainRequestImplFromJson(Map<String, dynamic> json) =>
+        _$GetServicesFromKeychainRequestImpl();
+
+Map<String, dynamic> _$$GetServicesFromKeychainRequestImplToJson(
+        _$GetServicesFromKeychainRequestImpl instance) =>
+    <String, dynamic>{};

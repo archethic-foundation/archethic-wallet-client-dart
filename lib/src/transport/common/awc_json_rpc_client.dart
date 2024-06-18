@@ -2,12 +2,6 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
-import 'package:archethic_wallet_client/src/request/get_accounts.dart';
-import 'package:archethic_wallet_client/src/request/get_current_account.dart';
-import 'package:archethic_wallet_client/src/request/get_services_from_keychain.dart';
-import 'package:archethic_wallet_client/src/request/keychain_derive_address.dart';
-import 'package:archethic_wallet_client/src/request/keychain_derive_keypair.dart';
-import 'package:archethic_wallet_client/src/request/sign_transactions.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:stream_channel/stream_channel.dart';
 
@@ -31,8 +25,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
 
   static const logName = 'AWCJsonRPCClients';
 
-  final _subscriptionValues =
-      StreamController<RPCSubscriptionUpdateDTO>.broadcast();
+  final _subscriptionValues = StreamController<SubscriptionUpdate>.broadcast();
 
   @override
   ArchethicDappConnectionState get state {
@@ -82,7 +75,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
       (params) {
         log('Received value');
         _subscriptionValues.add(
-          RPCSubscriptionUpdateDTO.fromJson(params.value),
+          SubscriptionUpdate.fromJson(params.value),
         );
       },
     );
@@ -113,7 +106,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
       _connectionStateController.add(
         const ArchethicDappConnectionState.disconnected(),
       );
-      throw Failure.connectivity();
+      throw Failure.connectivity;
     }
   }
 
@@ -170,7 +163,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
             error: e,
             stackTrace: stack,
           );
-          throw Failure.connectivity();
+          throw Failure.connectivity;
         }
         if (e is RpcException) {
           log(
@@ -188,10 +181,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
           error: e,
           stackTrace: stack,
         );
-        throw Failure.other(
-          cause: e,
-          stack: stack,
-        );
+        throw Failure.other;
       },
     );
   }
@@ -204,21 +194,21 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
       );
 
   @override
-  Future<Result<RefreshCurrentAccountResult, Failure>>
+  Future<Result<RefreshCurrentAccountResponse, Failure>>
       refreshCurrentAccount() => Result.guard(
             () => _send(method: 'refreshCurrentAccount').then(
-              (result) => RefreshCurrentAccountResult.fromJson(result),
+              (result) => RefreshCurrentAccountResponse.fromJson(result),
             ),
           );
 
   @override
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
-    Map<String, dynamic> data,
+    SendTransactionRequest data,
   ) =>
       Result.guard(
         () => _send(
           method: 'sendTransaction',
-          params: data,
+          params: data.toJson(),
         ).then(
           (result) => SendTransactionResult.fromJson(result),
         ),
@@ -247,9 +237,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
         () async {
           final subscriptionDTO = await _subscribe(
             method: 'subscribeAccount',
-            params: {
-              'serviceName': serviceName,
-            },
+            params: SubscribeAccountRequest(serviceName: serviceName).toJson(),
           );
           return Subscription(
             id: subscriptionDTO.id,
@@ -298,12 +286,12 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
 
   @override
   Future<Result<SendTransactionResult, Failure>> addService(
-    Map<String, dynamic> data,
+    AddServiceRequest data,
   ) =>
       Result.guard(
         () => _send(
           method: 'addService',
-          params: data,
+          params: data.toJson(),
         ).then(
           (result) => SendTransactionResult.fromJson(result),
         ),
@@ -319,12 +307,12 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
 
   @override
   Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
-    Map<String, dynamic> data,
+    KeychainDeriveKeypairRequest data,
   ) =>
       Result.guard(
         () => _send(
           method: 'keychainDeriveKeypair',
-          params: data,
+          params: data.toJson(),
         ).then(
           (result) => KeychainDeriveKeypairResult.fromJson(result),
         ),
@@ -332,12 +320,12 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
 
   @override
   Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
-    Map<String, dynamic> data,
+    KeychainDeriveAddressRequest data,
   ) =>
       Result.guard(
         () => _send(
           method: 'keychainDeriveAddress',
-          params: data,
+          params: data.toJson(),
         ).then(
           (result) => KeychainDeriveAddressResult.fromJson(result),
         ),
@@ -345,12 +333,12 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
 
   @override
   Future<Result<SignTransactionsResult, Failure>> signTransactions(
-    Map<String, dynamic> data,
+    SignTransactionRequest data,
   ) =>
       Result.guard(
         () => _send(
           method: 'signTransactions',
-          params: data,
+          params: data.toJson(),
         ).then(
           (result) => SignTransactionsResult.fromJson(result),
         ),

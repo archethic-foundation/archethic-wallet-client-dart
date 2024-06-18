@@ -392,3 +392,242 @@ abstract class _Account extends Account {
   _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+SubscribeAccountRequest _$SubscribeAccountRequestFromJson(
+    Map<String, dynamic> json) {
+  return _SubscribeAccountRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SubscribeAccountRequest {
+  String get serviceName => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SubscribeAccountRequestCopyWith<SubscribeAccountRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SubscribeAccountRequestCopyWith<$Res> {
+  factory $SubscribeAccountRequestCopyWith(SubscribeAccountRequest value,
+          $Res Function(SubscribeAccountRequest) then) =
+      _$SubscribeAccountRequestCopyWithImpl<$Res, SubscribeAccountRequest>;
+  @useResult
+  $Res call({String serviceName});
+}
+
+/// @nodoc
+class _$SubscribeAccountRequestCopyWithImpl<$Res,
+        $Val extends SubscribeAccountRequest>
+    implements $SubscribeAccountRequestCopyWith<$Res> {
+  _$SubscribeAccountRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceName = null,
+  }) {
+    return _then(_value.copyWith(
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SubscribeAccountRequestImplCopyWith<$Res>
+    implements $SubscribeAccountRequestCopyWith<$Res> {
+  factory _$$SubscribeAccountRequestImplCopyWith(
+          _$SubscribeAccountRequestImpl value,
+          $Res Function(_$SubscribeAccountRequestImpl) then) =
+      __$$SubscribeAccountRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String serviceName});
+}
+
+/// @nodoc
+class __$$SubscribeAccountRequestImplCopyWithImpl<$Res>
+    extends _$SubscribeAccountRequestCopyWithImpl<$Res,
+        _$SubscribeAccountRequestImpl>
+    implements _$$SubscribeAccountRequestImplCopyWith<$Res> {
+  __$$SubscribeAccountRequestImplCopyWithImpl(
+      _$SubscribeAccountRequestImpl _value,
+      $Res Function(_$SubscribeAccountRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceName = null,
+  }) {
+    return _then(_$SubscribeAccountRequestImpl(
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SubscribeAccountRequestImpl extends _SubscribeAccountRequest {
+  const _$SubscribeAccountRequestImpl({required this.serviceName}) : super._();
+
+  factory _$SubscribeAccountRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubscribeAccountRequestImplFromJson(json);
+
+  @override
+  final String serviceName;
+
+  @override
+  String toString() {
+    return 'SubscribeAccountRequest(serviceName: $serviceName)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubscribeAccountRequestImpl &&
+            (identical(other.serviceName, serviceName) ||
+                other.serviceName == serviceName));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, serviceName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SubscribeAccountRequestImplCopyWith<_$SubscribeAccountRequestImpl>
+      get copyWith => __$$SubscribeAccountRequestImplCopyWithImpl<
+          _$SubscribeAccountRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SubscribeAccountRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SubscribeAccountRequest extends SubscribeAccountRequest {
+  const factory _SubscribeAccountRequest({required final String serviceName}) =
+      _$SubscribeAccountRequestImpl;
+  const _SubscribeAccountRequest._() : super._();
+
+  factory _SubscribeAccountRequest.fromJson(Map<String, dynamic> json) =
+      _$SubscribeAccountRequestImpl.fromJson;
+
+  @override
+  String get serviceName;
+  @override
+  @JsonKey(ignore: true)
+  _$$SubscribeAccountRequestImplCopyWith<_$SubscribeAccountRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SubscribeCurrentAccountRequest _$SubscribeCurrentAccountRequestFromJson(
+    Map<String, dynamic> json) {
+  return _SubscribeCurrentAccountRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SubscribeCurrentAccountRequest {
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SubscribeCurrentAccountRequestCopyWith<$Res> {
+  factory $SubscribeCurrentAccountRequestCopyWith(
+          SubscribeCurrentAccountRequest value,
+          $Res Function(SubscribeCurrentAccountRequest) then) =
+      _$SubscribeCurrentAccountRequestCopyWithImpl<$Res,
+          SubscribeCurrentAccountRequest>;
+}
+
+/// @nodoc
+class _$SubscribeCurrentAccountRequestCopyWithImpl<$Res,
+        $Val extends SubscribeCurrentAccountRequest>
+    implements $SubscribeCurrentAccountRequestCopyWith<$Res> {
+  _$SubscribeCurrentAccountRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$SubscribeCurrentAccountRequestImplCopyWith<$Res> {
+  factory _$$SubscribeCurrentAccountRequestImplCopyWith(
+          _$SubscribeCurrentAccountRequestImpl value,
+          $Res Function(_$SubscribeCurrentAccountRequestImpl) then) =
+      __$$SubscribeCurrentAccountRequestImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SubscribeCurrentAccountRequestImplCopyWithImpl<$Res>
+    extends _$SubscribeCurrentAccountRequestCopyWithImpl<$Res,
+        _$SubscribeCurrentAccountRequestImpl>
+    implements _$$SubscribeCurrentAccountRequestImplCopyWith<$Res> {
+  __$$SubscribeCurrentAccountRequestImplCopyWithImpl(
+      _$SubscribeCurrentAccountRequestImpl _value,
+      $Res Function(_$SubscribeCurrentAccountRequestImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SubscribeCurrentAccountRequestImpl
+    extends _SubscribeCurrentAccountRequest {
+  const _$SubscribeCurrentAccountRequestImpl() : super._();
+
+  factory _$SubscribeCurrentAccountRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$SubscribeCurrentAccountRequestImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'SubscribeCurrentAccountRequest()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SubscribeCurrentAccountRequestImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SubscribeCurrentAccountRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SubscribeCurrentAccountRequest
+    extends SubscribeCurrentAccountRequest {
+  const factory _SubscribeCurrentAccountRequest() =
+      _$SubscribeCurrentAccountRequestImpl;
+  const _SubscribeCurrentAccountRequest._() : super._();
+
+  factory _SubscribeCurrentAccountRequest.fromJson(Map<String, dynamic> json) =
+      _$SubscribeCurrentAccountRequestImpl.fromJson;
+}

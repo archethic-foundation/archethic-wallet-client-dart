@@ -16,3 +16,12 @@ class GetCurrentAccountResult with _$GetCurrentAccountResult {
   factory GetCurrentAccountResult.fromJson(Map<String, dynamic> json) =>
       _$GetCurrentAccountResultFromJson(json);
 }
+
+@freezed
+class GetCurrentAccountRequest with _$GetCurrentAccountRequest {
+  const factory GetCurrentAccountRequest() = _GetCurrentAccountRequest;
+  const GetCurrentAccountRequest._();
+
+  factory GetCurrentAccountRequest.fromJson(Map<String, dynamic> json) =>
+      _$GetCurrentAccountRequestFromJson(json);
+}

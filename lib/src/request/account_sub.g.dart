@@ -36,3 +36,23 @@ Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
       'lastAddress': instance.lastAddress,
       'balance': instance.balance,
     };
+
+_$SubscribeAccountRequestImpl _$$SubscribeAccountRequestImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SubscribeAccountRequestImpl(
+      serviceName: json['serviceName'] as String,
+    );
+
+Map<String, dynamic> _$$SubscribeAccountRequestImplToJson(
+        _$SubscribeAccountRequestImpl instance) =>
+    <String, dynamic>{
+      'serviceName': instance.serviceName,
+    };
+
+_$SubscribeCurrentAccountRequestImpl
+    _$$SubscribeCurrentAccountRequestImplFromJson(Map<String, dynamic> json) =>
+        _$SubscribeCurrentAccountRequestImpl();
+
+Map<String, dynamic> _$$SubscribeCurrentAccountRequestImplToJson(
+        _$SubscribeCurrentAccountRequestImpl instance) =>
+    <String, dynamic>{};

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:archethic_wallet_client/archethic_wallet_client.dart' as awc;
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
@@ -46,8 +47,9 @@ class _AddServiceTabState extends State<AddServiceTab> {
           OutlinedButton(
             child: const Icon(Icons.send),
             onPressed: () async {
-              final response = await widget.aewalletClient
-                  .addService({'name': payloadTextController.text});
+              final response = await widget.aewalletClient.addService(
+                awc.AddServiceRequest(name: payloadTextController.text),
+              );
               response.when(
                 failure: (failure) {
                   log(
@@ -55,7 +57,7 @@ class _AddServiceTabState extends State<AddServiceTab> {
                     error: failure,
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
-                    ResultSnackbar.error(failure.message ?? 'An error occured'),
+                    ResultSnackbar.error(failure.message),
                   );
                 },
                 success: (result) {

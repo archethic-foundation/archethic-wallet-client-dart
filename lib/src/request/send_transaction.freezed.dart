@@ -200,3 +200,243 @@ abstract class _SendTransactionResult extends SendTransactionResult {
   _$$SendTransactionResultImplCopyWith<_$SendTransactionResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+SendTransactionRequest _$SendTransactionRequestFromJson(
+    Map<String, dynamic> json) {
+  return _SendTransactionRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SendTransactionRequest {
+  /// - [Data]: transaction data zone (identity, keychain, smart contract, etc.)
+  Data get data => throw _privateConstructorUsedError;
+
+  /// - Type: transaction type
+  String get type => throw _privateConstructorUsedError;
+
+  /// - Version: version of the transaction (used for backward compatiblity)
+  int get version => throw _privateConstructorUsedError;
+
+  /// - Flag to generate and add the encrypted smart contract's seed in a secret
+  bool? get generateEncryptedSeedSC => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SendTransactionRequestCopyWith<SendTransactionRequest> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SendTransactionRequestCopyWith<$Res> {
+  factory $SendTransactionRequestCopyWith(SendTransactionRequest value,
+          $Res Function(SendTransactionRequest) then) =
+      _$SendTransactionRequestCopyWithImpl<$Res, SendTransactionRequest>;
+  @useResult
+  $Res call(
+      {Data data, String type, int version, bool? generateEncryptedSeedSC});
+
+  $DataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class _$SendTransactionRequestCopyWithImpl<$Res,
+        $Val extends SendTransactionRequest>
+    implements $SendTransactionRequestCopyWith<$Res> {
+  _$SendTransactionRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+    Object? type = null,
+    Object? version = null,
+    Object? generateEncryptedSeedSC = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Data,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as int,
+      generateEncryptedSeedSC: freezed == generateEncryptedSeedSC
+          ? _value.generateEncryptedSeedSC
+          : generateEncryptedSeedSC // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DataCopyWith<$Res> get data {
+    return $DataCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$SendTransactionRequestImplCopyWith<$Res>
+    implements $SendTransactionRequestCopyWith<$Res> {
+  factory _$$SendTransactionRequestImplCopyWith(
+          _$SendTransactionRequestImpl value,
+          $Res Function(_$SendTransactionRequestImpl) then) =
+      __$$SendTransactionRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {Data data, String type, int version, bool? generateEncryptedSeedSC});
+
+  @override
+  $DataCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$$SendTransactionRequestImplCopyWithImpl<$Res>
+    extends _$SendTransactionRequestCopyWithImpl<$Res,
+        _$SendTransactionRequestImpl>
+    implements _$$SendTransactionRequestImplCopyWith<$Res> {
+  __$$SendTransactionRequestImplCopyWithImpl(
+      _$SendTransactionRequestImpl _value,
+      $Res Function(_$SendTransactionRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+    Object? type = null,
+    Object? version = null,
+    Object? generateEncryptedSeedSC = freezed,
+  }) {
+    return _then(_$SendTransactionRequestImpl(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Data,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      version: null == version
+          ? _value.version
+          : version // ignore: cast_nullable_to_non_nullable
+              as int,
+      generateEncryptedSeedSC: freezed == generateEncryptedSeedSC
+          ? _value.generateEncryptedSeedSC
+          : generateEncryptedSeedSC // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SendTransactionRequestImpl extends _SendTransactionRequest {
+  const _$SendTransactionRequestImpl(
+      {required this.data,
+      required this.type,
+      required this.version,
+      this.generateEncryptedSeedSC})
+      : super._();
+
+  factory _$SendTransactionRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SendTransactionRequestImplFromJson(json);
+
+  /// - [Data]: transaction data zone (identity, keychain, smart contract, etc.)
+  @override
+  final Data data;
+
+  /// - Type: transaction type
+  @override
+  final String type;
+
+  /// - Version: version of the transaction (used for backward compatiblity)
+  @override
+  final int version;
+
+  /// - Flag to generate and add the encrypted smart contract's seed in a secret
+  @override
+  final bool? generateEncryptedSeedSC;
+
+  @override
+  String toString() {
+    return 'SendTransactionRequest(data: $data, type: $type, version: $version, generateEncryptedSeedSC: $generateEncryptedSeedSC)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SendTransactionRequestImpl &&
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.type, type) || other.type == type) &&
+            (identical(other.version, version) || other.version == version) &&
+            (identical(
+                    other.generateEncryptedSeedSC, generateEncryptedSeedSC) ||
+                other.generateEncryptedSeedSC == generateEncryptedSeedSC));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, data, type, version, generateEncryptedSeedSC);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SendTransactionRequestImplCopyWith<_$SendTransactionRequestImpl>
+      get copyWith => __$$SendTransactionRequestImplCopyWithImpl<
+          _$SendTransactionRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SendTransactionRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SendTransactionRequest extends SendTransactionRequest {
+  const factory _SendTransactionRequest(
+      {required final Data data,
+      required final String type,
+      required final int version,
+      final bool? generateEncryptedSeedSC}) = _$SendTransactionRequestImpl;
+  const _SendTransactionRequest._() : super._();
+
+  factory _SendTransactionRequest.fromJson(Map<String, dynamic> json) =
+      _$SendTransactionRequestImpl.fromJson;
+
+  @override
+
+  /// - [Data]: transaction data zone (identity, keychain, smart contract, etc.)
+  Data get data;
+  @override
+
+  /// - Type: transaction type
+  String get type;
+  @override
+
+  /// - Version: version of the transaction (used for backward compatiblity)
+  int get version;
+  @override
+
+  /// - Flag to generate and add the encrypted smart contract's seed in a secret
+  bool? get generateEncryptedSeedSC;
+  @override
+  @JsonKey(ignore: true)
+  _$$SendTransactionRequestImplCopyWith<_$SendTransactionRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

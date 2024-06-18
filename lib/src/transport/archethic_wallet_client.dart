@@ -3,12 +3,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
-import 'package:archethic_wallet_client/src/request/get_accounts.dart';
-import 'package:archethic_wallet_client/src/request/get_current_account.dart';
-import 'package:archethic_wallet_client/src/request/get_services_from_keychain.dart';
-import 'package:archethic_wallet_client/src/request/keychain_derive_address.dart';
-import 'package:archethic_wallet_client/src/request/keychain_derive_keypair.dart';
-import 'package:archethic_wallet_client/src/request/sign_transactions.dart';
 import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
 import 'package:archethic_wallet_client/src/transport/message_channel/message_channel_desktop.dart'
     if (dart.library.js) 'package:archethic_wallet_client/src/transport/message_channel/message_channel.dart';
@@ -136,7 +130,8 @@ $transportMethodsReport
 
   Future<Result<GetEndpointResult, Failure>> getEndpoint();
 
-  Future<Result<RefreshCurrentAccountResult, Failure>> refreshCurrentAccount();
+  Future<Result<RefreshCurrentAccountResponse, Failure>>
+      refreshCurrentAccount();
 
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
     String accountName,
@@ -147,7 +142,7 @@ $transportMethodsReport
   Future<void> unsubscribeCurrentAccount(String subscriptionId);
 
   Future<Result<SendTransactionResult, Failure>> sendTransaction(
-    Map<String, dynamic> data,
+    SendTransactionRequest data,
   );
 
   Future<Result<GetAccountsResult, Failure>> getAccounts();
@@ -157,21 +152,21 @@ $transportMethodsReport
   Future<void> unsubscribeAccount(String subscriptionId);
 
   Future<Result<SendTransactionResult, Failure>> addService(
-    Map<String, dynamic> data,
+    AddServiceRequest data,
   );
 
   Future<Result<GetServicesFromKeychainResult, Failure>>
       getServicesFromKeychain();
 
   Future<Result<KeychainDeriveKeypairResult, Failure>> keychainDeriveKeyPair(
-    Map<String, dynamic> data,
+    KeychainDeriveKeypairRequest data,
   );
 
   Future<Result<KeychainDeriveAddressResult, Failure>> keychainDeriveAddress(
-    Map<String, dynamic> data,
+    KeychainDeriveAddressRequest data,
   );
 
   Future<Result<SignTransactionsResult, Failure>> signTransactions(
-    Map<String, dynamic> data,
+    SignTransactionRequest data,
   );
 }

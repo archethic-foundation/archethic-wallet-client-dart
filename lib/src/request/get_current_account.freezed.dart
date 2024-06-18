@@ -199,3 +199,91 @@ abstract class _GetCurrentAccountResult extends GetCurrentAccountResult {
   _$$GetCurrentAccountResultImplCopyWith<_$GetCurrentAccountResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+GetCurrentAccountRequest _$GetCurrentAccountRequestFromJson(
+    Map<String, dynamic> json) {
+  return _GetCurrentAccountRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$GetCurrentAccountRequest {
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GetCurrentAccountRequestCopyWith<$Res> {
+  factory $GetCurrentAccountRequestCopyWith(GetCurrentAccountRequest value,
+          $Res Function(GetCurrentAccountRequest) then) =
+      _$GetCurrentAccountRequestCopyWithImpl<$Res, GetCurrentAccountRequest>;
+}
+
+/// @nodoc
+class _$GetCurrentAccountRequestCopyWithImpl<$Res,
+        $Val extends GetCurrentAccountRequest>
+    implements $GetCurrentAccountRequestCopyWith<$Res> {
+  _$GetCurrentAccountRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetCurrentAccountRequestImplCopyWith<$Res> {
+  factory _$$GetCurrentAccountRequestImplCopyWith(
+          _$GetCurrentAccountRequestImpl value,
+          $Res Function(_$GetCurrentAccountRequestImpl) then) =
+      __$$GetCurrentAccountRequestImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetCurrentAccountRequestImplCopyWithImpl<$Res>
+    extends _$GetCurrentAccountRequestCopyWithImpl<$Res,
+        _$GetCurrentAccountRequestImpl>
+    implements _$$GetCurrentAccountRequestImplCopyWith<$Res> {
+  __$$GetCurrentAccountRequestImplCopyWithImpl(
+      _$GetCurrentAccountRequestImpl _value,
+      $Res Function(_$GetCurrentAccountRequestImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GetCurrentAccountRequestImpl extends _GetCurrentAccountRequest {
+  const _$GetCurrentAccountRequestImpl() : super._();
+
+  factory _$GetCurrentAccountRequestImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GetCurrentAccountRequestImplFromJson(json);
+
+  @override
+  String toString() {
+    return 'GetCurrentAccountRequest()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetCurrentAccountRequestImpl);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GetCurrentAccountRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _GetCurrentAccountRequest extends GetCurrentAccountRequest {
+  const factory _GetCurrentAccountRequest() = _$GetCurrentAccountRequestImpl;
+  const _GetCurrentAccountRequest._() : super._();
+
+  factory _GetCurrentAccountRequest.fromJson(Map<String, dynamic> json) =
+      _$GetCurrentAccountRequestImpl.fromJson;
+}

@@ -73,7 +73,9 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
             onPressed: () async {
               try {
                 final response = await widget.aewalletClient.sendTransaction(
-                  jsonDecode(payloadTextController.text),
+                  SendTransactionRequest.fromJson(
+                    jsonDecode(payloadTextController.text),
+                  ),
                 );
 
                 response.when(
@@ -84,7 +86,7 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
                       ResultSnackbar.error(
-                        failure.message ?? 'An error occured',
+                        failure.message,
                       ),
                     );
                   },

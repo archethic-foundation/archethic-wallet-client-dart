@@ -163,3 +163,193 @@ abstract class _KeychainDeriveKeypairResult
   _$$KeychainDeriveKeypairResultImplCopyWith<_$KeychainDeriveKeypairResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
+
+KeychainDeriveKeypairRequest _$KeychainDeriveKeypairRequestFromJson(
+    Map<String, dynamic> json) {
+  return _KeychainDeriveKeypairRequest.fromJson(json);
+}
+
+/// @nodoc
+mixin _$KeychainDeriveKeypairRequest {
+  String get serviceName => throw _privateConstructorUsedError;
+  int get index => throw _privateConstructorUsedError;
+  String get pathSuffix => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $KeychainDeriveKeypairRequestCopyWith<KeychainDeriveKeypairRequest>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $KeychainDeriveKeypairRequestCopyWith<$Res> {
+  factory $KeychainDeriveKeypairRequestCopyWith(
+          KeychainDeriveKeypairRequest value,
+          $Res Function(KeychainDeriveKeypairRequest) then) =
+      _$KeychainDeriveKeypairRequestCopyWithImpl<$Res,
+          KeychainDeriveKeypairRequest>;
+  @useResult
+  $Res call({String serviceName, int index, String pathSuffix});
+}
+
+/// @nodoc
+class _$KeychainDeriveKeypairRequestCopyWithImpl<$Res,
+        $Val extends KeychainDeriveKeypairRequest>
+    implements $KeychainDeriveKeypairRequestCopyWith<$Res> {
+  _$KeychainDeriveKeypairRequestCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceName = null,
+    Object? index = null,
+    Object? pathSuffix = null,
+  }) {
+    return _then(_value.copyWith(
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      pathSuffix: null == pathSuffix
+          ? _value.pathSuffix
+          : pathSuffix // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$KeychainDeriveKeypairRequestImplCopyWith<$Res>
+    implements $KeychainDeriveKeypairRequestCopyWith<$Res> {
+  factory _$$KeychainDeriveKeypairRequestImplCopyWith(
+          _$KeychainDeriveKeypairRequestImpl value,
+          $Res Function(_$KeychainDeriveKeypairRequestImpl) then) =
+      __$$KeychainDeriveKeypairRequestImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String serviceName, int index, String pathSuffix});
+}
+
+/// @nodoc
+class __$$KeychainDeriveKeypairRequestImplCopyWithImpl<$Res>
+    extends _$KeychainDeriveKeypairRequestCopyWithImpl<$Res,
+        _$KeychainDeriveKeypairRequestImpl>
+    implements _$$KeychainDeriveKeypairRequestImplCopyWith<$Res> {
+  __$$KeychainDeriveKeypairRequestImplCopyWithImpl(
+      _$KeychainDeriveKeypairRequestImpl _value,
+      $Res Function(_$KeychainDeriveKeypairRequestImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? serviceName = null,
+    Object? index = null,
+    Object? pathSuffix = null,
+  }) {
+    return _then(_$KeychainDeriveKeypairRequestImpl(
+      serviceName: null == serviceName
+          ? _value.serviceName
+          : serviceName // ignore: cast_nullable_to_non_nullable
+              as String,
+      index: null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+      pathSuffix: null == pathSuffix
+          ? _value.pathSuffix
+          : pathSuffix // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$KeychainDeriveKeypairRequestImpl extends _KeychainDeriveKeypairRequest {
+  const _$KeychainDeriveKeypairRequestImpl(
+      {required this.serviceName, this.index = 0, this.pathSuffix = ''})
+      : super._();
+
+  factory _$KeychainDeriveKeypairRequestImpl.fromJson(
+          Map<String, dynamic> json) =>
+      _$$KeychainDeriveKeypairRequestImplFromJson(json);
+
+  @override
+  final String serviceName;
+  @override
+  @JsonKey()
+  final int index;
+  @override
+  @JsonKey()
+  final String pathSuffix;
+
+  @override
+  String toString() {
+    return 'KeychainDeriveKeypairRequest(serviceName: $serviceName, index: $index, pathSuffix: $pathSuffix)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$KeychainDeriveKeypairRequestImpl &&
+            (identical(other.serviceName, serviceName) ||
+                other.serviceName == serviceName) &&
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.pathSuffix, pathSuffix) ||
+                other.pathSuffix == pathSuffix));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, serviceName, index, pathSuffix);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$KeychainDeriveKeypairRequestImplCopyWith<
+          _$KeychainDeriveKeypairRequestImpl>
+      get copyWith => __$$KeychainDeriveKeypairRequestImplCopyWithImpl<
+          _$KeychainDeriveKeypairRequestImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$KeychainDeriveKeypairRequestImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _KeychainDeriveKeypairRequest
+    extends KeychainDeriveKeypairRequest {
+  const factory _KeychainDeriveKeypairRequest(
+      {required final String serviceName,
+      final int index,
+      final String pathSuffix}) = _$KeychainDeriveKeypairRequestImpl;
+  const _KeychainDeriveKeypairRequest._() : super._();
+
+  factory _KeychainDeriveKeypairRequest.fromJson(Map<String, dynamic> json) =
+      _$KeychainDeriveKeypairRequestImpl.fromJson;
+
+  @override
+  String get serviceName;
+  @override
+  int get index;
+  @override
+  String get pathSuffix;
+  @override
+  @JsonKey(ignore: true)
+  _$$KeychainDeriveKeypairRequestImplCopyWith<
+          _$KeychainDeriveKeypairRequestImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}

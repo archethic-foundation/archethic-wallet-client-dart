@@ -23,7 +23,7 @@ Map<String, dynamic> _$$RequestOriginImplToJson(_$RequestOriginImpl instance) =>
 _$RequestImpl _$$RequestImplFromJson(Map<String, dynamic> json) =>
     _$RequestImpl(
       origin: RequestOrigin.fromJson(json['origin'] as Map<String, dynamic>),
-      version: json['version'] as int,
+      version: (json['version'] as num).toInt(),
       payload: json['payload'] as Map<String, dynamic>,
     );
 
