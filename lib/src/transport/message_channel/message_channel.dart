@@ -28,26 +28,21 @@ class MessageChannelArchethicDappClient extends AWCJsonRPCClient
   static bool get isAvailable => kIsWeb && awcAvailable == true;
 }
 
-class MessagePortStreamChannel
-    with StreamChannelMixin<String>
-    implements StreamChannel<String> {
+class MessagePortStreamChannel {
   MessagePortStreamChannel({required this.port}) {
-    port.onmessage = (MessageEvent message) {
-      final data = message.data.dartify();
-      _in.add(data.toString());
-    }.toJS;
-
-    _onPostMessageSubscription = _out.stream.listen((event) {
-      port.postMessage(event.toJS);
+    _onReceiveMessageSubscription = port.onMessage.listen((message) {
+      _in.add(message.data! as String);
     });
+
+    _onPostMessageSubscription = _out.stream.listen(port.postMessage);
   }
 
   final MessagePort port;
   final _in = StreamController<String>(sync: true);
-  final _out = StreamController<String>(sync: true);
+  final _out = StreamController<JSAny?>(sync: true);
 
   late final StreamSubscription<MessageEvent> _onReceiveMessageSubscription;
-  late final StreamSubscription<String> _onPostMessageSubscription;
+  late final StreamSubscription<JSAny?> _onPostMessageSubscription;
 
   Future<void> dispose() async {
     await _onReceiveMessageSubscription.cancel();
@@ -55,10 +50,9 @@ class MessagePortStreamChannel
     await _in.close();
     await _out.close();
   }
+}
 
-  @override
-  StreamSink<String> get sink => _out.sink;
-
-  @override
-  Stream<String> get stream => _in.stream;
+extension on MessagePort {
+  Stream<MessageEvent> get onMessage =>
+      EventStreamProviders.messageEvent.forTarget(this);
 }
