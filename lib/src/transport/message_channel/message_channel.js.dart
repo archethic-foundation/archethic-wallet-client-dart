@@ -3,10 +3,9 @@ library awc;
 
 import 'dart:async';
 import 'dart:developer';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html';
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
+import 'package:web/web.dart';
 
 external MessagePort? get awc;
 external bool? get awcAvailable;
@@ -21,9 +20,9 @@ Future<MessagePort> get asyncAWC async {
 
   if (awc != null) awcReadyCompleter.complete(awc!);
 
-  onAWCReady = allowInterop((awc) {
+  onAWCReady = (awc) {
     log('AWC ready !');
-  });
+  };
 
   return awcReadyCompleter.future;
 }
