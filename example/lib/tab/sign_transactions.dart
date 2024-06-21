@@ -95,7 +95,8 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
               try {
                 final response = await widget.aewalletClient.signTransactions(
                   SignTransactionRequest.fromJson(
-                      jsonDecode(payloadTextController.text)),
+                    jsonDecode(payloadTextController.text),
+                  ),
                 );
                 response.when(
                   failure: (failure) {
