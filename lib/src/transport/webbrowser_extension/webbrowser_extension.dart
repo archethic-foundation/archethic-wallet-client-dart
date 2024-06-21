@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:js_util';
 
@@ -36,15 +37,15 @@ class WebBrowserExtensionStreamChannel
     implements StreamChannel<String> {
   WebBrowserExtensionStreamChannel({required this.streamChannel}) {
     streamChannel.onReceive = allowInterop((message) async {
-      print('[WBE] command received $message');
+      log('[WBE] command received $message');
       _in.add(message);
-      print('[WBE] command received Done');
+      log('[WBE] command received Done');
     });
 
     _onPostMessageSubscription = _out.stream.listen((event) {
-      print('[WBE] send command $event');
+      log('[WBE] send command $event');
       promiseToFuture(streamChannel.send(event));
-      print('[WBE] send command Done');
+      log('[WBE] send command Done');
     });
 
     streamChannel.onClose = allowInterop((reason) async {
