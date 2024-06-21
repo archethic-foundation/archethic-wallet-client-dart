@@ -21,9 +21,6 @@ dependencies:
   # Annotations for the freezed code-generator. This package does nothing without freezed too
   freezed_annotation: ^2.4.1
 
-  # Annotations to create static Dart interfaces for JavaScript APIs.
-  js: ^0.6.7
-
   # Annotations for the JsonSerializable code-generator.
   json_annotation: ^4.8.1
 
@@ -32,6 +29,9 @@ dependencies:
 
   # An abstraction for two-way communication channels based on the Dart Stream class.
   stream_channel: ^2.1.2
+
+  # Lightweight browser API bindings built around JS static interop.
+  web: ^0.5.1
 
   # StreamChannel wrappers for WebSockets. Provides a cross-platform WebSocketChannel API, a cross-platform implementation of that API that communicates over an underlying StreamChannel.
   web_socket_channel: ^2.4.0

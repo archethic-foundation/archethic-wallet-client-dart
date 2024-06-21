@@ -1,12 +1,12 @@
 import 'dart:async';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html';
+import 'dart:js_interop';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
 import 'package:archethic_wallet_client/src/transport/message_channel/message_channel.js.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stream_channel/stream_channel.dart';
+import 'package:web/web.dart';
 
 class MessageChannelArchethicDappClient extends AWCJsonRPCClient
     implements ArchethicDAppClient {
@@ -32,12 +32,13 @@ class MessagePortStreamChannel
     with StreamChannelMixin<String>
     implements StreamChannel<String> {
   MessagePortStreamChannel({required this.port}) {
-    _onReceiveMessageSubscription = port.onMessage.listen((message) {
-      _in.add(message.data);
-    });
+    port.onmessage = (MessageEvent message) {
+      final data = message.data.dartify();
+      _in.add(data.toString());
+    }.toJS;
 
     _onPostMessageSubscription = _out.stream.listen((event) {
-      port.postMessage(event);
+      port.postMessage(event.toJS);
     });
   }
 
