@@ -28,21 +28,25 @@ class MessageChannelArchethicDappClient extends AWCJsonRPCClient
   static bool get isAvailable => kIsWeb && awcAvailable == true;
 }
 
-class MessagePortStreamChannel {
+class MessagePortStreamChannel
+    with StreamChannelMixin<String>
+    implements StreamChannel<String> {
   MessagePortStreamChannel({required this.port}) {
     _onReceiveMessageSubscription = port.onMessage.listen((message) {
       _in.add(message.data! as String);
     });
 
-    _onPostMessageSubscription = _out.stream.listen(port.postMessage);
+    _onPostMessageSubscription = _out.stream.listen((event) {
+      port.postMessage(event as JSAny?);
+    });
   }
 
   final MessagePort port;
   final _in = StreamController<String>(sync: true);
-  final _out = StreamController<JSAny?>(sync: true);
+  final _out = StreamController<String>(sync: true);
 
   late final StreamSubscription<MessageEvent> _onReceiveMessageSubscription;
-  late final StreamSubscription<JSAny?> _onPostMessageSubscription;
+  late final StreamSubscription<String> _onPostMessageSubscription;
 
   Future<void> dispose() async {
     await _onReceiveMessageSubscription.cancel();
@@ -50,6 +54,12 @@ class MessagePortStreamChannel {
     await _in.close();
     await _out.close();
   }
+
+  @override
+  StreamSink<String> get sink => _out.sink;
+
+  @override
+  Stream<String> get stream => _in.stream;
 }
 
 extension on MessagePort {
