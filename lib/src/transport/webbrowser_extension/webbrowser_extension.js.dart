@@ -5,7 +5,7 @@ library awc;
 
 import 'dart:async';
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
 @JS('archethic')
 external ArchethicJS? get archethic;
