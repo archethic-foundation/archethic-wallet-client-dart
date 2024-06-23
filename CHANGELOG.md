@@ -1,5 +1,8 @@
 Changelog
 =========
+## 2.0.1
+- Migration to dart:js_interop & package:web/web.dart
+- Migration to Flutter 3.22
 
 ## 2.0.0
 - Add models for all RPC **Requests** and **Responses**
