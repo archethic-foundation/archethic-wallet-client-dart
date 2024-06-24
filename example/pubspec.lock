@@ -116,10 +116,10 @@ packages:
     dependency: transitive
     description:
       name: deeplink_rpc
-      sha256: eefff517ccc79f26b4414fc3387932d49f80248640ebfbf8331d4a998531d1d9
+      sha256: e08e6422913fcdb12b5243ba6f622c841e523ed0577a6442fe90f7ccd6652901
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.6"
+    version: "1.0.8"
   ecdsa:
     dependency: transitive
     description:
