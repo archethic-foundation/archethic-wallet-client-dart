@@ -1,5 +1,8 @@
 Changelog
 =========
+## 2.0.2
+- Fix classes using dart:js_interop 
+
 ## 2.0.1
 - Migration to dart:js_interop & package:web/web.dart
 - Migration to Flutter 3.22

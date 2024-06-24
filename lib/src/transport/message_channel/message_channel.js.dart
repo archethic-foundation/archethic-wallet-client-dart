@@ -6,11 +6,14 @@ import 'dart:developer';
 import 'dart:js_interop';
 import 'package:web/web.dart';
 
+@JS()
 external MessagePort? get awc;
+
+@JS()
 external bool? get awcAvailable;
 
 @JS('onAWCReady')
-external set onAWCReady(void Function(MessagePort awc) f);
+external set onAWCReady(JSFunction f);
 
 Future<MessagePort> get asyncAWC async {
   if (awc != null) {
@@ -21,9 +24,9 @@ Future<MessagePort> get asyncAWC async {
   final awcReadyCompleter = Completer<MessagePort>();
 
   onAWCReady = (port) {
-    awcReadyCompleter.complete(port);
+    awcReadyCompleter.complete(port as MessagePort);
     log('AWC ready !');
-  };
+  } as JSFunction;
 
   // Handle potential timeout or error (optional)
   await Future.delayed(const Duration(seconds: 5), () {
