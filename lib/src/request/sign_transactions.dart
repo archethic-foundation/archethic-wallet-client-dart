@@ -60,7 +60,7 @@ class SignTransactionRequest with _$SignTransactionRequest {
     @Default('') String pathSuffix,
 
     /// Description to explain the signature in multiple languages (key=Locale, value=description)
-    @Default({}) Map<String, String> description,
+    @Default({}) Map<String, dynamic> description,
 
     /// - List of transaction's infos
     @Default([]) List<SignTransactionRequestData> transactions,

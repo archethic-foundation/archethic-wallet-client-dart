@@ -23,13 +23,12 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
     "pathSuffix": "",
     "description": {
       "en": "This is an English description.",
-      "fr": "Ceci est une description en français.",
+      "fr": "Ceci est une description en français."
     },
     "transactions": [
         {
             "type": "token",
             "version": 2,
-            "description": "This is the first transaction to sign",
             "data": {
                 "content": "{ \"name\": \"NFT 001\", \"supply\": 100000000, \"type\": \"non-fungible\", \"symbol\": \"NFT1\", \"aeip\": [2], \"properties\": {}}",
                 "code": "",
@@ -48,7 +47,6 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
         {
             "type": "token",
             "version": 2,
-            "description": "This is the second transaction to sign",
             "data": {
                 "content": "{ \"name\": \"NFT 002\", \"supply\": 100000000, \"type\": \"non-fungible\", \"symbol\": \"NFT2\", \"aeip\": [2], \"properties\": {}}",
                 "code": "",

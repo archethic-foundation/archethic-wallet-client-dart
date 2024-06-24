@@ -60,10 +60,7 @@ _$SignTransactionRequestImpl _$$SignTransactionRequestImplFromJson(
     _$SignTransactionRequestImpl(
       serviceName: json['serviceName'] as String,
       pathSuffix: json['pathSuffix'] as String? ?? '',
-      description: (json['description'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(k, e as String),
-          ) ??
-          const {},
+      description: json['description'] as Map<String, dynamic>? ?? const {},
       transactions: (json['transactions'] as List<dynamic>?)
               ?.map((e) => SignTransactionRequestData.fromJson(
                   e as Map<String, dynamic>))
