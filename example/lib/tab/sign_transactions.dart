@@ -21,6 +21,10 @@ class _SignTransactionsTabState extends State<SignTransactionsTab> {
 {
     "serviceName": "archethic-wallet-BOB",
     "pathSuffix": "",
+    "description": {
+      "en": "This is an English description.",
+      "fr": "Ceci est une description en français.",
+    },
     "transactions": [
         {
             "type": "token",

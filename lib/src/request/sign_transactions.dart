@@ -43,7 +43,6 @@ class SignTransactionRequestData with _$SignTransactionRequestData {
     required Data data,
     required String type,
     required int version,
-    @Default('') String description,
   }) = _SignTransactionRequestData;
   const SignTransactionRequestData._();
 
@@ -59,6 +58,9 @@ class SignTransactionRequest with _$SignTransactionRequest {
 
     /// Additional information to add to a service derivation path (optional - default to empty)
     @Default('') String pathSuffix,
+
+    /// Description to explain the signature in multiple languages (key=Locale, value=description)
+    @Default({}) Map<String, String> description,
 
     /// - List of transaction's infos
     @Default([]) List<SignTransactionRequestData> transactions,
