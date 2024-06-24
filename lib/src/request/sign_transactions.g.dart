@@ -45,6 +45,7 @@ _$SignTransactionRequestDataImpl _$$SignTransactionRequestDataImplFromJson(
       data: Data.fromJson(json['data'] as Map<String, dynamic>),
       type: json['type'] as String,
       version: (json['version'] as num).toInt(),
+      description: json['description'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$SignTransactionRequestDataImplToJson(
@@ -53,6 +54,7 @@ Map<String, dynamic> _$$SignTransactionRequestDataImplToJson(
       'data': instance.data,
       'type': instance.type,
       'version': instance.version,
+      'description': instance.description,
     };
 
 _$SignTransactionRequestImpl _$$SignTransactionRequestImplFromJson(

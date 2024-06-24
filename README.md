@@ -384,6 +384,7 @@ Signs many transactions.
     {
       "type": String,                 // Type of transaction
       "version": Number,              // Version of the transaction (used for backward compatiblity)
+      "description": String,          // Readable explaination of the tx to sign
       "data": Object                  // Transaction data zone (identity, keychain, smart contract, etc.)
     }
   ]
