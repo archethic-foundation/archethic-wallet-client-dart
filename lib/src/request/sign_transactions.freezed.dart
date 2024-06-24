@@ -620,7 +620,7 @@ mixin _$SignTransactionRequest {
   String get pathSuffix => throw _privateConstructorUsedError;
 
   /// Description to explain the signature in multiple languages (key=Locale, value=description)
-  Map<String, String> get description => throw _privateConstructorUsedError;
+  Map<String, dynamic> get description => throw _privateConstructorUsedError;
 
   /// - List of transaction's infos
   List<SignTransactionRequestData> get transactions =>
@@ -641,7 +641,7 @@ abstract class $SignTransactionRequestCopyWith<$Res> {
   $Res call(
       {String serviceName,
       String pathSuffix,
-      Map<String, String> description,
+      Map<String, dynamic> description,
       List<SignTransactionRequestData> transactions});
 }
 
@@ -676,7 +676,7 @@ class _$SignTransactionRequestCopyWithImpl<$Res,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as Map<String, dynamic>,
       transactions: null == transactions
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -697,7 +697,7 @@ abstract class _$$SignTransactionRequestImplCopyWith<$Res>
   $Res call(
       {String serviceName,
       String pathSuffix,
-      Map<String, String> description,
+      Map<String, dynamic> description,
       List<SignTransactionRequestData> transactions});
 }
 
@@ -731,7 +731,7 @@ class __$$SignTransactionRequestImplCopyWithImpl<$Res>
       description: null == description
           ? _value._description
           : description // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
+              as Map<String, dynamic>,
       transactions: null == transactions
           ? _value._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -746,7 +746,7 @@ class _$SignTransactionRequestImpl extends _SignTransactionRequest {
   const _$SignTransactionRequestImpl(
       {required this.serviceName,
       this.pathSuffix = '',
-      final Map<String, String> description = const {},
+      final Map<String, dynamic> description = const {},
       final List<SignTransactionRequestData> transactions = const []})
       : _description = description,
         _transactions = transactions,
@@ -765,12 +765,12 @@ class _$SignTransactionRequestImpl extends _SignTransactionRequest {
   final String pathSuffix;
 
   /// Description to explain the signature in multiple languages (key=Locale, value=description)
-  final Map<String, String> _description;
+  final Map<String, dynamic> _description;
 
   /// Description to explain the signature in multiple languages (key=Locale, value=description)
   @override
   @JsonKey()
-  Map<String, String> get description {
+  Map<String, dynamic> get description {
     if (_description is EqualUnmodifiableMapView) return _description;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_description);
@@ -836,7 +836,7 @@ abstract class _SignTransactionRequest extends SignTransactionRequest {
   const factory _SignTransactionRequest(
           {required final String serviceName,
           final String pathSuffix,
-          final Map<String, String> description,
+          final Map<String, dynamic> description,
           final List<SignTransactionRequestData> transactions}) =
       _$SignTransactionRequestImpl;
   const _SignTransactionRequest._() : super._();
@@ -855,7 +855,7 @@ abstract class _SignTransactionRequest extends SignTransactionRequest {
   @override
 
   /// Description to explain the signature in multiple languages (key=Locale, value=description)
-  Map<String, String> get description;
+  Map<String, dynamic> get description;
   @override
 
   /// - List of transaction's infos
