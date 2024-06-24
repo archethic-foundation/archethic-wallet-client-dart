@@ -421,6 +421,7 @@ mixin _$SignTransactionRequestData {
   Data get data => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   int get version => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -435,7 +436,7 @@ abstract class $SignTransactionRequestDataCopyWith<$Res> {
       _$SignTransactionRequestDataCopyWithImpl<$Res,
           SignTransactionRequestData>;
   @useResult
-  $Res call({Data data, String type, int version});
+  $Res call({Data data, String type, int version, String description});
 
   $DataCopyWith<$Res> get data;
 }
@@ -457,6 +458,7 @@ class _$SignTransactionRequestDataCopyWithImpl<$Res,
     Object? data = null,
     Object? type = null,
     Object? version = null,
+    Object? description = null,
   }) {
     return _then(_value.copyWith(
       data: null == data
@@ -471,6 +473,10 @@ class _$SignTransactionRequestDataCopyWithImpl<$Res,
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as int,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -492,7 +498,7 @@ abstract class _$$SignTransactionRequestDataImplCopyWith<$Res>
       __$$SignTransactionRequestDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Data data, String type, int version});
+  $Res call({Data data, String type, int version, String description});
 
   @override
   $DataCopyWith<$Res> get data;
@@ -514,6 +520,7 @@ class __$$SignTransactionRequestDataImplCopyWithImpl<$Res>
     Object? data = null,
     Object? type = null,
     Object? version = null,
+    Object? description = null,
   }) {
     return _then(_$SignTransactionRequestDataImpl(
       data: null == data
@@ -528,6 +535,10 @@ class __$$SignTransactionRequestDataImplCopyWithImpl<$Res>
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as int,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -536,7 +547,10 @@ class __$$SignTransactionRequestDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SignTransactionRequestDataImpl extends _SignTransactionRequestData {
   const _$SignTransactionRequestDataImpl(
-      {required this.data, required this.type, required this.version})
+      {required this.data,
+      required this.type,
+      required this.version,
+      this.description = ''})
       : super._();
 
   factory _$SignTransactionRequestDataImpl.fromJson(
@@ -549,10 +563,13 @@ class _$SignTransactionRequestDataImpl extends _SignTransactionRequestData {
   final String type;
   @override
   final int version;
+  @override
+  @JsonKey()
+  final String description;
 
   @override
   String toString() {
-    return 'SignTransactionRequestData(data: $data, type: $type, version: $version)';
+    return 'SignTransactionRequestData(data: $data, type: $type, version: $version, description: $description)';
   }
 
   @override
@@ -562,12 +579,15 @@ class _$SignTransactionRequestDataImpl extends _SignTransactionRequestData {
             other is _$SignTransactionRequestDataImpl &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.version, version) || other.version == version));
+            (identical(other.version, version) || other.version == version) &&
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, data, type, version);
+  int get hashCode =>
+      Object.hash(runtimeType, data, type, version, description);
 
   @JsonKey(ignore: true)
   @override
@@ -588,7 +608,8 @@ abstract class _SignTransactionRequestData extends SignTransactionRequestData {
   const factory _SignTransactionRequestData(
       {required final Data data,
       required final String type,
-      required final int version}) = _$SignTransactionRequestDataImpl;
+      required final int version,
+      final String description}) = _$SignTransactionRequestDataImpl;
   const _SignTransactionRequestData._() : super._();
 
   factory _SignTransactionRequestData.fromJson(Map<String, dynamic> json) =
@@ -600,6 +621,8 @@ abstract class _SignTransactionRequestData extends SignTransactionRequestData {
   String get type;
   @override
   int get version;
+  @override
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$$SignTransactionRequestDataImplCopyWith<_$SignTransactionRequestDataImpl>

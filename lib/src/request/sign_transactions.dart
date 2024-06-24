@@ -43,6 +43,7 @@ class SignTransactionRequestData with _$SignTransactionRequestData {
     required Data data,
     required String type,
     required int version,
+    @Default('') String description,
   }) = _SignTransactionRequestData;
   const SignTransactionRequestData._();
 
