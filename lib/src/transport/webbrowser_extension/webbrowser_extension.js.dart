@@ -3,52 +3,39 @@
 @JS()
 library awc;
 
-import 'dart:async';
-
 import 'dart:js_interop';
 
-@JS('archethic')
-external ArchethicJS? get archethic;
-
-@JS()
-class ArchethicJS {
+extension type ArchethicJS._(JSObject _) implements JSObject {
   @JS('streamChannel')
   external AWCStreamChannelJS? get streamChannel;
 }
 
-@JS()
-class AWCStreamChannelJS {
-  @JS('state')
+@JS('archethic')
+external ArchethicJS? get archethic;
+
+extension type AWCStreamChannelJS._(JSObject _) implements JSObject {
   external AWCStreamChannelState get state;
 
   /// This returns a promise.
   /// You must use `promiseTofuture` to call this from Dart code.
-  @JS('connect')
-  external Object connect();
+  external JSObject connect();
 
   /// This returns a promise.
   /// You must use `promiseTofuture` to call this from Dart code.
-  @JS('close')
-  external Object close();
+  external JSObject close();
 
   /// This returns a promise.
   /// You must use `promiseTofuture` to call this from Dart code.
-  @JS('send')
-  external Object send(String data);
-
-  @JS('onReceive')
-  external set onReceive(Future<void> Function(String data) callback);
-
-  @JS('onReady')
-  external set onReady(Future<void> Function() callback);
-
-  @JS('onClose')
-  external set onClose(Future<void> Function(String reason) callback);
+  external JSObject send(JSString data);
+  external set onReceive(JSFunction callback);
+  external set onReady(JSFunction callback);
+  external set onClose(JSFunction callback);
 }
 
-enum AWCStreamChannelState {
-  connecting,
-  open,
-  closing,
-  closed,
+@JS()
+extension type AWCStreamChannelState._(JSObject _) implements JSObject {
+  external static AWCStreamChannelState get connecting;
+  external static AWCStreamChannelState get open;
+  external static AWCStreamChannelState get closing;
+  external static AWCStreamChannelState get closed;
 }
