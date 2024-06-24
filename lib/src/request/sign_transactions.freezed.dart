@@ -421,7 +421,6 @@ mixin _$SignTransactionRequestData {
   Data get data => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   int get version => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -436,7 +435,7 @@ abstract class $SignTransactionRequestDataCopyWith<$Res> {
       _$SignTransactionRequestDataCopyWithImpl<$Res,
           SignTransactionRequestData>;
   @useResult
-  $Res call({Data data, String type, int version, String description});
+  $Res call({Data data, String type, int version});
 
   $DataCopyWith<$Res> get data;
 }
@@ -458,7 +457,6 @@ class _$SignTransactionRequestDataCopyWithImpl<$Res,
     Object? data = null,
     Object? type = null,
     Object? version = null,
-    Object? description = null,
   }) {
     return _then(_value.copyWith(
       data: null == data
@@ -473,10 +471,6 @@ class _$SignTransactionRequestDataCopyWithImpl<$Res,
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 
@@ -498,7 +492,7 @@ abstract class _$$SignTransactionRequestDataImplCopyWith<$Res>
       __$$SignTransactionRequestDataImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Data data, String type, int version, String description});
+  $Res call({Data data, String type, int version});
 
   @override
   $DataCopyWith<$Res> get data;
@@ -520,7 +514,6 @@ class __$$SignTransactionRequestDataImplCopyWithImpl<$Res>
     Object? data = null,
     Object? type = null,
     Object? version = null,
-    Object? description = null,
   }) {
     return _then(_$SignTransactionRequestDataImpl(
       data: null == data
@@ -535,10 +528,6 @@ class __$$SignTransactionRequestDataImplCopyWithImpl<$Res>
           ? _value.version
           : version // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -547,10 +536,7 @@ class __$$SignTransactionRequestDataImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$SignTransactionRequestDataImpl extends _SignTransactionRequestData {
   const _$SignTransactionRequestDataImpl(
-      {required this.data,
-      required this.type,
-      required this.version,
-      this.description = ''})
+      {required this.data, required this.type, required this.version})
       : super._();
 
   factory _$SignTransactionRequestDataImpl.fromJson(
@@ -563,13 +549,10 @@ class _$SignTransactionRequestDataImpl extends _SignTransactionRequestData {
   final String type;
   @override
   final int version;
-  @override
-  @JsonKey()
-  final String description;
 
   @override
   String toString() {
-    return 'SignTransactionRequestData(data: $data, type: $type, version: $version, description: $description)';
+    return 'SignTransactionRequestData(data: $data, type: $type, version: $version)';
   }
 
   @override
@@ -579,15 +562,12 @@ class _$SignTransactionRequestDataImpl extends _SignTransactionRequestData {
             other is _$SignTransactionRequestDataImpl &&
             (identical(other.data, data) || other.data == data) &&
             (identical(other.type, type) || other.type == type) &&
-            (identical(other.version, version) || other.version == version) &&
-            (identical(other.description, description) ||
-                other.description == description));
+            (identical(other.version, version) || other.version == version));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, data, type, version, description);
+  int get hashCode => Object.hash(runtimeType, data, type, version);
 
   @JsonKey(ignore: true)
   @override
@@ -608,8 +588,7 @@ abstract class _SignTransactionRequestData extends SignTransactionRequestData {
   const factory _SignTransactionRequestData(
       {required final Data data,
       required final String type,
-      required final int version,
-      final String description}) = _$SignTransactionRequestDataImpl;
+      required final int version}) = _$SignTransactionRequestDataImpl;
   const _SignTransactionRequestData._() : super._();
 
   factory _SignTransactionRequestData.fromJson(Map<String, dynamic> json) =
@@ -621,8 +600,6 @@ abstract class _SignTransactionRequestData extends SignTransactionRequestData {
   String get type;
   @override
   int get version;
-  @override
-  String get description;
   @override
   @JsonKey(ignore: true)
   _$$SignTransactionRequestDataImplCopyWith<_$SignTransactionRequestDataImpl>
@@ -641,6 +618,9 @@ mixin _$SignTransactionRequest {
 
   /// Additional information to add to a service derivation path (optional - default to empty)
   String get pathSuffix => throw _privateConstructorUsedError;
+
+  /// Description to explain the signature in multiple languages (key=Locale, value=description)
+  Map<String, String> get description => throw _privateConstructorUsedError;
 
   /// - List of transaction's infos
   List<SignTransactionRequestData> get transactions =>
@@ -661,6 +641,7 @@ abstract class $SignTransactionRequestCopyWith<$Res> {
   $Res call(
       {String serviceName,
       String pathSuffix,
+      Map<String, String> description,
       List<SignTransactionRequestData> transactions});
 }
 
@@ -680,6 +661,7 @@ class _$SignTransactionRequestCopyWithImpl<$Res,
   $Res call({
     Object? serviceName = null,
     Object? pathSuffix = null,
+    Object? description = null,
     Object? transactions = null,
   }) {
     return _then(_value.copyWith(
@@ -691,6 +673,10 @@ class _$SignTransactionRequestCopyWithImpl<$Res,
           ? _value.pathSuffix
           : pathSuffix // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
       transactions: null == transactions
           ? _value.transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -711,6 +697,7 @@ abstract class _$$SignTransactionRequestImplCopyWith<$Res>
   $Res call(
       {String serviceName,
       String pathSuffix,
+      Map<String, String> description,
       List<SignTransactionRequestData> transactions});
 }
 
@@ -729,6 +716,7 @@ class __$$SignTransactionRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? serviceName = null,
     Object? pathSuffix = null,
+    Object? description = null,
     Object? transactions = null,
   }) {
     return _then(_$SignTransactionRequestImpl(
@@ -740,6 +728,10 @@ class __$$SignTransactionRequestImplCopyWithImpl<$Res>
           ? _value.pathSuffix
           : pathSuffix // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value._description
+          : description // ignore: cast_nullable_to_non_nullable
+              as Map<String, String>,
       transactions: null == transactions
           ? _value._transactions
           : transactions // ignore: cast_nullable_to_non_nullable
@@ -754,8 +746,10 @@ class _$SignTransactionRequestImpl extends _SignTransactionRequest {
   const _$SignTransactionRequestImpl(
       {required this.serviceName,
       this.pathSuffix = '',
+      final Map<String, String> description = const {},
       final List<SignTransactionRequestData> transactions = const []})
-      : _transactions = transactions,
+      : _description = description,
+        _transactions = transactions,
         super._();
 
   factory _$SignTransactionRequestImpl.fromJson(Map<String, dynamic> json) =>
@@ -769,6 +763,18 @@ class _$SignTransactionRequestImpl extends _SignTransactionRequest {
   @override
   @JsonKey()
   final String pathSuffix;
+
+  /// Description to explain the signature in multiple languages (key=Locale, value=description)
+  final Map<String, String> _description;
+
+  /// Description to explain the signature in multiple languages (key=Locale, value=description)
+  @override
+  @JsonKey()
+  Map<String, String> get description {
+    if (_description is EqualUnmodifiableMapView) return _description;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_description);
+  }
 
   /// - List of transaction's infos
   final List<SignTransactionRequestData> _transactions;
@@ -784,7 +790,7 @@ class _$SignTransactionRequestImpl extends _SignTransactionRequest {
 
   @override
   String toString() {
-    return 'SignTransactionRequest(serviceName: $serviceName, pathSuffix: $pathSuffix, transactions: $transactions)';
+    return 'SignTransactionRequest(serviceName: $serviceName, pathSuffix: $pathSuffix, description: $description, transactions: $transactions)';
   }
 
   @override
@@ -797,12 +803,18 @@ class _$SignTransactionRequestImpl extends _SignTransactionRequest {
             (identical(other.pathSuffix, pathSuffix) ||
                 other.pathSuffix == pathSuffix) &&
             const DeepCollectionEquality()
+                .equals(other._description, _description) &&
+            const DeepCollectionEquality()
                 .equals(other._transactions, _transactions));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, serviceName, pathSuffix,
+  int get hashCode => Object.hash(
+      runtimeType,
+      serviceName,
+      pathSuffix,
+      const DeepCollectionEquality().hash(_description),
       const DeepCollectionEquality().hash(_transactions));
 
   @JsonKey(ignore: true)
@@ -824,6 +836,7 @@ abstract class _SignTransactionRequest extends SignTransactionRequest {
   const factory _SignTransactionRequest(
           {required final String serviceName,
           final String pathSuffix,
+          final Map<String, String> description,
           final List<SignTransactionRequestData> transactions}) =
       _$SignTransactionRequestImpl;
   const _SignTransactionRequest._() : super._();
@@ -839,6 +852,10 @@ abstract class _SignTransactionRequest extends SignTransactionRequest {
 
   /// Additional information to add to a service derivation path (optional - default to empty)
   String get pathSuffix;
+  @override
+
+  /// Description to explain the signature in multiple languages (key=Locale, value=description)
+  Map<String, String> get description;
   @override
 
   /// - List of transaction's infos

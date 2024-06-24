@@ -380,11 +380,14 @@ Signs many transactions.
 {
   "serviceName": String,              // Service name to use to sign the tx
   "pathSuffix": String,               // Additional information to add to a service derivation path (optional)
+  "description": String {             // Readable description to explain the purpose of signing transactions (locale + description)
+    "en": "Readable description in English",
+    "fr": "Description lisible en français",
+  },
   "transactions": [
     {
       "type": String,                 // Type of transaction
       "version": Number,              // Version of the transaction (used for backward compatiblity)
-      "description": String,          // Readable explaination of the tx to sign
       "data": Object                  // Transaction data zone (identity, keychain, smart contract, etc.)
     }
   ]
