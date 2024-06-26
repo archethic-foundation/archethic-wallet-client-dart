@@ -1,5 +1,8 @@
 Changelog
 =========
+## 2.0.3
+- WASM compatibility : Remove dart:js_util references
+
 ## 2.0.2
 - Fix classes using dart:js_interop 
 
