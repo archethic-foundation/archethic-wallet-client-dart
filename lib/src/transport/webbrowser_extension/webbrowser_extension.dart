@@ -39,7 +39,7 @@ class WebBrowserExtensionStreamChannel
       log('[WBE] command received $message');
       _in.add(message.toString());
       log('[WBE] command received Done');
-    } as JSFunction;
+    }.toJS;
 
     _onPostMessageSubscription = _out.stream.listen((event) {
       log('[WBE] send command $event');
@@ -49,7 +49,7 @@ class WebBrowserExtensionStreamChannel
 
     streamChannel.onClose = (reason) async {
       await dispose();
-    } as JSFunction;
+    }.toJS;
   }
 
   Future<void> connect() async => streamChannel.connect();
