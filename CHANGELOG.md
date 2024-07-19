@@ -1,5 +1,9 @@
 Changelog
 =========
+## 2.0.4
+- Update Archethic Dart SDK version 3.4.2
+- Example app: Regenerate all platform's configurations
+
 ## 2.0.3
 - WASM compatibility : Remove dart:js_util references
 
