@@ -55,12 +55,6 @@ flutter:
     - assets/images/
 
   fonts:
-    - family: Caveat
-      fonts:
-        - asset: assets/fonts/Caveat-Bold.ttf
-        - asset: assets/fonts/Caveat-Medium.ttf
-        - asset: assets/fonts/Caveat-Regular.ttf
-        - asset: assets/fonts/Caveat-SemiBold.ttf
     - family: Montserrat
       fonts:
         - asset: assets/fonts/Montserrat-Black.ttf

@@ -21,12 +21,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Archethic Wallet Client Demo',
-      theme: ThemeData.light(
-        useMaterial3: true,
-      ),
-      darkTheme: ThemeData.dark(
-        useMaterial3: true,
-      ),
       home: Scaffold(
         body: MainScreen(aewalletClient: _aewalletClient),
       ),

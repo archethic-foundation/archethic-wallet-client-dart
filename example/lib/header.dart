@@ -26,12 +26,14 @@ class Header extends StatelessWidget {
                 semanticsLabel: 'AE Logo',
                 height: 30,
               ),
-              Text(
-                'awc example',
+              const SizedBox(
+                width: 10,
+              ),
+              const Text(
+                'AWC example',
                 style: TextStyle(
-                  fontFamily: 'Caveat',
-                  fontSize: 50,
-                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 26,
+                  color: Colors.black,
                 ),
               ),
             ],
