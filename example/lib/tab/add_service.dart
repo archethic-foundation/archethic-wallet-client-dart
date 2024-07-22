@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart' as awc;
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
 import 'package:flutter_dapp_example/widgets/space.dart';
+import 'package:logging/logging.dart';
 
 class AddServiceTab extends StatefulWidget {
   const AddServiceTab({required this.aewalletClient, super.key});
@@ -20,6 +20,8 @@ class _AddServiceTabState extends State<AddServiceTab> {
   final payloadTextController = TextEditingController(
     text: '',
   );
+
+  final _logger = Logger('Tab-AddService');
 
   @override
   void dispose() {
@@ -52,16 +54,16 @@ class _AddServiceTabState extends State<AddServiceTab> {
               );
               response.when(
                 failure: (failure) {
-                  log(
+                  _logger.severe(
                     'Transaction failed',
-                    error: failure,
+                    failure,
                   );
                   ScaffoldMessenger.of(context).showSnackBar(
                     ResultSnackbar.error(failure.message),
                   );
                 },
                 success: (result) {
-                  log(
+                  _logger.info(
                     'Transaction succeed : ${json.encode(result)}',
                   );
                   ScaffoldMessenger.of(context).showSnackBar(

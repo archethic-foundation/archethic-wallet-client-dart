@@ -24,6 +24,9 @@ dependencies:
   # JSON-RPC (v2.0) utility classes. Invoke methods on another machine using JSON-formatted messages. Some assembly required.
   json_rpc_2: ^3.0.2
 
+  # Logging lib
+  logging: ^1.2.0
+
   # An abstraction for two-way communication channels based on the Dart Stream class.
   stream_channel: ^2.1.2
 

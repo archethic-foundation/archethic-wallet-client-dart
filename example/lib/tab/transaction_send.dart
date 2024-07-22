@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
 import 'package:flutter_dapp_example/widgets/space.dart';
+import 'package:logging/logging.dart';
 
 class TransactionSendTab extends StatefulWidget {
   const TransactionSendTab({
@@ -41,6 +41,8 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
   }
 ''',
   );
+
+  final _logger = Logger('Tab-TransactionSend');
 
   @override
   void dispose() {
@@ -80,9 +82,9 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
 
                 response.when(
                   failure: (failure) {
-                    log(
+                    _logger.severe(
                       'Transaction failed',
-                      error: failure,
+                      failure,
                     );
                     ScaffoldMessenger.of(context).showSnackBar(
                       ResultSnackbar.error(
@@ -91,7 +93,7 @@ class _TransactionSendTabState extends State<TransactionSendTab> {
                     );
                   },
                   success: (result) {
-                    log(
+                    _logger.info(
                       'Transaction succeed : ${json.encode(result)}',
                     );
                     ScaffoldMessenger.of(context).showSnackBar(

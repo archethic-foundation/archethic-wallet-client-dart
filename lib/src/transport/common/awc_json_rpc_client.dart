@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'dart:developer';
+import 'dart:convert';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
+import 'package:logging/logging.dart';
 import 'package:stream_channel/stream_channel.dart';
 
 class AWCJsonRPCClient implements ArchethicDAppClient {
@@ -23,7 +24,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
       StreamController<ArchethicDappConnectionState>.broadcast()
         ..add(const ArchethicDappConnectionState.disconnected());
 
-  static const logName = 'AWCJsonRPCClients';
+  static final _logger = Logger('AWC-JsonRPCClient');
 
   final _subscriptionValues = StreamController<SubscriptionUpdate>.broadcast();
 
@@ -45,26 +46,17 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
   @override
   Future<void> connect() async {
     if (_client != null && !_client!.isClosed) {
-      log(
-        'Connection already opened. Connection abort.',
-        name: logName,
-      );
+            _logger.info('Connection already opened. Connection abort.');
       return;
     }
-    log(
-      'Opening connection',
-      name: logName,
-    );
+          _logger.info('Opening connection');
     _connectionStateController.add(
       const ArchethicDappConnectionState.connecting(),
     );
 
     _channel = await _connect();
 
-    log(
-      'Connection opened',
-      name: logName,
-    );
+          _logger.info('Connection opened');
     _connectionStateController.add(
       const ArchethicDappConnectionState.connected(),
     );
@@ -73,7 +65,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
     client.registerMethod(
       'addSubscriptionNotification',
       (params) {
-        log('Received value');
+              _logger.info('Received value');
         _subscriptionValues.add(
           SubscriptionUpdate.fromJson(params.value),
         );
@@ -84,9 +76,8 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
     unawaited(
       client.listen().then(
         (value) {
-          log(
+                _logger.info(
             'Connection closed',
-            name: logName,
           );
           _connectionStateController.add(
             const ArchethicDappConnectionState.disconnected(),
@@ -99,9 +90,11 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
   Future<StreamChannel<String>> _connect() async {
     try {
       return await channelBuilder();
-    } catch (error) {
-      log(
-        'Connection failed : $error',
+    } catch (error, stack) {
+      _logger.severe(
+        'Connection failed',
+        error,
+        stack,
       );
       _connectionStateController.add(
         const ArchethicDappConnectionState.disconnected(),
@@ -144,6 +137,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
       _client = null;
       await connect();
     }
+    _logger.info('Send command $method, params : ${jsonEncode(params)}');
     return _client!
         .sendRequest(
       method,
@@ -154,32 +148,32 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
       ).toJson(),
     )
         .then(
-      (result) => result,
+      (result) {
+        _logger.info('Response received :  ${jsonEncode(result)}');
+        return result;
+      },
       onError: (e, stack) {
         if (e is StateError) {
-          log(
+          _logger.severe(
             'Bad connection state.',
-            name: logName,
-            error: e,
-            stackTrace: stack,
+            e,
+            stack,
           );
           throw Failure.connectivity;
         }
         if (e is RpcException) {
-          log(
+          _logger.severe(
             'Rpc request failed.',
-            name: logName,
-            error: e,
-            stackTrace: stack,
+            e,
+            stack,
           );
           throw Failure.fromRpcException(e);
         }
 
-        log(
+        _logger.severe(
           'Rpc request failed.',
-          name: logName,
-          error: e,
-          stackTrace: stack,
+          e,
+          stack,
         );
         throw Failure.other;
       },

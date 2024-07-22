@@ -1,8 +1,12 @@
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dapp_example/logger.dart';
 import 'package:flutter_dapp_example/main_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  LoggerSetup.instance().setup();
   runApp(const MyApp());
 }
 
