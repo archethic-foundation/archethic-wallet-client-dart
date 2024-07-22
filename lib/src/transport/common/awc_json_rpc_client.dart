@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
+import 'package:archethic_wallet_client/src/core/task.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:logging/logging.dart';
 import 'package:stream_channel/stream_channel.dart';
@@ -43,49 +44,54 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
   Stream<ArchethicDappConnectionState> get connectionStateStream =>
       _connectionStateController.stream;
 
-  @override
-  Future<void> connect() async {
-    if (_client != null && !_client!.isClosed) {
+  SingletonTask<void>? __connectTask;
+  SingletonTask<void> get _connectTask => __connectTask ??= SingletonTask(
+        name: 'Connect',
+        task: () async {
+          if (_client != null && !_client!.isClosed) {
             _logger.info('Connection already opened. Connection abort.');
-      return;
-    }
+            return;
+          }
           _logger.info('Opening connection');
-    _connectionStateController.add(
-      const ArchethicDappConnectionState.connecting(),
-    );
+          _connectionStateController.add(
+            const ArchethicDappConnectionState.connecting(),
+          );
 
-    _channel = await _connect();
+          _channel = await _connect();
 
           _logger.info('Connection opened');
-    _connectionStateController.add(
-      const ArchethicDappConnectionState.connected(),
-    );
-
-    final client = Peer(_channel!.cast<String>());
-    client.registerMethod(
-      'addSubscriptionNotification',
-      (params) {
-              _logger.info('Received value');
-        _subscriptionValues.add(
-          SubscriptionUpdate.fromJson(params.value),
-        );
-      },
-    );
-
-    _client = client;
-    unawaited(
-      client.listen().then(
-        (value) {
-                _logger.info(
-            'Connection closed',
-          );
           _connectionStateController.add(
-            const ArchethicDappConnectionState.disconnected(),
+            const ArchethicDappConnectionState.connected(),
+          );
+
+          final client = Peer(_channel!.cast<String>());
+          client.registerMethod(
+            'addSubscriptionNotification',
+            (params) {
+              _logger.info('Received value');
+              _subscriptionValues.add(
+                SubscriptionUpdate.fromJson(params.value),
+              );
+            },
+          );
+
+          _client = client;
+          unawaited(
+            client.listen().then(
+              (value) {
+                _logger.info(
+                  'Connection closed',
+                );
+                _connectionStateController.add(
+                  const ArchethicDappConnectionState.disconnected(),
+                );
+              },
+            ),
           );
         },
-      ),
-    );
-  }
+      );
+  @override
+  Future<void> connect() => _connectTask.run();
 
   Future<StreamChannel<String>> _connect() async {
     try {
@@ -103,13 +109,18 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
     }
   }
 
+  SingletonTask<void>? __closeTask;
+  SingletonTask<void> get _closeTask => __closeTask ??= SingletonTask(
+        name: 'Close',
+        task: () async {
+          await _client?.close();
+          _client = null;
+          await disposeChannel(_channel!);
+          _channel = null;
+        },
+      );
   @override
-  Future<void> close() async {
-    await _client?.close();
-    _client = null;
-    await disposeChannel(_channel!);
-    _channel = null;
-  }
+  Future<void> close() => _closeTask.run();
 
   Future<Subscription<Map<String, dynamic>>> _subscribe({
     required String method,
