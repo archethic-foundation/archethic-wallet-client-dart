@@ -32,9 +32,9 @@ class MessagePortStreamChannel
     with StreamChannelMixin<String>
     implements StreamChannel<String> {
   MessagePortStreamChannel({required this.port}) {
-    _onReceiveMessageSubscription = port.onMessage.listen((message) {
+    port.onmessage = (message) {
       _in.add(message.data! as String);
-    });
+    }.toJS;
 
     _onPostMessageSubscription = _out.stream.listen((event) {
       port.postMessage(event as JSAny?);
@@ -60,9 +60,4 @@ class MessagePortStreamChannel
 
   @override
   Stream<String> get stream => _in.stream;
-}
-
-extension on MessagePort {
-  Stream<MessageEvent> get onMessage =>
-      EventStreamProviders.messageEvent.forTarget(this);
 }
