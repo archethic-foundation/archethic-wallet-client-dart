@@ -1,10 +1,10 @@
 import 'dart:async';
-import 'dart:developer';
 import 'dart:js_interop';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
 import 'package:archethic_wallet_client/src/transport/webbrowser_extension/webbrowser_extension.js.dart';
+import 'package:logging/logging.dart';
 import 'package:stream_channel/stream_channel.dart';
 
 class WebBrowserExtensionDappClient extends AWCJsonRPCClient
@@ -36,21 +36,23 @@ class WebBrowserExtensionStreamChannel
     implements StreamChannel<String> {
   WebBrowserExtensionStreamChannel({required this.streamChannel}) {
     streamChannel.onReceive = (message) async {
-      log('[WBE] command received $message');
+      _logger.info('[WBE] command received $message');
       _in.add(message.toString());
-      log('[WBE] command received Done');
+      _logger.info('[WBE] command received Done');
     }.toJS;
 
     _onPostMessageSubscription = _out.stream.listen((event) {
-      log('[WBE] send command $event');
+      _logger.info('[WBE] send command $event');
       streamChannel.send(event as JSString);
-      log('[WBE] send command Done');
+      _logger.info('[WBE] send command Done');
     });
 
     streamChannel.onClose = (reason) async {
       await dispose();
     }.toJS;
   }
+
+  static final _logger = Logger('AWC-StreamChannel-WebBrowserExtention');
 
   Future<void> connect() async => streamChannel.connect();
 

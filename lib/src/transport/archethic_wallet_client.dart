@@ -1,6 +1,5 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 import 'dart:async';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
@@ -13,6 +12,7 @@ import 'package:deeplink_rpc/deeplink_rpc.dart';
 import 'package:flutter/foundation.dart'
     show TargetPlatform, defaultTargetPlatform, kIsWeb;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:logging/logging.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 part 'archethic_wallet_client.freezed.dart';
@@ -71,28 +71,28 @@ abstract class ArchethicDAppClient {
   }) {
     final transportMethodsReport = ArchethicDAppTransportMethodsReport.check();
 
-    log('''
+    _logger.info('''
 [Transport methods check]
 $transportMethodsReport
       ''');
 
     if (transportMethodsReport.webBrowserExtension) {
-      log('Using Web browser extension');
+      _logger.info('Using Web browser extension');
       return ArchethicDAppClient.webBrowserExtension(origin: origin);
     }
 
     if (transportMethodsReport.messageChannel) {
-      log('Using Message Channel');
+      _logger.info('Using Message Channel');
       return ArchethicDAppClient.messageChannel(origin: origin);
     }
 
     if (transportMethodsReport.websocket) {
-      log('Using WebSocket');
+      _logger.info('Using WebSocket');
       return ArchethicDAppClient.websocket(origin: origin);
     }
 
     if (transportMethodsReport.deeplink) {
-      log('Using Deeplink');
+      _logger.info('Using Deeplink');
       return ArchethicDAppClient.deeplink(
         origin: origin,
         replyBaseUrl: replyBaseUrl,
@@ -121,6 +121,7 @@ $transportMethodsReport
     required RequestOrigin origin,
   }) = WebsocketArchethicDappClient;
 
+  static final _logger = Logger('AWC-ArchethicWalletClient');
   Stream<ArchethicDappConnectionState> get connectionStateStream;
   ArchethicDappConnectionState get state;
   RequestOrigin get origin;
