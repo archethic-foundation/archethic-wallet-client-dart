@@ -1,5 +1,11 @@
 Changelog
 =========
+
+## 2.0.5
+- Use Logging lib for logs
+- Prevent simultaneous connexion/deconnexion requests
+- Fix embedded webview RPC communication
+
 ## 2.0.4
 - Update Archethic Dart SDK version 3.4.2
 - Example app: Regenerate all platform's configurations
