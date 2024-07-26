@@ -237,4 +237,21 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
               Result.success(SignTransactionsResult.fromJson(success)),
         ),
       );
+
+  @override
+  Future<Result<SignPayloadsResult, Failure>> signPayloads(
+    SignPayloadRequest data,
+  ) =>
+      _send(
+        requestEndpoint: 'sign_payloads',
+        replyEndpoint: 'sign_payloads_result',
+        params: data.toJson(),
+      ).then(
+        (result) => result.map(
+          failure: (failure) =>
+              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
+          success: (success) =>
+              Result.success(SignPayloadsResult.fromJson(success)),
+        ),
+      );
 }
