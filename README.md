@@ -408,3 +408,38 @@ Signs many transactions.
   ]
 }
 ```
+
+## sign_payloads
+
+Signs many payloads.
+
+### Request
+
+```typescript
+{
+  "serviceName": String,              // Service name to use to sign the payload
+  "pathSuffix": String,               // Additional information to add to a service derivation path (optional)
+  "description": String {             // Readable description to explain the purpose of signing payloads (locale + description)
+    "en": "Readable description in English",
+    "fr": "Description lisible en français",
+  },
+  "payloads": [
+    {
+      "payload": String,              // Payload to sign
+      "isHexa": boolean               // Precise if the payload if in hexadecimal format
+    }
+  ]
+}
+```
+
+### Success Response
+
+```typescript
+{
+  "signedPayloads": [
+    {
+      "signedPayload": String,        // Signed payload
+    }
+  ]
+}
+```
