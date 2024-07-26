@@ -171,4 +171,8 @@ $transportMethodsReport
   Future<Result<SignTransactionsResult, Failure>> signTransactions(
     SignTransactionRequest data,
   );
+
+  Future<Result<SignPayloadsResult, Failure>> signPayloads(
+    SignPayloadRequest data,
+  );
 }

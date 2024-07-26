@@ -12,6 +12,7 @@ import 'package:flutter_dapp_example/tab/get_services_from_keychain.dart';
 import 'package:flutter_dapp_example/tab/keychain_derive_address.dart';
 import 'package:flutter_dapp_example/tab/keychain_derive_keypair.dart';
 import 'package:flutter_dapp_example/tab/refresh_current_account.dart';
+import 'package:flutter_dapp_example/tab/sign_payloads.dart';
 import 'package:flutter_dapp_example/tab/sign_transactions.dart';
 import 'package:flutter_dapp_example/tab/transaction_send.dart';
 
@@ -117,7 +118,8 @@ class _MainScreenState extends State<MainScreen> {
         return SignTransactionsTab(aewalletClient: widget.aewalletClient);
       case 11:
         return AddServiceTab(aewalletClient: widget.aewalletClient);
-
+      case 12:
+        return SignPayloadsTab(aewalletClient: widget.aewalletClient);
       default:
         return const SizedBox();
     }
