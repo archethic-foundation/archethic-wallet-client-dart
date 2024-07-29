@@ -281,6 +281,28 @@ Add a service in the keychain
 }
 ```
 
+## remove_service
+
+Remove a service from the keychain
+
+### Request
+
+```typescript
+{
+  "name": String,                 // Name of the service
+}
+```
+
+### Success Response
+
+```typescript
+{
+  "transactionAddress": String,  // Transaction address.
+  "nbConfirmations": Number,     // Number of received confirmations.
+  "maxConfirmations": Number,    // Max number of confirmations.
+}
+```
+
 ## get_services_from_keychain
 
 Gets keychain's services from the keychain connected to AEWallet.
