@@ -1,5 +1,7 @@
 Changelog
 =========
+## 2.0.7
+- Add removeService command
 
 ## 2.0.5
 - Use Logging lib for logs
