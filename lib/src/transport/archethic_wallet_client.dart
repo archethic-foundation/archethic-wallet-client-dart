@@ -23,6 +23,7 @@ part 'websocket/websocket.dart';
 class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
   const ArchethicDappConnectionState._();
 
+  const factory ArchethicDappConnectionState.disconnecting() = _Disconnecting;
   const factory ArchethicDappConnectionState.disconnected() = _Disconnected;
   const factory ArchethicDappConnectionState.connected() = _Connected;
   const factory ArchethicDappConnectionState.connecting() = _Connecting;
