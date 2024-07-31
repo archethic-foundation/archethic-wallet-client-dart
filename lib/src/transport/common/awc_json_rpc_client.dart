@@ -52,13 +52,13 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
             _logger.info('Connection already opened. Connection abort.');
             return;
           }
+
           _logger.info('Opening connection');
           _connectionStateController.add(
             const ArchethicDappConnectionState.connecting(),
           );
 
           _channel = await _connect();
-
           _logger.info('Connection opened');
           _connectionStateController.add(
             const ArchethicDappConnectionState.connected(),
@@ -76,6 +76,7 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
           );
 
           _client = client;
+
           unawaited(
             client.listen().then(
               (value) {

@@ -21,6 +21,7 @@ class WebBrowserExtensionDappClient extends AWCJsonRPCClient
             );
 
             await streamChannel.connect();
+
             return streamChannel;
           },
           disposeChannel: (channel) async {
@@ -35,28 +36,45 @@ class WebBrowserExtensionStreamChannel
     with StreamChannelMixin<String>
     implements StreamChannel<String> {
   WebBrowserExtensionStreamChannel({required this.streamChannel}) {
-    streamChannel.onReceive = (message) async {
-      _logger.info('[WBE] command received $message');
-      _in.add(message.toString());
-      _logger.info('[WBE] command received Done');
-    }.toJS;
-
     _onPostMessageSubscription = _out.stream.listen((event) async {
       _logger.info('[WBE] send command $event');
       await streamChannel.send(event as JSString).toDart;
       _logger.info('[WBE] send command Done');
     });
-
-    streamChannel.onClose = (reason) async {
-      await _onPostMessageSubscription.cancel();
-      await _in.close();
-      await _out.close();
-    }.toJS;
   }
 
   static final _logger = Logger('AWC-StreamChannel-WebBrowserExtention');
 
-  Future<void> connect() async => streamChannel.connect().toDart;
+  Future<void> connect() async {
+    final connectionCompleter = Completer<void>();
+
+    streamChannel.onReady = () {
+      _setupStreamChannel();
+      connectionCompleter.complete();
+    }.toJS;
+
+    streamChannel.onClose = (String _) {
+      connectionCompleter.completeError(Failure.connectivity);
+    }.toJS;
+
+    await streamChannel.connect().toDart;
+
+    return connectionCompleter.future;
+  }
+
+  void _setupStreamChannel() {
+    streamChannel.onReceive = (String message) {
+      _logger.info('[WBE] command received $message');
+      _in.add(message);
+      _logger.info('[WBE] command received Done');
+    }.toJS;
+
+    streamChannel.onClose = (String reason) {
+      unawaited(_onPostMessageSubscription.cancel());
+      unawaited(_in.close());
+      unawaited(_out.close());
+    }.toJS;
+  }
 
   final AWCStreamChannelJS streamChannel;
   final _in = StreamController<String>(sync: true);
