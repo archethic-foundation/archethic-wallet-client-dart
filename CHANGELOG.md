@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 2.0.7
+- Fix : wrong connection status with webbrowser extension.
+
 ## 2.0.6
 - Fix : Dart Dapps need to request connection twice.
 
