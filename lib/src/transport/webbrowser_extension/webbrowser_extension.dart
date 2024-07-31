@@ -41,20 +41,22 @@ class WebBrowserExtensionStreamChannel
       _logger.info('[WBE] command received Done');
     }.toJS;
 
-    _onPostMessageSubscription = _out.stream.listen((event) {
+    _onPostMessageSubscription = _out.stream.listen((event) async {
       _logger.info('[WBE] send command $event');
-      streamChannel.send(event as JSString);
+      await streamChannel.send(event as JSString).toDart;
       _logger.info('[WBE] send command Done');
     });
 
     streamChannel.onClose = (reason) async {
-      await dispose();
+      await _onPostMessageSubscription.cancel();
+      await _in.close();
+      await _out.close();
     }.toJS;
   }
 
   static final _logger = Logger('AWC-StreamChannel-WebBrowserExtention');
 
-  Future<void> connect() async => streamChannel.connect();
+  Future<void> connect() async => streamChannel.connect().toDart;
 
   final AWCStreamChannelJS streamChannel;
   final _in = StreamController<String>(sync: true);
@@ -63,9 +65,7 @@ class WebBrowserExtensionStreamChannel
   late final StreamSubscription<String> _onPostMessageSubscription;
 
   Future<void> dispose() async {
-    await _onPostMessageSubscription.cancel();
-    await _in.close();
-    await _out.close();
+    await streamChannel.close().toDart;
   }
 
   @override

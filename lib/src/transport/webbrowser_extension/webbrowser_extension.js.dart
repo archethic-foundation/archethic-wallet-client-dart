@@ -17,15 +17,15 @@ extension type AWCStreamChannelJS._(JSObject _) implements JSObject {
   external AWCStreamChannelState get state;
 
   /// This returns a promise.
-  /// You must use `promiseTofuture` to call this from Dart code.
+  /// You must use `promiseToFuture` to call this from Dart code.
   external JSPromise connect();
 
   /// This returns a promise.
-  /// You must use `promiseTofuture` to call this from Dart code.
+  /// You must use `promiseToFuture` to call this from Dart code.
   external JSPromise close();
 
   /// This returns a promise.
-  /// You must use `promiseTofuture` to call this from Dart code.
+  /// You must use `promiseToFuture` to call this from Dart code.
   external JSPromise send(JSString data);
   external set onReceive(JSFunction callback);
   external set onReady(JSFunction callback);
