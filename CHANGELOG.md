@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 2.0.6
+- Fix : Dart Dapps need to request connection twice.
+
 ## 2.0.5
 - Use Logging lib for logs
 - Prevent simultaneous connexion/deconnexion requests
