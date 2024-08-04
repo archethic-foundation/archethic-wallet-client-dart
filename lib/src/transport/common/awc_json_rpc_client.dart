@@ -349,4 +349,17 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
           (result) => SignTransactionsResult.fromJson(result),
         ),
       );
+
+  @override
+  Future<Result<SignPayloadsResult, Failure>> signPayloads(
+    SignPayloadRequest data,
+  ) =>
+      Result.guard(
+        () => _send(
+          method: 'signPayloads',
+          params: data.toJson(),
+        ).then(
+          (result) => SignPayloadsResult.fromJson(result),
+        ),
+      );
 }
