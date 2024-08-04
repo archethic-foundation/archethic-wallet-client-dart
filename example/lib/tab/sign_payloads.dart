@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:archethic_lib_dart/archethic_lib_dart.dart' as archethic;
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dapp_example/widgets/snackbar.dart';
@@ -38,12 +39,14 @@ class _SignPayloadsTabState extends State<SignPayloadsTab> {
 }
 ''',
   );
+  final publicKeyTextController = TextEditingController(text: '');
 
   final _logger = Logger('Tab-SignPayloads');
 
   @override
   void dispose() {
     payloadTextController.dispose();
+    publicKeyTextController.dispose();
     super.dispose();
   }
 
@@ -67,15 +70,27 @@ class _SignPayloadsTabState extends State<SignPayloadsTab> {
             ),
           ),
           const SmallSpace(),
+          Text(
+            'Public key to verify signature :',
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
+          Expanded(
+            child: TextFormField(
+              style: Theme.of(context).textTheme.labelLarge,
+              controller: publicKeyTextController,
+              maxLines: null,
+            ),
+          ),
+          const SmallSpace(),
           OutlinedButton(
             child: const Icon(Icons.send),
             onPressed: () async {
               try {
-                final response = await widget.aewalletClient.signPayloads(
-                  SignPayloadRequest.fromJson(
-                    jsonDecode(payloadTextController.text),
-                  ),
+                final signPayloadRequest = SignPayloadRequest.fromJson(
+                  jsonDecode(payloadTextController.text),
                 );
+                final response = await widget.aewalletClient
+                    .signPayloads(signPayloadRequest);
                 response.when(
                   failure: (failure) {
                     _logger.severe(
@@ -92,9 +107,29 @@ class _SignPayloadsTabState extends State<SignPayloadsTab> {
                     _logger.info(
                       'Command succeed : ${json.encode(result)}',
                     );
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      ResultSnackbar.success(json.encode(result)),
-                    );
+                    var i = 0;
+                    for (final signedPayload in result.signedPayloads) {
+                      final signedPayloadVerified = archethic.verify(
+                        signedPayload.signedPayload,
+                        signPayloadRequest.payloads[i].payload,
+                        publicKeyTextController.text,
+                        isDataHexa: signPayloadRequest.payloads[i].isHexa,
+                      );
+                      if (signedPayloadVerified) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          ResultSnackbar.success(
+                            '$i: ${signedPayload.signedPayload}',
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          ResultSnackbar.error(
+                            'Signature is not valid with this public key',
+                          ),
+                        );
+                      }
+                      i++;
+                    }
                   },
                 );
               } catch (e) {
