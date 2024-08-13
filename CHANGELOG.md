@@ -1,11 +1,12 @@
 Changelog
 =========
 ## 2.0.8
-- New method to sign a payload
+- Add sign payloads command
+- Add remove service command
 
 ## 2.0.7
-- Add removeService command
-
+- Fix : wrong connection status with webbrowser extension.
+  
 ## 2.0.6
 - Fix : Dart Dapps need to request connection twice.
 
