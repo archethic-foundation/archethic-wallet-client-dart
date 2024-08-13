@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:archethic_wallet_client/src/core/task.dart';
+import 'package:archethic_wallet_client/src/request/remove_service.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:logging/logging.dart';
 import 'package:stream_channel/stream_channel.dart';
@@ -297,6 +298,19 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
       Result.guard(
         () => _send(
           method: 'addService',
+          params: data.toJson(),
+        ).then(
+          (result) => SendTransactionResult.fromJson(result),
+        ),
+      );
+
+  @override
+  Future<Result<SendTransactionResult, Failure>> removeService(
+    RemoveServiceRequest data,
+  ) =>
+      Result.guard(
+        () => _send(
+          method: 'removeService',
           params: data.toJson(),
         ).then(
           (result) => SendTransactionResult.fromJson(result),

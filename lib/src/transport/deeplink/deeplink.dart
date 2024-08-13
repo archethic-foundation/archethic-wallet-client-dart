@@ -172,6 +172,23 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
       );
 
   @override
+  Future<Result<SendTransactionResult, Failure>> removeService(
+    RemoveServiceRequest data,
+  ) =>
+      _send(
+        requestEndpoint: 'remove_service',
+        replyEndpoint: 'remove_service_result',
+        params: data.toJson(),
+      ).then(
+        (result) => result.map(
+          failure: (failure) =>
+              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
+          success: (success) =>
+              Result.success(SendTransactionResult.fromJson(success)),
+        ),
+      );
+
+  @override
   Future<Result<GetServicesFromKeychainResult, Failure>>
       getServicesFromKeychain() async => _send(
             requestEndpoint: 'get_services_from_keychain',
