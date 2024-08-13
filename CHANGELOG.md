@@ -1,5 +1,8 @@
 Changelog
 =========
+## 2.0.8
+- New method to sign a payload
+
 ## 2.0.7
 - Add removeService command
 
