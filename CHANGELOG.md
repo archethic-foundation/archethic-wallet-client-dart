@@ -1,5 +1,8 @@
 Changelog
 =========
+## 2.0.8
+- Add sign payloads command
+- Add remove service command
 
 ## 2.0.7
 - Fix : wrong connection status with webbrowser extension.
