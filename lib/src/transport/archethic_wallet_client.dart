@@ -3,6 +3,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
+import 'package:archethic_wallet_client/src/request/remove_service.dart';
 import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
 import 'package:archethic_wallet_client/src/transport/message_channel/message_channel_desktop.dart'
     if (dart.library.js) 'package:archethic_wallet_client/src/transport/message_channel/message_channel.dart';
@@ -156,6 +157,10 @@ $transportMethodsReport
 
   Future<Result<SendTransactionResult, Failure>> addService(
     AddServiceRequest data,
+  );
+
+  Future<Result<SendTransactionResult, Failure>> removeService(
+    RemoveServiceRequest data,
   );
 
   Future<Result<GetServicesFromKeychainResult, Failure>>
