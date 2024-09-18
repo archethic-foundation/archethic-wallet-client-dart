@@ -220,10 +220,9 @@ packages:
   deeplink_rpc:
     dependency: "direct main"
     description:
-      name: deeplink_rpc
-      sha256: e08e6422913fcdb12b5243ba6f622c841e523ed0577a6442fe90f7ccd6652901
-      url: "https://pub.dev"
-    source: hosted
+      path: "../lib-deeplink-rpc"
+      relative: true
+    source: path
     version: "1.0.8"
   ecdsa:
     dependency: transitive

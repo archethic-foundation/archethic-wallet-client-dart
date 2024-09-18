@@ -1,11 +1,11 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 part of '../archethic_wallet_client.dart';
 
-class DeeplinkArchethicDappClient implements ArchethicDAppClient {
+class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   DeeplinkArchethicDappClient({
     required this.origin,
     required this.replyBaseUrl,
-  });
+  }) : super._();
 
   final _deeplinkRpcClient = DeeplinkRpcClient();
   final _state = const ArchethicDappConnectionState.connected();
@@ -14,9 +14,10 @@ class DeeplinkArchethicDappClient implements ArchethicDAppClient {
   final String requestBaseUrl = 'aewallet://archethic.tech';
 
   static bool get isAvailable =>
-      !kIsWeb &&
-      (defaultTargetPlatform == TargetPlatform.android ||
-          defaultTargetPlatform == TargetPlatform.iOS);
+      kIsWeb ||
+      (!kIsWeb &&
+          (defaultTargetPlatform == TargetPlatform.android ||
+              defaultTargetPlatform == TargetPlatform.iOS));
 
   @override
   final RequestOrigin origin;
