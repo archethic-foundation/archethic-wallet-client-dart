@@ -44,6 +44,23 @@ class _ConnectionButtonState extends State<ConnectionButton> {
     final theme = Theme.of(context);
     final textTheme = theme.textTheme
         .apply(displayColor: Theme.of(context).colorScheme.onSurface);
+
+    if (widget.aewalletClient is DeeplinkArchethicDappClient) {
+      return OutlinedButton(
+        onPressed: () {},
+        child: Row(
+          children: [
+            const Icon(
+              Icons.link,
+              color: Colors.green,
+              size: 18,
+            ),
+            const SizedBox(width: 4),
+            Text('Using Deeplink', style: textTheme.labelMedium),
+          ],
+        ),
+      );
+    }
     if (connectionState == const ArchethicDappConnectionState.disconnected()) {
       return OutlinedButton(
         onPressed: () {

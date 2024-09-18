@@ -1,10 +1,10 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
-import 'package:archethic_wallet_client/src/request/remove_service.dart';
-import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
+import 'package:archethic_wallet_client/src/core/task.dart';
 import 'package:archethic_wallet_client/src/transport/message_channel/message_channel_desktop.dart'
     if (dart.library.js) 'package:archethic_wallet_client/src/transport/message_channel/message_channel.dart';
 import 'package:archethic_wallet_client/src/transport/webbrowser_extension/webbrowser_extension_desktop.dart'
@@ -13,10 +13,13 @@ import 'package:deeplink_rpc/deeplink_rpc.dart';
 import 'package:flutter/foundation.dart'
     show TargetPlatform, defaultTargetPlatform, kIsWeb;
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:logging/logging.dart';
+import 'package:stream_channel/stream_channel.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 part 'archethic_wallet_client.freezed.dart';
+part 'common/awc_json_rpc_client.dart';
 part 'deeplink/deeplink.dart';
 part 'websocket/websocket.dart';
 
@@ -38,10 +41,10 @@ class ArchethicDAppTransportMethodsReport {
     required this.messageChannel,
   });
 
-  factory ArchethicDAppTransportMethodsReport.check() =>
+  static Future<ArchethicDAppTransportMethodsReport> check() async =>
       ArchethicDAppTransportMethodsReport(
         webBrowserExtension: WebBrowserExtensionDappClient.isAvailable,
-        websocket: WebsocketArchethicDappClient.isAvailable,
+        websocket: await WebsocketArchethicDappClient.isAvailable,
         deeplink: DeeplinkArchethicDappClient.isAvailable,
         messageChannel: MessageChannelArchethicDappClient.isAvailable,
       );
@@ -65,13 +68,33 @@ class ArchethicDAppTransportMethodsReport {
 }
 
 abstract class ArchethicDAppClient {
-  /// Creates a Deeplink or Websocket client according
-  /// to current Platform capabilities.
-  factory ArchethicDAppClient.auto({
+  factory ArchethicDAppClient.webBrowserExtension({
+    required RequestOrigin origin,
+  }) = WebBrowserExtensionDappClient;
+
+  factory ArchethicDAppClient.messageChannel({
+    required RequestOrigin origin,
+  }) = MessageChannelArchethicDappClient;
+
+  factory ArchethicDAppClient.deeplink({
     required RequestOrigin origin,
     required String replyBaseUrl,
-  }) {
-    final transportMethodsReport = ArchethicDAppTransportMethodsReport.check();
+  }) = DeeplinkArchethicDappClient;
+
+  factory ArchethicDAppClient.websocket({
+    required RequestOrigin origin,
+  }) = WebsocketArchethicDappClient;
+
+  ArchethicDAppClient._();
+
+  /// Creates a Deeplink or Websocket client according
+  /// to current Platform capabilities.
+  static Future<ArchethicDAppClient> auto({
+    required RequestOrigin origin,
+    required String replyBaseUrl,
+  }) async {
+    final transportMethodsReport =
+        await ArchethicDAppTransportMethodsReport.check();
 
     _logger.info('''
 [Transport methods check]
@@ -105,23 +128,6 @@ $transportMethodsReport
       'No ArchethicDAppClient implementation for your current operating system ${Platform.operatingSystem}',
     );
   }
-
-  factory ArchethicDAppClient.webBrowserExtension({
-    required RequestOrigin origin,
-  }) = WebBrowserExtensionDappClient;
-
-  factory ArchethicDAppClient.messageChannel({
-    required RequestOrigin origin,
-  }) = MessageChannelArchethicDappClient;
-
-  factory ArchethicDAppClient.deeplink({
-    required RequestOrigin origin,
-    required String replyBaseUrl,
-  }) = DeeplinkArchethicDappClient;
-
-  factory ArchethicDAppClient.websocket({
-    required RequestOrigin origin,
-  }) = WebsocketArchethicDappClient;
 
   static final _logger = Logger('AWC-ArchethicWalletClient');
   Stream<ArchethicDappConnectionState> get connectionStateStream;

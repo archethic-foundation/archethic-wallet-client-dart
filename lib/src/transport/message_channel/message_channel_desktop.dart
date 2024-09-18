@@ -1,5 +1,4 @@
 import 'package:archethic_wallet_client/src/transport/archethic_wallet_client.dart';
-import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
 import 'package:stream_channel/stream_channel.dart';
 
 class MessageChannelArchethicDappClient extends AWCJsonRPCClient

@@ -1,5 +1,4 @@
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
-import 'package:archethic_wallet_client/src/transport/common/awc_json_rpc_client.dart';
 
 class WebBrowserExtensionDappClient extends AWCJsonRPCClient
     implements ArchethicDAppClient {

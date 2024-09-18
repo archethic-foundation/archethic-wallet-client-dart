@@ -1,19 +1,11 @@
-import 'dart:async';
-import 'dart:convert';
+part of '../archethic_wallet_client.dart';
 
-import 'package:archethic_wallet_client/archethic_wallet_client.dart';
-import 'package:archethic_wallet_client/src/core/task.dart';
-import 'package:archethic_wallet_client/src/request/remove_service.dart';
-import 'package:json_rpc_2/json_rpc_2.dart';
-import 'package:logging/logging.dart';
-import 'package:stream_channel/stream_channel.dart';
-
-class AWCJsonRPCClient implements ArchethicDAppClient {
+abstract class AWCJsonRPCClient extends ArchethicDAppClient {
   AWCJsonRPCClient({
     required this.channelBuilder,
     required this.origin,
     required this.disposeChannel,
-  });
+  }) : super._();
 
   @override
   final RequestOrigin origin;
@@ -238,13 +230,13 @@ class AWCJsonRPCClient implements ArchethicDAppClient {
 
   @override
   Future<Result<Subscription<Account>, Failure>> subscribeAccount(
-    String serviceName,
+    String accountName,
   ) async =>
       Result.guard(
         () async {
           final subscriptionDTO = await _subscribe(
             method: 'subscribeAccount',
-            params: SubscribeAccountRequest(serviceName: serviceName).toJson(),
+            params: SubscribeAccountRequest(serviceName: accountName).toJson(),
           );
           return Subscription(
             id: subscriptionDTO.id,
