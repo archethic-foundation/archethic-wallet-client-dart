@@ -1,5 +1,14 @@
 Changelog
 =========
+
+## 2.1.0
+- feat: :sparkles: Websocket connector attempts a connection to determine its availability.
+- feat: :sparkles: Deeplink commands use appropriate timeout
+
+### Breaking changes
+- Auto-connect is now asynchronous.
+- feat: :sparkles: Deeplink is enabled on Web platform.
+
 ## 2.0.8
 - Add sign payloads command
 - Add remove service command
