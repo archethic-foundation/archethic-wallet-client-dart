@@ -7,16 +7,31 @@ class WebsocketArchethicDappClient extends AWCJsonRPCClient
     required super.origin,
   }) : super(
           channelBuilder: () async {
-            final socket = WebSocketChannel.connect(
-              Uri.parse('ws://127.0.0.1:12345'),
-            );
-
-            await socket.ready;
+            final socket = await _channelBuildAndConnect();
             return socket.cast<String>();
           },
           disposeChannel: (channel) {},
         );
 
-  static bool get isAvailable =>
-      kIsWeb || Platform.isLinux || Platform.isMacOS || Platform.isWindows;
+  static Future<WebSocketChannel> _channelBuildAndConnect() async {
+    final socket = WebSocketChannel.connect(
+      Uri.parse('ws://127.0.0.1:12345'),
+    );
+    await socket.ready;
+    return socket;
+  }
+
+  static Future<bool> get isAvailable async {
+    try {
+      await _channelBuildAndConnect().timeout(
+        const Duration(milliseconds: 100),
+        onTimeout: () => throw TimeoutException(
+          'Unable to ping Archethic wallet websocket',
+        ),
+      );
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 }
