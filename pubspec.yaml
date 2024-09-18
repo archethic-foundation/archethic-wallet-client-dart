@@ -15,7 +15,7 @@ dependencies:
   #  path: ../libdart-2
 
   # A RPC-via-deeplink communication library coded in Dart. This is dedicated to Flutter mobile applications (iOS / Android).
-  deeplink_rpc: ^1.0.8
+  deeplink_rpc: ^1.1.0
 
   flutter:
     sdk: flutter

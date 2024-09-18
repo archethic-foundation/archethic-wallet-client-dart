@@ -42,25 +42,42 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
     return;
   }
 
+  /// [requiresUserInteraction] will determine the timeout duration :
+  /// if no interaction is required, timeout will be short.
   Future<DeeplinkRpcResponse> _send({
     required String requestEndpoint,
     required String replyEndpoint,
+    required bool requiresUserInteraction,
     Map<String, dynamic> params = const {},
   }) async =>
-      _deeplinkRpcClient.send(
-        request: DeeplinkRpcRequest(
-          requestUrl: '$requestBaseUrl/$requestEndpoint',
-          replyUrl: '$replyBaseUrl/$replyEndpoint',
-          params: Request(
-            version: 1,
-            origin: origin,
-            payload: params,
-          ).toJson(),
-        ),
-      );
+      requiresUserInteraction
+          ? _deeplinkRpcClient.send(
+              request: DeeplinkRpcRequest(
+                requestUrl: '$requestBaseUrl/$requestEndpoint',
+                replyUrl: '$replyBaseUrl/$replyEndpoint',
+                params: Request(
+                  version: 1,
+                  origin: origin,
+                  payload: params,
+                ).toJson(),
+              ),
+            )
+          : _deeplinkRpcClient.send(
+              request: DeeplinkRpcRequest(
+                requestUrl: '$requestBaseUrl/$requestEndpoint',
+                replyUrl: '$replyBaseUrl/$replyEndpoint',
+                params: Request(
+                  version: 1,
+                  origin: origin,
+                  payload: params,
+                ).toJson(),
+              ),
+              timeout: const Duration(seconds: 5),
+            );
 
   @override
   Future<Result<GetEndpointResult, Failure>> getEndpoint() async => _send(
+        requiresUserInteraction: false,
         requestEndpoint: 'get_endpoint',
         replyEndpoint: 'get_endpoint_result',
       ).then(
@@ -77,6 +94,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   @override
   Future<Result<RefreshCurrentAccountResponse, Failure>>
       refreshCurrentAccount() async => _send(
+            requiresUserInteraction: false,
             requestEndpoint: 'refresh_current_account',
             replyEndpoint: 'refresh_current_account_result',
           ).then(
@@ -95,6 +113,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
     SendTransactionRequest data,
   ) =>
       _send(
+        requiresUserInteraction: true,
         requestEndpoint: 'send_transaction',
         replyEndpoint: 'send_transaction_result',
         params: data.toJson(),
@@ -109,6 +128,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
 
   @override
   Future<Result<GetAccountsResult, Failure>> getAccounts() async => _send(
+        requiresUserInteraction: false,
         requestEndpoint: 'get_accounts',
         replyEndpoint: 'get_accounts_result',
       ).then(
@@ -125,6 +145,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   @override
   Future<Result<GetCurrentAccountResult, Failure>> getCurrentAccount() async =>
       _send(
+        requiresUserInteraction: false,
         requestEndpoint: 'get_current_account',
         replyEndpoint: 'get_current_account_result',
       ).then(
@@ -160,6 +181,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
     AddServiceRequest data,
   ) =>
       _send(
+        requiresUserInteraction: true,
         requestEndpoint: 'add_service',
         replyEndpoint: 'add_service_result',
         params: data.toJson(),
@@ -177,6 +199,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
     RemoveServiceRequest data,
   ) =>
       _send(
+        requiresUserInteraction: true,
         requestEndpoint: 'remove_service',
         replyEndpoint: 'remove_service_result',
         params: data.toJson(),
@@ -192,6 +215,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   @override
   Future<Result<GetServicesFromKeychainResult, Failure>>
       getServicesFromKeychain() async => _send(
+            requiresUserInteraction: false,
             requestEndpoint: 'get_services_from_keychain',
             replyEndpoint: 'get_services_from_keychain_result',
           ).then(
@@ -210,6 +234,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
     KeychainDeriveKeypairRequest data,
   ) =>
       _send(
+        requiresUserInteraction: false,
         requestEndpoint: 'keychain_derive_keypair',
         replyEndpoint: 'keychain_derive_keypair_result',
         params: data.toJson(),
@@ -227,6 +252,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
     KeychainDeriveAddressRequest data,
   ) =>
       _send(
+        requiresUserInteraction: false,
         requestEndpoint: 'keychain_derive_address',
         replyEndpoint: 'keychain_derive_address_result',
         params: data.toJson(),
@@ -244,6 +270,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
     SignTransactionRequest data,
   ) =>
       _send(
+        requiresUserInteraction: true,
         requestEndpoint: 'sign_transactions',
         replyEndpoint: 'sign_transactions_result',
         params: data.toJson(),
@@ -261,6 +288,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
     SignPayloadRequest data,
   ) =>
       _send(
+        requiresUserInteraction: true,
         requestEndpoint: 'sign_payloads',
         replyEndpoint: 'sign_payloads_result',
         params: data.toJson(),
