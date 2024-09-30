@@ -23,12 +23,8 @@ class WebsocketArchethicDappClient extends AWCJsonRPCClient
 
   static Future<bool> get isAvailable async {
     try {
-      await _channelBuildAndConnect().timeout(
-        const Duration(milliseconds: 500),
-        onTimeout: () => throw TimeoutException(
-          'Unable to ping Archethic wallet websocket',
-        ),
-      );
+      final channel = await _channelBuildAndConnect();
+      await channel.sink.close();
       return true;
     } catch (e) {
       return false;
