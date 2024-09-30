@@ -32,6 +32,9 @@ dependencies:
   # An abstraction for two-way communication channels based on the Dart Stream class.
   stream_channel: ^2.1.2
 
+  # Open deeplink urls
+  url_launcher: ^6.3.0
+
   # Lightweight browser API bindings built around JS static interop.
   web: ^0.5.1
 
