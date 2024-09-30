@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 2.1.1
+- fix: 🐛 Increase websocket discovery timeout.
+
 ## 2.1.0
 - feat: :sparkles: Websocket connector attempts a connection to determine its availability.
 - feat: :sparkles: Deeplink commands use appropriate timeout
