@@ -16,6 +16,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
 import 'package:logging/logging.dart';
 import 'package:stream_channel/stream_channel.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 part 'archethic_wallet_client.freezed.dart';
@@ -45,7 +46,7 @@ class ArchethicDAppTransportMethodsReport {
       ArchethicDAppTransportMethodsReport(
         webBrowserExtension: WebBrowserExtensionDappClient.isAvailable,
         websocket: await WebsocketArchethicDappClient.isAvailable,
-        deeplink: DeeplinkArchethicDappClient.isAvailable,
+        deeplink: await DeeplinkArchethicDappClient.isAvailable,
         messageChannel: MessageChannelArchethicDappClient.isAvailable,
       );
 
