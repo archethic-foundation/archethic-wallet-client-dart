@@ -11,13 +11,26 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   final _state = const ArchethicDappConnectionState.connected();
 
   final String replyBaseUrl;
-  final String requestBaseUrl = 'aewallet://archethic.tech';
+  static const String requestBaseUrl = 'aewallet://archethic.tech';
 
-  static bool get isAvailable =>
-      kIsWeb ||
-      (!kIsWeb &&
-          (defaultTargetPlatform == TargetPlatform.android ||
-              defaultTargetPlatform == TargetPlatform.iOS));
+  static Future<bool> get isAvailable async {
+    final isMobileOS = defaultTargetPlatform == TargetPlatform.android ||
+        defaultTargetPlatform == TargetPlatform.iOS;
+
+    // Deeplink available on mobile platforms only
+    if (!isMobileOS) {
+      return false;
+    }
+
+    // When running in web browser, we cannot check
+    // if aewallet is installed.
+    // So, guessing it is available.
+    if (kIsWeb) return true;
+
+    // When running in a native app, we can check if
+    // aewallet is installed
+    return canLaunchUrl(Uri.parse(requestBaseUrl));
+  }
 
   @override
   final RequestOrigin origin;
