@@ -1,7 +1,6 @@
 /// SPDX-License-Identifier: AGPL-3.0-or-later
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:archethic_wallet_client/archethic_wallet_client.dart';
 import 'package:archethic_wallet_client/src/core/task.dart';
@@ -126,7 +125,7 @@ $transportMethodsReport
     }
 
     throw Exception(
-      'No ArchethicDAppClient implementation for your current operating system ${Platform.operatingSystem}',
+      'Found no way to connect to archethic wallet.',
     );
   }
 
