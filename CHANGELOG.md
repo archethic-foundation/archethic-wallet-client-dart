@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 2.1.2
+- fix: 🐛 Improve deeplink availability detection
+
 ## 2.1.1
 - fix: 🐛 Increase websocket discovery timeout.
 
