@@ -33,6 +33,13 @@ class ArchethicDappConnectionState with _$ArchethicDappConnectionState {
   const factory ArchethicDappConnectionState.connecting() = _Connecting;
 }
 
+enum ArchethicDAppTransportMethods {
+  webBrowserExtension,
+  websocket,
+  deeplink,
+  messageChannel,
+}
+
 class ArchethicDAppTransportMethodsReport {
   ArchethicDAppTransportMethodsReport({
     required this.webBrowserExtension,
@@ -41,12 +48,22 @@ class ArchethicDAppTransportMethodsReport {
     required this.messageChannel,
   });
 
-  static Future<ArchethicDAppTransportMethodsReport> check() async =>
+  static Future<ArchethicDAppTransportMethodsReport> check(
+    List<ArchethicDAppTransportMethods> authorizedMethods,
+  ) async =>
       ArchethicDAppTransportMethodsReport(
-        webBrowserExtension: WebBrowserExtensionDappClient.isAvailable,
-        websocket: await WebsocketArchethicDappClient.isAvailable,
-        deeplink: await DeeplinkArchethicDappClient.isAvailable,
-        messageChannel: MessageChannelArchethicDappClient.isAvailable,
+        webBrowserExtension: authorizedMethods
+                .contains(ArchethicDAppTransportMethods.webBrowserExtension) &&
+            WebBrowserExtensionDappClient.isAvailable,
+        websocket: authorizedMethods
+                .contains(ArchethicDAppTransportMethods.websocket) &&
+            await WebsocketArchethicDappClient.isAvailable,
+        deeplink: authorizedMethods
+                .contains(ArchethicDAppTransportMethods.deeplink) &&
+            await DeeplinkArchethicDappClient.isAvailable,
+        messageChannel: authorizedMethods
+                .contains(ArchethicDAppTransportMethods.messageChannel) &&
+            MessageChannelArchethicDappClient.isAvailable,
       );
 
   final bool webBrowserExtension;
@@ -89,12 +106,15 @@ abstract class ArchethicDAppClient {
 
   /// Creates a Deeplink or Websocket client according
   /// to current Platform capabilities.
+  /// You can whiltelist authorized transport methods using [authorizedMethods] parameter.
   static Future<ArchethicDAppClient> auto({
     required RequestOrigin origin,
     required String replyBaseUrl,
+    List<ArchethicDAppTransportMethods> authorizedMethods =
+        ArchethicDAppTransportMethods.values,
   }) async {
     final transportMethodsReport =
-        await ArchethicDAppTransportMethodsReport.check();
+        await ArchethicDAppTransportMethodsReport.check(authorizedMethods);
 
     _logger.info('''
 [Transport methods check]
