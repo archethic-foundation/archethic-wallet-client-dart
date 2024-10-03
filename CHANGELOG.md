@@ -1,6 +1,9 @@
 Changelog
 =========
 
+## 2.1.3
+- feat: :sparkles: Whitelist authorized transport methods.
+
 ## 2.1.2
 - fix: 🐛 Improve deeplink availability detection
 
