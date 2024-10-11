@@ -1,3 +1,7 @@
+# 2.1.4
+
+- build: :arrow_up: Upgrade archethic_lib_dart
+
 # 2.1.3
 
 - feat: :sparkles: Whitelist authorized transport methods.
