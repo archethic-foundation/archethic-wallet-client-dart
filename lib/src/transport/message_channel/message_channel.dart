@@ -44,11 +44,9 @@ class MessagePortStreamChannel
   final _in = StreamController<String>(sync: true);
   final _out = StreamController<String>(sync: true);
 
-  late final StreamSubscription<MessageEvent> _onReceiveMessageSubscription;
   late final StreamSubscription<String> _onPostMessageSubscription;
 
   Future<void> dispose() async {
-    await _onReceiveMessageSubscription.cancel();
     await _onPostMessageSubscription.cancel();
     await _in.close();
     await _out.close();
