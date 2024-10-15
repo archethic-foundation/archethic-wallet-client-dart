@@ -1,3 +1,7 @@
+# 2.1.5
+
+- fix: :bug: Message channel dispose uninitialized late field.
+
 # 2.1.4
 
 - build: :arrow_up: Upgrade archethic_lib_dart
