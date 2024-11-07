@@ -10,9 +10,11 @@ environment:
 
 dependencies:
   # Archethic dart library for Flutter
-  archethic_lib_dart: ^4.0.0
-  # archethic_lib_dart:
-  #   path: ../../packages/libdart
+  # archethic_lib_dart: ^4.0.0
+  archethic_lib_dart:
+    git: # TODO Waiting for https://github.com/zino-hofmann/graphql-flutter/issues/1460 resolution to use stable versions.
+      url: https://github.com/archethic-foundation/libdart.git
+      ref: upgrade_graqhql
 
   # A RPC-via-deeplink communication library coded in Dart. This is dedicated to Flutter mobile applications (iOS / Android).
   deeplink_rpc: ^1.1.0
@@ -36,10 +38,10 @@ dependencies:
   url_launcher: ^6.3.0
 
   # Lightweight browser API bindings built around JS static interop.
-  web: ^0.5.1
+  web: ^1.0.0
 
   # StreamChannel wrappers for WebSockets. Provides a cross-platform WebSocketChannel API, a cross-platform implementation of that API that communicates over an underlying StreamChannel.
-  web_socket_channel: ^2.4.5
+  web_socket_channel: ^3.0.1
 
 dev_dependencies:
   # A build system for Dart code generation and modular compilation
