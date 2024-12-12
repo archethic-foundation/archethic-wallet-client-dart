@@ -14,8 +14,8 @@ packages:
     description:
       path: "."
       ref: upgrade_graqhql
-      resolved-ref: "245d3beece746c6cb4d71514f80d8c0b81ca8ebc"
-      url: "https://github.com/archethic-foundation/libdart"
+      resolved-ref: "9b2f293359595cf498d4c33074327d93233486dd"
+      url: "https://github.com/archethic-foundation/libdart.git"
     source: git
     version: "4.0.0"
   archethic_wallet_client:
@@ -253,8 +253,8 @@ packages:
     description:
       path: "packages/graphql"
       ref: hagen00-upgrade-packages
-      resolved-ref: cd7fe08c63226a1287219b4f81f6b8c67b79af79
-      url: "https://github.com/hagen00/graphql-flutter"
+      resolved-ref: "3d4ef96def5234adcd5c41af281c84a8a6ed7850"
+      url: "https://github.com/hagen00/graphql-flutter.git"
     source: git
     version: "5.2.0-beta.9"
   hive:
