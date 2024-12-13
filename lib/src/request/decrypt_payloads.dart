@@ -47,6 +47,9 @@ class DecryptPayloadRequest with _$DecryptPayloadRequest {
     /// Additional information to add to a service derivation path (optional - default to empty)
     @Default('') String pathSuffix,
 
+    /// Description to explain the decryption in multiple languages (key=Locale, value=description)
+    @Default({}) Map<String, dynamic> description,
+
     /// - List of payloads to decrypt
     @Default([]) List<DecryptPayloadRequestData> payloads,
   }) = _DecryptPayloadRequest;
