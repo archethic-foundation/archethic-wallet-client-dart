@@ -337,7 +337,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
     DecryptPayloadRequest data,
   ) =>
       _send(
-        requiresUserInteraction: false,
+        requiresUserInteraction: true,
         requestEndpoint: 'decrypt_payloads',
         replyEndpoint: 'decrypt_payloads_result',
         params: data.toJson(),
