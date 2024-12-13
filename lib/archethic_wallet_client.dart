@@ -9,6 +9,8 @@ export 'src/model/failures.dart';
 export 'src/model/subscription.dart';
 export 'src/request/account_sub.dart';
 export 'src/request/add_service.dart';
+export 'src/request/decrypt_payloads.dart';
+export 'src/request/encrypt_payloads.dart';
 export 'src/request/get_accounts.dart';
 export 'src/request/get_current_account.dart';
 export 'src/request/get_endpoint.dart';

@@ -313,4 +313,40 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
               Result.success(SignPayloadsResult.fromJson(success)),
         ),
       );
+
+  @override
+  Future<Result<EncryptPayloadsResult, Failure>> encryptPayloads(
+    EncryptPayloadRequest data,
+  ) =>
+      _send(
+        requiresUserInteraction: false,
+        requestEndpoint: 'encrypt_payloads',
+        replyEndpoint: 'encrypt_payloads_result',
+        params: data.toJson(),
+      ).then(
+        (result) => result.map(
+          failure: (failure) =>
+              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
+          success: (success) =>
+              Result.success(EncryptPayloadsResult.fromJson(success)),
+        ),
+      );
+
+  @override
+  Future<Result<DecryptPayloadsResult, Failure>> decryptPayloads(
+    DecryptPayloadRequest data,
+  ) =>
+      _send(
+        requiresUserInteraction: false,
+        requestEndpoint: 'decrypt_payloads',
+        replyEndpoint: 'decrypt_payloads_result',
+        params: data.toJson(),
+      ).then(
+        (result) => result.map(
+          failure: (failure) =>
+              Result.failure(Failure.fromDeeplinkRpcFailure(failure)),
+          success: (success) =>
+              Result.success(DecryptPayloadsResult.fromJson(success)),
+        ),
+      );
 }

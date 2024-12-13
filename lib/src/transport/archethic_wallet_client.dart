@@ -207,4 +207,12 @@ $transportMethodsReport
   Future<Result<SignPayloadsResult, Failure>> signPayloads(
     SignPayloadRequest data,
   );
+
+  Future<Result<EncryptPayloadsResult, Failure>> encryptPayloads(
+    EncryptPayloadRequest data,
+  );
+
+  Future<Result<DecryptPayloadsResult, Failure>> decryptPayloads(
+    DecryptPayloadRequest data,
+  );
 }

@@ -368,4 +368,30 @@ abstract class AWCJsonRPCClient extends ArchethicDAppClient {
           (result) => SignPayloadsResult.fromJson(result),
         ),
       );
+
+  @override
+  Future<Result<EncryptPayloadsResult, Failure>> encryptPayloads(
+    EncryptPayloadRequest data,
+  ) =>
+      Result.guard(
+        () => _send(
+          method: 'encryptPayloads',
+          params: data.toJson(),
+        ).then(
+          (result) => EncryptPayloadsResult.fromJson(result),
+        ),
+      );
+
+  @override
+  Future<Result<DecryptPayloadsResult, Failure>> decryptPayloads(
+    DecryptPayloadRequest data,
+  ) =>
+      Result.guard(
+        () => _send(
+          method: 'decryptPayloads',
+          params: data.toJson(),
+        ).then(
+          (result) => DecryptPayloadsResult.fromJson(result),
+        ),
+      );
 }
