@@ -23,8 +23,12 @@ mixin _$AccountBalance {
   String get nativeTokenName => throw _privateConstructorUsedError;
   double get nativeTokenValue => throw _privateConstructorUsedError;
 
+  /// Serializes this AccountBalance to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountBalance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AccountBalanceCopyWith<AccountBalance> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$AccountBalanceCopyWithImpl<$Res, $Val extends AccountBalance>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AccountBalance
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$AccountBalanceImplCopyWithImpl<$Res>
       _$AccountBalanceImpl _value, $Res Function(_$AccountBalanceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountBalance
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -136,12 +144,14 @@ class _$AccountBalanceImpl extends _AccountBalance {
                 other.nativeTokenValue == nativeTokenValue));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, nativeTokenName, nativeTokenValue);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountBalance
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
@@ -169,8 +179,11 @@ abstract class _AccountBalance extends AccountBalance {
   String get nativeTokenName;
   @override
   double get nativeTokenValue;
+
+  /// Create a copy of AccountBalance
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountBalanceImplCopyWith<_$AccountBalanceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -186,8 +199,12 @@ mixin _$Account {
   String? get lastAddress => throw _privateConstructorUsedError;
   AccountBalance? get balance => throw _privateConstructorUsedError;
 
+  /// Serializes this Account to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AccountCopyWith<Account> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -215,6 +232,8 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -243,6 +262,8 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
     ) as $Val);
   }
 
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AccountBalanceCopyWith<$Res>? get balance {
@@ -281,6 +302,8 @@ class __$$AccountImplCopyWithImpl<$Res>
       _$AccountImpl _value, $Res Function(_$AccountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -350,12 +373,14 @@ class _$AccountImpl extends _Account {
             (identical(other.balance, balance) || other.balance == balance));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, name, genesisAddress, lastAddress, balance);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>
@@ -387,8 +412,11 @@ abstract class _Account extends Account {
   String? get lastAddress;
   @override
   AccountBalance? get balance;
+
+  /// Create a copy of Account
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountImplCopyWith<_$AccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -402,8 +430,12 @@ SubscribeAccountRequest _$SubscribeAccountRequestFromJson(
 mixin _$SubscribeAccountRequest {
   String get serviceName => throw _privateConstructorUsedError;
 
+  /// Serializes this SubscribeAccountRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SubscribeAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SubscribeAccountRequestCopyWith<SubscribeAccountRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -428,6 +460,8 @@ class _$SubscribeAccountRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SubscribeAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -464,6 +498,8 @@ class __$$SubscribeAccountRequestImplCopyWithImpl<$Res>
       $Res Function(_$SubscribeAccountRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SubscribeAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -503,11 +539,13 @@ class _$SubscribeAccountRequestImpl extends _SubscribeAccountRequest {
                 other.serviceName == serviceName));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, serviceName);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SubscribeAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SubscribeAccountRequestImplCopyWith<_$SubscribeAccountRequestImpl>
@@ -532,8 +570,11 @@ abstract class _SubscribeAccountRequest extends SubscribeAccountRequest {
 
   @override
   String get serviceName;
+
+  /// Create a copy of SubscribeAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SubscribeAccountRequestImplCopyWith<_$SubscribeAccountRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -545,6 +586,7 @@ SubscribeCurrentAccountRequest _$SubscribeCurrentAccountRequestFromJson(
 
 /// @nodoc
 mixin _$SubscribeCurrentAccountRequest {
+  /// Serializes this SubscribeCurrentAccountRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -567,6 +609,9 @@ class _$SubscribeCurrentAccountRequestCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SubscribeCurrentAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -586,6 +631,9 @@ class __$$SubscribeCurrentAccountRequestImplCopyWithImpl<$Res>
       _$SubscribeCurrentAccountRequestImpl _value,
       $Res Function(_$SubscribeCurrentAccountRequestImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SubscribeCurrentAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -610,7 +658,7 @@ class _$SubscribeCurrentAccountRequestImpl
             other is _$SubscribeCurrentAccountRequestImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 

@@ -1,4 +1,6 @@
-/// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: AGPL-3.0-or-later
+///
+/// A client dart library to interact with Archethic Wallet RPC API.
 library archethic_wallet_client;
 
 export 'src/core/request.dart';

@@ -1,4 +1,4 @@
-/// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: AGPL-3.0-or-later
 import 'package:deeplink_rpc/deeplink_rpc.dart';
 import 'package:json_rpc_2/json_rpc_2.dart';
 

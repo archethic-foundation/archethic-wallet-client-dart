@@ -24,8 +24,12 @@ mixin _$SignTransactionsResult {
   List<SignTransactionsResultDetail> get signedTxs =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this SignTransactionsResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignTransactionsResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignTransactionsResultCopyWith<SignTransactionsResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$SignTransactionsResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignTransactionsResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$SignTransactionsResultImplCopyWithImpl<$Res>
       $Res Function(_$SignTransactionsResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignTransactionsResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,12 +141,14 @@ class _$SignTransactionsResultImpl extends _SignTransactionsResult {
                 .equals(other._signedTxs, _signedTxs));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_signedTxs));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignTransactionsResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignTransactionsResultImplCopyWith<_$SignTransactionsResultImpl>
@@ -164,8 +174,11 @@ abstract class _SignTransactionsResult extends SignTransactionsResult {
 
   @override
   List<SignTransactionsResultDetail> get signedTxs;
+
+  /// Create a copy of SignTransactionsResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignTransactionsResultImplCopyWith<_$SignTransactionsResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -189,8 +202,12 @@ mixin _$SignTransactionsResultDetail {
   /// Signature from the device which originated the transaction (used in the Proof of work)
   String get originSignature => throw _privateConstructorUsedError;
 
+  /// Serializes this SignTransactionsResultDetail to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignTransactionsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignTransactionsResultDetailCopyWith<SignTransactionsResultDetail>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -221,6 +238,8 @@ class _$SignTransactionsResultDetailCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignTransactionsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -276,6 +295,8 @@ class __$$SignTransactionsResultDetailImplCopyWithImpl<$Res>
       $Res Function(_$SignTransactionsResultDetailImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignTransactionsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -354,12 +375,14 @@ class _$SignTransactionsResultDetailImpl extends _SignTransactionsResultDetail {
                 other.originSignature == originSignature));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, address, previousPublicKey,
       previousSignature, originSignature);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignTransactionsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignTransactionsResultDetailImplCopyWith<
@@ -388,24 +411,26 @@ abstract class _SignTransactionsResultDetail
   factory _SignTransactionsResultDetail.fromJson(Map<String, dynamic> json) =
       _$SignTransactionsResultDetailImpl.fromJson;
 
-  @override
-
   /// Address: hash of the new generated public key for the given transaction
-  String get address;
   @override
+  String get address;
 
   /// Previous generated public key matching the previous signature
-  String get previousPublicKey;
   @override
+  String get previousPublicKey;
 
   /// Signature from the previous public key
-  String get previousSignature;
   @override
+  String get previousSignature;
 
   /// Signature from the device which originated the transaction (used in the Proof of work)
-  String get originSignature;
   @override
-  @JsonKey(ignore: true)
+  String get originSignature;
+
+  /// Create a copy of SignTransactionsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignTransactionsResultDetailImplCopyWith<
           _$SignTransactionsResultDetailImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -422,8 +447,12 @@ mixin _$SignTransactionRequestData {
   String get type => throw _privateConstructorUsedError;
   int get version => throw _privateConstructorUsedError;
 
+  /// Serializes this SignTransactionRequestData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignTransactionRequestData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignTransactionRequestDataCopyWith<SignTransactionRequestData>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -451,6 +480,8 @@ class _$SignTransactionRequestDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignTransactionRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -474,6 +505,8 @@ class _$SignTransactionRequestDataCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of SignTransactionRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataCopyWith<$Res> get data {
@@ -508,6 +541,8 @@ class __$$SignTransactionRequestDataImplCopyWithImpl<$Res>
       $Res Function(_$SignTransactionRequestDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignTransactionRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -565,11 +600,13 @@ class _$SignTransactionRequestDataImpl extends _SignTransactionRequestData {
             (identical(other.version, version) || other.version == version));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, data, type, version);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignTransactionRequestData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignTransactionRequestDataImplCopyWith<_$SignTransactionRequestDataImpl>
@@ -600,8 +637,11 @@ abstract class _SignTransactionRequestData extends SignTransactionRequestData {
   String get type;
   @override
   int get version;
+
+  /// Create a copy of SignTransactionRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignTransactionRequestDataImplCopyWith<_$SignTransactionRequestDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -626,8 +666,12 @@ mixin _$SignTransactionRequest {
   List<SignTransactionRequestData> get transactions =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this SignTransactionRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignTransactionRequestCopyWith<SignTransactionRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -656,6 +700,8 @@ class _$SignTransactionRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -711,6 +757,8 @@ class __$$SignTransactionRequestImplCopyWithImpl<$Res>
       $Res Function(_$SignTransactionRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -808,7 +856,7 @@ class _$SignTransactionRequestImpl extends _SignTransactionRequest {
                 .equals(other._transactions, _transactions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -817,7 +865,9 @@ class _$SignTransactionRequestImpl extends _SignTransactionRequest {
       const DeepCollectionEquality().hash(_description),
       const DeepCollectionEquality().hash(_transactions));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignTransactionRequestImplCopyWith<_$SignTransactionRequestImpl>
@@ -844,24 +894,26 @@ abstract class _SignTransactionRequest extends SignTransactionRequest {
   factory _SignTransactionRequest.fromJson(Map<String, dynamic> json) =
       _$SignTransactionRequestImpl.fromJson;
 
-  @override
-
   /// Service name to identify the derivation path to use
-  String get serviceName;
   @override
+  String get serviceName;
 
   /// Additional information to add to a service derivation path (optional - default to empty)
-  String get pathSuffix;
   @override
+  String get pathSuffix;
 
   /// Description to explain the signature in multiple languages (key=Locale, value=description)
-  Map<String, dynamic> get description;
   @override
+  Map<String, dynamic> get description;
 
   /// - List of transaction's infos
-  List<SignTransactionRequestData> get transactions;
   @override
-  @JsonKey(ignore: true)
+  List<SignTransactionRequestData> get transactions;
+
+  /// Create a copy of SignTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignTransactionRequestImplCopyWith<_$SignTransactionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

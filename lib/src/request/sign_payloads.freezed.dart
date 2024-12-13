@@ -23,8 +23,12 @@ mixin _$SignPayloadsResult {
   List<SignPayloadsResultDetail> get signedPayloads =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this SignPayloadsResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignPayloadsResultCopyWith<SignPayloadsResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$SignPayloadsResultCopyWithImpl<$Res, $Val extends SignPayloadsResult>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class __$$SignPayloadsResultImplCopyWithImpl<$Res>
       $Res Function(_$SignPayloadsResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,12 +136,14 @@ class _$SignPayloadsResultImpl extends _SignPayloadsResult {
                 .equals(other._signedPayloads, _signedPayloads));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_signedPayloads));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignPayloadsResultImplCopyWith<_$SignPayloadsResultImpl> get copyWith =>
@@ -159,8 +169,11 @@ abstract class _SignPayloadsResult extends SignPayloadsResult {
 
   @override
   List<SignPayloadsResultDetail> get signedPayloads;
+
+  /// Create a copy of SignPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignPayloadsResultImplCopyWith<_$SignPayloadsResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -175,8 +188,12 @@ mixin _$SignPayloadsResultDetail {
   /// Signature of payload
   String get signedPayload => throw _privateConstructorUsedError;
 
+  /// Serializes this SignPayloadsResultDetail to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignPayloadsResultDetailCopyWith<SignPayloadsResultDetail> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -201,6 +218,8 @@ class _$SignPayloadsResultDetailCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -237,6 +256,8 @@ class __$$SignPayloadsResultDetailImplCopyWithImpl<$Res>
       $Res Function(_$SignPayloadsResultDetailImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -278,11 +299,13 @@ class _$SignPayloadsResultDetailImpl extends _SignPayloadsResultDetail {
                 other.signedPayload == signedPayload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, signedPayload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignPayloadsResultDetailImplCopyWith<_$SignPayloadsResultDetailImpl>
@@ -305,12 +328,14 @@ abstract class _SignPayloadsResultDetail extends SignPayloadsResultDetail {
   factory _SignPayloadsResultDetail.fromJson(Map<String, dynamic> json) =
       _$SignPayloadsResultDetailImpl.fromJson;
 
-  @override
-
   /// Signature of payload
-  String get signedPayload;
   @override
-  @JsonKey(ignore: true)
+  String get signedPayload;
+
+  /// Create a copy of SignPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignPayloadsResultDetailImplCopyWith<_$SignPayloadsResultDetailImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -325,8 +350,12 @@ mixin _$SignPayloadRequestData {
   String get payload => throw _privateConstructorUsedError;
   bool get isHexa => throw _privateConstructorUsedError;
 
+  /// Serializes this SignPayloadRequestData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignPayloadRequestDataCopyWith<SignPayloadRequestData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -351,6 +380,8 @@ class _$SignPayloadRequestDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -392,6 +423,8 @@ class __$$SignPayloadRequestDataImplCopyWithImpl<$Res>
       $Res Function(_$SignPayloadRequestDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -440,11 +473,13 @@ class _$SignPayloadRequestDataImpl extends _SignPayloadRequestData {
             (identical(other.isHexa, isHexa) || other.isHexa == isHexa));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, payload, isHexa);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignPayloadRequestDataImplCopyWith<_$SignPayloadRequestDataImpl>
@@ -472,8 +507,11 @@ abstract class _SignPayloadRequestData extends SignPayloadRequestData {
   String get payload;
   @override
   bool get isHexa;
+
+  /// Create a copy of SignPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignPayloadRequestDataImplCopyWith<_$SignPayloadRequestDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -497,8 +535,12 @@ mixin _$SignPayloadRequest {
   List<SignPayloadRequestData> get payloads =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this SignPayloadRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SignPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SignPayloadRequestCopyWith<SignPayloadRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -526,6 +568,8 @@ class _$SignPayloadRequestCopyWithImpl<$Res, $Val extends SignPayloadRequest>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SignPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -578,6 +622,8 @@ class __$$SignPayloadRequestImplCopyWithImpl<$Res>
       $Res Function(_$SignPayloadRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SignPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -674,7 +720,7 @@ class _$SignPayloadRequestImpl extends _SignPayloadRequest {
             const DeepCollectionEquality().equals(other._payloads, _payloads));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -683,7 +729,9 @@ class _$SignPayloadRequestImpl extends _SignPayloadRequest {
       const DeepCollectionEquality().hash(_description),
       const DeepCollectionEquality().hash(_payloads));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SignPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SignPayloadRequestImplCopyWith<_$SignPayloadRequestImpl> get copyWith =>
@@ -709,24 +757,26 @@ abstract class _SignPayloadRequest extends SignPayloadRequest {
   factory _SignPayloadRequest.fromJson(Map<String, dynamic> json) =
       _$SignPayloadRequestImpl.fromJson;
 
-  @override
-
   /// Service name to identify the derivation path to use
-  String get serviceName;
   @override
+  String get serviceName;
 
   /// Additional information to add to a service derivation path (optional - default to empty)
-  String get pathSuffix;
   @override
+  String get pathSuffix;
 
   /// Description to explain the signature in multiple languages (key=Locale, value=description)
-  Map<String, dynamic> get description;
   @override
+  Map<String, dynamic> get description;
 
   /// - List of payloads to sign
-  List<SignPayloadRequestData> get payloads;
   @override
-  @JsonKey(ignore: true)
+  List<SignPayloadRequestData> get payloads;
+
+  /// Create a copy of SignPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SignPayloadRequestImplCopyWith<_$SignPayloadRequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

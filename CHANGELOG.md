@@ -1,6 +1,11 @@
+# 2.1.6
+
+- ✅ Improve lib score. 
+- ⬆️ Upgrade dependencies
+  
 # 2.1.5
 
-- fix: :bug: Message channel dispose uninitialized late field.
+- fix: 🐛 Message channel dispose uninitialized late field.
 
 # 2.1.4
 

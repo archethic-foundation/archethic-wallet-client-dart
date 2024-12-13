@@ -87,6 +87,9 @@ class _$ArchethicDappConnectionStateCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of ArchethicDappConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -103,6 +106,9 @@ class __$$DisconnectingImplCopyWithImpl<$Res>
   __$$DisconnectingImplCopyWithImpl(
       _$DisconnectingImpl _value, $Res Function(_$DisconnectingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ArchethicDappConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -218,6 +224,9 @@ class __$$DisconnectedImplCopyWithImpl<$Res>
   __$$DisconnectedImplCopyWithImpl(
       _$DisconnectedImpl _value, $Res Function(_$DisconnectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ArchethicDappConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -333,6 +342,9 @@ class __$$ConnectedImplCopyWithImpl<$Res>
   __$$ConnectedImplCopyWithImpl(
       _$ConnectedImpl _value, $Res Function(_$ConnectedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ArchethicDappConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -448,6 +460,9 @@ class __$$ConnectingImplCopyWithImpl<$Res>
   __$$ConnectingImplCopyWithImpl(
       _$ConnectingImpl _value, $Res Function(_$ConnectingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of ArchethicDappConnectionState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

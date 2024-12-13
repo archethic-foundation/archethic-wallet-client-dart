@@ -108,6 +108,7 @@ class _AccountSubscriptionTabState extends State<AccountSubscriptionTab> {
                     setState(() {
                       accountSub = success;
                       accountStreamSub = success.updates.listen((event) {
+                        if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           ResultSnackbar.update(
                             'balance: ${event.balance}, lastAddress: ${event.lastAddress}',

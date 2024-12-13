@@ -23,8 +23,12 @@ GetServicesFromKeychainResult _$GetServicesFromKeychainResultFromJson(
 mixin _$GetServicesFromKeychainResult {
   List<Service> get services => throw _privateConstructorUsedError;
 
+  /// Serializes this GetServicesFromKeychainResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetServicesFromKeychainResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GetServicesFromKeychainResultCopyWith<GetServicesFromKeychainResult>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$GetServicesFromKeychainResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GetServicesFromKeychainResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$GetServicesFromKeychainResultImplCopyWithImpl<$Res>
       $Res Function(_$GetServicesFromKeychainResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetServicesFromKeychainResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -135,12 +143,14 @@ class _$GetServicesFromKeychainResultImpl
             const DeepCollectionEquality().equals(other._services, _services));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_services));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetServicesFromKeychainResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetServicesFromKeychainResultImplCopyWith<
@@ -168,8 +178,11 @@ abstract class _GetServicesFromKeychainResult
 
   @override
   List<Service> get services;
+
+  /// Create a copy of GetServicesFromKeychainResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetServicesFromKeychainResultImplCopyWith<
           _$GetServicesFromKeychainResultImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -182,6 +195,7 @@ GetServicesFromKeychainRequest _$GetServicesFromKeychainRequestFromJson(
 
 /// @nodoc
 mixin _$GetServicesFromKeychainRequest {
+  /// Serializes this GetServicesFromKeychainRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -204,6 +218,9 @@ class _$GetServicesFromKeychainRequestCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetServicesFromKeychainRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -223,6 +240,9 @@ class __$$GetServicesFromKeychainRequestImplCopyWithImpl<$Res>
       _$GetServicesFromKeychainRequestImpl _value,
       $Res Function(_$GetServicesFromKeychainRequestImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GetServicesFromKeychainRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -247,7 +267,7 @@ class _$GetServicesFromKeychainRequestImpl
             other is _$GetServicesFromKeychainRequestImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 

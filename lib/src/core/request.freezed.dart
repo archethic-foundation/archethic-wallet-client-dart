@@ -24,8 +24,12 @@ mixin _$RequestOrigin {
   String? get url => throw _privateConstructorUsedError;
   String? get logo => throw _privateConstructorUsedError;
 
+  /// Serializes this RequestOrigin to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RequestOrigin
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RequestOriginCopyWith<RequestOrigin> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$RequestOriginCopyWithImpl<$Res, $Val extends RequestOrigin>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RequestOrigin
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$RequestOriginImplCopyWithImpl<$Res>
       _$RequestOriginImpl _value, $Res Function(_$RequestOriginImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RequestOrigin
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,11 +155,13 @@ class _$RequestOriginImpl extends _RequestOrigin {
             (identical(other.logo, logo) || other.logo == logo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, url, logo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RequestOrigin
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RequestOriginImplCopyWith<_$RequestOriginImpl> get copyWith =>
@@ -181,8 +191,11 @@ abstract class _RequestOrigin extends RequestOrigin {
   String? get url;
   @override
   String? get logo;
+
+  /// Create a copy of RequestOrigin
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RequestOriginImplCopyWith<_$RequestOriginImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -197,8 +210,12 @@ mixin _$Request {
   int get version => throw _privateConstructorUsedError; // Rpc protocol version
   Map<String, dynamic> get payload => throw _privateConstructorUsedError;
 
+  /// Serializes this Request to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Request
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RequestCopyWith<Request> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -222,6 +239,8 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Request
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,6 +264,8 @@ class _$RequestCopyWithImpl<$Res, $Val extends Request>
     ) as $Val);
   }
 
+  /// Create a copy of Request
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $RequestOriginCopyWith<$Res> get origin {
@@ -275,6 +296,8 @@ class __$$RequestImplCopyWithImpl<$Res>
       _$RequestImpl _value, $Res Function(_$RequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Request
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -341,12 +364,14 @@ class _$RequestImpl extends _Request {
             const DeepCollectionEquality().equals(other._payload, _payload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, origin, version,
       const DeepCollectionEquality().hash(_payload));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Request
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RequestImplCopyWith<_$RequestImpl> get copyWith =>
@@ -372,11 +397,14 @@ abstract class _Request extends Request {
   @override
   RequestOrigin get origin;
   @override
-  int get version;
-  @override // Rpc protocol version
-  Map<String, dynamic> get payload;
+  int get version; // Rpc protocol version
   @override
-  @JsonKey(ignore: true)
+  Map<String, dynamic> get payload;
+
+  /// Create a copy of Request
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RequestImplCopyWith<_$RequestImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

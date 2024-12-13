@@ -1,4 +1,4 @@
-/// SPDX-License-Identifier: AGPL-3.0-or-later
+// SPDX-License-Identifier: AGPL-3.0-or-later
 import 'package:archethic_wallet_client/src/model/failures.dart';
 import 'package:flutter/foundation.dart';
 

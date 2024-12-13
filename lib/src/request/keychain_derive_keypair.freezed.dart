@@ -23,8 +23,12 @@ KeychainDeriveKeypairResult _$KeychainDeriveKeypairResultFromJson(
 mixin _$KeychainDeriveKeypairResult {
   String get publicKey => throw _privateConstructorUsedError;
 
+  /// Serializes this KeychainDeriveKeypairResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KeychainDeriveKeypairResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KeychainDeriveKeypairResultCopyWith<KeychainDeriveKeypairResult>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$KeychainDeriveKeypairResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KeychainDeriveKeypairResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class __$$KeychainDeriveKeypairResultImplCopyWithImpl<$Res>
       $Res Function(_$KeychainDeriveKeypairResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KeychainDeriveKeypairResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,11 +136,13 @@ class _$KeychainDeriveKeypairResultImpl extends _KeychainDeriveKeypairResult {
                 other.publicKey == publicKey));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, publicKey);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KeychainDeriveKeypairResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KeychainDeriveKeypairResultImplCopyWith<_$KeychainDeriveKeypairResultImpl>
@@ -158,8 +168,11 @@ abstract class _KeychainDeriveKeypairResult
 
   @override
   String get publicKey;
+
+  /// Create a copy of KeychainDeriveKeypairResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KeychainDeriveKeypairResultImplCopyWith<_$KeychainDeriveKeypairResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -175,8 +188,12 @@ mixin _$KeychainDeriveKeypairRequest {
   int get index => throw _privateConstructorUsedError;
   String get pathSuffix => throw _privateConstructorUsedError;
 
+  /// Serializes this KeychainDeriveKeypairRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of KeychainDeriveKeypairRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $KeychainDeriveKeypairRequestCopyWith<KeychainDeriveKeypairRequest>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -203,6 +220,8 @@ class _$KeychainDeriveKeypairRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of KeychainDeriveKeypairRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -249,6 +268,8 @@ class __$$KeychainDeriveKeypairRequestImplCopyWithImpl<$Res>
       $Res Function(_$KeychainDeriveKeypairRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of KeychainDeriveKeypairRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -310,11 +331,13 @@ class _$KeychainDeriveKeypairRequestImpl extends _KeychainDeriveKeypairRequest {
                 other.pathSuffix == pathSuffix));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, serviceName, index, pathSuffix);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of KeychainDeriveKeypairRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$KeychainDeriveKeypairRequestImplCopyWith<
@@ -347,8 +370,11 @@ abstract class _KeychainDeriveKeypairRequest
   int get index;
   @override
   String get pathSuffix;
+
+  /// Create a copy of KeychainDeriveKeypairRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$KeychainDeriveKeypairRequestImplCopyWith<
           _$KeychainDeriveKeypairRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
