@@ -5,6 +5,7 @@ import 'package:flutter_dapp_example/navigation_drawer_section.dart';
 import 'package:flutter_dapp_example/tab/account_subscription.dart';
 import 'package:flutter_dapp_example/tab/add_service.dart';
 import 'package:flutter_dapp_example/tab/current_account_subscription.dart';
+import 'package:flutter_dapp_example/tab/encrypt_payloads.dart';
 import 'package:flutter_dapp_example/tab/get_accounts.dart';
 import 'package:flutter_dapp_example/tab/get_current_account.dart';
 import 'package:flutter_dapp_example/tab/get_endpoint.dart';
@@ -123,6 +124,8 @@ class _MainScreenState extends State<MainScreen> {
         return SignPayloadsTab(aewalletClient: widget.aewalletClient);
       case 13:
         return RemoveServiceTab(aewalletClient: widget.aewalletClient);
+      case 14:
+        return EncryptPayloadsTab(aewalletClient: widget.aewalletClient);
       default:
         return const SizedBox();
     }
