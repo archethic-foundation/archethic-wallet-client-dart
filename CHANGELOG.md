@@ -1,3 +1,7 @@
+# 2.1.8-beta.1
+
+- feat: :sparkles: Add encrypt & decrypt payloads methods
+
 # 2.1.8-beta
 
 - ⬆️ Upgrade dependencies
