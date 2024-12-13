@@ -87,7 +87,7 @@ class _EncryptPayloadsTabState extends State<EncryptPayloadsTab> {
                 );
                 final response = await widget.aewalletClient
                     .encryptPayloads(encryptPayloadRequest);
-                response.when(
+                await response.when(
                   failure: (failure) {
                     _logger.severe(
                       'Command failed',
@@ -99,33 +99,79 @@ class _EncryptPayloadsTabState extends State<EncryptPayloadsTab> {
                       ),
                     );
                   },
-                  success: (result) {
+                  success: (result) async {
                     _logger.info(
                       'Command succeed : ${json.encode(result)}',
                     );
-                    var i = 0;
+
+                    final payloads = <DecryptPayloadRequestData>[];
+
                     for (final encryptedPayload in result.encryptedPayloads) {
-                      final encryptedPayloadVerified = archethic.verify(
-                        encryptedPayload.encryptedPayload,
-                        encryptPayloadRequest.payloads[i].payload,
-                        publicKeyTextController.text,
-                        isDataHexa: encryptPayloadRequest.payloads[i].isHexa,
+                      payloads.add(
+                        DecryptPayloadRequestData(
+                          payload: encryptedPayload.encryptedPayload,
+                          isHexa: true,
+                        ),
                       );
-                      if (encryptedPayloadVerified) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          ResultSnackbar.success(
-                            '$i: ${encryptedPayload.encryptedPayload}',
-                          ),
+                    }
+                    final decryptPayloadRequest = DecryptPayloadRequest(
+                      serviceName: encryptPayloadRequest.serviceName,
+                      pathSuffix: encryptPayloadRequest.pathSuffix,
+                      description: {'en': 'test decrypt'},
+                      payloads: payloads,
+                    );
+                    final response = await widget.aewalletClient
+                        .decryptPayloads(decryptPayloadRequest);
+                    response.when(
+                      failure: (failure) {
+                        _logger.severe(
+                          'Command failed',
+                          failure,
                         );
-                      } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           ResultSnackbar.error(
-                            'Decrypt is not valid with this public key',
+                            failure.message,
                           ),
                         );
-                      }
-                      i++;
-                    }
+                      },
+                      success: (result) {
+                        _logger.info(
+                          'Command succeed : ${json.encode(result)}',
+                        );
+                        String decryptedPayloadInfo;
+                        var i = 0;
+                        for (final decryptedPayload
+                            in result.decryptedPayloads) {
+                          if (encryptPayloadRequest.payloads[i].isHexa) {
+                            decryptedPayloadInfo =
+                                decryptedPayload.decryptedPayload;
+                          } else {
+                            decryptedPayloadInfo = utf8.decode(
+                              archethic.hexToUint8List(
+                                decryptedPayload.decryptedPayload,
+                              ),
+                            );
+                          }
+
+                          if (decryptedPayloadInfo ==
+                              encryptPayloadRequest.payloads[i].payload) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              ResultSnackbar.success(
+                                'Decrypted payload "$decryptedPayloadInfo" = payload "${encryptPayloadRequest.payloads[i].payload}"',
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              ResultSnackbar.error(
+                                'Decrypted payload "$decryptedPayloadInfo" <> payload "${encryptPayloadRequest.payloads[i].payload}"',
+                              ),
+                            );
+                          }
+
+                          i++;
+                        }
+                      },
+                    );
                   },
                 );
               } catch (e) {

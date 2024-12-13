@@ -85,6 +85,11 @@ const List<MenuDestination> destinationsWithConfirmation = <MenuDestination>[
     Icon(Icons.arrow_right),
     Icon(Icons.arrow_right),
   ),
+  MenuDestination(
+    'Encrypt payloads',
+    Icon(Icons.arrow_right),
+    Icon(Icons.arrow_right),
+  ),
 ];
 
 class NavigationDrawerSection extends StatefulWidget {
