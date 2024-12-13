@@ -497,6 +497,9 @@ mixin _$DecryptPayloadRequest {
   /// Additional information to add to a service derivation path (optional - default to empty)
   String get pathSuffix => throw _privateConstructorUsedError;
 
+  /// Description to explain the decryption in multiple languages (key=Locale, value=description)
+  Map<String, dynamic> get description => throw _privateConstructorUsedError;
+
   /// - List of payloads to decrypt
   List<DecryptPayloadRequestData> get payloads =>
       throw _privateConstructorUsedError;
@@ -516,6 +519,7 @@ abstract class $DecryptPayloadRequestCopyWith<$Res> {
   $Res call(
       {String serviceName,
       String pathSuffix,
+      Map<String, dynamic> description,
       List<DecryptPayloadRequestData> payloads});
 }
 
@@ -535,6 +539,7 @@ class _$DecryptPayloadRequestCopyWithImpl<$Res,
   $Res call({
     Object? serviceName = null,
     Object? pathSuffix = null,
+    Object? description = null,
     Object? payloads = null,
   }) {
     return _then(_value.copyWith(
@@ -546,6 +551,10 @@ class _$DecryptPayloadRequestCopyWithImpl<$Res,
           ? _value.pathSuffix
           : pathSuffix // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       payloads: null == payloads
           ? _value.payloads
           : payloads // ignore: cast_nullable_to_non_nullable
@@ -566,6 +575,7 @@ abstract class _$$DecryptPayloadRequestImplCopyWith<$Res>
   $Res call(
       {String serviceName,
       String pathSuffix,
+      Map<String, dynamic> description,
       List<DecryptPayloadRequestData> payloads});
 }
 
@@ -583,6 +593,7 @@ class __$$DecryptPayloadRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? serviceName = null,
     Object? pathSuffix = null,
+    Object? description = null,
     Object? payloads = null,
   }) {
     return _then(_$DecryptPayloadRequestImpl(
@@ -594,6 +605,10 @@ class __$$DecryptPayloadRequestImplCopyWithImpl<$Res>
           ? _value.pathSuffix
           : pathSuffix // ignore: cast_nullable_to_non_nullable
               as String,
+      description: null == description
+          ? _value._description
+          : description // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
       payloads: null == payloads
           ? _value._payloads
           : payloads // ignore: cast_nullable_to_non_nullable
@@ -608,8 +623,10 @@ class _$DecryptPayloadRequestImpl extends _DecryptPayloadRequest {
   const _$DecryptPayloadRequestImpl(
       {required this.serviceName,
       this.pathSuffix = '',
+      final Map<String, dynamic> description = const {},
       final List<DecryptPayloadRequestData> payloads = const []})
-      : _payloads = payloads,
+      : _description = description,
+        _payloads = payloads,
         super._();
 
   factory _$DecryptPayloadRequestImpl.fromJson(Map<String, dynamic> json) =>
@@ -623,6 +640,18 @@ class _$DecryptPayloadRequestImpl extends _DecryptPayloadRequest {
   @override
   @JsonKey()
   final String pathSuffix;
+
+  /// Description to explain the decryption in multiple languages (key=Locale, value=description)
+  final Map<String, dynamic> _description;
+
+  /// Description to explain the decryption in multiple languages (key=Locale, value=description)
+  @override
+  @JsonKey()
+  Map<String, dynamic> get description {
+    if (_description is EqualUnmodifiableMapView) return _description;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_description);
+  }
 
   /// - List of payloads to decrypt
   final List<DecryptPayloadRequestData> _payloads;
@@ -638,7 +667,7 @@ class _$DecryptPayloadRequestImpl extends _DecryptPayloadRequest {
 
   @override
   String toString() {
-    return 'DecryptPayloadRequest(serviceName: $serviceName, pathSuffix: $pathSuffix, payloads: $payloads)';
+    return 'DecryptPayloadRequest(serviceName: $serviceName, pathSuffix: $pathSuffix, description: $description, payloads: $payloads)';
   }
 
   @override
@@ -650,12 +679,18 @@ class _$DecryptPayloadRequestImpl extends _DecryptPayloadRequest {
                 other.serviceName == serviceName) &&
             (identical(other.pathSuffix, pathSuffix) ||
                 other.pathSuffix == pathSuffix) &&
+            const DeepCollectionEquality()
+                .equals(other._description, _description) &&
             const DeepCollectionEquality().equals(other._payloads, _payloads));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, serviceName, pathSuffix,
+  int get hashCode => Object.hash(
+      runtimeType,
+      serviceName,
+      pathSuffix,
+      const DeepCollectionEquality().hash(_description),
       const DeepCollectionEquality().hash(_payloads));
 
   @JsonKey(ignore: true)
@@ -677,6 +712,7 @@ abstract class _DecryptPayloadRequest extends DecryptPayloadRequest {
   const factory _DecryptPayloadRequest(
           {required final String serviceName,
           final String pathSuffix,
+          final Map<String, dynamic> description,
           final List<DecryptPayloadRequestData> payloads}) =
       _$DecryptPayloadRequestImpl;
   const _DecryptPayloadRequest._() : super._();
@@ -692,6 +728,10 @@ abstract class _DecryptPayloadRequest extends DecryptPayloadRequest {
 
   /// Additional information to add to a service derivation path (optional - default to empty)
   String get pathSuffix;
+  @override
+
+  /// Description to explain the decryption in multiple languages (key=Locale, value=description)
+  Map<String, dynamic> get description;
   @override
 
   /// - List of payloads to decrypt

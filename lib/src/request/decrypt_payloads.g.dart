@@ -52,6 +52,7 @@ _$DecryptPayloadRequestImpl _$$DecryptPayloadRequestImplFromJson(
     _$DecryptPayloadRequestImpl(
       serviceName: json['serviceName'] as String,
       pathSuffix: json['pathSuffix'] as String? ?? '',
+      description: json['description'] as Map<String, dynamic>? ?? const {},
       payloads: (json['payloads'] as List<dynamic>?)
               ?.map((e) =>
                   DecryptPayloadRequestData.fromJson(e as Map<String, dynamic>))
@@ -64,5 +65,6 @@ Map<String, dynamic> _$$DecryptPayloadRequestImplToJson(
     <String, dynamic>{
       'serviceName': instance.serviceName,
       'pathSuffix': instance.pathSuffix,
+      'description': instance.description,
       'payloads': instance.payloads,
     };
