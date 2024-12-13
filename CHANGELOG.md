@@ -1,3 +1,7 @@
+# 2.1.7
+
+- ⬆️ Upgrade dependencies
+
 # 2.1.6
 
 - ✅ Improve lib score. 
