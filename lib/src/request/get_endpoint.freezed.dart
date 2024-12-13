@@ -22,8 +22,12 @@ GetEndpointResult _$GetEndpointResultFromJson(Map<String, dynamic> json) {
 mixin _$GetEndpointResult {
   String get endpointUrl => throw _privateConstructorUsedError;
 
+  /// Serializes this GetEndpointResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetEndpointResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GetEndpointResultCopyWith<GetEndpointResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$GetEndpointResultCopyWithImpl<$Res, $Val extends GetEndpointResult>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GetEndpointResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$GetEndpointResultImplCopyWithImpl<$Res>
       $Res Function(_$GetEndpointResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetEndpointResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,11 +127,13 @@ class _$GetEndpointResultImpl extends _GetEndpointResult {
                 other.endpointUrl == endpointUrl));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, endpointUrl);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetEndpointResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetEndpointResultImplCopyWith<_$GetEndpointResultImpl> get copyWith =>
@@ -148,8 +158,11 @@ abstract class _GetEndpointResult extends GetEndpointResult {
 
   @override
   String get endpointUrl;
+
+  /// Create a copy of GetEndpointResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetEndpointResultImplCopyWith<_$GetEndpointResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -160,6 +173,7 @@ GetEndpointRequest _$GetEndpointRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GetEndpointRequest {
+  /// Serializes this GetEndpointRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -179,6 +193,9 @@ class _$GetEndpointRequestCopyWithImpl<$Res, $Val extends GetEndpointRequest>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetEndpointRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -195,6 +212,9 @@ class __$$GetEndpointRequestImplCopyWithImpl<$Res>
   __$$GetEndpointRequestImplCopyWithImpl(_$GetEndpointRequestImpl _value,
       $Res Function(_$GetEndpointRequestImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GetEndpointRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -216,7 +236,7 @@ class _$GetEndpointRequestImpl extends _GetEndpointRequest {
         (other.runtimeType == runtimeType && other is _$GetEndpointRequestImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 

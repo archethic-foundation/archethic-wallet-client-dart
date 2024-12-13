@@ -65,6 +65,7 @@ class _CurrentAccountSubscriptionTabState
                     setState(() {
                       accountSub = success;
                       accountStreamSub = success.updates.listen((event) {
+                        if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           ResultSnackbar.update(
                             'name: ${event.name}, genesisAddress: ${event.genesisAddress}',

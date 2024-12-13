@@ -25,8 +25,12 @@ mixin _$SendTransactionResult {
   int get nbConfirmations => throw _privateConstructorUsedError;
   int get maxConfirmations => throw _privateConstructorUsedError;
 
+  /// Serializes this SendTransactionResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SendTransactionResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SendTransactionResultCopyWith<SendTransactionResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$SendTransactionResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SendTransactionResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,6 +104,8 @@ class __$$SendTransactionResultImplCopyWithImpl<$Res>
       $Res Function(_$SendTransactionResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SendTransactionResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,12 +167,14 @@ class _$SendTransactionResultImpl extends _SendTransactionResult {
                 other.maxConfirmations == maxConfirmations));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, transactionAddress, nbConfirmations, maxConfirmations);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SendTransactionResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SendTransactionResultImplCopyWith<_$SendTransactionResultImpl>
@@ -195,8 +205,11 @@ abstract class _SendTransactionResult extends SendTransactionResult {
   int get nbConfirmations;
   @override
   int get maxConfirmations;
+
+  /// Create a copy of SendTransactionResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendTransactionResultImplCopyWith<_$SendTransactionResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -220,8 +233,12 @@ mixin _$SendTransactionRequest {
   /// - Flag to generate and add the encrypted smart contract's seed in a secret
   bool? get generateEncryptedSeedSC => throw _privateConstructorUsedError;
 
+  /// Serializes this SendTransactionRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SendTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SendTransactionRequestCopyWith<SendTransactionRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -249,6 +266,8 @@ class _$SendTransactionRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SendTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -277,6 +296,8 @@ class _$SendTransactionRequestCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of SendTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataCopyWith<$Res> get data {
@@ -312,6 +333,8 @@ class __$$SendTransactionRequestImplCopyWithImpl<$Res>
       $Res Function(_$SendTransactionRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SendTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -388,12 +411,14 @@ class _$SendTransactionRequestImpl extends _SendTransactionRequest {
                 other.generateEncryptedSeedSC == generateEncryptedSeedSC));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, data, type, version, generateEncryptedSeedSC);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SendTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SendTransactionRequestImplCopyWith<_$SendTransactionRequestImpl>
@@ -419,24 +444,26 @@ abstract class _SendTransactionRequest extends SendTransactionRequest {
   factory _SendTransactionRequest.fromJson(Map<String, dynamic> json) =
       _$SendTransactionRequestImpl.fromJson;
 
-  @override
-
   /// - [Data]: transaction data zone (identity, keychain, smart contract, etc.)
-  Data get data;
   @override
+  Data get data;
 
   /// - Type: transaction type
-  String get type;
   @override
+  String get type;
 
   /// - Version: version of the transaction (used for backward compatiblity)
-  int get version;
   @override
+  int get version;
 
   /// - Flag to generate and add the encrypted smart contract's seed in a secret
-  bool? get generateEncryptedSeedSC;
   @override
-  @JsonKey(ignore: true)
+  bool? get generateEncryptedSeedSC;
+
+  /// Create a copy of SendTransactionRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SendTransactionRequestImplCopyWith<_$SendTransactionRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

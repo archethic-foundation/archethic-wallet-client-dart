@@ -1,0 +1,9 @@
+targets:
+  $default:
+    sources:
+      exclude:
+        - "example/**"
+        - "windows/flutter/ephemeral/**"
+        - "**/.symlinks/**"
+        - "**/build/**"
+        - "**/.dart_tool/**"

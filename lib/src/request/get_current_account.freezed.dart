@@ -25,8 +25,12 @@ mixin _$GetCurrentAccountResult {
   String get serviceName => throw _privateConstructorUsedError;
   String get genesisAddress => throw _privateConstructorUsedError;
 
+  /// Serializes this GetCurrentAccountResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetCurrentAccountResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GetCurrentAccountResultCopyWith<GetCurrentAccountResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$GetCurrentAccountResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GetCurrentAccountResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,6 +103,8 @@ class __$$GetCurrentAccountResultImplCopyWithImpl<$Res>
       $Res Function(_$GetCurrentAccountResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetCurrentAccountResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,12 +166,14 @@ class _$GetCurrentAccountResultImpl extends _GetCurrentAccountResult {
                 other.genesisAddress == genesisAddress));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, shortName, serviceName, genesisAddress);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetCurrentAccountResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetCurrentAccountResultImplCopyWith<_$GetCurrentAccountResultImpl>
@@ -194,8 +204,11 @@ abstract class _GetCurrentAccountResult extends GetCurrentAccountResult {
   String get serviceName;
   @override
   String get genesisAddress;
+
+  /// Create a copy of GetCurrentAccountResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetCurrentAccountResultImplCopyWith<_$GetCurrentAccountResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -207,6 +220,7 @@ GetCurrentAccountRequest _$GetCurrentAccountRequestFromJson(
 
 /// @nodoc
 mixin _$GetCurrentAccountRequest {
+  /// Serializes this GetCurrentAccountRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -227,6 +241,9 @@ class _$GetCurrentAccountRequestCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetCurrentAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -246,6 +263,9 @@ class __$$GetCurrentAccountRequestImplCopyWithImpl<$Res>
       _$GetCurrentAccountRequestImpl _value,
       $Res Function(_$GetCurrentAccountRequestImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GetCurrentAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -268,7 +288,7 @@ class _$GetCurrentAccountRequestImpl extends _GetCurrentAccountRequest {
             other is _$GetCurrentAccountRequestImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 

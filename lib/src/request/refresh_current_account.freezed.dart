@@ -21,6 +21,7 @@ RefreshCurrentAccountRequest _$RefreshCurrentAccountRequestFromJson(
 
 /// @nodoc
 mixin _$RefreshCurrentAccountRequest {
+  /// Serializes this RefreshCurrentAccountRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -43,6 +44,9 @@ class _$RefreshCurrentAccountRequestCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RefreshCurrentAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -62,6 +66,9 @@ class __$$RefreshCurrentAccountRequestImplCopyWithImpl<$Res>
       _$RefreshCurrentAccountRequestImpl _value,
       $Res Function(_$RefreshCurrentAccountRequestImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RefreshCurrentAccountRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -85,7 +92,7 @@ class _$RefreshCurrentAccountRequestImpl extends _RefreshCurrentAccountRequest {
             other is _$RefreshCurrentAccountRequestImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
@@ -114,6 +121,7 @@ RefreshCurrentAccountResponse _$RefreshCurrentAccountResponseFromJson(
 
 /// @nodoc
 mixin _$RefreshCurrentAccountResponse {
+  /// Serializes this RefreshCurrentAccountResponse to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -136,6 +144,9 @@ class _$RefreshCurrentAccountResponseCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of RefreshCurrentAccountResponse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -155,6 +166,9 @@ class __$$RefreshCurrentAccountResponseImplCopyWithImpl<$Res>
       _$RefreshCurrentAccountResponseImpl _value,
       $Res Function(_$RefreshCurrentAccountResponseImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of RefreshCurrentAccountResponse
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -179,7 +193,7 @@ class _$RefreshCurrentAccountResponseImpl
             other is _$RefreshCurrentAccountResponseImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 

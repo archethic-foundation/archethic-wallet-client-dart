@@ -24,8 +24,12 @@ mixin _$AppAccount {
   String get serviceName => throw _privateConstructorUsedError;
   String get genesisAddress => throw _privateConstructorUsedError;
 
+  /// Serializes this AppAccount to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AppAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AppAccountCopyWith<AppAccount> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$AppAccountCopyWithImpl<$Res, $Val extends AppAccount>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AppAccount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$AppAccountImplCopyWithImpl<$Res>
       _$AppAccountImpl _value, $Res Function(_$AppAccountImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AppAccount
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -153,12 +161,14 @@ class _$AppAccountImpl extends _AppAccount {
                 other.genesisAddress == genesisAddress));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, shortName, serviceName, genesisAddress);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AppAccount
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AppAccountImplCopyWith<_$AppAccountImpl> get copyWith =>
@@ -188,8 +198,11 @@ abstract class _AppAccount extends AppAccount {
   String get serviceName;
   @override
   String get genesisAddress;
+
+  /// Create a copy of AppAccount
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppAccountImplCopyWith<_$AppAccountImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -202,8 +215,12 @@ GetAccountsResult _$GetAccountsResultFromJson(Map<String, dynamic> json) {
 mixin _$GetAccountsResult {
   List<AppAccount> get accounts => throw _privateConstructorUsedError;
 
+  /// Serializes this GetAccountsResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GetAccountsResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GetAccountsResultCopyWith<GetAccountsResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -227,6 +244,8 @@ class _$GetAccountsResultCopyWithImpl<$Res, $Val extends GetAccountsResult>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GetAccountsResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -260,6 +279,8 @@ class __$$GetAccountsResultImplCopyWithImpl<$Res>
       $Res Function(_$GetAccountsResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetAccountsResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -305,12 +326,14 @@ class _$GetAccountsResultImpl extends _GetAccountsResult {
             const DeepCollectionEquality().equals(other._accounts, _accounts));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_accounts));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetAccountsResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetAccountsResultImplCopyWith<_$GetAccountsResultImpl> get copyWith =>
@@ -335,8 +358,11 @@ abstract class _GetAccountsResult extends GetAccountsResult {
 
   @override
   List<AppAccount> get accounts;
+
+  /// Create a copy of GetAccountsResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetAccountsResultImplCopyWith<_$GetAccountsResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -347,6 +373,7 @@ GetAccountsRequest _$GetAccountsRequestFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GetAccountsRequest {
+  /// Serializes this GetAccountsRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
 }
 
@@ -366,6 +393,9 @@ class _$GetAccountsRequestCopyWithImpl<$Res, $Val extends GetAccountsRequest>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of GetAccountsRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -382,6 +412,9 @@ class __$$GetAccountsRequestImplCopyWithImpl<$Res>
   __$$GetAccountsRequestImplCopyWithImpl(_$GetAccountsRequestImpl _value,
       $Res Function(_$GetAccountsRequestImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of GetAccountsRequest
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -403,7 +436,7 @@ class _$GetAccountsRequestImpl extends _GetAccountsRequest {
         (other.runtimeType == runtimeType && other is _$GetAccountsRequestImpl);
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => runtimeType.hashCode;
 
