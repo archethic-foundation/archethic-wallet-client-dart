@@ -12,12 +12,11 @@ packages:
   archethic_lib_dart:
     dependency: transitive
     description:
-      path: "."
-      ref: upgrade_graqhql
-      resolved-ref: "9b2f293359595cf498d4c33074327d93233486dd"
-      url: "https://github.com/archethic-foundation/libdart.git"
-    source: git
-    version: "4.0.0"
+      name: archethic_lib_dart
+      sha256: "6abb532e25212c10782e09274d8a17b00a745910f4410e558b17d305cc202ce5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.1"
   archethic_wallet_client:
     dependency: "direct main"
     description:
@@ -93,10 +92,10 @@ packages:
     dependency: transitive
     description:
       name: crypto
-      sha256: ff625774173754681d66daaf4a448684fb04b78f902da9cb3d308c19cc5e8bab
+      sha256: "1e445881f28f22d6140f181e07737b22f1e099a5e1ff94b0af2f9e4a463f4855"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.3"
+    version: "3.0.6"
   cryptography:
     dependency: transitive
     description:
@@ -109,10 +108,10 @@ packages:
     dependency: transitive
     description:
       name: decimal
-      sha256: "4140a688f9e443e2f4de3a1162387bf25e1ac6d51e24c9da263f245210f41440"
+      sha256: da8f65df568345f2738cc8b0de74971c86d2d93ce5fc8c4ec094f6b7c5d48eb5
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.2"
+    version: "3.1.0"
   deeplink_rpc:
     dependency: transitive
     description:
@@ -125,18 +124,18 @@ packages:
     dependency: transitive
     description:
       name: ecdsa
-      sha256: b71687a843151255fced9fead63b09816cc59e9ae7b954e6a852bdc344ae1aca
+      sha256: "13b4e01ac140575cf88ef5e5268f92b8dd0a67a26c60a1b74e67d146068dc246"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.0"
+    version: "0.1.2"
   elliptic:
     dependency: transitive
     description:
       name: elliptic
-      sha256: "98e2fa89a714c649174553c823db2612dc9581814477fe1264a499d448237b6b"
+      sha256: "0c303d810603953a65dc39c4c542fb7538defd9e212403c54c266140819523b6"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.10"
+    version: "0.3.11"
   fake_async:
     dependency: transitive
     description:
@@ -196,10 +195,10 @@ packages:
     dependency: transitive
     description:
       name: gql
-      sha256: "8ecd3585bb9e40d671aa58f52575d950670f99e5ffab18e2b34a757e071a6693"
+      sha256: "650e79ed60c21579ca3bd17ebae8a8c8d22cde267b03a19bf3b35996baaa843a"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.1-alpha+1717789143880"
+    version: "1.0.1-alpha+1730759315362"
   gql_dedupe_link:
     dependency: transitive
     description:
@@ -251,12 +250,11 @@ packages:
   graphql:
     dependency: transitive
     description:
-      path: "packages/graphql"
-      ref: hagen00-upgrade-packages
-      resolved-ref: "3d4ef96def5234adcd5c41af281c84a8a6ed7850"
-      url: "https://github.com/hagen00/graphql-flutter.git"
-    source: git
-    version: "5.2.0-beta.9"
+      name: graphql
+      sha256: c715080993c8481087ce77b7929224222551823769fb150f5816f9bbbee9e589
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.0-beta.10"
   hive:
     dependency: transitive
     description:
@@ -285,10 +283,10 @@ packages:
     dependency: transitive
     description:
       name: intl
-      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
+      sha256: "00f33b908655e606b86d2ade4710a231b802eec6f11e87e4ea3783fd72077a50"
       url: "https://pub.dev"
     source: hosted
-    version: "0.19.0"
+    version: "0.20.1"
   js:
     dependency: transitive
     description:
@@ -349,10 +347,10 @@ packages:
     dependency: "direct main"
     description:
       name: logging
-      sha256: "623a88c9594aa774443aa3eb2d41807a48486b5613e67599fb4c41c0ad47c340"
+      sha256: c8245ada5f1717ed44271ed1c26b8ce85ca3228fd2ffdb75468ab01979309d61
       url: "https://pub.dev"
     source: hosted
-    version: "1.2.0"
+    version: "1.3.0"
   matcher:
     dependency: transitive
     description:
@@ -453,10 +451,10 @@ packages:
     dependency: transitive
     description:
       name: quiver
-      sha256: b1c1ac5ce6688d77f65f3375a9abb9319b3cb32486bdc7a1e0fdf004d7ba4e47
+      sha256: ea0b925899e64ecdfbf9c7becb60d5b50e706ade44a85b2363be2a22d88117d2
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.1"
+    version: "3.2.2"
   rational:
     dependency: transitive
     description:
@@ -703,5 +701,5 @@ packages:
     source: hosted
     version: "3.1.2"
 sdks:
-  dart: ">=3.4.0 <4.0.0"
+  dart: ">=3.5.3 <4.0.0"
   flutter: ">=3.22.0"
