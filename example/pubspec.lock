@@ -12,18 +12,19 @@ packages:
   archethic_lib_dart:
     dependency: transitive
     description:
-      name: archethic_lib_dart
-      sha256: "39e8e8ccfc23db9d4b5f09815a42e82085d2356037411d5a1d7aae383a42af44"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.0.0-beta"
+      path: "."
+      ref: "169-add-param-to-newkeychaintransaction-method"
+      resolved-ref: "124a857aec7eb603c57a0b2f009c67da2a270585"
+      url: "https://github.com/archethic-foundation/libdart.git"
+    source: git
+    version: "7.0.0-beta"
   archethic_wallet_client:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "2.1.8-beta"
+    version: "2.1.8-beta.1"
   archive:
     dependency: transitive
     description:

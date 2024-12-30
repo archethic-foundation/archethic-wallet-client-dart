@@ -1,5 +1,7 @@
-# 2.1.8-beta.1
+# 2.1.8-beta.2
+- ⬆️ Upgrade dependencies (archethic_lib_dart: 7.0.0-beta)
 
+# 2.1.8-beta.1
 - feat: :sparkles: Add encrypt & decrypt payloads methods
 
 # 2.1.8-beta
