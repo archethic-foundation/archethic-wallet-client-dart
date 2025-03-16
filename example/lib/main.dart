@@ -36,7 +36,9 @@ class MyApp extends StatelessWidget {
       ),
       onGenerateRoute: (settings) {
         if ((_aewalletClient as DeeplinkArchethicDappClient)
-            .handleRoute(settings.name)) return;
+            .handleRoute(settings.name)) {
+          return;
+        }
         return null;
       },
     );

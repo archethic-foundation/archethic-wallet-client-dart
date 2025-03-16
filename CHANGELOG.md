@@ -1,3 +1,7 @@
+# 2.2.0
+- ⬆️ Upgrade dependencies (archethic_lib_dart: 7.7.0)
+- Upgrade flutter version to 3.27 
+ 
 # 2.1.12
 - ⬆️ Upgrade dependencies (archethic_lib_dart: 7.6.0)
   
