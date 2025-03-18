@@ -31,7 +31,7 @@ class MessagePortStreamChannel
     with StreamChannelMixin<String>
     implements StreamChannel<String> {
   MessagePortStreamChannel({required this.port}) {
-    port.onmessage = (message) {
+    port.onmessage = (MessageEvent message) {
       _in.add(message.data! as String);
     }.toJS;
 

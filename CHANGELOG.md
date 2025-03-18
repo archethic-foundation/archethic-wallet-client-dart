@@ -1,3 +1,6 @@
+# 2.2.1
+- Fix compilation with dart2js
+
 # 2.2.0
 - ⬆️ Upgrade dependencies (archethic_lib_dart: 7.7.0)
 - Upgrade flutter version to 3.27 
