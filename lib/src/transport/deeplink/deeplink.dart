@@ -1,4 +1,3 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
 part of '../archethic_wallet_client.dart';
 
 class DeeplinkArchethicDappClient extends ArchethicDAppClient {
