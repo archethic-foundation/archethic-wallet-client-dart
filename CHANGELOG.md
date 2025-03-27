@@ -1,3 +1,6 @@
+# 2.2.2
+- License MIT
+
 # 2.2.1
 - Fix compilation with dart2js
 
