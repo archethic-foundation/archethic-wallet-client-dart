@@ -34,7 +34,7 @@ class DeeplinkArchethicDappClient extends ArchethicDAppClient {
   @override
   final RequestOrigin origin;
 
-  bool handleRoute(String? path) => _deeplinkRpcClient.handleRoute(path);
+  bool handleRoute(String? path) => _deeplinkRpcClient.handleResponse(path);
 
   @override
   ArchethicDappConnectionState get state => _state;

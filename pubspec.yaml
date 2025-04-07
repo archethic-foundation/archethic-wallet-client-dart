@@ -1,7 +1,7 @@
 name: archethic_wallet_client
 description: A client dart library to interact with Archethic Wallet RPC API.
 
-version: 2.2.2
+version: 2.2.3
 
 homepage: https://github.com/archethic-foundation/archethic-wallet-client-dart
 
@@ -10,7 +10,7 @@ environment:
 
 dependencies:
   # Archethic dart library for Flutter
-  archethic_lib_dart: ^7.7.0
+  archethic_lib_dart: ^7.7.2
   #archethic_lib_dart:
   #  git:
   #    url: https://github.com/archethic-foundation/libdart.git
@@ -19,7 +19,9 @@ dependencies:
   #  path: ../libdart-2
 
   # A RPC-via-deeplink communication library coded in Dart. This is dedicated to Flutter mobile applications (iOS / Android).
-  deeplink_rpc: ^1.1.0
+  deeplink_rpc: ^2.0.0-beta.2
+  #deeplink_rpc:
+  #  path: ../lib-deeplink-rpc
 
   flutter:
     sdk: flutter

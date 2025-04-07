@@ -1,3 +1,6 @@
+# 2.2.3
+- Upgrade dependencies
+
 # 2.2.2
 - License MIT
 
