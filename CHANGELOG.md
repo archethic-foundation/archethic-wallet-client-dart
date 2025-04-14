@@ -1,3 +1,6 @@
+# 2.3.0
+- WASM Activation in mainnet network
+
 # 2.2.4
 - Upgrade dependencies
 
