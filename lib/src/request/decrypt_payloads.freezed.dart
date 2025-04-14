@@ -24,8 +24,12 @@ mixin _$DecryptPayloadsResult {
   List<DecryptPayloadsResultDetail> get decryptedPayloads =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this DecryptPayloadsResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DecryptPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DecryptPayloadsResultCopyWith<DecryptPayloadsResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$DecryptPayloadsResultCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DecryptPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$DecryptPayloadsResultImplCopyWithImpl<$Res>
       $Res Function(_$DecryptPayloadsResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DecryptPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,12 +141,14 @@ class _$DecryptPayloadsResultImpl extends _DecryptPayloadsResult {
                 .equals(other._decryptedPayloads, _decryptedPayloads));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_decryptedPayloads));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DecryptPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DecryptPayloadsResultImplCopyWith<_$DecryptPayloadsResultImpl>
@@ -164,8 +174,11 @@ abstract class _DecryptPayloadsResult extends DecryptPayloadsResult {
 
   @override
   List<DecryptPayloadsResultDetail> get decryptedPayloads;
+
+  /// Create a copy of DecryptPayloadsResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DecryptPayloadsResultImplCopyWith<_$DecryptPayloadsResultImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -179,8 +192,12 @@ DecryptPayloadsResultDetail _$DecryptPayloadsResultDetailFromJson(
 mixin _$DecryptPayloadsResultDetail {
   String get decryptedPayload => throw _privateConstructorUsedError;
 
+  /// Serializes this DecryptPayloadsResultDetail to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DecryptPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DecryptPayloadsResultDetailCopyWith<DecryptPayloadsResultDetail>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -207,6 +224,8 @@ class _$DecryptPayloadsResultDetailCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DecryptPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -243,6 +262,8 @@ class __$$DecryptPayloadsResultDetailImplCopyWithImpl<$Res>
       $Res Function(_$DecryptPayloadsResultDetailImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DecryptPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -284,11 +305,13 @@ class _$DecryptPayloadsResultDetailImpl extends _DecryptPayloadsResultDetail {
                 other.decryptedPayload == decryptedPayload));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, decryptedPayload);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DecryptPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DecryptPayloadsResultDetailImplCopyWith<_$DecryptPayloadsResultDetailImpl>
@@ -315,8 +338,11 @@ abstract class _DecryptPayloadsResultDetail
 
   @override
   String get decryptedPayload;
+
+  /// Create a copy of DecryptPayloadsResultDetail
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DecryptPayloadsResultDetailImplCopyWith<_$DecryptPayloadsResultDetailImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -331,8 +357,12 @@ mixin _$DecryptPayloadRequestData {
   String get payload => throw _privateConstructorUsedError;
   bool get isHexa => throw _privateConstructorUsedError;
 
+  /// Serializes this DecryptPayloadRequestData to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DecryptPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DecryptPayloadRequestDataCopyWith<DecryptPayloadRequestData> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -357,6 +387,8 @@ class _$DecryptPayloadRequestDataCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DecryptPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -398,6 +430,8 @@ class __$$DecryptPayloadRequestDataImplCopyWithImpl<$Res>
       $Res Function(_$DecryptPayloadRequestDataImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DecryptPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -446,11 +480,13 @@ class _$DecryptPayloadRequestDataImpl extends _DecryptPayloadRequestData {
             (identical(other.isHexa, isHexa) || other.isHexa == isHexa));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, payload, isHexa);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DecryptPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DecryptPayloadRequestDataImplCopyWith<_$DecryptPayloadRequestDataImpl>
@@ -478,8 +514,11 @@ abstract class _DecryptPayloadRequestData extends DecryptPayloadRequestData {
   String get payload;
   @override
   bool get isHexa;
+
+  /// Create a copy of DecryptPayloadRequestData
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DecryptPayloadRequestDataImplCopyWith<_$DecryptPayloadRequestDataImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -504,8 +543,12 @@ mixin _$DecryptPayloadRequest {
   List<DecryptPayloadRequestData> get payloads =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this DecryptPayloadRequest to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DecryptPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DecryptPayloadRequestCopyWith<DecryptPayloadRequest> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -534,6 +577,8 @@ class _$DecryptPayloadRequestCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DecryptPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -588,6 +633,8 @@ class __$$DecryptPayloadRequestImplCopyWithImpl<$Res>
       $Res Function(_$DecryptPayloadRequestImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DecryptPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -684,7 +731,7 @@ class _$DecryptPayloadRequestImpl extends _DecryptPayloadRequest {
             const DeepCollectionEquality().equals(other._payloads, _payloads));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -693,7 +740,9 @@ class _$DecryptPayloadRequestImpl extends _DecryptPayloadRequest {
       const DeepCollectionEquality().hash(_description),
       const DeepCollectionEquality().hash(_payloads));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DecryptPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DecryptPayloadRequestImplCopyWith<_$DecryptPayloadRequestImpl>
@@ -720,24 +769,26 @@ abstract class _DecryptPayloadRequest extends DecryptPayloadRequest {
   factory _DecryptPayloadRequest.fromJson(Map<String, dynamic> json) =
       _$DecryptPayloadRequestImpl.fromJson;
 
-  @override
-
   /// Service name to identify the derivation path to use
-  String get serviceName;
   @override
+  String get serviceName;
 
   /// Additional information to add to a service derivation path (optional - default to empty)
-  String get pathSuffix;
   @override
+  String get pathSuffix;
 
   /// Description to explain the decryption in multiple languages (key=Locale, value=description)
-  Map<String, dynamic> get description;
   @override
+  Map<String, dynamic> get description;
 
   /// - List of payloads to decrypt
-  List<DecryptPayloadRequestData> get payloads;
   @override
-  @JsonKey(ignore: true)
+  List<DecryptPayloadRequestData> get payloads;
+
+  /// Create a copy of DecryptPayloadRequest
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DecryptPayloadRequestImplCopyWith<_$DecryptPayloadRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
