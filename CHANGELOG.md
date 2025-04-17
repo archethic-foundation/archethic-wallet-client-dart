@@ -1,3 +1,6 @@
+# 2.3.2
+- ⬆️ Upgrade dependencies (archethic_lib_dart: 7.9.1)
+
 # 2.3.1
 - Upgrade dependencies
 
